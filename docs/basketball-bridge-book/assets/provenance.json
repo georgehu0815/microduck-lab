@@ -1,0 +1,331 @@
+{
+  "generated_assets": [
+    {
+      "bytes": 3382,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/README.md",
+      "sha256": "acb48e63fc2872aff5a8bf14e2a5ced16dc09884e163cf85a1ffebf0c0d53f0d"
+    },
+    {
+      "bytes": 5763,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/captions_manifest.json",
+      "sha256": "ef517c19ac6d08d7f9f2ccdfe79b4e18dc34b08cf5c4cc86c50a066c06299cdb"
+    },
+    {
+      "bytes": 83678,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/diagrams/schematic-basketball-geometry.png",
+      "sha256": "ba033747596b42df7852359892320044838c6a482e45fa706538c4297de24c57"
+    },
+    {
+      "bytes": 82821,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/diagrams/schematic-bridge-geometry.png",
+      "sha256": "3b1f964f1b7976f4988fad960cae10419f3b8910c0f8998923a18d7e1c4802a1"
+    },
+    {
+      "bytes": 66817,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/diagrams/schematic-evidence-pipeline.png",
+      "sha256": "a47a6a104e0f78051ce62f7dba72617a85e297bc12d6d51c15537f39b8c3716d"
+    },
+    {
+      "bytes": 95777,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/diagrams/schematic-ppo-clipping.png",
+      "sha256": "34e83770b7dcac76ed70659488d52709260a01e54b78d6569787cff8933fce6f"
+    },
+    {
+      "bytes": 258035,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/basketball-reward-trace.png",
+      "sha256": "2baf1212a8d265d599cc590fb6e6a151066b5ac12a8162317c660ea92f55bcde"
+    },
+    {
+      "bytes": 404679,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/basketball-training-curves.png",
+      "sha256": "7f01ce7a7b12894107e183eec527110aba71e8f3349ede3490750942e44834a2"
+    },
+    {
+      "bytes": 355522,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/bridge-training-curves.png",
+      "sha256": "a0a85a74fa8ffd919ae825a7d57546e437e4072e2242cd7d0118c7b6da2029e2"
+    },
+    {
+      "bytes": 103630,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/evaluation-outcomes.png",
+      "sha256": "d10a7fb966b8ccf068ae06ece02247f7a3b4e4b4f2b640d1ae0aa331d084226f"
+    },
+    {
+      "bytes": 1360303,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/observed-basketball-forward-command-contact-sheet.png",
+      "sha256": "5454a6e6c5098bed9eac8aeda22bb7be34198e3afe79c65e068d87a63e02b4da"
+    },
+    {
+      "bytes": 1323380,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/observed-basketball-zero-command-contact-sheet.png",
+      "sha256": "891e82d48aaaf807ff01f180ee685aea9d1a882291c7173638d7b8991529a8d1"
+    },
+    {
+      "bytes": 321252,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/observed-bridge-rollout-contact-sheet.png",
+      "sha256": "64825f27586299eeb7a95c5fa236447d86828b577ddee031adc795c1282b08bd"
+    },
+    {
+      "bytes": 393565,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/observed-bridge-studio-screenshot.png",
+      "sha256": "8a25959c672f1312a0bdec77ac0f0ddca6bdadc049f5e27ce3c6879f6ae04508"
+    },
+    {
+      "bytes": 50445,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/observed-live-scenes.png",
+      "sha256": "366ef82f9b47db721d1ac7c3eaa2b1ec99742254add1c4f9f1e3db3c2f8fe449"
+    },
+    {
+      "bytes": 340440,
+      "derived_from": "see captions_manifest.json",
+      "path": "docs/basketball-bridge-book/assets/evidence/observed-seven-cases.png",
+      "sha256": "82a53ec59eab8e890f405650d6d415cfcce425ceefffb9629f5e17ac627d7356"
+    },
+    {
+      "bytes": 15053,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_environment.py",
+      "sha256": "6bff54a8b1f7c856ec00cce59bb2b9b3c528d3c16054d1f730446fe68c65c757"
+    },
+    {
+      "bytes": 16897,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_evaluation.json",
+      "sha256": "41aeb513e39c9be4cfe06ce7411fcf7bcfc9a1a82217ddc08aeaff9b9dc4edc6"
+    },
+    {
+      "bytes": 1450,
+      "derived_from": "extracted repository source data",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_evaluation_trials.csv",
+      "sha256": "ed525878a4541cce3f339c4b3155913b3f4b5fa9d6e48d3b0717423b7c9040a6"
+    },
+    {
+      "bytes": 34215,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_local_summary.json",
+      "sha256": "08b492f9359f740fe4e3b5a5b38fd5d8df40449528045cbf4a1d687ce8bc1c31"
+    },
+    {
+      "bytes": 51424,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_mixed_summary.json",
+      "sha256": "6bdb3e2d4b4e8580417c8cbf4d9aad140009b3865a2c2e67c5583f384797b2f1"
+    },
+    {
+      "bytes": 1043,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_release_validation.json",
+      "sha256": "cbb8e2bbaaa9ab630ccde907b049bff01a48e9a3af93a2d35c34efdf5b1c02e1"
+    },
+    {
+      "bytes": 81232,
+      "derived_from": "extracted repository source data",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_reward_trace.csv",
+      "sha256": "53c1f2ed5a72288056e52049bd3e3cadb0ee6bdb6f5d9eadbc2ed2de0236460e"
+    },
+    {
+      "bytes": 1287,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_reward_trace.json",
+      "sha256": "f27415f555debad39f866a693a3673656810c5f68d481967d243c2d7b9805585"
+    },
+    {
+      "bytes": 3662,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_training_lineage.md",
+      "sha256": "24590cb928f115fdd45ca7e4d22cbf9c766d37a4184e18334e5c6e8617dc0c17"
+    },
+    {
+      "bytes": 43247,
+      "derived_from": "extracted repository source data",
+      "path": "docs/basketball-bridge-book/assets/raw/basketball_training_updates.csv",
+      "sha256": "60c0a7237b5f75c9bc6edcbe8daeddc1d58cfe8f4dedbdd0eda3de9337a54421"
+    },
+    {
+      "bytes": 2545,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/bridge_checkpoint_metadata.safetensors.json",
+      "sha256": "373e59495130cbf148e689453dccaba057842c96a4d26ef60930291b5c3357f2"
+    },
+    {
+      "bytes": 23794,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/bridge_environment.py",
+      "sha256": "49bd21b6260841bb06ab1d04fcca18cd79c478e0484d8d722775353a04a41f37"
+    },
+    {
+      "bytes": 15296,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/bridge_evaluation.json",
+      "sha256": "f54e77b616b8b3435c3f05778b300293b9d31c5d5c2396b7de464838acbbde4a"
+    },
+    {
+      "bytes": 3312,
+      "derived_from": "extracted repository source data",
+      "path": "docs/basketball-bridge-book/assets/raw/bridge_evaluation_episodes.csv",
+      "sha256": "7a59d3f648e3cbdae671bb1bda9b23712f6adf42440cbaf4b7609c321471834d"
+    },
+    {
+      "bytes": 1331,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/bridge_render_evidence.json",
+      "sha256": "78e5f690a164441bff12e81d3b79e709ac779e115c5f4b45d6fdda3d3a4626c6"
+    },
+    {
+      "bytes": 718,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/bridge_result.json",
+      "sha256": "bbbfe2193e4341beba31ecc2b9e3fa03c1200661a02c129c640c276dde9c334a"
+    },
+    {
+      "bytes": 23705,
+      "derived_from": "extracted repository source data",
+      "path": "docs/basketball-bridge-book/assets/raw/bridge_training_metrics.csv",
+      "sha256": "f3f50b6950a6ead7f24892925500bab46e48863ff461722716b1eef595e8875c"
+    },
+    {
+      "bytes": 44987,
+      "derived_from": "copied repository source or generated documentation",
+      "path": "docs/basketball-bridge-book/assets/raw/bridge_training_metrics.jsonl",
+      "sha256": "b90470cb9a24c593e8546dcc853a2aa634bf1071e0785a265cb5fc4e1695cef1"
+    },
+    {
+      "bytes": 670,
+      "derived_from": "extracted repository source data",
+      "path": "docs/basketball-bridge-book/assets/raw/run_inventory.csv",
+      "sha256": "b1c8f7d60115eb2beeb7b86c9bf4d9b8b4cc4795afaa2f70f4ae20c124fb98e9"
+    }
+  ],
+  "generator": "docs/basketball-bridge-book/tools/prepare_assets.py",
+  "generator_sha256": "8b7e38a1da853510a5c90487c97c088d6154a1efef037d8cc18de6d0e4a66010",
+  "policy": {
+    "missing_values": "left absent and documented; never synthesized",
+    "schematics": "clearly labeled and stored separately",
+    "training_data": "observed repository artifacts only"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/basketball_local_summary.json",
+      "copied_sha256": "08b492f9359f740fe4e3b5a5b38fd5d8df40449528045cbf4a1d687ce8bc1c31",
+      "id": "basketball_local_summary",
+      "source_bytes": 34215,
+      "source_path": "rlx/artifacts/basketball-local-20260910/summary.json",
+      "source_sha256": "08b492f9359f740fe4e3b5a5b38fd5d8df40449528045cbf4a1d687ce8bc1c31"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/basketball_mixed_summary.json",
+      "copied_sha256": "6bdb3e2d4b4e8580417c8cbf4d9aad140009b3865a2c2e67c5583f384797b2f1",
+      "id": "basketball_mixed_summary",
+      "source_bytes": 51424,
+      "source_path": "rlx/artifacts/basketball-mixed-20260910/summary.json",
+      "source_sha256": "6bdb3e2d4b4e8580417c8cbf4d9aad140009b3865a2c2e67c5583f384797b2f1"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/basketball_evaluation.json",
+      "copied_sha256": "41aeb513e39c9be4cfe06ce7411fcf7bcfc9a1a82217ddc08aeaff9b9dc4edc6",
+      "id": "basketball_evaluation",
+      "source_bytes": 16897,
+      "source_path": "docs/basketball-showcase/evidence/evaluation.json",
+      "source_sha256": "41aeb513e39c9be4cfe06ce7411fcf7bcfc9a1a82217ddc08aeaff9b9dc4edc6"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/basketball_release_validation.json",
+      "copied_sha256": "cbb8e2bbaaa9ab630ccde907b049bff01a48e9a3af93a2d35c34efdf5b1c02e1",
+      "id": "basketball_release_validation",
+      "source_bytes": 1043,
+      "source_path": "microduck-playground/experiments/basketball/validation.json",
+      "source_sha256": "cbb8e2bbaaa9ab630ccde907b049bff01a48e9a3af93a2d35c34efdf5b1c02e1"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/basketball_training_lineage.md",
+      "copied_sha256": "24590cb928f115fdd45ca7e4d22cbf9c766d37a4184e18334e5c6e8617dc0c17",
+      "id": "basketball_training_lineage",
+      "source_bytes": 3662,
+      "source_path": "microduck-playground/experiments/basketball/TRAINING.md",
+      "source_sha256": "24590cb928f115fdd45ca7e4d22cbf9c766d37a4184e18334e5c6e8617dc0c17"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/basketball_environment.py",
+      "copied_sha256": "6bff54a8b1f7c856ec00cce59bb2b9b3c528d3c16054d1f730446fe68c65c757",
+      "id": "basketball_environment",
+      "source_bytes": 15053,
+      "source_path": "rlx/rlx/environments/basketball.py",
+      "source_sha256": "6bff54a8b1f7c856ec00cce59bb2b9b3c528d3c16054d1f730446fe68c65c757"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/bridge_training_metrics.jsonl",
+      "copied_sha256": "b90470cb9a24c593e8546dcc853a2aa634bf1071e0785a265cb5fc4e1695cef1",
+      "id": "bridge_training_metrics",
+      "source_bytes": 44987,
+      "source_path": "rlx/runs/studio/bridge/bridge-studio-02/training-metrics.jsonl",
+      "source_sha256": "b90470cb9a24c593e8546dcc853a2aa634bf1071e0785a265cb5fc4e1695cef1"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/bridge_evaluation.json",
+      "copied_sha256": "f54e77b616b8b3435c3f05778b300293b9d31c5d5c2396b7de464838acbbde4a",
+      "id": "bridge_evaluation",
+      "source_bytes": 15296,
+      "source_path": "rlx/runs/studio/bridge/bridge-studio-02/evaluation.json",
+      "source_sha256": "f54e77b616b8b3435c3f05778b300293b9d31c5d5c2396b7de464838acbbde4a"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/bridge_result.json",
+      "copied_sha256": "bbbfe2193e4341beba31ecc2b9e3fa03c1200661a02c129c640c276dde9c334a",
+      "id": "bridge_result",
+      "source_bytes": 718,
+      "source_path": "rlx/runs/studio/bridge/bridge-studio-02/result.json",
+      "source_sha256": "bbbfe2193e4341beba31ecc2b9e3fa03c1200661a02c129c640c276dde9c334a"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/bridge_checkpoint_metadata.safetensors.json",
+      "copied_sha256": "373e59495130cbf148e689453dccaba057842c96a4d26ef60930291b5c3357f2",
+      "id": "bridge_checkpoint_metadata",
+      "source_bytes": 2545,
+      "source_path": "rlx/runs/studio/bridge/bridge-studio-02/bridge.safetensors.json",
+      "source_sha256": "373e59495130cbf148e689453dccaba057842c96a4d26ef60930291b5c3357f2"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/bridge_render_evidence.json",
+      "copied_sha256": "78e5f690a164441bff12e81d3b79e709ac779e115c5f4b45d6fdda3d3a4626c6",
+      "id": "bridge_render_evidence",
+      "source_bytes": 1331,
+      "source_path": "rlx/runs/studio/bridge/bridge-studio-02/render/evidence.json",
+      "source_sha256": "78e5f690a164441bff12e81d3b79e709ac779e115c5f4b45d6fdda3d3a4626c6"
+    },
+    {
+      "copied_path": "docs/basketball-bridge-book/assets/raw/bridge_environment.py",
+      "copied_sha256": "49bd21b6260841bb06ab1d04fcca18cd79c478e0484d8d722775353a04a41f37",
+      "id": "bridge_environment",
+      "source_bytes": 23794,
+      "source_path": "rlx/rlx/environments/bridge.py",
+      "source_sha256": "49bd21b6260841bb06ab1d04fcca18cd79c478e0484d8d722775353a04a41f37"
+    },
+    {
+      "collected_at_utc": "2026-09-11T00:57:16Z",
+      "id": "basketball_reward_trace_diagnostic",
+      "label": "NEW deterministic diagnostic, NOT historical training reward",
+      "policy_sha256": "f84314bbd8d94f885b84b26f545554074a23166bda9cdba5de039c1372c670b7",
+      "settings_path": "docs/basketball-bridge-book/assets/raw/basketball_reward_trace.json",
+      "settings_sha256": "f27415f555debad39f866a693a3673656810c5f68d481967d243c2d7b9805585",
+      "source_bytes": 81232,
+      "source_path": "docs/basketball-bridge-book/assets/raw/basketball_reward_trace.csv",
+      "source_sha256": "53c1f2ed5a72288056e52049bd3e3cadb0ee6bdb6f5d9eadbc2ed2de0236460e"
+    }
+  ]
+}

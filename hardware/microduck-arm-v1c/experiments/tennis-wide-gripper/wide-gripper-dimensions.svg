@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="730" viewBox="0 0 1100 730">
+<rect width="1100" height="730" fill="#f5f7fa"/>
+<g font-family="Arial, sans-serif" fill="#162335">
+<text x="40" y="48" font-size="27" font-weight="bold">MicroDuck · Tennis wide-gripper candidate / 网球宽口夹爪</text>
+<text x="40" y="81" font-size="17" fill="#b54708">REVIEW ONLY / 仅设计审查：未提供轴孔、轮毂固定、装配公差或强度认证</text>
+<rect x="108" y="278" width="80" height="104" rx="4" fill="#8f9eae"/>
+<text x="136" y="335" font-size="18" fill="white">M5</text>
+<circle cx="340" cy="330" r="134" fill="#e9ef76" fill-opacity="0.65" stroke="#859e24" stroke-width="2"/>
+<text x="299" y="334" font-size="18">Ø67 mm</text>
+<rect x="136.0" y="164.0" width="48.0" height="124.0" fill="#e69f35" stroke="#27394c"/>
+<rect x="184.0" y="138.0" width="132.0" height="32.0" fill="#e69f35" stroke="#27394c"/>
+<rect x="264.0" y="160.0" width="96" height="20" fill="#3c9c73" stroke="#27394c"/>
+<rect x="136.0" y="372.0" width="48.0" height="124.0" fill="#e69f35" stroke="#27394c"/>
+<rect x="184.0" y="490.0" width="132.0" height="32.0" fill="#e69f35" stroke="#27394c"/>
+<rect x="264.0" y="480.0" width="96" height="20" fill="#3c9c73" stroke="#27394c"/>
+<circle cx="120" cy="282" r="5" fill="#162335"/><circle cx="120" cy="378" r="5" fill="#162335"/>
+<path d="M480 180H550 M480 480H550 M530 180V480" fill="none" stroke="#162335" stroke-width="2"/>
+<text x="545" y="326" font-size="23" font-weight="bold">75 mm</text>
+<text x="545" y="352" font-size="16">net opening</text>
+<text x="545" y="376" font-size="16">净开口</text>
+<text x="690" y="156" font-size="20" font-weight="bold">Unchanged / 保持不变</text>
+<text x="690" y="188" font-size="17">5 arm actuators / 5 个执行器</text>
+<text x="690" y="220" font-size="17">24 mm gear-axis spacing</text>
+<text x="690" y="252" font-size="17">Mirrored jaw travel: 0–0.32 rad</text>
+<text x="690" y="310" font-size="20" font-weight="bold">Changed / 新候选尺寸</text>
+<text x="690" y="342" font-size="17">Each pad offset: 28 mm outward</text>
+<text x="690" y="374" font-size="17">Pad center: x = 48 mm</text>
+<text x="690" y="406" font-size="17">TCP: x = 55 mm (was 30 mm)</text>
+<text x="690" y="438" font-size="17">Pads: 24 × 5 × 8 mm</text>
+<text x="40" y="559" font-size="18">Top view, open pose. Orange: structure; green: contact pads; yellow: real-sized ball.</text>
+<text x="40" y="592" font-size="18">俯视张开姿态。保留电机和轴距；向外移指、前移 TCP，避免网球撞到掌部和电机。</text>
+<text x="40" y="637" font-size="17" fill="#b54708">Geometry fit ≠ stable grasp ≠ ground pickup ≠ return-to-bin success ≠ hardware release.</text>
+<text x="40" y="674" font-size="17">制造前仍需轴孔/轮毂、保持件、公差、材料强度、负载扭矩、地面可达性与整机平衡验证。</text>
+</g></svg>

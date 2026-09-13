@@ -1,0 +1,158 @@
+\babel@toc {american}{}\relax 
+\contentsline {section}{\numberline {1}Two balance laboratories: what this book actually reproduces}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}A promise with a boundary}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Choose a learning route}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}A vocabulary we will keep consistent}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Keep an experiment notebook}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Where everything lives}{5}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Mathematical and physical foundations}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Units before equations}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Why balance and motion interact}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Coordinate frames: forward for whom?}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Feedback, memory, and partial observation}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Arithmetic workshop}{7}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Set up a reproducible workshop}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Materials: simulation assets are not a hardware shopping list}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Computer and software assumptions}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Acquire the workspace, not just the PDF}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Separate preflight, smoke, training, and evaluation}{10}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Before the first step: inspect the scene}{11}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Preserve outputs before a new run}{11}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Troubleshooting without changing the question}{12}{subsection.3.7}%
+\contentsline {section}{\numberline {4}PPO: Learning Carefully from a Short Batch of Experience}{13}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The learning loop in plain language}{13}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Actor, critic, and the meaning of advantage}{14}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Continuous actions use probability density}{14}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Density can exceed 1}{15}{subsubsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.4}From log probabilities to the PPO ratio}{16}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}The clipped policy objective}{16}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Positive advantage}{17}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Negative advantage}{17}{subsubsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.6}Generalized Advantage Estimation}{18}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Terminal and time-limit masks are different}{19}{subsection.4.7}%
+\contentsline {subsubsection}{\numberline {4.7.1}Worked boundary example}{19}{subsubsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.8}Advantage normalization}{21}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}The critic loss}{21}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}Entropy and why it can be negative}{22}{subsection.4.10}%
+\contentsline {subsection}{\numberline {4.11}Total loss is not reward, and neither proves mastery}{22}{subsection.4.11}%
+\contentsline {subsection}{\numberline {4.12}Recurrent sequence replay in basketball}{23}{subsection.4.12}%
+\contentsline {subsection}{\numberline {4.13}Feedforward minibatches in generic MLX PPO}{23}{subsection.4.13}%
+\contentsline {subsection}{\numberline {4.14}KL divergence: diagnostic in MLX, stopping rule in basketball}{24}{subsection.4.14}%
+\contentsline {subsubsection}{\numberline {4.14.1}Generic MLX behavior}{24}{subsubsection.4.14.1}%
+\contentsline {subsubsection}{\numberline {4.14.2}Basketball behavior}{25}{subsubsection.4.14.2}%
+\contentsline {subsection}{\numberline {4.15}Exact defaults and overrides}{25}{subsection.4.15}%
+\contentsline {subsubsection}{\numberline {4.15.1}Generic \texttt {PPOConfig} defaults}{25}{subsubsection.4.15.1}%
+\contentsline {subsubsection}{\numberline {4.15.2}Generic Microduck example overrides}{25}{subsubsection.4.15.2}%
+\contentsline {subsubsection}{\numberline {4.15.3}Basketball trainer defaults}{25}{subsubsection.4.15.3}%
+\contentsline {subsection}{\numberline {4.16}One complete update, end to end}{26}{subsection.4.16}%
+\contentsline {subsection}{\numberline {4.17}Common interpretation mistakes}{27}{subsection.4.17}%
+\contentsline {subsection}{\numberline {4.18}Exercises}{27}{subsection.4.18}%
+\contentsline {subsection}{\numberline {4.19}Answers}{28}{subsection.4.19}%
+\contentsline {subsection}{\numberline {4.20}References}{28}{subsection.4.20}%
+\contentsline {section}{\numberline {5}Basketball: Blind Recurrent Balance on a Free Ball}{29}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Learning objectives}{29}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Evidence and claim boundary}{29}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Build the physical scene from numbers}{30}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Units}{30}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}Solver, floor, ball, and visual mesh}{30}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Timing}{31}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Spawn geometry}{32}{subsubsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.4}The exact 61-observation and 14-action contract}{32}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Observation slices}{32}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Joint and action order}{33}{subsubsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.5}The recurrent actor and its state lifecycle}{34}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}Network}{34}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}One-step inference}{34}{subsubsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.3}When memory is carried and reset}{34}{subsubsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.6}The exact local reward}{35}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Symbols}{35}{subsubsection.5.6.1}%
+\contentsline {subsubsection}{\numberline {5.6.2}Implemented formulas and weights}{35}{subsubsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.3}Worked reward example}{36}{subsubsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.7}Physical-assistance curriculum}{37}{subsection.5.7}%
+\contentsline {subsubsection}{\numberline {5.7.1}Ladder and transition rule}{37}{subsubsection.5.7.1}%
+\contentsline {subsubsection}{\numberline {5.7.2}What assistance does}{38}{subsubsection.5.7.2}%
+\contentsline {subsection}{\numberline {5.8}Training: warm start, PPO, and the scratch limit}{38}{subsection.5.8}%
+\contentsline {subsubsection}{\numberline {5.8.1}What is loaded}{38}{subsubsection.5.8.1}%
+\contentsline {subsubsection}{\numberline {5.8.2}What ``scratch'' would require}{39}{subsubsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.3}Rollout and PPO details}{39}{subsubsection.5.8.3}%
+\contentsline {subsection}{\numberline {5.9}Parser-verified command line workflow}{40}{subsection.5.9}%
+\contentsline {subsubsection}{\numberline {5.9.1}Focused contract tests}{40}{subsubsection.5.9.1}%
+\contentsline {subsubsection}{\numberline {5.9.2}Direct five-update smoke}{41}{subsubsection.5.9.2}%
+\contentsline {subsubsection}{\numberline {5.9.3}Reproduce the fixed-command local adaptation shape}{41}{subsubsection.5.9.3}%
+\contentsline {subsubsection}{\numberline {5.9.4}Honest direct evaluation}{41}{subsubsection.5.9.4}%
+\contentsline {subsubsection}{\numberline {5.9.5}Studio-compatible training}{41}{subsubsection.5.9.5}%
+\contentsline {subsubsection}{\numberline {5.9.6}Studio evaluation and rendering}{42}{subsubsection.5.9.6}%
+\contentsline {subsection}{\numberline {5.10}Evaluation: balance is not rolling}{42}{subsection.5.10}%
+\contentsline {subsubsection}{\numberline {5.10.1}First-fall accounting}{42}{subsubsection.5.10.1}%
+\contentsline {subsubsection}{\numberline {5.10.2}Sustained balance}{43}{subsubsection.5.10.2}%
+\contentsline {subsubsection}{\numberline {5.10.3}Controlled rolling}{43}{subsubsection.5.10.3}%
+\contentsline {subsubsection}{\numberline {5.10.4}Latest retained Studio result}{44}{subsubsection.5.10.4}%
+\contentsline {subsection}{\numberline {5.11}Reading artifacts without overclaiming}{44}{subsection.5.11}%
+\contentsline {subsection}{\numberline {5.12}Exercises}{47}{subsection.5.12}%
+\contentsline {subsection}{\numberline {5.13}Answers}{47}{subsection.5.13}%
+\contentsline {section}{\numberline {6}Suspended Bridge: Learning to Walk on a Moving Support}{49}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Learning objectives}{49}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Evidence and claim boundary}{49}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}What is physically simulated?}{50}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Simulated bill of materials}{50}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}The four cables}{50}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}The gantry is visible but cannot catch the robot}{51}{subsubsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.4}Contact, motion, and failure}{52}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}The observation contract: privileged commander, ordinary actor}{52}{subsection.6.5}%
+\contentsline {subsubsection}{\numberline {6.5.1}The actor still receives exactly 61 values}{52}{subsubsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.2}Why the commander is privileged}{53}{subsubsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.6}Reward: inherited walking, not a crossing jackpot}{54}{subsection.6.6}%
+\contentsline {subsubsection}{\numberline {6.6.1}Linear velocity tracking}{54}{subsubsection.6.6.1}%
+\contentsline {subsubsection}{\numberline {6.6.2}Angular velocity tracking}{54}{subsubsection.6.6.2}%
+\contentsline {subsubsection}{\numberline {6.6.3}Uprightness}{54}{subsubsection.6.6.3}%
+\contentsline {subsubsection}{\numberline {6.6.4}Default leg pose}{54}{subsubsection.6.6.4}%
+\contentsline {subsubsection}{\numberline {6.6.5}Head pose}{55}{subsubsection.6.6.5}%
+\contentsline {subsubsection}{\numberline {6.6.6}Dense foot air time}{55}{subsubsection.6.6.6}%
+\contentsline {subsubsection}{\numberline {6.6.7}Action-rate penalty}{55}{subsubsection.6.6.7}%
+\contentsline {subsubsection}{\numberline {6.6.8}Roll/pitch angular-velocity penalty}{55}{subsubsection.6.6.8}%
+\contentsline {subsubsection}{\numberline {6.6.9}Worked numerical example}{56}{subsubsection.6.6.9}%
+\contentsline {subsection}{\numberline {6.7}Physics-only curriculum}{56}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Transfer from the shipped walking actor}{57}{subsection.6.8}%
+\contentsline {subsection}{\numberline {6.9}Reproduce the workflow}{58}{subsection.6.9}%
+\contentsline {subsubsection}{\numberline {6.9.1}Build and inspect the simulated scene}{58}{subsubsection.6.9.1}%
+\contentsline {subsubsection}{\numberline {6.9.2}Train the bounded pilot recipe}{58}{subsubsection.6.9.2}%
+\contentsline {subsubsection}{\numberline {6.9.3}Export explicitly}{59}{subsubsection.6.9.3}%
+\contentsline {subsubsection}{\numberline {6.9.4}Evaluate the strict skill gate}{59}{subsubsection.6.9.4}%
+\contentsline {subsubsection}{\numberline {6.9.5}Render and look}{59}{subsubsection.6.9.5}%
+\contentsline {subsection}{\numberline {6.10}The strict full-20-second crossing rule}{60}{subsection.6.10}%
+\contentsline {subsection}{\numberline {6.11}What the current pilot actually achieved}{60}{subsection.6.11}%
+\contentsline {subsection}{\numberline {6.12}Exercises}{61}{subsection.6.12}%
+\contentsline {subsubsection}{\numberline {6.12.1}Exercise 1: Cable geometry}{61}{subsubsection.6.12.1}%
+\contentsline {subsubsection}{\numberline {6.12.2}Exercise 2: Commander correction}{61}{subsubsection.6.12.2}%
+\contentsline {subsubsection}{\numberline {6.12.3}Exercise 3: Observation privilege}{61}{subsubsection.6.12.3}%
+\contentsline {subsubsection}{\numberline {6.12.4}Exercise 4: Curriculum transition}{61}{subsubsection.6.12.4}%
+\contentsline {subsubsection}{\numberline {6.12.5}Exercise 5: PPO accounting}{62}{subsubsection.6.12.5}%
+\contentsline {subsubsection}{\numberline {6.12.6}Exercise 6: Honest crossing}{62}{subsubsection.6.12.6}%
+\contentsline {subsubsection}{\numberline {6.12.7}Exercise 7: Result interpretation}{62}{subsubsection.6.12.7}%
+\contentsline {subsection}{\numberline {6.13}Answers}{62}{subsection.6.13}%
+\contentsline {subsubsection}{\numberline {6.13.1}Answer 1}{62}{subsubsection.6.13.1}%
+\contentsline {subsubsection}{\numberline {6.13.2}Answer 2}{62}{subsubsection.6.13.2}%
+\contentsline {subsubsection}{\numberline {6.13.3}Answer 3}{62}{subsubsection.6.13.3}%
+\contentsline {subsubsection}{\numberline {6.13.4}Answer 4}{63}{subsubsection.6.13.4}%
+\contentsline {subsubsection}{\numberline {6.13.5}Answer 5}{63}{subsubsection.6.13.5}%
+\contentsline {subsubsection}{\numberline {6.13.6}Answer 6}{63}{subsubsection.6.13.6}%
+\contentsline {subsubsection}{\numberline {6.13.7}Answer 7}{63}{subsubsection.6.13.7}%
+\contentsline {section}{\numberline {7}Read the evidence, not the celebration}{64}{section.7}%
+\contentsline {subsection}{\numberline {7.1}The evidence chain}{64}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Read real reward and loss curves}{64}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Deterministic evaluation: what passed?}{66}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Visual review: inspect consecutive frames}{68}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Run both scenes in Duck Viewer}{71}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}A research plan for the unresolved skills}{74}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Rebuild and inspect this book}{74}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Final practical examination}{74}{subsection.7.8}%
+\contentsline {section}{\numberline {8}References and provenance}{76}{section.8}%
+\contentsline {section}{\numberline {9}Appendix: complete core source and version fingerprints}{77}{section.9}%
+\contentsline {subsection}{\numberline {9.1}A1. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}environm\allowbreak {}ents/\allowbreak {}basketba\allowbreak {}ll.py}}{77}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}A2. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}models/\allowbreak {}basketba\allowbreak {}ll.py}}{81}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}A3. \texttt {rlx/\allowbreak {}examples\allowbreak {}/\allowbreak {}ppo\_\allowbreak {}microduc\allowbreak {}k\_\allowbreak {}basketba\allowbreak {}ll.py}}{86}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}A4. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}environm\allowbreak {}ents/\allowbreak {}bridge.p\allowbreak {}y}}{96}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}A5. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}environm\allowbreak {}ents/\allowbreak {}bridge\_\allowbreak {}evaluati\allowbreak {}on.py}}{104}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}A6. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}models/\allowbreak {}bridge\_\allowbreak {}bootstra\allowbreak {}p.py}}{109}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}A7. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}algorith\allowbreak {}ms/\allowbreak {}ppo.py}}{111}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}Source inventory / 源码清单}{120}{subsection.9.8}%

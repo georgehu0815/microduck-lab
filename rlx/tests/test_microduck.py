@@ -73,6 +73,42 @@ def test_step_converts_actions_and_splits_termination_from_truncation():
     np.testing.assert_array_equal(info["infos"][1]["terminal_observation"], np.full(61, 8.))
 
 
+def test_step_rejects_non_finite_actions_before_calling_inner_environment():
+    inner = FakeVecEnv()
+    env = MicroDuckVecEnv(inner)
+    mx = importlib.import_module("mlx.core")
+    env.reset(None)
+
+    actions = np.zeros((3, 14), dtype=np.float32)
+    actions[1, 4] = np.nan
+    with pytest.raises(RuntimeError, match=r"actions contain non-finite.*\[1, 4\]"):
+        env.step(None, {}, mx.array(actions))
+
+    assert inner.actions is None
+
+
+def test_step_clips_finite_actions_to_declared_action_space():
+    inner = FakeVecEnv()
+    env = MicroDuckVecEnv(inner)
+    mx = importlib.import_module("mlx.core")
+    env.reset(None)
+
+    env.step(None, {}, mx.full((3, 14), 100.0))
+
+    np.testing.assert_array_equal(inner.actions, np.full((3, 14), 4.0))
+
+
+def test_running_normalization_rejects_non_finite_observations():
+    inner = FakeVecEnv()
+    env = MicroDuckVecEnv(inner, normalize_observations=True)
+    env.reset(None)
+    observation = np.zeros((3, 61), dtype=np.float32)
+    observation[2, 9] = np.inf
+
+    with pytest.raises(RuntimeError, match="running statistics require.*finite"):
+        env._normalize_observation(observation)
+
+
 def test_autoreset_episode_statistics_match_logger_shape_and_passthrough():
     env = MicroDuckVecEnv(FakeVecEnv())
     mx = importlib.import_module("mlx.core")
@@ -112,6 +148,18 @@ def test_close_is_idempotent_and_context_manager_closes():
     with MicroDuckVecEnv(inner) as env:
         assert env is not None
     assert inner.closed
+
+
+def test_calibrated_reward_scale_stays_fixed():
+    env = MicroDuckVecEnv(FakeVecEnv(), normalize_rewards=True, freeze_reward_normalization=True)
+    env.return_rms.var = np.array(4.)
+    env.return_rms.count = 9600
+    mx = importlib.import_module("mlx.core")
+    env.reset(None)
+    _, _, reward, *_ = env.step(None, {}, mx.zeros((3, 14)))
+    np.testing.assert_allclose(np.asarray(reward), [0.5, 1., 1.5])
+    assert env.return_rms.var == 4.
+    assert env.return_rms.count == 9600
     env.close()
 
 

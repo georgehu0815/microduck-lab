@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "scene": "basketball",
+      "nq": 28,
+      "nv": 26,
+      "actuators": 14,
+      "tendons": 0,
+      "finite_transitions": 4,
+      "actuator": "xml",
+      "scope": "construction only, zero action, no learned policy"
+    },
+    {
+      "scene": "bridge",
+      "nq": 28,
+      "nv": 26,
+      "actuators": 14,
+      "tendons": 4,
+      "finite_transitions": 4,
+      "actuator": "xml",
+      "scope": "construction only, zero action, no learned policy"
+    }
+  ]
+}

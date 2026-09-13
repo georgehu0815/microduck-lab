@@ -1,0 +1,74 @@
+{
+  "action_dim": 14,
+  "clip": 1000000.0,
+  "epsilon": 0.0,
+  "format": "rlx.microduck.actor_critic.v1",
+  "hidden_dims": [
+    512,
+    256,
+    128
+  ],
+  "metadata": {
+    "actuator": "xml",
+    "backend": "dummy",
+    "bridge_curriculum": true,
+    "freeze_observation_normalization": true,
+    "freeze_reward_normalization": false,
+    "initialization": {
+      "kind": "checkpoint",
+      "loaded_metadata": {
+        "bootstrap": "exact alpha_walking actor and normalizer transfer; fresh critic and optimizer",
+        "continuation_kind": "actor warm-start with fresh local critic and optimizer",
+        "critic_initialization": "fresh_seeded_mlx",
+        "freeze_observation_normalization_by_caller": true,
+        "initial_std": 0.03,
+        "initialization_method": "exact_weight_transfer",
+        "optimizer_initialization": "fresh_by_training_caller",
+        "parity_max_absolute_action_error": 1.0728836059570312e-06,
+        "parity_samples": 32,
+        "parity_threshold": 0.0001,
+        "recipe": "bridge",
+        "seed": 7,
+        "source_policy": "/Volumes/ExternalSSD/geoagent/microduck-lab/microduck/policies/alpha_walking.onnx",
+        "source_policy_sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c",
+        "steps": 0,
+        "trained": false,
+        "walking_policy_sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c"
+      },
+      "source_checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/initialization/bridge.safetensors",
+      "source_sha256": "f77781d9612e8aa1e8b93e0d60d1727c5b765629fe08dc9d799cd7489ba779b4",
+      "source_sidecar_sha256": "f07e97c6d303e8a7acbc9a332ed6168b0e7e02eb4186ff473aa25fdd3ad2b454"
+    },
+    "max_episode_s": 20.0,
+    "num_envs": 4,
+    "ppo": {
+      "clip_coefficient": 0.1,
+      "clip_value_loss": true,
+      "entropy_coefficient": 0.0,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "initial_std": 0.03,
+      "learning_rate": 1e-05,
+      "max_grad_norm": 0.5,
+      "normalize_advantages": true,
+      "normalize_rewards": false,
+      "num_minibatches": 4,
+      "num_steps": 128,
+      "total_timesteps": 32768,
+      "update_epochs": 2,
+      "value_coefficient": 1.0
+    },
+    "randomization": {
+      "action_delay": false,
+      "domain_rand": false,
+      "obs_noise": false,
+      "random_yaw": false
+    },
+    "recipe": "bridge",
+    "recipe_options": {},
+    "reward_weights": {},
+    "seed": 7,
+    "steps": 32768
+  },
+  "observation_dim": 61
+}

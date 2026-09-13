@@ -1,0 +1,40 @@
+{
+  "automatic_resets": 0,
+  "collected_at_utc": "2026-09-11T00:57:16Z",
+  "collector": "docs/basketball-bridge-book/tools/collect_reward_trace.py",
+  "collector_sha256": "1ba23c92b5c0629b84ff339a3cacec4a5a11bb5f21cf3cbcc6c48490b5c46189",
+  "elapsed_s": 10.0,
+  "environment_source": "rlx/rlx/environments/basketball.py",
+  "environment_source_sha256": "6bff54a8b1f7c856ec00cce59bb2b9b3c528d3c16054d1f730446fe68c65c757",
+  "label": "NEW deterministic diagnostic, NOT historical training reward",
+  "policy": "rlx/artifacts/basketball-local-20260910/policy.onnx",
+  "policy_sha256": "f84314bbd8d94f885b84b26f545554074a23166bda9cdba5de039c1372c670b7",
+  "recorded_steps": 500,
+  "reward_max": 0.12122605964202104,
+  "reward_mean": 0.11474964284424266,
+  "reward_min": 0.09751738195435487,
+  "reward_sum": 57.37482142212133,
+  "schema_version": 1,
+  "settings": {
+    "actuator": "bam",
+    "command": [
+      0.15,
+      0.0,
+      0.0
+    ],
+    "control_dt_s": 0.02,
+    "curriculum": false,
+    "domain_rand": false,
+    "hold": 0.0,
+    "max_episode_s": 10.0,
+    "obs_noise": false,
+    "pushes": false,
+    "random_yaw": true,
+    "requested_steps": 500,
+    "seed": 101
+  },
+  "stopped_on_first_done": true,
+  "terminated": false,
+  "termination_reasons": [],
+  "truncated": true
+}

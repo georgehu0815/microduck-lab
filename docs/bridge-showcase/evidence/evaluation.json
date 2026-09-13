@@ -1,0 +1,496 @@
+{
+  "action_abs_max": 6.547279357910156,
+  "action_abs_mean": 0.17067433353265127,
+  "backflip_assessment": null,
+  "bridge_assessment": {
+    "completed_episodes": 0,
+    "criteria": {
+      "all_episodes_required": true,
+      "control_hz": 50,
+      "min_progress_m": 1.6,
+      "required_end_feet": 2,
+      "required_steps": 1000,
+      "requires_no_falls": true,
+      "requires_unassisted": true,
+      "version": 1
+    },
+    "episodes": [
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": true,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 1,
+        "episode_index": 0,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "episode terminated or fell before evaluation completion"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 0.48847942853626136,
+        "measured_steps": 233,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 233,
+        "terminated": true,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": true,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 0,
+        "episode_index": 0,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "episode terminated or fell before evaluation completion"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 0.5615694217332587,
+        "measured_steps": 271,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 271,
+        "terminated": true,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": true,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 2,
+        "episode_index": 0,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "episode terminated or fell before evaluation completion"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 1.1749158752636413,
+        "measured_steps": 548,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 548,
+        "terminated": true,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": true,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 0,
+        "episode_index": 1,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "episode terminated or fell before evaluation completion"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 0.6456437393187513,
+        "measured_steps": 303,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 303,
+        "terminated": true,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": true,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 1,
+        "episode_index": 1,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "episode terminated or fell before evaluation completion"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 0.8443017013658557,
+        "measured_steps": 402,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 402,
+        "terminated": true,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": true,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 0,
+        "episode_index": 2,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "episode terminated or fell before evaluation completion"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 0.6409984685333355,
+        "measured_steps": 303,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 303,
+        "terminated": true,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": true,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 1,
+        "episode_index": 2,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "episode terminated or fell before evaluation completion"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 0.5172832848057026,
+        "measured_steps": 260,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 260,
+        "terminated": true,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": true,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 2,
+        "episode_index": 1,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "episode terminated or fell before evaluation completion",
+          "robot contacted the floor"
+        ],
+        "floor_contact_steps": 1,
+        "max_progress_m": 0.8339389090475219,
+        "measured_steps": 352,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 352,
+        "terminated": true,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": false,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 0,
+        "episode_index": 3,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "suspended-plank foot contact was not observed"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 0.23913516117818423,
+        "measured_steps": 123,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 123,
+        "terminated": false,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": false,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 1,
+        "episode_index": 3,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "suspended-plank foot contact was not observed"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 0.20241481781730786,
+        "measured_steps": 105,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 105,
+        "terminated": false,
+        "truncated": false
+      },
+      {
+        "assisted_steps": 0,
+        "bridge_contact_observed": false,
+        "complete": false,
+        "crossed": false,
+        "crossing_step": null,
+        "end_feet_at_crossing": 0,
+        "env_index": 2,
+        "episode_index": 2,
+        "failures": [
+          "bridge progress remained below end-to-end target",
+          "contact-validated end-to-end crossing was not observed",
+          "episode did not complete the required 20-second horizon",
+          "suspended-plank foot contact was not observed"
+        ],
+        "floor_contact_steps": 0,
+        "max_progress_m": 0.1879099720364228,
+        "measured_steps": 100,
+        "nonfoot_support_steps": 0,
+        "passed": false,
+        "start_support_observed": true,
+        "steps": 100,
+        "terminated": false,
+        "truncated": false
+      }
+    ],
+    "failures": [
+      "bridge progress remained below end-to-end target",
+      "contact-validated end-to-end crossing was not observed",
+      "episode did not complete the required 20-second horizon",
+      "episode terminated or fell before evaluation completion",
+      "robot contacted the floor",
+      "suspended-plank foot contact was not observed"
+    ],
+    "hardware_safe": false,
+    "measurement_scope": "50 Hz per-episode numeric recipe metrics; crossing credit requires full progress and contact-validated two-foot landing",
+    "passed": false,
+    "passed_episodes": 0
+  },
+  "command": "eval",
+  "dance_assessment": null,
+  "episode_length": {
+    "max": 548,
+    "mean": 334,
+    "min": 233
+  },
+  "episode_return": {
+    "max": 4144.088890492916,
+    "mean": 2534.2432485138997,
+    "min": 1757.9219586849213,
+    "std": 723.3591064119405
+  },
+  "episodes": 8,
+  "evaluation": {
+    "backflip_criteria": null,
+    "dance_criteria": null,
+    "environment": {
+      "action_delay": false,
+      "actuator": "xml",
+      "backend": "dummy",
+      "domain_rand": false,
+      "max_episode_s": 20,
+      "obs_noise": false,
+      "random_yaw": false,
+      "recipe": "bridge",
+      "recipe_options": {},
+      "reward_weights": {}
+    },
+    "locomotion_criteria": null,
+    "mode": "skill",
+    "num_envs": 3,
+    "seed": 101,
+    "steps_per_env": 1000,
+    "swing_criteria": null
+  },
+  "evaluation_mode": "skill",
+  "failures": [
+    "bridge progress remained below end-to-end target",
+    "contact-validated end-to-end crossing was not observed",
+    "episode did not complete the required 20-second horizon",
+    "episode terminated or fell before evaluation completion",
+    "robot contacted the floor",
+    "suspended-plank foot contact was not observed"
+  ],
+  "finite": true,
+  "locomotion_assessment": null,
+  "mean_return": 2534.2432485138997,
+  "num_envs": 3,
+  "passed": false,
+  "pipeline_passed": true,
+  "recipe": "bridge",
+  "recipe_metrics": {
+    "bridge_assistance": {
+      "max": 0,
+      "mean": 0,
+      "min": 0
+    },
+    "bridge_contact_observed": {
+      "max": 1,
+      "mean": 0.43366666666666664,
+      "min": 0
+    },
+    "bridge_crossed": {
+      "max": 0,
+      "mean": 0,
+      "min": 0
+    },
+    "bridge_pitch_deg": {
+      "max": 0.7530092598079298,
+      "mean": -0.07433083991804472,
+      "min": -0.5433360266522094
+    },
+    "bridge_progress_m": {
+      "max": 1.1749158752636413,
+      "mean": 0.3532087574821074,
+      "min": -0.000676702199459811
+    },
+    "bridge_roll_deg": {
+      "max": 2.1584772654537665,
+      "mean": -0.23279161226058973,
+      "min": -3.25361435899819
+    },
+    "bridge_speed_mps": {
+      "max": 0.12463876075118015,
+      "mean": 0.004517219431443706,
+      "min": 8.94392321455947e-7
+    },
+    "feet_on_bridge": {
+      "max": 2,
+      "mean": 0.44566666666666666,
+      "min": 0
+    },
+    "feet_on_end_platform": {
+      "max": 0,
+      "mean": 0,
+      "min": 0
+    },
+    "feet_support": {
+      "max": 2,
+      "mean": 1.0913333333333333,
+      "min": 0
+    },
+    "nonfoot_support": {
+      "max": 0,
+      "mean": 0,
+      "min": 0
+    },
+    "robot_floor_contact": {
+      "max": 1,
+      "mean": 0.0003333333333333333,
+      "min": 0
+    },
+    "robot_lateral_m": {
+      "max": 0.2462961977579982,
+      "mean": 0.012328369465471393,
+      "min": -0.03640784469529078
+    },
+    "robot_tilt_deg": {
+      "max": 86.52585949310814,
+      "mean": 3.0478789038891225,
+      "min": 0
+    }
+  },
+  "reward_per_transition": 7.608085648037493,
+  "rollout_return": {
+    "max": 7627.633118212223,
+    "mean": 7608.085648037493,
+    "min": 7584.03023968637,
+    "std": 18.08395023009291
+  },
+  "skill_status": "failed",
+  "source": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/bridge.onnx",
+  "source_files_sha256": {
+    "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/bridge.onnx": "b416dca76f0ee450bf48d2715d3ec3a997f3f2bf13c0042e73f50b8731e5bf11"
+  },
+  "source_sha256": "b416dca76f0ee450bf48d2715d3ec3a997f3f2bf13c0042e73f50b8731e5bf11",
+  "source_type": "policy",
+  "steps": 1000,
+  "swing_assessment": null,
+  "terminated": 8,
+  "termination_rate": 0.0026666666666666666,
+  "transitions": 3000,
+  "truncated": 0,
+  "evaluation_request": {
+    "evaluation_mode": "skill",
+    "eval_steps": 1000,
+    "recipe": {
+      "experimentId": "bridge",
+      "runName": "bridge-studio-02",
+      "profile": "full",
+      "totalTimesteps": 33024,
+      "numEnvs": 3,
+      "numSteps": 128,
+      "numMinibatches": 4,
+      "maxEpisodeS": 20,
+      "evalSteps": 1000,
+      "renderSeconds": 20,
+      "danceClip": null,
+      "dancePoseSigma": null,
+      "locomotionForwardCommand": null,
+      "initialStd": 0.03,
+      "normalizeRewards": false,
+      "freezeObservationNormalization": true,
+      "checkpointInterval": 100000,
+      "seed": 101,
+      "learningRate": 0.00001,
+      "gamma": 0.99,
+      "clipCoefficient": 0.1,
+      "updateEpochs": 2,
+      "entropyCoefficient": 0,
+      "maxGradNorm": 0.5,
+      "domainRand": false,
+      "obsNoise": false,
+      "actionDelay": false,
+      "randomYaw": false,
+      "bridgeCurriculum": true,
+      "stiltHeightCm": 10,
+      "stiltBlend": 0.5,
+      "stiltMassKg": 0.029,
+      "swingInitialAngleDeg": 0,
+      "swingInitialRateRadS": 0,
+      "swingPlanarActions": false,
+      "swingMinSpanDeg": 150,
+      "resumeFromCheckpoint": true,
+      "rewardWeights": {}
+    }
+  }
+}

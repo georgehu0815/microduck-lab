@@ -839,6 +839,13 @@ export default function Studio() {
   const recipeCommand = `POST /api/rlx\n${JSON.stringify({ action: "train", recipe }, null, 2)}`;
 
   async function runAction(action: Operation | "cancel", recipeOverride?: Recipe) {
+    if (IS_STATIC_EXPORT) {
+      setNotice(t(
+        "Static evidence mode is read-only. Training, evaluation, rendering, export, and cancellation require the local Studio backend.",
+        "静态证据模式为只读。训练、评估、渲染、导出和取消操作需要本地 Studio 后端。"
+      ));
+      return;
+    }
     setActionError(null);
     setBusy(true);
     setPendingAction(action);
@@ -965,7 +972,7 @@ export default function Studio() {
   }
 
   function previewSelectedExperiment() {
-    if (selectedExperimentId === "dance") {
+    if (!IS_STATIC_EXPORT && selectedExperimentId === "dance") {
       setSessionTab("animate");
       document
         .getElementById("training")
@@ -1090,6 +1097,7 @@ export default function Studio() {
   }
 
   function trainRecommendedRecipe() {
+    if (IS_STATIC_EXPORT) return;
     const fullRecipe = {
       ...recipeForProfile("full"),
       totalTimesteps: Math.max(
@@ -1165,6 +1173,7 @@ export default function Studio() {
 
   async function startLabTraining(event: FormEvent) {
     event.preventDefault();
+    if (IS_STATIC_EXPORT) return;
     setBusy(true);
     try {
       const response = await fetch(`${LAB_HTTP}/teach`, {
@@ -1253,8 +1262,8 @@ export default function Studio() {
             <span>{t("Contact", "联系")}<small>bochuxt7@gmail.com</small></span>
           </a>
           <div className={styles.localStatus}>
-            <strong><i className={connected ? styles.onlineDot : styles.offlineDot} />{connected ? t("Duck Lab connected", "Duck Lab 已连接") : t("Local studio ready", "本地 Studio 已就绪")}</strong>
-            <p>{connected ? t("Live frames on :8788", "实时帧来自 :8788") : t("RLX jobs run on this Mac", "RLX 作业在本机运行")}</p>
+            <strong><i className={connected ? styles.onlineDot : styles.offlineDot} />{IS_STATIC_EXPORT ? t("Static evidence mode", "静态证据模式") : connected ? t("Duck Lab connected", "Duck Lab 已连接") : t("Local studio ready", "本地 Studio 已就绪")}</strong>
+            <p>{IS_STATIC_EXPORT ? t("Saved videos and evaluations", "已保存的视频与评估") : connected ? t("Live frames on :8788", "实时帧来自 :8788") : t("RLX jobs run on this Mac", "RLX 作业在本机运行")}</p>
           </div>
           <div className={styles.profile}>
             <span className={styles.profileAvatar}>GH</span>
@@ -1292,7 +1301,7 @@ export default function Studio() {
               </div>
             </div>
             <StatusPill tone={connected ? "live" : "muted"}>
-              {connected ? t("LIVE LAB", "实验室在线") : t("LOCAL MODE", "本地模式")}
+              {IS_STATIC_EXPORT ? t("STATIC EVIDENCE", "静态证据") : connected ? t("LIVE LAB", "实验室在线") : t("LOCAL MODE", "本地模式")}
             </StatusPill>
             <button
               className={styles.iconButton}
@@ -1315,7 +1324,7 @@ export default function Studio() {
               : t("Train a behavior. Prove it in simulation. Export what the robot can run.", "训练一种行为，在仿真中验证，再导出机器人可运行的策略。")}</p>
           </div>
           <div className={styles.headingActions}>
-            {job.artifacts.metadata && (
+            {!IS_STATIC_EXPORT && job.artifacts.metadata && (
               <a className={styles.button} href={artifactHref("metadata")}>
                 <Icon>↓</Icon> {t("Metadata", "元数据")}
               </a>
@@ -1551,7 +1560,11 @@ export default function Studio() {
               <button className={styles.button} onClick={previewSelectedExperiment}>
                 <Icon>▶</Icon> {t("Preview reference", "预览参考")}
               </button>
-              {!sourceReady ? (
+              {IS_STATIC_EXPORT ? (
+                <a className={`${styles.button} ${styles.primary}`} href="#evaluation">
+                  <Icon>▶</Icon> {t("Review saved evidence", "检查已保存证据")}
+                </a>
+              ) : !sourceReady ? (
                 <button
                   className={`${styles.button} ${styles.primary}`}
                   onClick={trainRecommendedRecipe}
@@ -1674,38 +1687,38 @@ export default function Studio() {
           <section className={styles.panel} id="training">
             <div className={styles.sessionHead}>
               <div className={styles.sessionTabs} role="tablist" aria-label={t(`${selectedExperiment.title} workspace`, `${selectedExperimentText.title}工作区`)}>
-                <button
+                {!IS_STATIC_EXPORT && <button
                   role="tab"
                   aria-selected={sessionTab === "training"}
                   className={sessionTab === "training" ? styles.activeTab : ""}
                   onClick={() => setSessionTab("training")}
                 >
                   <Icon>♙</Icon> {t("Training", "训练")}
-                </button>
-                <button
+                </button>}
+                {!IS_STATIC_EXPORT && <button
                   role="tab"
                   aria-selected={sessionTab === "animate"}
                   className={sessionTab === "animate" ? styles.activeTab : ""}
                   onClick={() => setSessionTab("animate")}
                 >
                   <Icon>▶</Icon> {t("Animate", "动画")}
-                </button>
-                <button
+                </button>}
+                {!IS_STATIC_EXPORT && <button
                   role="tab"
                   aria-selected={sessionTab === "policies"}
                   className={sessionTab === "policies" ? styles.activeTab : ""}
                   onClick={() => setSessionTab("policies")}
                 >
                   <Icon>◇</Icon> {t("Policies", "策略")}
-                </button>
-                <button
+                </button>}
+                {!IS_STATIC_EXPORT && <button
                   role="tab"
                   aria-selected={sessionTab === "teach"}
                   className={sessionTab === "teach" ? styles.activeTab : ""}
                   onClick={() => setSessionTab("teach")}
                 >
                   <Icon>✦</Icon> {t("Teach", "教学")}
-                </button>
+                </button>}
               </div>
             </div>
             <div
@@ -1833,11 +1846,11 @@ export default function Studio() {
               </svg>
               <TrainingLifecycle history={job.trainingHistory} />
               <div className={styles.trainingActions}>
-                {job.phase === "running" ? (
+                {!IS_STATIC_EXPORT && job.phase === "running" ? (
                   <button className={styles.button} onClick={() => runAction("cancel")} disabled={busy}>
                     <Icon>■</Icon> {t(`Stop ${job.operation}`, `停止${operationDisplay(job.operation, t)}`)}
                   </button>
-                ) : (
+                ) : !IS_STATIC_EXPORT ? (
                   <button
                     className={styles.button}
                     onClick={() =>
@@ -1848,7 +1861,7 @@ export default function Studio() {
                   >
                     <Icon>⚙</Icon> {t("Configure training", "配置训练")}
                   </button>
-                )}
+                ) : <a className={styles.button} href="#evaluation"><Icon>▶</Icon> {t("Review saved evidence", "检查已保存证据")}</a>}
                 <button className={styles.button} onClick={() => setLogsOpen((open) => !open)}>
                   {logsOpen ? t("Hide logs", "隐藏日志") : t("View logs", "查看日志")} <Icon>→</Icon>
                 </button>
@@ -1857,14 +1870,14 @@ export default function Studio() {
                 <pre className={styles.logs}>{job.logs.length ? job.logs.join("\n") : recipeCommand}</pre>
               )}
             </div>
-            <div
+            {!IS_STATIC_EXPORT && <div
               className={styles.animationBody}
               role="tabpanel"
               hidden={sessionTab !== "animate"}
             >
               <AnimPanel variant="embedded" active={sessionTab === "animate"} />
-            </div>
-            <div
+            </div>}
+            {!IS_STATIC_EXPORT && <div
               className={styles.toolBody}
               role="tabpanel"
               hidden={sessionTab !== "policies"}
@@ -1878,14 +1891,14 @@ export default function Studio() {
                 onReviewRun={loadSavedRun}
                 reviewDisabled={busy || job.phase === "running"}
               />
-            </div>
-            <div
+            </div>}
+            {!IS_STATIC_EXPORT && <div
               className={styles.toolBody}
               role="tabpanel"
               hidden={sessionTab !== "teach"}
             >
               <TeachPanel clientRef={clientRef} variant="embedded" />
-            </div>
+            </div>}
           </section>
         </div>
 
@@ -1895,7 +1908,7 @@ export default function Studio() {
               <h2><Icon>✦</Icon>{t("Microduck PPO Recipe", "Microduck PPO 配方")}</h2>
               <StatusPill tone="live">{t("RECOMMENDED", "推荐")}</StatusPill>
             </div>
-            <form className={styles.recipeBody} onSubmit={(event) => { event.preventDefault(); if (!busy) void runAction("train"); }}>
+            <form className={styles.recipeBody} onSubmit={(event) => { event.preventDefault(); if (!IS_STATIC_EXPORT && !busy) void runAction("train"); }}>
               <div className={styles.recipeIntro}>
                 <div className={styles.recipeMark}>PPO</div>
                 <div>
@@ -2201,7 +2214,7 @@ export default function Studio() {
                 </div>
               )}
               <div className={styles.recipeActions}>
-                <button
+                {!IS_STATIC_EXPORT && <button
                   type="button"
                   className={`${styles.button} ${styles.primary}`}
                   onClick={() => runAction("train")}
@@ -2209,8 +2222,8 @@ export default function Studio() {
                   aria-describedby="rlx-action-status"
                 >
                   <Icon>{pendingAction === "train" ? "…" : "▶"}</Icon> {trainButtonLabel}
-                </button>
-                {recipe.experimentId === "dance" ? (
+                </button>}
+                {!IS_STATIC_EXPORT && recipe.experimentId === "dance" ? (
                   <button type="button" onClick={startLabTraining} className={styles.button} disabled={busy || !connected} title={t("Separate free-text teaching workflow; does not use this RLX clip or recipe", "独立的自由文本教学流程；不使用此 RLX 片段或配方")}>
                     <Icon>⌁</Icon> {t("Separate Duck Lab teaching", "独立 Duck Lab 教学")}
                   </button>
@@ -2246,7 +2259,9 @@ export default function Studio() {
                 />
                 <span>
                   {recipeActionStatus ??
-                    t("Ready to launch this recipe with the selected training settings.", "已准备使用所选训练设置启动此配方。")}
+                    (IS_STATIC_EXPORT
+                      ? t("Static evidence mode is read-only; saved recipes are shown only as provenance.", "静态证据模式为只读；保存的配方仅用于溯源。")
+                      : t("Ready to launch this recipe with the selected training settings.", "已准备使用所选训练设置启动此配方。"))}
                 </span>
               </p>
               <p className={styles.honesty}>{t(`Smoke mode validates the pipeline only. A learned ${selectedExperiment.shortTitle.toLowerCase()} policy requires full training plus deterministic and visual review.`, `冒烟模式只验证流水线。学到的${selectedExperimentText.shortTitle}策略需要完整训练、确定性评估和视觉检查。`)}</p>
@@ -2260,9 +2275,9 @@ export default function Studio() {
                 <p>{t("Smoke checks the pipeline (4 steps); full evaluates the skill. Swing requires 1,200 steps (24 s); Backflip 600 steps (12 s); Basketball 3,000 steps (60 s); Bridge 1,000 steps (20 s).", "冒烟模式检查流水线（4 步）；完整模式评估技能。秋千需要 1,200 步（24 秒）；后空翻 600 步（12 秒）；篮球 3,000 步（60 秒）；桥梁 1,000 步（20 秒）。")}</p>
                 {evaluation && <p>{t("Saved evaluation scope", "已保存评估范围")}：{verdict.scope ?? t("unknown (legacy report)", "未知（旧版报告）")}{verdict.swingMinSpanDeg == null ? "" : t(` · target ${verdict.swingMinSpanDeg}° total / ${verdict.swingMinSpanDeg / 2}° each side`, ` · 目标总摆幅 ${verdict.swingMinSpanDeg}° / 每侧 ${verdict.swingMinSpanDeg / 2}°`)}。{t("Current recipe edits do not change saved results.", "当前配方修改不会改变已保存结果。")}</p>}
               </div>
-              <button className={styles.textButton} onClick={() => runAction("eval")} disabled={busy || job.phase === "running" || Boolean(activeJob) || !sourceReady}>
+              {!IS_STATIC_EXPORT && <button className={styles.textButton} onClick={() => runAction("eval")} disabled={busy || job.phase === "running" || Boolean(activeJob) || !sourceReady}>
                 {t("Run evaluation ↗", "运行评估 ↗")}
-              </button>
+              </button>}
             </div>
             <div className={styles.evaluationBody}>
               <section className={styles.skillSummary} aria-label={t("Skill verification summary", "技能验证摘要")}>
@@ -2300,12 +2315,14 @@ export default function Studio() {
                     controls
                     playsInline
                     preload="metadata"
-                    src={`${artifactHref("video")}&inline=1&source=${encodeURIComponent(String(evaluation?.source_sha256 ?? "unknown"))}`}
+                    src={IS_STATIC_EXPORT
+                      ? artifactHref("video")
+                      : `${artifactHref("video")}&inline=1&source=${encodeURIComponent(String(evaluation?.source_sha256 ?? "unknown"))}`}
                   >
                     {t("Your browser cannot play this MP4.", "你的浏览器无法播放此 MP4。")}
                   </video>
                   <div className={styles.rolloutPlayerActions}>
-                    <a className={styles.button} href={`${artifactHref("video")}&inline=1`} target="_blank" rel="noreferrer">
+                    <a className={styles.button} href={IS_STATIC_EXPORT ? artifactHref("video") : `${artifactHref("video")}&inline=1`} target="_blank" rel="noreferrer">
                       <Icon>▶</Icon> {t("Open full video", "打开完整视频")}
                     </a>
                     <a className={styles.button} href={artifactHref("sheet")} target="_blank" rel="noreferrer">
@@ -2326,15 +2343,15 @@ export default function Studio() {
                 </tbody>
               </table>
               <div className={styles.evaluationActions}>
-                <button className={styles.button} onClick={() => runAction("render")} disabled={busy || job.phase === "running" || Boolean(activeJob) || !sourceReady}>
+                {!IS_STATIC_EXPORT && <button className={styles.button} onClick={() => runAction("render")} disabled={busy || job.phase === "running" || Boolean(activeJob) || !sourceReady}>
                   <Icon>◫</Icon> {t("Render rollout", "渲染回放")}
-                </button>
-                {!job.artifacts.onnx && job.artifacts.checkpoint && selectedExperimentId !== "basketball" && (
+                </button>}
+                {!IS_STATIC_EXPORT && !job.artifacts.onnx && job.artifacts.checkpoint && selectedExperimentId !== "basketball" && (
                   <button className={styles.button} onClick={() => runAction("export")} disabled={busy || job.phase === "running" || Boolean(activeJob)}>
                     <Icon>↓</Icon> {t("Export ONNX", "导出 ONNX")}
                   </button>
                 )}
-                {job.artifacts.renderVideo && <a className={styles.button} href={`${artifactHref("video")}&inline=1`} target="_blank" rel="noreferrer"><Icon>▶</Icon> {t("Play rollout", "播放回放")}</a>}
+                {job.artifacts.renderVideo && <a className={styles.button} href={IS_STATIC_EXPORT ? artifactHref("video") : `${artifactHref("video")}&inline=1`} target="_blank" rel="noreferrer"><Icon>▶</Icon> {t("Play rollout", "播放回放")}</a>}
                 {job.artifacts.renderSheet && <a className={styles.button} href={artifactHref("sheet")} target="_blank" rel="noreferrer"><Icon>▦</Icon> {t("Contact sheet", "帧预览图")}</a>}
               </div>
               <label className={styles.reviewCheck}>
@@ -2384,7 +2401,7 @@ export default function Studio() {
                 <li>{selectedExperimentId === "backflip" ? t("Integrate spotter-assisted launch → PPO landing → pretrained stand-policy handoff; landing ONNX alone is not the controller", "集成辅助起跳 → PPO 落地 → 预训练站立策略接管；仅有落地 ONNX 并不构成完整控制器") : selectedExperimentId === "drawing" ? t("Simulation-only independent contract; do not present this ONNX as a robot deployment policy", "仅限仿真的独立合约；不要将此 ONNX 作为机器人部署策略") : t("Complete hardware-specific validation before deployment", "部署前完成硬件专项验证")}</li>
               </ul>
               <div className={styles.deployActions}>
-                <a
+                {!IS_STATIC_EXPORT && <a
                   className={`${styles.button} ${deployReady ? styles.primary : styles.disabled}`}
                   href={deployReady ? artifactHref("onnx") : undefined}
                   aria-disabled={!deployReady}
@@ -2393,7 +2410,7 @@ export default function Studio() {
                   }}
                 >
                   <Icon>↓</Icon> {selectedExperimentId === "backflip" ? t("Download PPO landing policy", "下载 PPO 落地策略") : selectedExperimentId === "drawing" ? t("Download simulation policy", "下载仿真策略") : t("Download policy", "下载策略")}
-                </a>
+                </a>}
                 <button className={styles.button} disabled title={t("Physical robot transport is not configured", "尚未配置实体机器人传输")}>
                   <Icon>⌾</Icon> {t("Send to robot", "发送到机器人")}
                 </button>
@@ -2422,13 +2439,13 @@ export default function Studio() {
             <span>{job.artifacts.checkpointPath}</span>
           </div>
           <div className={styles.artifactGrid}>
-            {[
+            {([
               [t("Checkpoint", "检查点"), "checkpoint", job.artifacts.checkpoint, t("Training weights", "训练权重")],
               [t("Metadata", "元数据"), "metadata", job.artifacts.metadata, t("Recipe and contract", "配方与合约")],
               [t("ONNX policy", "ONNX 策略"), "onnx", deployReady, selectedExperimentId === "backflip" ? t("PPO landing stage only · requires assisted launch and pretrained stand-policy handoff", "仅 PPO 落地阶段 · 需要辅助起跳与预训练站立策略接管") : t("Simulation graph · requires matched visual review", "仿真计算图 · 需要匹配的视觉检查")],
               [t("Contact sheet", "帧预览图"), "sheet", job.artifacts.renderSheet, t("Visual verification", "视觉验证")],
               [t("Rollout video", "回放视频"), "video", job.artifacts.renderVideo, t("Motion review", "动作检查")],
-            ].map(([label, kind, ready, detail]) => (
+            ] as const).filter(([, kind]) => !IS_STATIC_EXPORT || kind === "sheet" || kind === "video").map(([label, kind, ready, detail]) => (
               <a
                 key={String(kind)}
                 className={`${styles.artifact} ${ready ? styles.ready : ""}`}

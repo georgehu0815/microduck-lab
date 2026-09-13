@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "mode": "readiness-only",
+  "baseUrl": "http://127.0.0.1:63317",
+  "checkedAt": "2026-09-11T00:36:56.547Z",
+  "scope": "Read-only cold restart verification; not fresh training or physical skill proof.",
+  "checks": {
+    "ui": {
+      "passed": true,
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23724
+    },
+    "clips": {
+      "passed": true,
+      "count": 11
+    },
+    "runsApi": {
+      "passed": true,
+      "count": 57
+    },
+    "scenario:dance": {
+      "passed": true,
+      "scenario": "dance",
+      "runName": "dance-readiness-probe"
+    },
+    "scenario:swing": {
+      "passed": true,
+      "scenario": "swing",
+      "runName": "swing-readiness-probe"
+    },
+    "scenario:running": {
+      "passed": true,
+      "scenario": "running",
+      "runName": "running-readiness-probe"
+    },
+    "scenario:stilts": {
+      "passed": true,
+      "scenario": "stilts",
+      "runName": "stilts-readiness-probe"
+    },
+    "scenario:backflip": {
+      "passed": true,
+      "scenario": "backflip",
+      "runName": "backflip-readiness-probe"
+    },
+    "scenario:basketball": {
+      "passed": true,
+      "scenario": "basketball",
+      "runName": "basketball-readiness-probe"
+    },
+    "scenario:bridge": {
+      "passed": true,
+      "scenario": "bridge",
+      "runName": "bridge-readiness-probe"
+    }
+  },
+  "scenarios": {
+    "dance": {
+      "passed": true,
+      "scenario": "dance",
+      "runName": "dance-readiness-probe"
+    },
+    "swing": {
+      "passed": true,
+      "scenario": "swing",
+      "runName": "swing-readiness-probe"
+    },
+    "running": {
+      "passed": true,
+      "scenario": "running",
+      "runName": "running-readiness-probe"
+    },
+    "stilts": {
+      "passed": true,
+      "scenario": "stilts",
+      "runName": "stilts-readiness-probe"
+    },
+    "backflip": {
+      "passed": true,
+      "scenario": "backflip",
+      "runName": "backflip-readiness-probe"
+    },
+    "basketball": {
+      "passed": true,
+      "scenario": "basketball",
+      "runName": "basketball-readiness-probe"
+    },
+    "bridge": {
+      "passed": true,
+      "scenario": "bridge",
+      "runName": "bridge-readiness-probe"
+    }
+  },
+  "errors": []
+}

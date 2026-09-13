@@ -1,0 +1,158 @@
+\babel@toc {chinese}{}\relax 
+\contentsline {section}{\numberline {1}两个平衡实验室：本书究竟复现什么}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}一本有边界的实践教材}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}学习路线}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}统一术语}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}建立实验笔记}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}仓库地图}{4}{subsection.1.5}%
+\contentsline {section}{\numberline {2}数学和物理：从高中知识出发}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}先理解单位}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}为什么平衡和运动分不开}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}坐标系：谁的前方？}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}反馈、记忆和部分可观测}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}算术练习}{6}{subsection.2.5}%
+\contentsline {section}{\numberline {3}搭建可复现的实验室}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}物料：仿真资产不是实体采购清单}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}计算机和软件前提}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}获取工作区，而不只是 PDF}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}分清预检、smoke、训练和评估}{8}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}第一步动作前，先看场景}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}新实验必须使用新输出目录}{9}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}排错时不要悄悄改题}{9}{subsection.3.7}%
+\contentsline {section}{\numberline {4}PPO：从一小批经验中谨慎学习}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}用普通语言理解学习循环}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Actor、critic 与 advantage 的含义}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}连续动作使用概率密度}{11}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}密度可以大于 1}{12}{subsubsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.4}从 log 概率得到 PPO ratio}{13}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}裁剪后的策略目标}{13}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}正 advantage}{13}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}负 advantage}{13}{subsubsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.6}广义优势估计}{14}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Terminal 与 time limit 使用不同 mask}{15}{subsection.4.7}%
+\contentsline {subsubsection}{\numberline {4.7.1}边界计算示例}{16}{subsubsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.8}Advantage 归一化}{17}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}Critic 损失}{17}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}Entropy 以及它为何可以为负}{18}{subsection.4.10}%
+\contentsline {subsection}{\numberline {4.11}总 loss 不是 reward，两者都不能证明掌握技能}{19}{subsection.4.11}%
+\contentsline {subsection}{\numberline {4.12}篮球中的循环序列重放}{19}{subsection.4.12}%
+\contentsline {subsection}{\numberline {4.13}通用 MLX PPO 的前馈 minibatch}{20}{subsection.4.13}%
+\contentsline {subsection}{\numberline {4.14}KL divergence：MLX 中是诊断，篮球中是停止规则}{20}{subsection.4.14}%
+\contentsline {subsubsection}{\numberline {4.14.1}通用 MLX 行为}{20}{subsubsection.4.14.1}%
+\contentsline {subsubsection}{\numberline {4.14.2}篮球行为}{21}{subsubsection.4.14.2}%
+\contentsline {subsection}{\numberline {4.15}准确区分默认值与覆盖值}{21}{subsection.4.15}%
+\contentsline {subsubsection}{\numberline {4.15.1}通用 \texttt {PPOConfig} 默认值}{21}{subsubsection.4.15.1}%
+\contentsline {subsubsection}{\numberline {4.15.2}通用 Microduck 示例覆盖值}{21}{subsubsection.4.15.2}%
+\contentsline {subsubsection}{\numberline {4.15.3}篮球训练器默认值}{21}{subsubsection.4.15.3}%
+\contentsline {subsection}{\numberline {4.16}一次完整更新的全过程}{22}{subsection.4.16}%
+\contentsline {subsection}{\numberline {4.17}常见解释错误}{23}{subsection.4.17}%
+\contentsline {subsection}{\numberline {4.18}练习}{23}{subsection.4.18}%
+\contentsline {subsection}{\numberline {4.19}答案}{23}{subsection.4.19}%
+\contentsline {subsection}{\numberline {4.20}参考文献}{24}{subsection.4.20}%
+\contentsline {section}{\numberline {5}篮球：在自由滚动球体上的盲感知循环平衡}{25}{section.5}%
+\contentsline {subsection}{\numberline {5.1}学习目标}{25}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}证据与结论边界}{25}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}用数字搭建物理场景}{26}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}单位}{26}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}求解器、地面、球和视觉网格}{26}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}时间步}{27}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}初始几何}{28}{subsubsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.4}精确的 61 维观测与 14 维动作契约}{28}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}观测切片}{28}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}关节与动作顺序}{29}{subsubsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.5}循环演员网络与状态生命周期}{29}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}网络结构}{29}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}单步推理}{30}{subsubsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.3}何时保留记忆，何时清零}{30}{subsubsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.6}精确的本地奖励}{31}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}符号}{31}{subsubsection.5.6.1}%
+\contentsline {subsubsection}{\numberline {5.6.2}实现中的公式和系数}{31}{subsubsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.3}奖励计算例题}{32}{subsubsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.7}物理辅助课程}{33}{subsection.5.7}%
+\contentsline {subsubsection}{\numberline {5.7.1}阶梯与转换规则}{33}{subsubsection.5.7.1}%
+\contentsline {subsubsection}{\numberline {5.7.2}辅助力做什么}{33}{subsubsection.5.7.2}%
+\contentsline {subsection}{\numberline {5.8}训练：热启动、PPO 与从零训练边界}{34}{subsection.5.8}%
+\contentsline {subsubsection}{\numberline {5.8.1}实际加载了什么}{34}{subsubsection.5.8.1}%
+\contentsline {subsubsection}{\numberline {5.8.2}真正``从零''需要什么}{34}{subsubsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.3}采样与 PPO 细节}{34}{subsubsection.5.8.3}%
+\contentsline {subsection}{\numberline {5.9}经过参数解析器核对的命令行流程}{35}{subsection.5.9}%
+\contentsline {subsubsection}{\numberline {5.9.1}聚焦契约测试}{36}{subsubsection.5.9.1}%
+\contentsline {subsubsection}{\numberline {5.9.2}直接五次更新冒烟}{36}{subsubsection.5.9.2}%
+\contentsline {subsubsection}{\numberline {5.9.3}复现固定指令本地适配的规模}{36}{subsubsection.5.9.3}%
+\contentsline {subsubsection}{\numberline {5.9.4}诚实的直接评估}{36}{subsubsection.5.9.4}%
+\contentsline {subsubsection}{\numberline {5.9.5}Studio 兼容训练}{37}{subsubsection.5.9.5}%
+\contentsline {subsubsection}{\numberline {5.9.6}Studio 评估和渲染}{37}{subsubsection.5.9.6}%
+\contentsline {subsection}{\numberline {5.10}评估：平衡不等于滚动}{37}{subsection.5.10}%
+\contentsline {subsubsection}{\numberline {5.10.1}首次跌倒计数}{37}{subsubsection.5.10.1}%
+\contentsline {subsubsection}{\numberline {5.10.2}持续平衡}{38}{subsubsection.5.10.2}%
+\contentsline {subsubsection}{\numberline {5.10.3}受控滚动}{38}{subsubsection.5.10.3}%
+\contentsline {subsubsection}{\numberline {5.10.4}最新保留的 Studio 结果}{39}{subsubsection.5.10.4}%
+\contentsline {subsection}{\numberline {5.11}阅读产物而不夸大结论}{39}{subsection.5.11}%
+\contentsline {subsection}{\numberline {5.12}练习}{42}{subsection.5.12}%
+\contentsline {subsection}{\numberline {5.13}参考答案}{42}{subsection.5.13}%
+\contentsline {section}{\numberline {6}悬索桥：在会移动的支撑面上学习行走}{43}{section.6}%
+\contentsline {subsection}{\numberline {6.1}学习目标}{43}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}证据范围与结论边界}{43}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}仿真中真正存在什么？}{43}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}仿真物料表}{44}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}四根缆索}{44}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}门架可见，但不能接住机器人}{45}{subsubsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.4}接触、运动与失败条件}{45}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}观测契约：特权指挥器与普通 actor}{46}{subsection.6.5}%
+\contentsline {subsubsection}{\numberline {6.5.1}Actor 仍然只接收 61 个值}{46}{subsubsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.2}为什么指挥器是特权模块}{46}{subsubsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.6}奖励：继承行走奖励，没有过桥大奖}{47}{subsection.6.6}%
+\contentsline {subsubsection}{\numberline {6.6.1}线速度跟踪}{48}{subsubsection.6.6.1}%
+\contentsline {subsubsection}{\numberline {6.6.2}角速度跟踪}{48}{subsubsection.6.6.2}%
+\contentsline {subsubsection}{\numberline {6.6.3}直立}{48}{subsubsection.6.6.3}%
+\contentsline {subsubsection}{\numberline {6.6.4}默认腿部姿态}{48}{subsubsection.6.6.4}%
+\contentsline {subsubsection}{\numberline {6.6.5}头部姿态}{48}{subsubsection.6.6.5}%
+\contentsline {subsubsection}{\numberline {6.6.6}稠密腾空时间}{49}{subsubsection.6.6.6}%
+\contentsline {subsubsection}{\numberline {6.6.7}动作变化惩罚}{49}{subsubsection.6.6.7}%
+\contentsline {subsubsection}{\numberline {6.6.8}滚转/俯仰角速度惩罚}{49}{subsubsection.6.6.8}%
+\contentsline {subsubsection}{\numberline {6.6.9}数值例题}{49}{subsubsection.6.6.9}%
+\contentsline {subsection}{\numberline {6.7}只改变物理的课程学习}{50}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}从已发布行走 actor 迁移}{51}{subsection.6.8}%
+\contentsline {subsection}{\numberline {6.9}复现实验流程}{51}{subsection.6.9}%
+\contentsline {subsubsection}{\numberline {6.9.1}构建并检查仿真场景}{51}{subsubsection.6.9.1}%
+\contentsline {subsubsection}{\numberline {6.9.2}训练有界试验 recipe}{52}{subsubsection.6.9.2}%
+\contentsline {subsubsection}{\numberline {6.9.3}单独导出}{52}{subsubsection.6.9.3}%
+\contentsline {subsubsection}{\numberline {6.9.4}运行严格技能评估}{53}{subsubsection.6.9.4}%
+\contentsline {subsubsection}{\numberline {6.9.5}渲染并观察}{53}{subsubsection.6.9.5}%
+\contentsline {subsection}{\numberline {6.10}严格的完整 20 秒过桥规则}{53}{subsection.6.10}%
+\contentsline {subsection}{\numberline {6.11}当前试验实际完成了什么？}{54}{subsection.6.11}%
+\contentsline {subsection}{\numberline {6.12}练习}{54}{subsection.6.12}%
+\contentsline {subsubsection}{\numberline {6.12.1}练习 1：缆索几何}{54}{subsubsection.6.12.1}%
+\contentsline {subsubsection}{\numberline {6.12.2}练习 2：指挥器修正}{55}{subsubsection.6.12.2}%
+\contentsline {subsubsection}{\numberline {6.12.3}练习 3：观测中的特权信息}{55}{subsubsection.6.12.3}%
+\contentsline {subsubsection}{\numberline {6.12.4}练习 4：课程阶段转移}{55}{subsubsection.6.12.4}%
+\contentsline {subsubsection}{\numberline {6.12.5}练习 5：PPO 数量计算}{55}{subsubsection.6.12.5}%
+\contentsline {subsubsection}{\numberline {6.12.6}练习 6：诚实的过桥判断}{55}{subsubsection.6.12.6}%
+\contentsline {subsubsection}{\numberline {6.12.7}练习 7：解释结果}{55}{subsubsection.6.12.7}%
+\contentsline {subsection}{\numberline {6.13}参考答案}{55}{subsection.6.13}%
+\contentsline {subsubsection}{\numberline {6.13.1}答案 1}{55}{subsubsection.6.13.1}%
+\contentsline {subsubsection}{\numberline {6.13.2}答案 2}{55}{subsubsection.6.13.2}%
+\contentsline {subsubsection}{\numberline {6.13.3}答案 3}{56}{subsubsection.6.13.3}%
+\contentsline {subsubsection}{\numberline {6.13.4}答案 4}{56}{subsubsection.6.13.4}%
+\contentsline {subsubsection}{\numberline {6.13.5}答案 5}{56}{subsubsection.6.13.5}%
+\contentsline {subsubsection}{\numberline {6.13.6}答案 6}{56}{subsubsection.6.13.6}%
+\contentsline {subsubsection}{\numberline {6.13.7}答案 7}{56}{subsubsection.6.13.7}%
+\contentsline {section}{\numberline {7}看证据，不看庆祝语}{57}{section.7}%
+\contentsline {subsection}{\numberline {7.1}建立证据链}{57}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}阅读真实 reward 和 loss 曲线}{57}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}确定性评估：究竟通过了什么？}{59}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}视觉验证：看连续画面}{60}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}在 Duck Viewer 运行两个场景}{63}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}尚未完成技能的研究计划}{65}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}重建并检查教材}{65}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}综合实践考核}{65}{subsection.7.8}%
+\contentsline {section}{\numberline {8}参考文献与来源}{66}{section.8}%
+\contentsline {section}{\numberline {9}附录：完整核心源码与版本指纹}{67}{section.9}%
+\contentsline {subsection}{\numberline {9.1}A1. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}environm\allowbreak {}ents/\allowbreak {}basketba\allowbreak {}ll.py}}{67}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}A2. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}models/\allowbreak {}basketba\allowbreak {}ll.py}}{71}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}A3. \texttt {rlx/\allowbreak {}examples\allowbreak {}/\allowbreak {}ppo\_\allowbreak {}microduc\allowbreak {}k\_\allowbreak {}basketba\allowbreak {}ll.py}}{76}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}A4. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}environm\allowbreak {}ents/\allowbreak {}bridge.p\allowbreak {}y}}{86}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}A5. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}environm\allowbreak {}ents/\allowbreak {}bridge\_\allowbreak {}evaluati\allowbreak {}on.py}}{94}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}A6. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}models/\allowbreak {}bridge\_\allowbreak {}bootstra\allowbreak {}p.py}}{99}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}A7. \texttt {rlx/\allowbreak {}rlx/\allowbreak {}algorith\allowbreak {}ms/\allowbreak {}ppo.py}}{101}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}Source inventory / 源码清单}{110}{subsection.9.8}%

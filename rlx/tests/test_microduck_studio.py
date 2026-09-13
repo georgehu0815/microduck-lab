@@ -74,12 +74,28 @@ def load_studio_example():
     return module
 
 
-def test_recipe_registry_has_the_four_studio_recipes():
-    assert tuple(sorted(RECIPES)) == ("dance", "running", "stilts", "swing")
+def test_recipe_registry_has_the_seven_studio_recipes():
+    assert tuple(sorted(RECIPES)) == ("backflip", "basketball", "bridge", "dance", "running", "stilts", "swing")
     assert get_recipe("running").behavior_id == "run"
     assert get_recipe("swing").behavior_id is None
     with pytest.raises(ValueError, match="unknown MicroDuck recipe"):
         get_recipe("moonwalk")
+
+
+def test_bridge_evaluation_requires_complete_horizons():
+    module = load_studio_example()
+    with pytest.raises(SystemExit):
+        module.parse_args(["eval", "--recipe", "bridge", "--backend", "dummy", "--eval-steps", "1200"])
+    assert module.parse_args(["eval", "--recipe", "bridge", "--backend", "dummy", "--eval-steps", "2000"]).eval_steps == 2000
+
+
+def test_bridge_factory_applies_requested_spawn_randomization():
+    env = make_single_recipe_env("bridge", random_yaw=True, domain_rand=False, obs_noise=False, action_delay=False)
+    try:
+        assert env.unwrapped._bridge_random_yaw is True
+        assert env.unwrapped.action_delay is False
+    finally:
+        env.close()
 
 
 def test_stilt_option_normalization_and_validation():

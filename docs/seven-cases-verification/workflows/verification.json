@@ -1,0 +1,215 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-11T15:28:42.946Z",
+  "cases": [
+    {
+      "scenario": "dance",
+      "title": "Dance imitation",
+      "run": "dance-e2e-20260907-low-noise",
+      "seconds": 8,
+      "stages": [
+        {
+          "id": "journal-0-0",
+          "kind": "ppo",
+          "startStep": 0,
+          "endStep": 4001792
+        }
+      ],
+      "playback": {
+        "duration": 8,
+        "currentTime": 6.267945,
+        "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=dance&run=dance-e2e-20260907-low-noise&kind=video&inline=1&source=32c27fe239285f1be624b01f77eaa7a411262852c89d51404ae8398ac94bdbd9",
+        "error": null
+      },
+      "layout": {
+        "width": 362,
+        "scrollWidth": 362
+      },
+      "samples": 1954,
+      "transitions": 4001792
+    },
+    {
+      "scenario": "swing",
+      "title": "Self-pumped swing",
+      "run": "swing-e2e-20260907-v3",
+      "seconds": 24,
+      "stages": [
+        {
+          "id": "bc-initializer",
+          "kind": "bc-initializer",
+          "startStep": 0,
+          "endStep": 0
+        },
+        {
+          "id": "journal-0-0",
+          "kind": "ppo",
+          "startStep": 0,
+          "endStep": 524288
+        }
+      ],
+      "playback": {
+        "duration": 24,
+        "currentTime": 4.92567,
+        "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=swing&run=swing-e2e-20260907-v3&kind=video&inline=1&source=d0599d4453fe80bcac4e92cb61d858dae2c86310090885c2a5ecb07ed2bbc916",
+        "error": null
+      },
+      "layout": {
+        "width": 362,
+        "scrollWidth": 362
+      },
+      "samples": 128,
+      "transitions": 524288
+    },
+    {
+      "scenario": "running",
+      "title": "Fast running",
+      "run": "running-e2e-20260907-v4",
+      "seconds": 12,
+      "stages": [
+        {
+          "id": "lineage-/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/running/running-e2e-20260907-v3-0-0",
+          "kind": "ppo",
+          "startStep": 0,
+          "endStep": 6000640
+        },
+        {
+          "id": "journal-6000640-0",
+          "kind": "ppo",
+          "startStep": 6000640,
+          "endStep": 8097792
+        }
+      ],
+      "playback": {
+        "duration": 12,
+        "currentTime": 6.072199,
+        "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=running&run=running-e2e-20260907-v4&kind=video&inline=1&source=f48dc18840a428c66dbca23d83a1f36a82a6657e88b7450acd7e7c23d7cc5745",
+        "error": null
+      },
+      "layout": {
+        "width": 362,
+        "scrollWidth": 362
+      },
+      "samples": 1024,
+      "transitions": 2097152
+    },
+    {
+      "scenario": "stilts",
+      "title": "Stilt walking",
+      "run": "stilts-e2e-20260907-v3",
+      "seconds": 10,
+      "stages": [
+        {
+          "id": "lineage-/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/stilts/stilts-e2e-20260907-v2-0-0",
+          "kind": "ppo",
+          "startStep": 0,
+          "endStep": 6000640
+        },
+        {
+          "id": "journal-6000640-0",
+          "kind": "ppo",
+          "startStep": 6000640,
+          "endStep": 7049216
+        }
+      ],
+      "playback": {
+        "duration": 10,
+        "currentTime": 5.953062,
+        "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=stilts&run=stilts-e2e-20260907-v3&kind=video&inline=1&source=4e1bdf737c10ef253cc209097509bf3229c08496e71e455b15d2683f37e6cb24",
+        "error": null
+      },
+      "layout": {
+        "width": 362,
+        "scrollWidth": 362
+      },
+      "samples": 512,
+      "transitions": 1048576
+    }
+  ],
+  "pageErrors": [],
+  "requestCaptureOnly": true,
+  "backflipGuide": {
+    "catalogAvailable": true,
+    "verifiedPreviewPresent": true,
+    "runName": "backflip-e2e-20260908-v5",
+    "sourceBoundVideo": true,
+    "playback": {
+      "duration": 12,
+      "currentTime": 0.233602,
+      "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=backflip&run=backflip-e2e-20260908-v5&kind=video&inline=1&v=cf8a0481660574776bd4921fd83b2cc77ec34236cf1ebc9a5d4feca3067efe2f",
+      "error": null
+    },
+    "protocol": "spotter-launch-landing-stand-v2",
+    "exactActorNormalizerTransfer": true,
+    "calibrationSteps": 9600,
+    "criticOnlyCalibrationEpochs": 10,
+    "actorUnchangedDuringCalibration": true,
+    "rewardNormalizationFrozenAfterCalibration": true,
+    "freshPpoOptimizer": true,
+    "positivePpoImprovementClaimed": false,
+    "launchReleaseThresholdRad": 5.3,
+    "launchReleaseRateRadS": [
+      3.5,
+      6.5
+    ],
+    "minRotationBeforeHandoffRad": 5.8,
+    "consecutiveStableLandingSteps": 10,
+    "bodySupportForbidden": true,
+    "standCannotFinishRotation": true
+  },
+  "clipRequest": {
+    "action": "train",
+    "recipe": {
+      "experimentId": "dance",
+      "runName": "dance-clip-payload-regression",
+      "profile": "full",
+      "totalTimesteps": 1000000,
+      "numEnvs": 16,
+      "numSteps": 24,
+      "numMinibatches": 4,
+      "maxEpisodeS": 60,
+      "evalSteps": 3000,
+      "renderSeconds": 60,
+      "danceClip": "dance-clip/cumbia_microduck_v2.clip.json",
+      "dancePoseSigma": null,
+      "locomotionForwardCommand": null,
+      "initialStd": 0.6065306597126334,
+      "normalizeRewards": false,
+      "freezeObservationNormalization": false,
+      "checkpointInterval": 0,
+      "seed": 1,
+      "learningRate": 0.0003,
+      "gamma": 0.99,
+      "clipCoefficient": 0.2,
+      "updateEpochs": 5,
+      "entropyCoefficient": 0.01,
+      "maxGradNorm": 0.5,
+      "domainRand": true,
+      "obsNoise": true,
+      "actionDelay": true,
+      "randomYaw": true,
+      "bridgeCurriculum": false,
+      "stiltHeightCm": 10,
+      "stiltBlend": 0.5,
+      "stiltMassKg": 0.029,
+      "swingInitialAngleDeg": 0,
+      "swingInitialRateRadS": 0,
+      "swingPlanarActions": false,
+      "swingMinSpanDeg": 150,
+      "resumeFromCheckpoint": false,
+      "rewardWeights": {
+        "pose_match": 4,
+        "rotation_match": 4,
+        "stick_it": 5,
+        "on_feet": 5,
+        "travel": 3,
+        "no_slip": 0.5,
+        "no_spin": 0.3,
+        "gentle_head": 1,
+        "soft_landings": 0.75,
+        "no_limit_parking": 1,
+        "save_energy": 0.5
+      }
+    }
+  },
+  "canonicalRecipeApplied": true
+}

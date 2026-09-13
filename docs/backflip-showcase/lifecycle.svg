@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="690" viewBox="0 0 1400 690">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#425a70"/></marker></defs>
+<rect width="1400" height="690" rx="24" fill="#f5f8fc"/>
+<g font-family="sans-serif" fill="#172b43"><text x="60" y="65" font-size="34" font-weight="bold">Backflip showcase: who controls what?</text><text x="60" y="104" font-size="21">Simulation only · assistance, learned control, and pretrained standing are separate</text></g>
+<g stroke="#425a70" stroke-width="3" marker-end="url(#arrow)"><path d="M440 245 H510"/><path d="M890 245 H960"/><path d="M700 340 V405"/></g>
+<g font-family="sans-serif">
+<rect x="60" y="150" width="380" height="190" rx="16" fill="#fff0cc" stroke="#e0b24f"/>
+<text x="85" y="192" font-size="25" font-weight="bold" fill="#684a0a">1 · Assisted launch</text>
+<text x="85" y="234" font-size="21" fill="#684a0a">Scripted spotter + stand actor</text><text x="85" y="270" font-size="21" fill="#684a0a">External force/torque disclosed</text><text x="85" y="306" font-size="21" fill="#684a0a">No PPO reward or skill credit</text>
+<rect x="510" y="150" width="380" height="190" rx="16" fill="#dff4e8" stroke="#58aa7e"/>
+<text x="535" y="192" font-size="25" font-weight="bold" fill="#164a31">2 · Policy landing</text>
+<text x="535" y="234" font-size="21" fill="#164a31">61 observations → 14 actions</text><text x="535" y="270" font-size="21" fill="#164a31">All external assistance is zero</text><text x="535" y="306" font-size="21" fill="#164a31">PPO owns reward + stabilization</text>
+<rect x="960" y="150" width="380" height="190" rx="16" fill="#e3ebfa" stroke="#7e9acc"/>
+<text x="985" y="192" font-size="25" font-weight="bold" fill="#26436d">3 · Stand handoff</text>
+<text x="985" y="234" font-size="21" fill="#26436d">Pretrained alpha_stand actor</text><text x="985" y="270" font-size="21" fill="#26436d">After 10 stable policy samples</text><text x="985" y="306" font-size="21" fill="#26436d">Requires final 2-second hold</text>
+<rect x="300" y="415" width="800" height="200" rx="16" fill="white" stroke="#a6b5c6"/>
+<text x="335" y="458" font-size="25" font-weight="bold" fill="#172b43">Training and evidence loop</text>
+<text x="335" y="498" font-size="21" fill="#172b43">Exact teacher transfer → release-state rollouts → PPO updates</text>
+<text x="335" y="537" font-size="21" fill="#172b43">Fixed-seed initial/final/null controls → strict episode gate</text>
+<text x="335" y="576" font-size="21" fill="#172b43">ONNX + hashes → stage-labeled MP4 → human visual review</text>
+</g></svg>

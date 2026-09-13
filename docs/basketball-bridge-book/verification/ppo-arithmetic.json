@@ -1,0 +1,19 @@
+{
+  "scope": "synthetic arithmetic fixture, not measured training data",
+  "advantages": [
+    2.3873285749999997,
+    1.37515,
+    0.30000000000000004
+  ],
+  "returns": [
+    2.8873285749999997,
+    1.9751500000000002,
+    1.0
+  ],
+  "terminal_advantage": 0.5,
+  "timeout_advantage": 10.4,
+  "normal_density_at_mean_std_003": 13.298076013381092,
+  "positive_advantage_clipped": 2.4,
+  "negative_advantage_clipped": -1.6,
+  "passed": true
+}

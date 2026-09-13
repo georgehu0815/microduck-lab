@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "sourceFiles": [
+    "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/bridge.onnx"
+  ],
+  "source": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/bridge.onnx",
+  "sourceFilesSha256": {
+    "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/bridge.onnx": "b416dca76f0ee450bf48d2715d3ec3a997f3f2bf13c0042e73f50b8731e5bf11"
+  },
+  "sourceSha256": "b416dca76f0ee450bf48d2715d3ec3a997f3f2bf13c0042e73f50b8731e5bf11",
+  "recipeKey": "[\"--recipe\",\"bridge\",\"--num-envs\",\"3\",\"--seed\",\"101\",\"--max-episode-s\",\"20\",\"--no-domain-rand\",\"--no-obs-noise\",\"--no-action-delay\",\"--no-random-yaw\",\"--weight-overrides\",\"{}\"]",
+  "clipPath": null,
+  "clipSha256": null,
+  "externalFiles": [],
+  "externalFilesSha256": {},
+  "video": {
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/render/ep0.mp4",
+    "sha256": "7386c84eb8065d2f4ac2b297ba5b082dc658648657e4190a9491872bab6e50a6",
+    "size": 167418
+  },
+  "sheet": {
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/render/ep0_sheet.png",
+    "sha256": "64825f27586299eeb7a95c5fa236447d86828b577ddee031adc795c1282b08bd",
+    "size": 321252
+  }
+}

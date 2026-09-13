@@ -6,6 +6,8 @@
     "dev": "next dev -p ${PORT:-63317}",
     "build": "next build",
     "build:static": "node scripts/build-static.mjs",
+    "build:pages": "DUCK_VIEWER_BASE_PATH=/microduck-lab npm run build:static",
+    "deploy:pages": "npm run build:pages && node scripts/deploy-pages.mjs",
     "export:static-media": "node scripts/export-static-media.mjs",
     "start": "next start",
     "test": "node --test lib/*.test.mjs",

@@ -1,0 +1,78 @@
+{
+  "created_at": "2026-09-11T20:37:14.673904+00:00",
+  "recipe": "drawing",
+  "actuator": "xml",
+  "recipe_options": {},
+  "reward_weights": {
+    "tracking": 2.0,
+    "contact": 0.4,
+    "grasp": 0.3,
+    "upright": 0.3,
+    "action_rate_penalty": 0.01,
+    "force_penalty": 0.02,
+    "color": 0.4
+  },
+  "contract_version": "microduck-brush-v2",
+  "observation_dim": 93,
+  "action_dim": 15,
+  "max_episode_s": 120.0,
+  "pipeline_version": "microduck-brush-pipeline-v2",
+  "source_hashes": {
+    "pipeline_sha256": "6bab29274acddb56928a93d67d010330a367347d630937b2965a38b887374fd2",
+    "environment_sha256": "b7bcdb8fec346b28b7898dbbaa3cfda7060ce27013ac18f818f1b7f7ad55bc64",
+    "reference_sha256": "e79a8b611fec634fbcec157a596017a7a526b25359da5cf95d4a7c4a893edcae",
+    "actor_sha256": "589fc0ac45f2ebcabf320385d3008d6a004641816795643629b36fd65a533080",
+    "base_environment_sha256": "af82e83179b1034b1154a0448e7d042dfea2cc8ce805b0fde9b98e56d8abf816",
+    "base_reference_sha256": "51567b96322ab48eb1e90c27ad888cd0f7536660e9989d8c6abffb830bc89278"
+  },
+  "deployment_scope": "simulation_only",
+  "hardware_compatible": false,
+  "training": {
+    "command": "train",
+    "out": "rlx/runs/studio/drawing/brush-color-v2-03",
+    "data": "rlx/runs/brush-data/final-seed11/teacher.npz",
+    "seed": 101,
+    "steps": 49152,
+    "dagger": 2,
+    "ridge": 0.01,
+    "learning_rate": 1e-07,
+    "anchor_limit": 0.00025
+  },
+  "dataset_sha256": "66fb84087556d60cb23898db3aa12775a31b837ddba0a03a3de818cce2b74143",
+  "fits": [
+    {
+      "samples": 47984,
+      "normalized_increment_mse_before": 0.005196014419198036,
+      "normalized_increment_mse_after": 8.067842827585991e-06,
+      "head_increment_mse": 1.659973491996425e-08,
+      "ankle_mse": 7.389670031443529e-08
+    },
+    {
+      "samples": 77974,
+      "normalized_increment_mse_before": 2.136215516657103e-05,
+      "normalized_increment_mse_after": 1.9331184375914745e-05,
+      "head_increment_mse": 4.280616394680692e-08,
+      "ankle_mse": 8.004164442354522e-08
+    },
+    {
+      "samples": 105858,
+      "normalized_increment_mse_before": 0.00010529032442718744,
+      "normalized_increment_mse_after": 3.993013524450362e-05,
+      "head_increment_mse": 9.100342168721909e-08,
+      "ankle_mse": 8.265057260814501e-08
+    }
+  ],
+  "controller": "learned polynomial feedback + PPO; no runtime Jacobian teacher",
+  "planner": "authored color-stroke sequence and physical palette targets, not learned visual planning",
+  "checkpoint_sha256": "09573143b38b815aaa4d4eb0ba5acc81f9de4618b7f6792a25b4b233e83fdce1",
+  "total_timesteps": 49152,
+  "accepted_ppo_updates": 8,
+  "onnx_parity": {
+    "max_absolute_error": 1.4901161193847656e-08,
+    "passed": true
+  },
+  "onnx_sha256": "6e083a2a1a0e3114016be9ef0d377d9e9245648ca174303c5f8d0340bdf4500e",
+  "onnx": {
+    "sha256": "6e083a2a1a0e3114016be9ef0d377d9e9245648ca174303c5f8d0340bdf4500e"
+  }
+}

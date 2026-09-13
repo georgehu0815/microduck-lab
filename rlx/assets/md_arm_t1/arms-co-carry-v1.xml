@@ -1,0 +1,88 @@
+<mujoco model="md-arm-t1-arms-co-carry-v1">
+      <compiler angle="radian"/>
+      <option timestep="0.002" gravity="0 0 -9.81" integrator="implicitfast" cone="elliptic" iterations="60"/>
+      <visual><global offwidth="1280" offheight="720"/><quality shadowsize="1024"/></visual>
+      <default><joint damping=".03" armature=".00003"/>
+        <geom friction="1 .005 .0001" solref=".006 1" solimp=".95 .99 .001" rgba=".65 .75 .8 1"/>
+        <position ctrllimited="false" forcelimited="true"/></default>
+      <worldbody>
+        <light pos="0 -.3 .8" dir="0 .3 -.8"/>
+        <camera name="overview" pos=".36 -.38 .30" xyaxes=".72 .69 0 -.32 .34 .88"/>
+        <camera name="top" pos=".07 0 .48" xyaxes="1 0 0 0 1 0"/>
+        <geom name="table" type="box" pos=".06 0 -.012" size=".22 .20 .012" rgba=".12 .16 .20 1"/>
+        
+    <body name="left_base" pos="0 -0.121 0">
+      <geom name="left_mount" type="box" pos="0 0 .018" size=".023 .023 .018" mass=".08" rgba=".18 .22 .25 1"/>
+      <body name="left_yaw" pos="0 0 0.08">
+        <joint name="left_base_yaw" axis="0 0 1" range="-1.745 1.745"/>
+        <geom type="sphere" size=".012" mass=".018"/>
+        <body name="left_shoulder">
+          <joint name="left_shoulder_pitch" axis="0 1 0" range="-1.047 1.396"/>
+          <geom name="left_upper" type="capsule" fromto="0 0 0 .065 0 0" size=".007" mass=".038"/>
+          <body name="left_elbow" pos=".065 0 0">
+            <joint name="left_elbow_pitch" axis="0 1 0" range="-1.745 1.745"/>
+            <geom name="left_forearm" type="capsule" fromto="0 0 0 .055 0 0" size=".006" mass=".033"/>
+            <body name="left_wrist" pos=".055 0 0">
+              <joint name="left_wrist_pitch" axis="0 1 0" range="-1.571 1.571"/>
+              <geom type="sphere" size=".007" mass=".018"/>
+              <body name="left_hand">
+                <joint name="left_wrist_roll" axis="1 0 0" range="-1.571 1.571"/>
+                <geom name="left_palm" type="box" pos=".003 0 0" size=".007 .019 .009" mass=".026" rgba=".18 .25 .3 1"/>
+                <site name="left_tcp" pos=".030 0 0" size=".002" rgba="0 1 .5 1"/>
+                <body name="left_finger_left" pos="0 .002 0">
+                  <joint name="left_grip_left" type="slide" axis="0 1 0" range="0 .015" damping=".8" armature=".0001"/>
+                  <geom name="left_pad_left" type="box" pos=".025 0 0" size=".012 .002 .008" mass=".004" condim="4" friction="1.2 .005 .001" rgba=".1 .8 .5 1"/>
+                </body>
+                <body name="left_finger_right" pos="0 -.002 0">
+                  <joint name="left_grip_right" type="slide" axis="0 -1 0" range="0 .015" damping=".8" armature=".0001"/>
+                  <geom name="left_pad_right" type="box" pos=".025 0 0" size=".012 .002 .008" mass=".004" condim="4" friction="1.2 .005 .001" rgba=".1 .8 .5 1"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="right_base" pos="0 0.121 0">
+      <geom name="right_mount" type="box" pos="0 0 .018" size=".023 .023 .018" mass=".08" rgba=".18 .22 .25 1"/>
+      <body name="right_yaw" pos="0 0 0.08">
+        <joint name="right_base_yaw" axis="0 0 1" range="-1.745 1.745"/>
+        <geom type="sphere" size=".012" mass=".018"/>
+        <body name="right_shoulder">
+          <joint name="right_shoulder_pitch" axis="0 1 0" range="-1.047 1.396"/>
+          <geom name="right_upper" type="capsule" fromto="0 0 0 .065 0 0" size=".007" mass=".038"/>
+          <body name="right_elbow" pos=".065 0 0">
+            <joint name="right_elbow_pitch" axis="0 1 0" range="-1.745 1.745"/>
+            <geom name="right_forearm" type="capsule" fromto="0 0 0 .055 0 0" size=".006" mass=".033"/>
+            <body name="right_wrist" pos=".055 0 0">
+              <joint name="right_wrist_pitch" axis="0 1 0" range="-1.571 1.571"/>
+              <geom type="sphere" size=".007" mass=".018"/>
+              <body name="right_hand">
+                <joint name="right_wrist_roll" axis="1 0 0" range="-1.571 1.571"/>
+                <geom name="right_palm" type="box" pos=".003 0 0" size=".007 .019 .009" mass=".026" rgba=".18 .25 .3 1"/>
+                <site name="right_tcp" pos=".030 0 0" size=".002" rgba="0 1 .5 1"/>
+                <body name="right_finger_left" pos="0 .002 0">
+                  <joint name="right_grip_left" type="slide" axis="0 1 0" range="0 .015" damping=".8" armature=".0001"/>
+                  <geom name="right_pad_left" type="box" pos=".025 0 0" size=".012 .002 .008" mass=".004" condim="4" friction="1.2 .005 .001" rgba=".1 .8 .5 1"/>
+                </body>
+                <body name="right_finger_right" pos="0 -.002 0">
+                  <joint name="right_grip_right" type="slide" axis="0 -1 0" range="0 .015" damping=".8" armature=".0001"/>
+                  <geom name="right_pad_right" type="box" pos=".025 0 0" size=".012 .002 .008" mass=".004" condim="4" friction="1.2 .005 .001" rgba=".1 .8 .5 1"/>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+        <body name="object" pos=".085 -.02 .009"><freejoint name="object_free"/><geom name="object_tray" type="box" size=".025 .047 .003" mass=".008" rgba=".4 .6 .9 1"/>
+        <geom name="object_handle_left" type="box" pos="0 -.04 .006" size=".007 .007 .006" mass=".002"/>
+        <geom name="object_handle_right" type="box" pos="0 .04 .006" size=".007 .007 .006" mass=".002"/></body>
+        <body name="payload" pos=".05 0 .014"><freejoint name="payload_free"/><geom name="payload_geom" type="box" size=".005 .005 .005" mass=".005" rgba=".95 .4 .2 1"/></body>
+        <body name="obstacle" pos=".09 0 -.05"><geom name="obstacle_geom" type="box" size=".018 .006 .01" rgba=".8 .25 .3 1"/></body>
+        <site name="goal" type="box" pos=".085 .025 .001" size=".016 .016 .001" rgba=".1 .85 .5 .35"/>
+      </worldbody>
+      <contact><exclude body1="left_elbow" body2="left_hand"/><exclude body1="right_elbow" body2="right_hand"/></contact>
+      <equality><joint joint1="left_grip_right" joint2="left_grip_left" polycoef="0 1 0 0 0" solref=".004 1"/><joint joint1="right_grip_right" joint2="right_grip_left" polycoef="0 1 0 0 0" solref=".004 1"/></equality>
+      <actuator><position name="left_base_yaw_servo" joint="left_base_yaw" kp="8" kv=".15" forcerange="-.16 .16"/><position name="left_shoulder_pitch_servo" joint="left_shoulder_pitch" kp="8" kv=".15" forcerange="-.16 .16"/><position name="left_elbow_pitch_servo" joint="left_elbow_pitch" kp="8" kv=".15" forcerange="-.16 .16"/><position name="left_wrist_pitch_servo" joint="left_wrist_pitch" kp="8" kv=".15" forcerange="-.16 .16"/><position name="left_wrist_roll_servo" joint="left_wrist_roll" kp="8" kv=".15" forcerange="-.16 .16"/><position name="left_grip_servo" joint="left_grip_left" kp="350" kv="2" ctrlrange="0 .015" forcerange="-1 1"/><position name="right_base_yaw_servo" joint="right_base_yaw" kp="8" kv=".15" forcerange="-.16 .16"/><position name="right_shoulder_pitch_servo" joint="right_shoulder_pitch" kp="8" kv=".15" forcerange="-.16 .16"/><position name="right_elbow_pitch_servo" joint="right_elbow_pitch" kp="8" kv=".15" forcerange="-.16 .16"/><position name="right_wrist_pitch_servo" joint="right_wrist_pitch" kp="8" kv=".15" forcerange="-.16 .16"/><position name="right_wrist_roll_servo" joint="right_wrist_roll" kp="8" kv=".15" forcerange="-.16 .16"/><position name="right_grip_servo" joint="right_grip_left" kp="350" kv="2" ctrlrange="0 .015" forcerange="-1 1"/></actuator>
+    </mujoco>

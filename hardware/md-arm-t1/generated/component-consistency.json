@@ -1,0 +1,749 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-12",
+  "source_xml": "rlx/rlx/mjlab_microduck/robot/microduck/robot_allcollisions_backlash.xml",
+  "source_xml_sha256": "248c712e13258104ccab3f96c5cc47c7faa8f718f56f2c7de03efda653c8fb6b",
+  "spec_sha256": "512eb795632a9a892c592dd15e7136d14d0c353e98f6ec8e2dabd7eedf3792d7",
+  "microduck_exact_variant": null,
+  "variant_status": "XL330 family only; XML and Onshape metadata do not identify gearbox SKU",
+  "arm_candidate": "XL330-M288-T",
+  "fabrication_release": false,
+  "manufacturer_body_w_h_d_mm": [
+    20.0,
+    34.0,
+    26.0
+  ],
+  "mesh": {
+    "source": "rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl",
+    "sha256": "c9f6bf7dd9d8b307a4174b40ff12517b3ea470e5535319a5b7dcce4ba52cdfe1",
+    "triangle_count": 4126,
+    "unit_scale_to_mm": 1000,
+    "bounds_xyz_mm": [
+      [
+        -14.499999582767487,
+        14.499999582767487
+      ],
+      [
+        -9.999999776482582,
+        9.999999776482582
+      ],
+      [
+        -24.49999935925007,
+        9.499999694526196
+      ]
+    ],
+    "bounds_size_xyz_mm": [
+      28.999999165534973,
+      19.999999552965164,
+      33.999999053776264
+    ],
+    "centering_translation_mm": [
+      -0.0,
+      -0.0,
+      7.499999832361937
+    ],
+    "cad_orientation": "rotate +90 degrees about Z after centering; X=width,Y=depth,Z=height",
+    "use_limit": "source visual reference, not precision mounting or validated collision geometry",
+    "depth_difference_status": "29 mm mesh versus 26 mm published body; feature cause unverified; do not rescale"
+  },
+  "onshape_part": {
+    "configuration": "default",
+    "documentId": "804927696f06d877f3f1803e",
+    "documentMicroversion": "fc8237658b0c3e9ada6f813b",
+    "elementId": "e34e27a4a091c95d26a71da8",
+    "fullConfiguration": "default",
+    "id": "MNMyVEwhc7HfSm3EX",
+    "isStandardContent": false,
+    "name": "xl330 <11>",
+    "partId": "JND",
+    "suppressed": false,
+    "type": "Part"
+  },
+  "onshape_part_sha256": "038c57fd1dae4419cf1c9481891479749625a0339803a72a8a97b6fd04722414",
+  "motor_instances": [
+    {
+      "body": "trunk_base",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0.006 0.0175 0.0115",
+      "quat": "0 0.707107 -0 0.707107"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0.006 -0.0175 0.0115",
+      "quat": "0 0.707107 -0 0.707107"
+    },
+    {
+      "body": "yaw2roll",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0 0 0.0125",
+      "quat": "0 -0.707107 0.707107 -0"
+    },
+    {
+      "body": "upper_leg_left",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0.022 0.0357771 0.0125",
+      "quat": "0 -0.707107 -0 -0.707107"
+    },
+    {
+      "body": "upper_leg_left",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0 -0 0.0125",
+      "quat": "0.5 0.5 -0.5 0.5"
+    },
+    {
+      "body": "leg",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0.042 -0.0115",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "neck",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0 0.0145",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "neck",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 -0.05 0.0145",
+      "quat": "0.5 0.5 -0.5 0.5"
+    },
+    {
+      "body": "yaw_roll_motion",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0 0.0145",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0.003 0.0255 -0.018",
+      "quat": "0.707107 0 -0 -0.707107"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0 0.0145",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "bearing_roll",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0 0 0.0125",
+      "quat": "0 -0.707107 0.707107 -0"
+    },
+    {
+      "body": "upper_leg_right",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0.022 0.0357771 0.0125",
+      "quat": "0.707107 -0 -0.707107 -0"
+    },
+    {
+      "body": "upper_leg_right",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0 0.0125",
+      "quat": "0.5 0.5 -0.5 0.5"
+    },
+    {
+      "body": "leg_2",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0.042 0 -0.0115",
+      "quat": "0.707107 -0 -0.707107 -0"
+    }
+  ],
+  "mesh_inventory": [
+    {
+      "body": "trunk_base",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "0.006 0.0175 -0.005",
+      "quat": "1 -0 -0 0"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "right_shell",
+      "class": "visual",
+      "pos": "0.004 -0.0005 -0.0175",
+      "quat": "0.707107 -0 -0 0.707107"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "banana_pcb_locker",
+      "class": "visual",
+      "pos": "0.0042 -0 -0.0175215",
+      "quat": "0.707107 -0 0 0.707107"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "trunk_base",
+      "class": "visual",
+      "pos": "0.004 -0 -0.0175",
+      "quat": "0.707107 -0 -0 0.707107"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0.006 0.0175 0.0115",
+      "quat": "0 0.707107 -0 0.707107"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "power_support",
+      "class": "visual",
+      "pos": "0.004 -0 -0.0175215",
+      "quat": "0.707107 -0 0 0.707107"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "power_support",
+      "class": "self_collision_only",
+      "pos": "0.004 -0 -0.0175215",
+      "quat": "0.707107 -0 0 0.707107"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "np_f970",
+      "class": "visual",
+      "pos": "-0.0359693 0 -0.00385049",
+      "quat": "0.00617059 0.70708 -0.70708 -0.00617059"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "np_f970",
+      "class": "collision",
+      "pos": "-0.0359693 0 -0.00385049",
+      "quat": "0.00617059 0.70708 -0.70708 -0.00617059"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0.006 -0.0175 0.0115",
+      "quat": "0 0.707107 -0 0.707107"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "left_shell",
+      "class": "visual",
+      "pos": "0.004 -0 -0.0175785",
+      "quat": "0.707107 0 -0 0.707107"
+    },
+    {
+      "body": "trunk_base",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "0.006 -0.0175 -0.005",
+      "quat": "1 -0 -0 0"
+    },
+    {
+      "body": "yaw2roll",
+      "mesh": "yaw2roll",
+      "class": "visual",
+      "pos": "-0.0175 -0.002 0.0125",
+      "quat": "0 1 0 0"
+    },
+    {
+      "body": "yaw2roll",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0 0 0.0125",
+      "quat": "0 -0.707107 0.707107 -0"
+    },
+    {
+      "body": "yaw2roll",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "-0 0.0165 0.0125",
+      "quat": "0.5 0.5 0.5 -0.5"
+    },
+    {
+      "body": "yaw2roll",
+      "mesh": "bearing_roll",
+      "class": "visual",
+      "pos": "-0.0175 -0.002 0.0125",
+      "quat": "0 -1 -0 -0"
+    },
+    {
+      "body": "hip_l",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "0.021 0 -0.0185",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "hip_l",
+      "mesh": "hip_l",
+      "class": "visual",
+      "pos": "-0.0175 0 -0.0185",
+      "quat": "0.707107 -0.707107 0 -0"
+    },
+    {
+      "body": "hip_l",
+      "mesh": "hip_l",
+      "class": "collision",
+      "pos": "-0.0175 0 -0.0185",
+      "quat": "0.707107 -0.707107 0 -0"
+    },
+    {
+      "body": "upper_leg_left",
+      "mesh": "upper_leg_left",
+      "class": "visual",
+      "pos": "-0 -0 -0.0425",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "upper_leg_left",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0.022 0.0357771 0.0125",
+      "quat": "0 -0.707107 -0 -0.707107"
+    },
+    {
+      "body": "upper_leg_left",
+      "mesh": "upper_leg_rigidity_plate",
+      "class": "visual",
+      "pos": "0 -0 -0.0425",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "upper_leg_left",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "0.022 0.0357771 -0.004",
+      "quat": "0 0 0 1"
+    },
+    {
+      "body": "upper_leg_left",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0 -0 0.0125",
+      "quat": "0.5 0.5 -0.5 0.5"
+    },
+    {
+      "body": "leg",
+      "mesh": "leg",
+      "class": "visual",
+      "pos": "-0.022 0.0357771 0.0385",
+      "quat": "0.5 0.5 0.5 -0.5"
+    },
+    {
+      "body": "leg",
+      "mesh": "leg",
+      "class": "collision",
+      "pos": "-0.022 0.0357771 0.0385",
+      "quat": "0.5 0.5 0.5 -0.5"
+    },
+    {
+      "body": "leg",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0.042 -0.0115",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "ankle_left",
+      "mesh": "sole_left",
+      "class": "visual",
+      "pos": "-0.022 0.00622291 -0.0647",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "ankle_left",
+      "mesh": "sole_left",
+      "class": "collision",
+      "pos": "-0.022 0.00622291 -0.0647",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "ankle_left",
+      "mesh": "foot_left",
+      "class": "visual",
+      "pos": "-0.022 0.00622291 -0.0647",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "ankle_left",
+      "mesh": "seeed_bearing__configuration_default",
+      "class": "visual",
+      "pos": "0 0 -0.0322",
+      "quat": "0 0 -0 1"
+    },
+    {
+      "body": "ankle_left",
+      "mesh": "ankle_left",
+      "class": "visual",
+      "pos": "-0.022 0.00622291 -0.0647",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "neck",
+      "mesh": "neck",
+      "class": "visual",
+      "pos": "0.022 0.05 0.028",
+      "quat": "0.5 0.5 0.5 -0.5"
+    },
+    {
+      "body": "neck",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0 0.0145",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "neck",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 -0.05 0.0145",
+      "quat": "0.5 0.5 -0.5 0.5"
+    },
+    {
+      "body": "neck",
+      "mesh": "neck",
+      "class": "visual",
+      "pos": "0.022 0.05 0.003",
+      "quat": "0.5 0.5 0.5 -0.5"
+    },
+    {
+      "body": "neck_pitch",
+      "mesh": "neck_pitch",
+      "class": "visual",
+      "pos": "-0 0.0287931 -0.0145",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "neck_pitch",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "-0 0.0207931 -0.0145",
+      "quat": "0.707107 0.707107 0 0"
+    },
+    {
+      "body": "yaw_roll_motion",
+      "mesh": "yaw_roll_motion",
+      "class": "visual",
+      "pos": "0 0 0.01",
+      "quat": "0.707107 0 -0 0.707107"
+    },
+    {
+      "body": "yaw_roll_motion",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0 0.0145",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "yaw_roll_motion",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "-0.016 0 0.0145",
+      "quat": "0.707107 -0 -0.707107 -0"
+    },
+    {
+      "body": "yaw_roll_motion",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "0.018 0 0.0145",
+      "quat": "0.707107 -0 -0.707107 -0"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "lens",
+      "class": "visual",
+      "pos": "0.0155 -9.13778e-05 -0.05548",
+      "quat": "0.5 -0.5 0.5 -0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "face_part",
+      "class": "visual",
+      "pos": "-0.0045 -9.13778e-05 -0.0178",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0.003 0.0255 -0.018",
+      "quat": "0.707107 0 -0 -0.707107"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "jaw_soft",
+      "class": "visual",
+      "pos": "-0.0046 0 -0.0179996",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "motor_support",
+      "class": "visual",
+      "pos": "-0.0045 0 -0.018",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "top_head_shell",
+      "class": "visual",
+      "pos": "-0.0045 -0 -0.018",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "top_head_shell",
+      "class": "collision",
+      "pos": "-0.0045 -0 -0.018",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0 0.0145",
+      "quat": "0.5 -0.5 -0.5 -0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "seeed_bearing__configuration_default",
+      "class": "visual",
+      "pos": "0.0032 -0.04 -0.018",
+      "quat": "0.5 -0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "elec_rpi_robot_hat_pcb",
+      "class": "visual",
+      "pos": "0.02694 0.0289936 -0.0519",
+      "quat": "0.707107 0 0 -0.707107"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "soft_mouth_top",
+      "class": "visual",
+      "pos": "-0.00420071 1.7776e-08 -0.0180814",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "noenoeil",
+      "class": "visual",
+      "pos": "-0.0045 -9.13778e-05 -0.0178",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "jaw",
+      "class": "visual",
+      "pos": "-0.0045 0 -0.018",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "jaw",
+      "class": "collision",
+      "pos": "-0.0045 0 -0.018",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "bottom_head_shell",
+      "class": "visual",
+      "pos": "-0.0043 -0 -0.018",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "bottom_head_shell",
+      "class": "collision",
+      "pos": "-0.0043 -0 -0.018",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "m12_lens_holder",
+      "class": "visual",
+      "pos": "0.0155 -9.13778e-05 -0.05558",
+      "quat": "0.5 -0.5 0.5 -0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "pcb__raspberry_pi_zero_2_w",
+      "class": "visual",
+      "pos": "0.015435 -1.13778e-05 -0.06001",
+      "quat": "0.5 -0.5 -0.5 0.5"
+    },
+    {
+      "body": "jaw_soft",
+      "mesh": "speaker",
+      "class": "visual",
+      "pos": "0.01 -0.016786 0.0260226",
+      "quat": "0.5 0.5 0.5 0.5"
+    },
+    {
+      "body": "bearing_roll",
+      "mesh": "yaw2roll",
+      "class": "visual",
+      "pos": "-0.0175 -0.002 0.0125",
+      "quat": "0 1 0 0"
+    },
+    {
+      "body": "bearing_roll",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0 0 0.0125",
+      "quat": "0 -0.707107 0.707107 -0"
+    },
+    {
+      "body": "bearing_roll",
+      "mesh": "bearing_roll",
+      "class": "visual",
+      "pos": "-0.0175 -0.002 0.0125",
+      "quat": "0 -1 -0 -0"
+    },
+    {
+      "body": "bearing_roll",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "-0 0.0165 0.0125",
+      "quat": "0.5 0.5 0.5 -0.5"
+    },
+    {
+      "body": "hip_l_2",
+      "mesh": "hip_l",
+      "class": "visual",
+      "pos": "-0.0175 0 -0.0185",
+      "quat": "0.707107 -0.707107 -0 -0"
+    },
+    {
+      "body": "hip_l_2",
+      "mesh": "hip_l",
+      "class": "collision",
+      "pos": "-0.0175 0 -0.0185",
+      "quat": "0.707107 -0.707107 -0 -0"
+    },
+    {
+      "body": "hip_l_2",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "0.025 0 -0.0185",
+      "quat": "0.5 0.5 -0.5 -0.5"
+    },
+    {
+      "body": "upper_leg_right",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0.022 0.0357771 0.0125",
+      "quat": "0.707107 -0 -0.707107 -0"
+    },
+    {
+      "body": "upper_leg_right",
+      "mesh": "seeed_bearing__configuration__22x16x4",
+      "class": "visual",
+      "pos": "-0.022 0.0357771 0",
+      "quat": "0 1 -0 -0"
+    },
+    {
+      "body": "upper_leg_right",
+      "mesh": "upper_leg_rigidity_plate",
+      "class": "visual",
+      "pos": "0 0 0.0435",
+      "quat": "0.5 -0.5 0.5 0.5"
+    },
+    {
+      "body": "upper_leg_right",
+      "mesh": "upper_leg_right",
+      "class": "visual",
+      "pos": "-0 0 -0.0425",
+      "quat": "0.5 -0.5 0.5 0.5"
+    },
+    {
+      "body": "upper_leg_right",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "0 0 0.0125",
+      "quat": "0.5 0.5 -0.5 0.5"
+    },
+    {
+      "body": "leg_2",
+      "mesh": "xl330",
+      "class": "visual",
+      "pos": "-0.042 0 -0.0115",
+      "quat": "0.707107 -0 -0.707107 -0"
+    },
+    {
+      "body": "leg_2",
+      "mesh": "leg",
+      "class": "visual",
+      "pos": "-0.0357771 -0.022 0.0385",
+      "quat": "0.707107 0 0.707107 -0"
+    },
+    {
+      "body": "leg_2",
+      "mesh": "leg",
+      "class": "collision",
+      "pos": "-0.0357771 -0.022 0.0385",
+      "quat": "0.707107 0 0.707107 -0"
+    },
+    {
+      "body": "ankle_right",
+      "mesh": "ankle_right",
+      "class": "visual",
+      "pos": "0.022 0.00622291 -0.0647",
+      "quat": "0.5 -0.5 0.5 0.5"
+    },
+    {
+      "body": "ankle_right",
+      "mesh": "sole_right",
+      "class": "visual",
+      "pos": "0.022 0.00622291 -0.0647",
+      "quat": "0.5 -0.5 0.5 0.5"
+    },
+    {
+      "body": "ankle_right",
+      "mesh": "sole_right",
+      "class": "collision",
+      "pos": "0.022 0.00622291 -0.0647",
+      "quat": "0.5 -0.5 0.5 0.5"
+    },
+    {
+      "body": "ankle_right",
+      "mesh": "seeed_bearing__configuration_default",
+      "class": "visual",
+      "pos": "-0 0 -0.0292",
+      "quat": "0 1 -0 -0"
+    },
+    {
+      "body": "ankle_right",
+      "mesh": "foot_right",
+      "class": "visual",
+      "pos": "0.022 0.00622291 -0.0647",
+      "quat": "0.5 -0.5 0.5 0.5"
+    }
+  ],
+  "actuator_count": 14,
+  "backlash_joint_count": 14,
+  "chosen_actuator": {
+    "kp": "0.55",
+    "kv": "0.0",
+    "forcerange": "-0.96 0.96",
+    "ctrlrange": "-10.0 10.0"
+  },
+  "dynamics_transfer": "blocked: fitted body gains/force/backlash are not arm or manufacturer ratings",
+  "training_sources_modified": false
+}

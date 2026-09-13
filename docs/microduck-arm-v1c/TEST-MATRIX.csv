@@ -1,0 +1,51 @@
+Stage,PayloadLevel,Payload_g,TestMode,PlannedEvidence,CurrentStatus,AdvanceGate
+S0,P0,0,Configuration audit,"Spec/hash/BOM/risk/test-plan record",NOT RUN,Document review
+S0,P5,5,Configuration audit,"Payload article identity and calibrated mass",BLOCKED,S0-P0
+S0,P10,10,Configuration audit,"Payload article identity and calibrated mass",BLOCKED,S0-P0
+S0,P20,20,Target configuration audit,"Target payload identity; 3x torque plan",BLOCKED,S0-P0
+S0,P30,30,Overload planning,"Separate hazard and overload authorization",NOT AUTHORIZED,Separate review
+S0,P40,40,Overload planning,"Separate hazard and overload authorization",NOT AUTHORIZED,Separate review
+S0,P50,50,Overload planning,"Separate hazard and overload authorization",NOT AUTHORIZED,Separate review
+S1,P0,0,Dead mechanical inspection,"Measured load path; bearings/shafts/horns/spacers/fasteners; pad data",NOT RUN,S0-P0
+S1,P5,5,Dead proof setup,"Fixture/catch and proof-load plan",BLOCKED,S1-P0
+S1,P10,10,Dead proof setup,"Fixture/catch and proof-load plan",BLOCKED,S1-P5
+S1,P20,20,Target dead proof setup,"Structural calculation and proof-load plan",BLOCKED,S1-P10
+S1,P30,30,Overload dead proof setup,"Separate proof-load plan",NOT AUTHORIZED,Separate review
+S1,P40,40,Overload dead proof setup,"Separate proof-load plan",NOT AUTHORIZED,Separate review
+S1,P50,50,Overload dead proof setup,"Separate proof-load plan",NOT AUTHORIZED,Separate review
+S2,P0,0,Isolated power,"Polarity/no-backfeed/inrush/idle/disconnect/protection evidence",NOT RUN,S1-P0
+S2,P5,5,Power sizing review,"Measured P0 current plus P5 profile estimate",BLOCKED,S2-P0
+S2,P10,10,Power sizing review,"Measured P5 current/thermal evidence",BLOCKED,S2-P5
+S2,P20,20,Target power sizing review,"Measured P10 evidence and target transient plan",BLOCKED,S2-P10
+S2,P30,30,Overload power review,"Converter/protection overload authorization",NOT AUTHORIZED,Separate review
+S2,P40,40,Overload power review,"Converter/protection overload authorization",NOT AUTHORIZED,Separate review
+S2,P50,50,Overload power review,"Converter/protection overload authorization",NOT AUTHORIZED,Separate review
+S3,P0,0,Torque-disabled communications,"Actual IDs/SKUs/firmware/mapping/watchdog/heartbeat record",NOT RUN,S2-P0
+S3,P5,5,No motion,"No payload-dependent test",NOT APPLICABLE,S3-P0
+S3,P10,10,No motion,"No payload-dependent test",NOT APPLICABLE,S3-P0
+S3,P20,20,No motion,"No payload-dependent test",NOT APPLICABLE,S3-P0
+S3,P30,30,No motion,"No payload-dependent test",NOT APPLICABLE,S3-P0
+S3,P40,40,No motion,"No payload-dependent test",NOT APPLICABLE,S3-P0
+S3,P50,50,No motion,"No payload-dependent test",NOT APPLICABLE,S3-P0
+S4,P0,0,Fixed-root single-axis dynamic,"J1-J5 direction/zero/range/tracking/current/temp/stop/cable record",NOT RUN,S3-P0
+S4,P5,5,Fixed-root single-axis dynamic,"Repeat worst distal axes with 5 g",BLOCKED,S4-P0
+S4,P10,10,Fixed-root single-axis dynamic,"Repeat worst distal axes with 10 g",BLOCKED,S4-P5
+S4,P20,20,Fixed-root target single-axis dynamic,"3x continuous torque and thermal evidence",BLOCKED,S4-P10
+S4,P30,30,Single-axis overload,"Separate low-energy authorization",NOT AUTHORIZED,Separate review
+S4,P40,40,Single-axis overload,"Separate low-energy authorization",NOT AUTHORIZED,Separate review
+S4,P50,50,Single-axis overload,"Separate low-energy authorization",NOT AUTHORIZED,Separate review
+S5,P0,0,Fixed-root coordinated dynamic,"Trajectory/gripper/backlash/contact/thermal/fault record",BLOCKED,S4-P0
+S5,P5,5,Fixed-root coordinated dynamic,"Static hold; reversals; transfer; grasp cycles; release",BLOCKED,S5-P0
+S5,P10,10,Fixed-root coordinated dynamic,"Static hold; reversals; transfer; grasp cycles; release",BLOCKED,S5-P5
+S5,P20,20,Fixed-root target dynamic,"Target hold/transfer/drop/thermal/tracking evidence",BLOCKED,S5-P10
+S5,P30,30,Coordinated overload,"Separate structural and electrical authorization",NOT AUTHORIZED,Separate review
+S5,P40,40,Coordinated overload,"Separate structural and electrical authorization",NOT AUTHORIZED,Separate review
+S5,P50,50,Coordinated overload,"Separate structural and electrical authorization",NOT AUTHORIZED,Separate review
+S6,P0,0,Restrained-system disturbance/fault,"Measured mass/CoM/inertia; stop paths; balance; estimator latency",BLOCKED,S5-P0
+S6,P5,5,Restrained-system dynamic,"Disturbance and carry evidence with 5 g",BLOCKED,S6-P0
+S6,P10,10,Restrained-system dynamic,"Disturbance and carry evidence with 10 g",BLOCKED,S6-P5
+S6,P20,20,Restrained target study,"Separate authorization; target balance/power/drop evidence",NOT AUTHORIZED,Separate review
+S6,P30,30,Mobile overload,No planned acceptance test,NOT AUTHORIZED,Out of baseline
+S6,P40,40,Mobile overload,No planned acceptance test,NOT AUTHORIZED,Out of baseline
+S6,P50,50,Mobile overload,No planned acceptance test,NOT AUTHORIZED,Out of baseline
+

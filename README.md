@@ -1,6 +1,15 @@
 
 # Microduck on MacOS with M Chip GPU 
 
+**Static Duck Viewer:** https://georgehu0815.github.io/microduck-lab/
+
+**Arm video library:** https://georgehu0815.github.io/microduck-lab/arm/
+
+The GitHub Pages site publishes `duck-viewer` with recorded experiment videos,
+evaluation evidence, guides, and English/Chinese controls. It does not run Python,
+MuJoCo, training jobs, live WebSockets, or physical hardware. Use the local setup
+below for those features. [Static publishing instructions](duck-viewer/README.md#github-pages-static-app).
+
 We build this open source Microduck Traning Studio which based on [microduck-lab](https://github.com/jonathanhawkins/microduck-lab) [Microduck](https://pollen-robotics.com/microduck) and [microduck_rl](https://github.com/pollen-robotics/microduck_rl).
 
 Please give all the credit to the baseline project.

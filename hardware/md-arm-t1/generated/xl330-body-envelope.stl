@@ -1,0 +1,86 @@
+solid xl330_published_body_envelope_not_mounting_model
+  facet normal 0 0 -1
+    outer loop
+      vertex 0 0 0
+      vertex 20 26 0
+      vertex 20 0 0
+    endloop
+  endfacet
+  facet normal 0 0 -1
+    outer loop
+      vertex 0 0 0
+      vertex 0 26 0
+      vertex 20 26 0
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 0 0 34
+      vertex 20 0 34
+      vertex 20 26 34
+    endloop
+  endfacet
+  facet normal 0 0 1
+    outer loop
+      vertex 0 0 34
+      vertex 20 26 34
+      vertex 0 26 34
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 0 0 0
+      vertex 20 0 0
+      vertex 20 0 34
+    endloop
+  endfacet
+  facet normal 0 -1 0
+    outer loop
+      vertex 0 0 0
+      vertex 20 0 34
+      vertex 0 0 34
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 20 0 0
+      vertex 20 26 0
+      vertex 20 26 34
+    endloop
+  endfacet
+  facet normal 1 0 0
+    outer loop
+      vertex 20 0 0
+      vertex 20 26 34
+      vertex 20 0 34
+    endloop
+  endfacet
+  facet normal 0 1 0
+    outer loop
+      vertex 20 26 0
+      vertex 0 26 0
+      vertex 0 26 34
+    endloop
+  endfacet
+  facet normal 0 1 -0
+    outer loop
+      vertex 20 26 0
+      vertex 0 26 34
+      vertex 20 26 34
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 0 26 0
+      vertex 0 0 0
+      vertex 0 0 34
+    endloop
+  endfacet
+  facet normal -1 0 0
+    outer loop
+      vertex 0 26 0
+      vertex 0 0 34
+      vertex 0 26 34
+    endloop
+  endfacet
+endsolid xl330_published_body_envelope_not_mounting_model

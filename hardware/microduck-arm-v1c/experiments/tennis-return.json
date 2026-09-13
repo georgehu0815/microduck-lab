@@ -1,0 +1,114 @@
+{
+  "experiment_id": "tennis-ground-return-v2",
+  "baseline": "microduck-single-arm-v1-c",
+  "status": "experimental_not_hardware_released",
+  "intent": "Pick a real-sized tennis ball from the floor, carry it, lower it into the bin, release on bottom support, and withdraw. No throwing.",
+  "ball": {
+    "nominal_diameter_m": 0.067,
+    "nominal_mass_kg": 0.058,
+    "type_1_2_diameter_range_m": [0.0654, 0.0686],
+    "type_1_2_mass_range_kg": [0.056, 0.0594],
+    "source": "https://www.itftennis.com/media/7221/2026-rules-of-tennis-english.pdf",
+    "source_section": "Appendix I, Type 1 and Type 2",
+    "initial_xy_m": [0.12, -0.015],
+    "spawn_jitter_m": 0.004,
+    "inertia_model": "analytical_thin_spherical_shell_not_measured",
+    "friction": [0.8, 0.005, 0.001],
+    "contact_qualification": "rigid_sphere_and_unmeasured_felt_contact_not_sim2real"
+  },
+  "bin": {
+    "center_xy_m": [0.38, 0.12],
+    "inside_size_xy_m": [0.18, 0.18],
+    "wall_height_m": 0.10,
+    "wall_thickness_m": 0.004,
+    "bottom_thickness_m": 0.004,
+    "anchored": true,
+    "status": "classroom_low_bin_fixture_not_full_height_household_bin"
+  },
+  "wide_gripper_candidate": {
+    "status": "concept_simulation_screening_not_fabrication_release",
+    "open_inner_pad_gap_m": 0.075,
+    "pad_outward_offset_each_m": 0.028,
+    "pad_center_x_m": 0.048,
+    "tcp_offset_m": 0.055,
+    "unchanged_gear_axis_spacing_m": 0.024,
+    "unchanged_actuator_count": 5,
+    "bridge_full_size_m": [0.012, 0.031, 0.003],
+    "bridge_center_x_m": 0.01,
+    "bridge_center_z_m": -0.0055,
+    "stem_full_size_m": [0.033, 0.008, 0.003],
+    "stem_center_x_m": 0.0325,
+    "stem_outward_offset_m": 0.004,
+    "material": "PA12_density_assumption_not_measured",
+    "assumed_density_kg_m3": 1100,
+    "mounting_interface": "shaft_horn_hole_pattern_and_retention_unresolved",
+    "required_evidence": ["shaft_horn_fit", "finger_bending", "grip_force", "ground_access", "payload_torque", "loaded_balance"]
+  },
+  "acceptance": {
+    "minimum_lift_clearance_m": 0.02,
+    "lift_hold_s": 0.5,
+    "minimum_carry_distance_m": 0.12,
+    "placement_speed_max_m_s": 0.03,
+    "bin_hold_s": 2.0,
+    "retreat_clearance_m": 0.02,
+    "fall_tilt_rad": 0.6,
+    "minimum_trunk_height_m": 0.065,
+    "require_bottom_support_before_release": true,
+    "throwing_allowed": false,
+    "require_free_base": true
+  },
+  "release_profiles": {
+    "supported": {
+      "experiment_id": "tennis-ground-return-v1",
+      "acceptance_version": "supported-v1",
+      "acceptance": {
+        "minimum_lift_clearance_m": 0.02,
+        "lift_hold_s": 0.5,
+        "minimum_carry_distance_m": 0.12,
+        "placement_speed_max_m_s": 0.03,
+        "bin_hold_s": 2.0,
+        "retreat_clearance_m": 0.02,
+        "fall_tilt_rad": 0.6,
+        "minimum_trunk_height_m": 0.065,
+        "require_bottom_support_before_release": true,
+        "throwing_allowed": false,
+        "require_free_base": true
+      }
+    },
+    "half_height": {
+      "experiment_id": "tennis-half-height-gravity-return-v2",
+      "acceptance_version": "half-height-gravity-drop-v1",
+      "acceptance": {
+        "minimum_lift_clearance_m": 0.02,
+        "lift_hold_s": 0.5,
+        "minimum_carry_distance_m": 0.12,
+        "placement_speed_max_m_s": 0.03,
+        "bin_hold_s": 2.0,
+        "retreat_clearance_m": 0.02,
+        "fall_tilt_rad": 0.6,
+        "minimum_trunk_height_m": 0.065,
+        "require_bottom_support_before_release": false,
+        "release_ball_center_max_wall_height_fraction": 0.5,
+        "release_authorization_hold_s": 0.2,
+        "release_upward_velocity_max_m_s": 0.005,
+        "release_lateral_speed_max_m_s": 0.02,
+        "airborne_upward_velocity_max_m_s": 0.03,
+        "airborne_lateral_speed_max_m_s": 0.08,
+        "maximum_free_fall_interval_s": 0.2,
+        "side_contact_containment_tolerance_m": 0.0005,
+        "throwing_allowed": false,
+        "require_free_base": true
+      }
+    }
+  },
+  "training": {
+    "actuator_count": 15,
+    "leg_actuators": 10,
+    "arm_pose_actuators": 4,
+    "gripper_actuators": 1,
+    "waist_actuators": 0,
+    "status": "blocked_until_gripper_payload_and_ground_reach_validated",
+    "steps": 0,
+    "reuse_existing_onnx_as_task_proof": false
+  }
+}

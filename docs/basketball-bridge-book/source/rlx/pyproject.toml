@@ -1,0 +1,93 @@
+[project]
+name = "rlx"
+version = "1.0.0"
+description = "Reinforcement learning algorithms implemented in Apple MLX"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Noah Farr", email = "login@noahfarr.com" }]
+keywords = ["reinforcement-learning", "mlx", "deep-learning", "gymnasium", "rl"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "envpool>=1.2.5",
+    "gymnasium>=1.2.1",
+    "mlx>=0.29.4; platform_system == 'Darwin'",
+    "mlx[cuda]>=0.29.4; platform_system == 'Linux'",
+    "tensorboard>=2.20.0",
+    "tensorboardX>=2.6.4",
+    "tyro>=0.9.32",
+    "wandb>=0.22.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/noahfarr/rlx"
+Repository = "https://github.com/noahfarr/rlx"
+Issues = "https://github.com/noahfarr/rlx/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["rlx"]
+
+[project.optional-dependencies]
+mjlab-microduck = [
+    "better-actuator-models; python_version >= '3.12' and python_version < '3.13'",
+    "huggingface_hub>=0.27.0; python_version >= '3.12' and python_version < '3.13'",
+    "imageio>=2.37.0; python_version >= '3.12' and python_version < '3.13'",
+    "matplotlib>=3.10.9; python_version >= '3.12' and python_version < '3.13'",
+    "mjlab==1.3.0; python_version >= '3.12' and python_version < '3.13'",
+    "onnx>=1.20.1; python_version >= '3.12' and python_version < '3.13'",
+    "onnxruntime>=1.24.4; python_version >= '3.12' and python_version < '3.13'",
+    "pillow>=11.0.0; python_version >= '3.12' and python_version < '3.13'",
+    "plotly>=6.0.0; python_version >= '3.12' and python_version < '3.13'",
+    "rustypot>=1.4.2; python_version >= '3.12' and python_version < '3.13'",
+    "scipy>=1.16; python_version >= '3.12' and python_version < '3.13'",
+    "torch==2.9.1; python_version >= '3.12' and python_version < '3.13'",
+    "trimesh>=4.0.0; python_version >= '3.12' and python_version < '3.13'",
+    "warp-lang==1.12.0; python_version >= '3.12' and python_version < '3.13'",
+]
+
+[project.entry-points."mjlab.tasks"]
+rlx_mjlab_microduck = "rlx.mjlab_microduck.tasks"
+
+[project.scripts]
+rlx-mjlab-train = "rlx.mjlab_microduck.train_cli:main"
+rlx-mjlab-list-envs = "rlx.mjlab_microduck.cli:list_envs"
+rlx-mjlab-play = "rlx.mjlab_microduck.cli:play"
+rlx-mjlab-export = "rlx.mjlab_microduck.tools.export:main"
+rlx-mjlab-infer = "rlx.mjlab_microduck.tools.infer_policy:main"
+rlx-mjlab-eval-running = "rlx.mjlab_microduck.cli:evaluate_running"
+rlx-mjlab-eval-swing = "rlx.mjlab_microduck.tools.evaluate_swing_checkpoint:main"
+rlx-mjlab-verify-swing-onnx = "rlx.mjlab_microduck.tools.verify_swing_onnx_parity:main"
+
+[tool.uv]
+override-dependencies = [
+    "protobuf>=4.0,<7.0",
+    "onnx>=1.20.1",
+    "zmq ; python_version < '3.0'",
+]
+
+[tool.uv.sources]
+better-actuator-models = { git = "https://github.com/Rhoban/bam.git", branch = "mjlab_frictionloss" }
+torch = [
+  { index = "pytorch-cu129", marker = "sys_platform == 'linux'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu129"
+url = "https://download.pytorch.org/whl/cu129"
+explicit = true

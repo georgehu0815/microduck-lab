@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="800"
+     viewBox="0 0 900 800" role="img">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #16202a; }
+    .title { font-size: 24px; font-weight: 700; }
+    .label { font-size: 14px; }
+    .small { font-size: 12px; }
+    .dim { stroke: #0b6e69; stroke-width: 1.5; fill: none; }
+    .part { stroke: #243746; stroke-width: 2; fill: #d9e2e8; }
+    .link { stroke: #d47716; stroke-width: 12; stroke-linecap: round; }
+    .axis { fill: #ffffff; stroke: #243746; stroke-width: 2; }
+    .blocked { fill: #fff4d6; stroke: #a66b00; stroke-width: 2; }
+    .power { stroke: #c92a2a; stroke-width: 4; fill: none; }
+    .ground { stroke: #30343b; stroke-width: 4; fill: none; }
+    .data { stroke: #087f5b; stroke-width: 3; fill: none; }
+    .box { fill: #f7f9fa; stroke: #243746; stroke-width: 2; }
+    .danger { fill: #a61e1e; font-weight: 700; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4"
+            orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#0b6e69"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text class="title" x="32" y="40">MD-Arm-T1 per-arm power and TTL wiring</text>
+  <text class="small" x="32" y="63">Duplicate as an electrically independent branch for the second arm.</text>
+
+  <rect class="box" x="32" y="105" width="150" height="80"/>
+  <text class="label" x="48" y="130">Independent PSU</text>
+  <text class="small" x="48" y="152">regulated 5.0 V</text>
+  <text class="small" x="48" y="172">10 A candidate, TBD</text>
+
+  <rect class="box" x="225" y="116" width="80" height="50"/>
+  <text class="small" x="265" y="146" text-anchor="middle">F_MAIN</text>
+  <rect class="box" x="350" y="105" width="150" height="80"/>
+  <text class="label danger" x="365" y="132">LATCHING E-STOP</text>
+  <text class="small" x="365" y="154">DC-rated pole per arm</text>
+  <text class="small" x="365" y="174">manual reset</text>
+  <line class="power" x1="182" y1="128" x2="225" y2="128"/>
+  <line class="power" x1="305" y1="128" x2="350" y2="128"/>
+  <line class="power" x1="500" y1="128" x2="485" y2="128"/>
+  <line class="power" x1="485" y1="128" x2="485" y2="533"/>
+
+  <rect class="box" x="32" y="235" width="270" height="112"/>
+  <text class="label" x="48" y="263">ROBOTIS U2D2 - TTL port</text>
+  <text class="small" x="48" y="287">pin 1 GND</text>
+  <text class="small danger" x="48" y="309">pin 2 N/C</text>
+  <text class="small" x="48" y="331">pin 3 DATA</text>
+
+  <line class="data" x1="302" y1="326" x2="390" y2="326"/>
+  <line class="data" x1="390" y1="183" x2="390" y2="551"/>
+  <line class="ground" x1="302" y1="282" x2="420" y2="282"/>
+  <line class="ground" x1="420" y1="183" x2="420" y2="610"/>
+  <line class="ground" x1="182" y1="168" x2="315" y2="168"/>
+  <line class="ground" x1="315" y1="168" x2="315" y2="610"/>
+  <line class="ground" x1="315" y1="610" x2="420" y2="610"/>
+  <text class="small" x="394" y="574">TTL DATA multidrop</text>
+  <text class="small" x="424" y="594">common ARM_GND reference</text>
+
+
+  <rect class="box" x="650" y="158" width="215" height="52"/>
+  <text class="label" x="664" y="178">J1 XL330-M288-T</text>
+  <text class="small" x="664" y="198">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="box" x="535" y="166" width="75" height="34"/>
+  <text class="small" x="572.5" y="188" text-anchor="middle">F_J1</text>
+  <line class="power" x1="485" y1="183" x2="535" y2="183"/>
+  <line class="power" x1="610" y1="183" x2="650" y2="183"/>
+  <line class="data" x1="390" y1="201" x2="650" y2="201"/>
+  <line class="ground" x1="420" y1="208" x2="650" y2="208"/>
+
+  <rect class="box" x="650" y="228" width="215" height="52"/>
+  <text class="label" x="664" y="248">J2 XL330-M288-T</text>
+  <text class="small" x="664" y="268">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="box" x="535" y="236" width="75" height="34"/>
+  <text class="small" x="572.5" y="258" text-anchor="middle">F_J2</text>
+  <line class="power" x1="485" y1="253" x2="535" y2="253"/>
+  <line class="power" x1="610" y1="253" x2="650" y2="253"/>
+  <line class="data" x1="390" y1="271" x2="650" y2="271"/>
+  <line class="ground" x1="420" y1="278" x2="650" y2="278"/>
+
+  <rect class="box" x="650" y="298" width="215" height="52"/>
+  <text class="label" x="664" y="318">J3 XL330-M288-T</text>
+  <text class="small" x="664" y="338">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="box" x="535" y="306" width="75" height="34"/>
+  <text class="small" x="572.5" y="328" text-anchor="middle">F_J3</text>
+  <line class="power" x1="485" y1="323" x2="535" y2="323"/>
+  <line class="power" x1="610" y1="323" x2="650" y2="323"/>
+  <line class="data" x1="390" y1="341" x2="650" y2="341"/>
+  <line class="ground" x1="420" y1="348" x2="650" y2="348"/>
+
+  <rect class="box" x="650" y="368" width="215" height="52"/>
+  <text class="label" x="664" y="388">J4 XL330-M288-T</text>
+  <text class="small" x="664" y="408">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="box" x="535" y="376" width="75" height="34"/>
+  <text class="small" x="572.5" y="398" text-anchor="middle">F_J4</text>
+  <line class="power" x1="485" y1="393" x2="535" y2="393"/>
+  <line class="power" x1="610" y1="393" x2="650" y2="393"/>
+  <line class="data" x1="390" y1="411" x2="650" y2="411"/>
+  <line class="ground" x1="420" y1="418" x2="650" y2="418"/>
+
+  <rect class="box" x="650" y="438" width="215" height="52"/>
+  <text class="label" x="664" y="458">J5 XL330-M288-T</text>
+  <text class="small" x="664" y="478">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="box" x="535" y="446" width="75" height="34"/>
+  <text class="small" x="572.5" y="468" text-anchor="middle">F_J5</text>
+  <line class="power" x1="485" y1="463" x2="535" y2="463"/>
+  <line class="power" x1="610" y1="463" x2="650" y2="463"/>
+  <line class="data" x1="390" y1="481" x2="650" y2="481"/>
+  <line class="ground" x1="420" y1="488" x2="650" y2="488"/>
+
+  <rect class="box" x="650" y="508" width="215" height="52"/>
+  <text class="label" x="664" y="528">G XL330-M288-T</text>
+  <text class="small" x="664" y="548">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="box" x="535" y="516" width="75" height="34"/>
+  <text class="small" x="572.5" y="538" text-anchor="middle">F_G</text>
+  <line class="power" x1="485" y1="533" x2="535" y2="533"/>
+  <line class="power" x1="610" y1="533" x2="650" y2="533"/>
+  <line class="data" x1="390" y1="551" x2="650" y2="551"/>
+  <line class="ground" x1="420" y1="558" x2="650" y2="558"/>
+
+
+  <rect class="blocked" x="32" y="635" width="828" height="96" rx="4"/>
+  <text class="label" x="48" y="662">PROHIBITED CONNECTIONS</text>
+  <text class="small" x="48" y="686">No original Microduck battery positive, body VDD, or body DATA. U2D2 does not power servos.</text>
+  <text class="small" x="48" y="708">Fuse values, conductors, connectors, distribution board, and e-stop DC ratings remain selection gates.</text>
+
+  <text class="small" x="32" y="768">Official pins: U2D2 TTL = 1 GND, 2 N/C, 3 DATA; XL330 TTL = 1 GND, 2 VDD, 3 DATA. Accessed 2026-09-12.</text>
+
+</svg>

@@ -1,0 +1,199 @@
+{
+  "assessment": {
+    "assistance": 0,
+    "by_color": {
+      "blue": {
+        "coverage": 1.0,
+        "length_ratio": 1.0003907092641675,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.07833289225038247,
+        "reference_length_m": 0.07830229881682912,
+        "symmetric_chamfer_m": 9.307936633799655e-05
+      },
+      "charcoal": {
+        "coverage": 1.0,
+        "length_ratio": 0.9994939327640951,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.12588711443812595,
+        "reference_length_m": 0.12595085403868916,
+        "symmetric_chamfer_m": 8.854757153568231e-05
+      },
+      "gold": {
+        "coverage": 1.0,
+        "length_ratio": 1.0237771991415803,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.307782105960588,
+        "reference_length_m": 0.3006338744588745,
+        "symmetric_chamfer_m": 0.00011199929284419664
+      },
+      "orange": {
+        "coverage": 1.0,
+        "length_ratio": 1.0164692608020782,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.05449359187155263,
+        "reference_length_m": 0.05361066386656167,
+        "symmetric_chamfer_m": 0.00010057094762101755
+      }
+    },
+    "completed": true,
+    "contact_steps": 3483,
+    "contract_version": "microduck-brush-v2",
+    "coverage": 1.0,
+    "fallen_or_dropped": false,
+    "grasp_fraction": 0.9998332777592531,
+    "max_compression_m": 0.0005647484043162518,
+    "max_normal_force_n": 0.014689018235161454,
+    "palette_contacts": [
+      {
+        "color": 0,
+        "force_n": 0.001341957342409678,
+        "time": 2.039999999999997
+      },
+      {
+        "color": 1,
+        "force_n": 0.002040183373993623,
+        "time": 69.94600000001839
+      },
+      {
+        "color": 2,
+        "force_n": 0.0021447276414590893,
+        "time": 84.63199999998416
+      },
+      {
+        "color": 3,
+        "force_n": 0.0018877149831055427,
+        "time": 107.03599999993195
+      }
+    ],
+    "passed": true,
+    "pen_up_leak_fraction": 0.037848605577689244,
+    "precision": 1.0,
+    "unassisted": true
+  },
+  "contract_version": "microduck-brush-v2",
+  "control_steps": 5998,
+  "controller": "onnx",
+  "created_at": "2026-09-12T21:53:49.016622+00:00",
+  "drawing_assessment": {
+    "assistance": 0,
+    "by_color": {
+      "blue": {
+        "coverage": 1.0,
+        "length_ratio": 1.0003907092641675,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.07833289225038247,
+        "reference_length_m": 0.07830229881682912,
+        "symmetric_chamfer_m": 9.307936633799655e-05
+      },
+      "charcoal": {
+        "coverage": 1.0,
+        "length_ratio": 0.9994939327640951,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.12588711443812595,
+        "reference_length_m": 0.12595085403868916,
+        "symmetric_chamfer_m": 8.854757153568231e-05
+      },
+      "gold": {
+        "coverage": 1.0,
+        "length_ratio": 1.0237771991415803,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.307782105960588,
+        "reference_length_m": 0.3006338744588745,
+        "symmetric_chamfer_m": 0.00011199929284419664
+      },
+      "orange": {
+        "coverage": 1.0,
+        "length_ratio": 1.0164692608020782,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.05449359187155263,
+        "reference_length_m": 0.05361066386656167,
+        "symmetric_chamfer_m": 0.00010057094762101755
+      }
+    },
+    "completed": true,
+    "contact_steps": 3483,
+    "contract_version": "microduck-brush-v2",
+    "coverage": 1.0,
+    "fallen_or_dropped": false,
+    "grasp_fraction": 0.9998332777592531,
+    "max_compression_m": 0.0005647484043162518,
+    "max_normal_force_n": 0.014689018235161454,
+    "palette_contacts": [
+      {
+        "color": 0,
+        "force_n": 0.001341957342409678,
+        "time": 2.039999999999997
+      },
+      {
+        "color": 1,
+        "force_n": 0.002040183373993623,
+        "time": 69.94600000001839
+      },
+      {
+        "color": 2,
+        "force_n": 0.0021447276414590893,
+        "time": 84.63199999998416
+      },
+      {
+        "color": 3,
+        "force_n": 0.0018877149831055427,
+        "time": 107.03599999993195
+      }
+    ],
+    "passed": true,
+    "pen_up_leak_fraction": 0.037848605577689244,
+    "precision": 1.0,
+    "unassisted": true
+  },
+  "elapsed_seconds": 119.96000000000001,
+  "environment": {
+    "actuator": "xml",
+    "assistance": 0,
+    "max_episode_s": 120.0,
+    "recipe": "drawing",
+    "recipe_options": {}
+  },
+  "fps": 10.0,
+  "frames": 1200,
+  "outputs": {
+    "contact_sheet": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render_bc/frame_sheet.png",
+    "painting": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render_bc/painting.png",
+    "raw_trace": {
+      "csv": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render_bc/raw_trace.csv",
+      "json": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render_bc/raw_trace.json"
+    },
+    "video": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render_bc/rollout_bc.mp4"
+  },
+  "paint_source": "actual MuJoCo brush-tip contact trace only",
+  "recipe": "drawing",
+  "requested_fps": 10.0,
+  "requested_seconds": 120.0,
+  "return": 19808.696198091566,
+  "seed": 10001,
+  "source": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/bc.onnx",
+  "source_sha256": "75f584999c255f5f326df724698c1c98972f71f7545b663cd4dfc994fce4023b",
+  "source_type": "policy",
+  "teacher_diagnostic": false,
+  "visible_paint_segments": 2000,
+  "video_sha256": "86219e78f1a8a58b2bde9b0e40677f7c067a11e5dded452356f821bb5211f4a1",
+  "video_verification": {
+    "checked_at": "2026-09-12T21:54:01.870122+00:00",
+    "frames": 1200,
+    "fps": 10.0,
+    "encoded_seconds": 120.0,
+    "size": [
+      640,
+      480
+    ],
+    "first_last_frames_differ": true,
+    "controller_stage": "BC + 2 DAgger rounds; before PPO"
+  }
+}

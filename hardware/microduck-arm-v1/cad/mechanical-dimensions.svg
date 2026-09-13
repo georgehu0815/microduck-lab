@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1032"
+     viewBox="0 0 900 1032" role="img"
+     aria-label="ENGINEERING PROTOTYPE NOT FABRICATION RELEASE">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #17212b; }
+    .title { font-size: 24px; font-weight: 700; }
+    .subtitle { font-size: 14px; font-weight: 700; fill: #9b1c1c; }
+    .label { font-size: 14px; }
+    .small { font-size: 12px; }
+    .tiny { font-size: 10px; }
+    .part { fill: #dce4e8; stroke: #263746; stroke-width: 2; }
+    .blank { fill: #fff1c7; stroke: #8a5a00; stroke-width: 2; }
+    .link { stroke: #d06b16; stroke-width: 12; stroke-linecap: round; }
+    .axis { fill: white; stroke: #263746; stroke-width: 2; }
+    .dim { fill: none; stroke: #087f5b; stroke-width: 1.5; }
+    .data { fill: none; stroke: #087f5b; stroke-width: 3; }
+    .power { fill: none; stroke: #c92a2a; stroke-width: 4; }
+    .ground { fill: none; stroke: #343a40; stroke-width: 4; }
+    .box { fill: #f7f9fa; stroke: #263746; stroke-width: 2; }
+    .unresolved { fill: #fff4d6; stroke: #a66b00; stroke-width: 2; }
+    .forbidden { fill: #fff0f0; stroke: #c92a2a; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4"
+            orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#087f5b"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text class="title" x="34" y="40">MicroDuck single arm v1-B - mechanical dimensions</text>
+  <text class="subtitle" x="34" y="64">ENGINEERING PROTOTYPE NOT FABRICATION RELEASE</text>
+  <text class="small" x="34" y="84">Canonical input: hardware/microduck-arm-v1/spec/design.json | revision engineering-prototype-1 | SHA-256 57aed79ec22c...</text>
+
+  <text class="label" x="34" y="120">Side elevation - nominal kinematic axis distances</text>
+  <rect class="blank" x="70" y="310" width="100" height="30"/>
+  <text class="tiny" x="120" y="329" text-anchor="middle">TRUNK MOUNT BLANK - 20 g target</text>
+  <circle class="axis" cx="120.0" cy="285.0" r="7"/>
+  <line class="link" x1="120.0" y1="285.0" x2="340.0" y2="245.0"/>
+  <circle class="axis" cx="340.0" cy="245.0" r="7"/>
+  <line class="link" x1="340.0" y1="245.0" x2="540.0" y2="285.0"/>
+  <circle class="axis" cx="540.0" cy="285.0" r="7"/>
+  <line class="link" x1="540.0" y1="285.0" x2="660.0" y2="285.0"/>
+  <circle cx="660.0" cy="285.0" r="7" fill="#087f5b"/>
+  <text class="small" x="670.0" y="275.0">TCP</text>
+  <line class="dim" x1="120.0" y1="190" x2="340.0" y2="190" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="small" x="230.0" y="182.0" text-anchor="middle">55 mm shoulder-elbow nominal</text>
+
+  <line class="dim" x1="340.0" y1="375" x2="540.0" y2="375" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="small" x="440.0" y="367.0" text-anchor="middle">50 mm elbow-wrist nominal</text>
+
+  <line class="dim" x1="540.0" y1="190" x2="660.0" y2="190" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="small" x="600.0" y="182.0" text-anchor="middle">30 mm wrist-TCP nominal</text>
+
+
+  <rect class="unresolved" x="34" y="415" width="832" height="132"/>
+  <text class="label" x="50" y="443">MOTOR ENVELOPE AND SUPPORT-BLANK BOUNDARY</text>
+  <text class="small" x="50" y="468">5 XL330-M288-T candidates, 18 g each; body envelope 20 x 34 x 26 mm for clearance only.</text>
+  <text class="small" x="50" y="491">Source mesh depth is about 29 mm while manufacturer body depth is 26 mm. Do not rescale or infer a mating face.</text>
+  <text class="small" x="50" y="514">No horn pilot, bolt circle, screw size/depth, bearing seat, cable relief, tolerance, or hole pattern is released.</text>
+  <text class="tiny" x="50" y="529">Kinematic sketch omits motor boxes. Canonical local centers (mm): yaw [0,0,-25], shoulder [0,0,18], elbow [45,0,20], wrist [25,0,20], gripper [7,0,22].</text>
+
+  <text class="label" x="34" y="580">Top view - counter-rotating geared gripper concept</text>
+  <line x1="80" y1="700" x2="520" y2="700" stroke="#adb5bd" stroke-dasharray="6 5"/>
+  <circle class="part" cx="235" cy="652" r="48"/>
+  <circle class="part" cx="235" cy="748" r="48"/>
+  <circle class="axis" cx="235" cy="652" r="5"/>
+  <circle class="axis" cx="235" cy="748" r="5"/>
+  <line x1="235" y1="652" x2="355" y2="677" stroke="#d06b16" stroke-width="14" stroke-linecap="round"/>
+  <line x1="235" y1="748" x2="355" y2="723" stroke="#d06b16" stroke-width="14" stroke-linecap="round"/>
+  <text class="small" x="370" y="683">jaw A closes clockwise</text>
+  <text class="small" x="370" y="725">jaw B closes counter-clockwise</text>
+  <line class="dim" x1="170" y1="652" x2="170" y2="700" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="small" x="170.0" y="668.0" text-anchor="middle">12 mm</text>
+
+  <line class="dim" x1="170" y1="700" x2="170" y2="748" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="small" x="170.0" y="716.0" text-anchor="middle">12 mm</text>
+
+  <line class="dim" x1="235" y1="815" x2="355" y2="815" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="small" x="295.0" y="807.0" text-anchor="middle">30 mm jaw length</text>
+
+  <text class="small" x="570" y="640">Equal pitch gears</text>
+  <text class="small" x="570" y="664">ratio = -1</text>
+  <text class="small" x="570" y="688">axes parallel to +Z</text>
+  <text class="small" x="570" y="712">centers y = +/-12 mm</text>
+  <text class="small" x="570" y="736">rotary jaws, no sliders</text>
+  <text class="small" x="570" y="760">left q [-0.32,0], right q [0,0.32] rad</text>
+  <text class="small" x="570" y="784">right = -left; max closure 0.32 rad</text>
+  <text class="small" x="570" y="808">gear teeth/module/backlash TBD</text>
+
+  <rect class="unresolved" x="34" y="858" width="832" height="104"/>
+  <text class="label" x="50" y="886">MASS AND LOAD TARGETS - UNVERIFIED</text>
+  <text class="small" x="50" y="910">Central trunk mount target: 20 g. Complete arm cartridge target: 160 g. Motors alone: 90 g.</text>
+  <text class="small" x="50" y="934">Required shoulder continuous capability evidence: at least 3x measured worst-case gravity torque. Evidence is missing.</text>
+  <text class="tiny" x="34" y="1000">Dimensioned review drawing; not a scale-controlled manufacturing drawing. TBD mating machining must remain solid/blank.</text>
+  <text class="tiny" x="34" y="1014">Motor envelopes use canonical local centers; overall packaging, interference, cable routing, and table clearance remain unverified.</text>
+
+</svg>

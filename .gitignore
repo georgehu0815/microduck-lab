@@ -36,3 +36,14 @@ microduck_local/farm-server.log
 # backend log (restart.sh writes it)
 microduck_local/lab-server.log
 /.restart-lab/
+
+# Local experiment output, private sessions, and independent checkouts
+/artifacts/
+/.omx/
+**/:memory:.ses
+/microduck-playground/
+/docs/*.zip
+/docs/classroom-ppt/
+.env
+.env.*
+!.env.example

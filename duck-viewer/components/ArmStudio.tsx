@@ -387,6 +387,10 @@ export default function ArmStudio() {
 
   useEffect(() => {
     const readHash = () => {
+      if (IS_STATIC_EXPORT) {
+        setWorkspaceView("videos");
+        return;
+      }
       if (window.location.hash === "#live" || window.location.hash === "#evidence" || window.location.hash === "#bom") setWorkspaceView("live");
       else if (window.location.hash === "#videos") setWorkspaceView("videos");
     };
@@ -396,6 +400,7 @@ export default function ArmStudio() {
   }, []);
 
   function showWorkspace(view: "videos" | "live") {
+    if (IS_STATIC_EXPORT && view === "live") return;
     setWorkspaceView(view);
     if (view === "videos") setPlaying(false);
     window.history.replaceState(window.history.state, "", `#${view}`);
@@ -430,6 +435,7 @@ export default function ArmStudio() {
   }, []);
 
   const connect = useCallback(async () => {
+    if (IS_STATIC_EXPORT) return;
     setLoading(true);
     try {
       await requestJson("health");
@@ -467,6 +473,7 @@ export default function ArmStudio() {
     path: "reset" | "step" | "teacher",
     body: Record<string, unknown>
   ) => {
+    if (IS_STATIC_EXPORT) return null;
     if (commandLock.current) return null;
     commandLock.current = true;
     setBusy(true);
@@ -633,9 +640,9 @@ export default function ArmStudio() {
           <button aria-pressed={workspaceView === "videos"} onClick={() => showWorkspace("videos")}>
             <Icon>▷</Icon>{t("Video library", "视频证据")}
           </button>
-          <button aria-pressed={workspaceView === "live"} onClick={() => showWorkspace("live")}>
+          {!IS_STATIC_EXPORT && <button aria-pressed={workspaceView === "live"} onClick={() => showWorkspace("live")}>
             <Icon>⌁</Icon>{t("Live simulator", "实时实验")}
-          </button>
+          </button>}
           <span>{t("SIMULATION ONLY · HARDWARE LOCKED", "仅限仿真 · 硬件已锁定")}</span>
         </nav>
 

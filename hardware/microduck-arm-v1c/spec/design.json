@@ -1,0 +1,525 @@
+{
+  "schema_version": 1,
+  "design_id": "microduck-single-arm-v1-c",
+  "revision": "engineering-configuration-baseline-v1-c",
+  "status": "engineering_configuration_baseline_not_fabrication_or_hardware_release",
+  "default_candidate": "A",
+  "candidate_selection_status": "candidate_A_default_pending_A_B_qualification",
+  "inherits_simulation_geometry_from": "microduck-single-arm-v1-b",
+  "source_model": "rlx/rlx/mjlab_microduck/robot/microduck/robot_allcollisions_backlash.xml",
+  "source_model_sha256": "248c712e13258104ccab3f96c5cc47c7faa8f718f56f2c7de03efda653c8fb6b",
+  "units": {
+    "length": "m",
+    "mass": "kg",
+    "angle": "rad",
+    "torque": "N*m",
+    "speed": "rev/min"
+  },
+  "control": {
+    "dt_s": 0.02,
+    "physics_dt_s": 0.002,
+    "pose_action_scale_rad": 0.5,
+    "arm_action_encoding": "joint_range_affine",
+    "joint_speed_limit_rad_s": 0.4,
+    "arm_joint_slew_limit_rad_s": 0.4,
+    "leg_joint_slew_limit_rad_s": 6.0,
+    "slew_limit_status": "simulation_screening_only_not_hardware_qualified"
+  },
+  "simulation_solver": {
+    "noslip_iterations": 10,
+    "purpose": "resolve_soft_constraint_friction_drift_without_changing_friction_or_contact_limits",
+    "hardware_contact_qualification": false
+  },
+  "whole_body_teacher": {
+    "revision": "free_base_contact_and_posture_v2",
+    "reach_pitch_trim_rad": -0.1,
+    "manipulation_pitch_trim_rad": 0.05,
+    "pitch_trim_indices": [2, 4, 7, 9],
+    "pitch_trim_signs": [-1, 1, 1, -1],
+    "free_approach_lift_m": 0.05,
+    "free_transfer_clearance_m": 0.06,
+    "free_pickup_tcp_offset_m": 0.003,
+    "transport_arm_targets_rad": [-0.23, -1.1, 1.4, -0.3],
+    "status": "simulation_teacher_not_learned_or_hardware_qualified"
+  },
+  "joint_order": [
+    "left_hip_yaw",
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_knee",
+    "left_ankle",
+    "right_hip_yaw",
+    "right_hip_roll",
+    "right_hip_pitch",
+    "right_knee",
+    "right_ankle",
+    "arm_base_yaw",
+    "arm_shoulder_pitch",
+    "arm_elbow_pitch",
+    "arm_wrist_pitch",
+    "arm_gripper"
+  ],
+  "home_rad": [
+    0,
+    -0.0873,
+    -0.4579,
+    -0.0049,
+    0.453,
+    0,
+    0.0873,
+    0.4579,
+    0.0049,
+    -0.453,
+    0,
+    -0.9,
+    1.2,
+    -0.3,
+    0
+  ],
+  "arm": {
+    "pose_joint_count": 4,
+    "actuator_count": 5,
+    "motor_sku": "candidate_override_required",
+    "motor_mass_kg": 0.018,
+    "motor_envelope_m": [0.02, 0.026, 0.034],
+    "motor_envelope_note": "Body envelope rotated W,D,H; not a mounting-hole drawing. Duck source STL retained unchanged.",
+    "servo_centers_local_m": {
+      "yaw": [0, 0, -0.025],
+      "shoulder": [0, 0, 0.018],
+      "elbow": [0.045, 0, 0.02],
+      "wrist": [0.025, 0, 0.02],
+      "gripper": [0.007, 0, 0.022]
+    },
+    "shoulder_pivot_local_m": [0, 0, 0.018],
+    "shoulder_pivot_status": "v1_c_geometry_revision_aligned_with_shoulder_motor_envelope_center",
+    "mount_pos_m": [0.015, 0, 0.04],
+    "link_lengths_m": [0.055, 0.05, 0.03],
+    "joint_ranges_rad": [
+      [-1.2, 1.2],
+      [-1.7, 0.8],
+      [-1.5, 1.8],
+      [-1.4, 1.4],
+      [-0.32, 0]
+    ],
+    "gripper_pivot_half_spacing_m": 0.012,
+    "gripper_finger_length_m": 0.03,
+    "gripper_max_closure_rad": 0.32,
+    "gripper_coupling": "opposite_z_rotation_equal_gear_ratio_left_driven_right_passive",
+    "contact_pads": {
+      "count": 2,
+      "shape": "analytical_box",
+      "full_size_m": [0.024, 0.005, 0.008],
+      "center_local_m": [0.023, 0, 0],
+      "mass_each_kg": 0.005,
+      "solref": [0.004, 1],
+      "solimp": [0.95, 0.99, 0.001],
+      "status": "unmeasured_contact_screening"
+    },
+    "gripper_gear_candidate": {
+      "status": "kinematic_candidate_not_physical_release",
+      "module_m": 0.001,
+      "left_teeth": 24,
+      "right_teeth": 24,
+      "center_distance_formula": "module_m * (left_teeth + right_teeth) / 2",
+      "equal_gear_center_distance_formula": "module_m * teeth",
+      "center_distance_m": 0.024,
+      "ratio": -1.0
+    },
+    "simulation_force_limit_nm": 0.1,
+    "simulation_kp": 2.0,
+    "simulation_kv": 0.05,
+    "force_limit_status": "screening_assumption_not_qualified_continuous_rating",
+    "required_continuous_torque_margin": 3.0,
+    "gravity_compensation": {
+      "mode": "teacher_position_target_feedforward",
+      "formula": "clip(qfrc_bias / simulation_kp, -0.04, 0.04)",
+      "applies_to_action_indices": [10, 11, 12, 13],
+      "maximum_position_offset_rad": 0.04,
+      "state_source": "simulator_truth_qfrc_bias",
+      "hardware_status": "unqualified",
+      "not_direct_torque_feedforward": true
+    },
+    "mass_target_kg": 0.16,
+    "mass_target_status": "engineering_cartridge_target_not_a_simulation_mass_constraint",
+    "mount_mass_target_kg": 0.02,
+    "mount_mass_target_status": "inherited_v1_b_simulation_placeholder_separate_from_0.010_kg_engineering_interface_budget"
+  },
+  "actuator_mapping": [
+    {
+      "joint_id": "J1",
+      "motor_id": "M1",
+      "joint_name": "arm_base_yaw",
+      "action_index": 10,
+      "provisional_bus_id": 21
+    },
+    {
+      "joint_id": "J2",
+      "motor_id": "M2",
+      "joint_name": "arm_shoulder_pitch",
+      "action_index": 11,
+      "provisional_bus_id": 22
+    },
+    {
+      "joint_id": "J3",
+      "motor_id": "M3",
+      "joint_name": "arm_elbow_pitch",
+      "action_index": 12,
+      "provisional_bus_id": 23
+    },
+    {
+      "joint_id": "J4",
+      "motor_id": "M4",
+      "joint_name": "arm_wrist_pitch",
+      "action_index": 13,
+      "provisional_bus_id": 24
+    },
+    {
+      "joint_id": "J5",
+      "motor_id": "M5",
+      "joint_name": "arm_gripper",
+      "action_index": 14,
+      "provisional_bus_id": 25
+    }
+  ],
+  "bus_id_policy": {
+    "provisional_ids": [21, 22, 23, 24, 25],
+    "allowed_actual_ids": {
+      "minimum": 0,
+      "maximum": 252,
+      "must_be_unique": true
+    },
+    "actual_id_evidence_status": "unverified",
+    "physical_pin_mapping_status": "unreleased",
+    "real_io_implemented": false
+  },
+  "motor_catalog": {
+    "XL330-M288-T": {
+      "manufacturer": "ROBOTIS",
+      "identity_status": "manufacturer_documented_candidate",
+      "mass_kg": 0.018,
+      "recommended_voltage_v": 5.0,
+      "input_voltage_range_v": [3.7, 6.0],
+      "gear_ratio": 288.4,
+      "stall_torque_at_5v_nm": 0.52,
+      "no_load_speed_at_5v_rpm": 103,
+      "continuous_torque_rating_nm": null,
+      "continuous_speed_rating_rpm": null,
+      "rating_note": "Torque is stall torque and speed is no-load speed; neither is a continuous operating rating.",
+      "rating_source_class": "official_manufacturer_emanual",
+      "rating_source_url": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/"
+    },
+    "XL330-M077-T": {
+      "manufacturer": "ROBOTIS",
+      "identity_status": "manufacturer_documented_candidate",
+      "mass_kg": 0.018,
+      "recommended_voltage_v": 5.0,
+      "input_voltage_range_v": [3.7, 6.0],
+      "gear_ratio": 77.5,
+      "stall_torque_at_5v_nm": 0.215,
+      "no_load_speed_at_5v_rpm": 383,
+      "continuous_torque_rating_nm": null,
+      "continuous_speed_rating_rpm": null,
+      "rating_note": "Torque is stall torque and speed is no-load speed; neither is a continuous operating rating.",
+      "rating_source_class": "official_manufacturer_emanual",
+      "rating_source_url": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m077/"
+    }
+  },
+  "source_provenance": {
+    "vendor_source_manifest": "hardware/microduck-arm-v1c/vendor/SOURCE-MANIFEST.md",
+    "manufacturer_rating_authority": "official_ROBOTIS_eManual_model_pages",
+    "shop_reference_policy": "shop_or_distributor_pages_are_procurement_cross_checks_only_and_must_not_be_merged_with_eManual_rating_values",
+    "shop_rating_values_ingested": false,
+    "cad_download_status_authority": "vendor_SOURCE-MANIFEST"
+  },
+  "candidates": {
+    "A": {
+      "label": "5M288",
+      "status": "default_pending_A_B_qualification",
+      "motor_skus_by_motor": {
+        "M1": "XL330-M288-T",
+        "M2": "XL330-M288-T",
+        "M3": "XL330-M288-T",
+        "M4": "XL330-M288-T",
+        "M5": "XL330-M288-T"
+      }
+    },
+    "B": {
+      "label": "3M288+2M077",
+      "status": "research_candidate_pending_A_B_qualification",
+      "motor_skus_by_motor": {
+        "M1": "XL330-M288-T",
+        "M2": "XL330-M288-T",
+        "M3": "XL330-M288-T",
+        "M4": "XL330-M077-T",
+        "M5": "XL330-M077-T"
+      }
+    }
+  },
+  "candidate_comparison_policy": {
+    "automatic_rotor_inertia_superiority": false,
+    "automatic_energy_superiority": false,
+    "required_evidence": [
+      "measured_output_inertia_and_backdrive_behavior",
+      "matched_task_energy_and_thermal_test",
+      "qualified_continuous_torque_speed_envelope",
+      "A_B_tracking_and_disturbance_test"
+    ]
+  },
+  "engineering_bom": {
+    "scope": "complete_arm_cartridge_inclusive_of_interface_not_extra_electronics",
+    "original_user_sum_kg": 0.17,
+    "original_user_sum_status": "corrected_from_0.160_to_0.170",
+    "target_total_kg": 0.16,
+    "categories": {
+      "servos": {
+        "function": "five_joint_actuation",
+        "interface": "five_XL330_envelopes_and_TTL_bus",
+        "mass_kg": 0.09
+      },
+      "links": {
+        "function": "load_path_between_joint_axes",
+        "interface": "joint_bracket_interfaces",
+        "mass_kg": 0.02
+      },
+      "brackets": {
+        "function": "servo_support_and_axis_reaction",
+        "interface": "servo_and_link_mating_features_unreleased",
+        "mass_kg": 0.01
+      },
+      "gripper": {
+        "function": "two_jaw_object_contact",
+        "interface": "M5_equal_gear_candidate",
+        "mass_kg": 0.01
+      },
+      "interface": {
+        "function": "complete_cartridge_to_trunk_attachment",
+        "interface": "physical_pin_and_mount_mapping_unreleased",
+        "mass_kg": 0.01
+      },
+      "wiring_fasteners": {
+        "function": "power_data_routing_and_retention",
+        "interface": "ratings_and_lengths_unqualified",
+        "mass_kg": 0.01
+      },
+      "reserve": {
+        "function": "mass_growth_allowance",
+        "interface": "not_a_separate_electronics_allowance",
+        "mass_kg": 0.01
+      }
+    }
+  },
+  "mass_properties": {
+    "status": "analytical_box_estimate_not_CAD_or_measured",
+    "principal_inertia_release_gate": "fail",
+    "principal_inertia_quality": "unqualified_estimate",
+    "components": [
+      {
+        "name": "M1",
+        "mass_kg": 0.018,
+        "box_size_m": [0.02, 0.026, 0.034],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000002748, 0, 0], [0, 0.000002334, 0], [0, 0, 0.000001614]]
+      },
+      {
+        "name": "M2",
+        "mass_kg": 0.018,
+        "box_size_m": [0.02, 0.026, 0.034],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000002748, 0, 0], [0, 0.000002334, 0], [0, 0, 0.000001614]]
+      },
+      {
+        "name": "M3",
+        "mass_kg": 0.018,
+        "box_size_m": [0.02, 0.026, 0.034],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000002748, 0, 0], [0, 0.000002334, 0], [0, 0, 0.000001614]]
+      },
+      {
+        "name": "M4",
+        "mass_kg": 0.018,
+        "box_size_m": [0.02, 0.026, 0.034],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000002748, 0, 0], [0, 0.000002334, 0], [0, 0, 0.000001614]]
+      },
+      {
+        "name": "M5",
+        "mass_kg": 0.018,
+        "box_size_m": [0.02, 0.026, 0.034],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000002748, 0, 0], [0, 0.000002334, 0], [0, 0, 0.000001614]]
+      },
+      {
+        "name": "links",
+        "mass_kg": 0.02,
+        "box_size_m": [0.09, 0.012, 0.008],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000000346667, 0, 0], [0, 0.000013606667, 0], [0, 0, 0.00001374]]
+      },
+      {
+        "name": "brackets",
+        "mass_kg": 0.01,
+        "box_size_m": [0.05, 0.04, 0.012],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000001453333, 0, 0], [0, 0.000002203333, 0], [0, 0, 0.000003416667]]
+      },
+      {
+        "name": "gripper",
+        "mass_kg": 0.01,
+        "box_size_m": [0.04, 0.03, 0.02],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000001083333, 0, 0], [0, 0.000001666667, 0], [0, 0, 0.000002083333]]
+      },
+      {
+        "name": "interface",
+        "mass_kg": 0.01,
+        "box_size_m": [0.04, 0.03, 0.008],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000000803333, 0, 0], [0, 0.000001386667, 0], [0, 0, 0.000002083333]]
+      },
+      {
+        "name": "wiring_fasteners",
+        "mass_kg": 0.01,
+        "box_size_m": [0.08, 0.02, 0.01],
+        "status": "analytical_box_estimate_not_CAD_or_measured",
+        "inertia_tensor_kg_m2": [[0.000000416667, 0, 0], [0, 0.000005416667, 0], [0, 0, 0.000005666667]]
+      },
+      {
+        "name": "reserve",
+        "mass_kg": 0.01,
+        "box_size_m": null,
+        "status": "unqualified_mass_reserve_not_measured",
+        "inertia_tensor_kg_m2": null
+      }
+    ]
+  },
+  "simulation_mass_ledger": {
+    "status": "derived_from_explicit_v1_b_inherited_and_v1_c_overridden_geom_masses_not_measured",
+    "components_kg": {
+      "mount_plate": 0.02,
+      "five_motors": 0.09,
+      "upper_link": 0.018,
+      "forearm_link": 0.016,
+      "palm": 0.012,
+      "two_contact_pads": 0.01
+    },
+    "modeled_arm_geoms_including_mount_kg": 0.166,
+    "modeled_arm_geoms_excluding_mount_kg": 0.146,
+    "engineering_target_kg": 0.16,
+    "target_enforcement": "not_forced_to_match_simulation_geom_mass",
+    "mount_budget_distinction": "0.020_kg_modeled_mount_plate_is_an_inherited_simulation_placeholder;_0.010_kg_BOM_interface_is_the_engineering_budget"
+  },
+  "replacement_mass_assumptions": {
+    "relocated_electronics": {
+      "mass_kg": 0.07,
+      "pos_m": [-0.01, 0, 0.018],
+      "size_m": [0.04, 0.024, 0.008]
+    },
+    "dedicated_arm_pack": {
+      "mass_kg": 0.08,
+      "pos_m": [-0.04, 0, 0.015],
+      "size_m": [0.034, 0.028, 0.02]
+    },
+    "power_and_communications": {
+      "mass_kg": 0.025,
+      "pos_m": [-0.02, 0, 0.034],
+      "size_m": [0.028, 0.02, 0.008]
+    },
+    "sensor_shell": {
+      "mass_kg": 0.008,
+      "pos_m": [-0.02, 0, 0.059],
+      "size_m": [0.032, 0.028, 0.02]
+    }
+  },
+  "replacement_mass_status": "inherited_v1_b_simulation_placeholders_not_v1_c_cartridge_bom_or_measured_packaging",
+  "power": {
+    "arm_voltage_target_v": 5.0,
+    "default": {
+      "topology": "bench_external_regulated_supply",
+      "status": "default_for_bench_qualification_only"
+    },
+    "alternatives": {
+      "shared_main_pack": {
+        "topology": "independently_protected_regulator",
+        "status": "research_candidate_not_automatically_approved",
+        "unknown_pack_voltage_rule": "converter_may_require_buck_boost; do_not_assume_buck_only"
+      },
+      "standalone_pack": {
+        "topology": "dedicated_arm_pack",
+        "status": "conditional_on_pack_voltage_current_and_runtime_qualification",
+        "bms_required": true,
+        "charger_required": true
+      }
+    },
+    "qualified_regulator": null,
+    "qualified_pack": null,
+    "protection_and_wire_ratings": null
+  },
+  "safety_gates": {
+    "command_watchdog": {
+      "status": "required_not_physically_qualified",
+      "function": "stop_or_remove_motion_authority_on_stale_commands"
+    },
+    "software_heartbeat": {
+      "status": "required_not_physically_qualified",
+      "function": "independently indicate controller_process_liveness",
+      "separate_from_command_watchdog": true
+    },
+    "physical_estop": {
+      "status": "unreleased"
+    },
+    "real_io": {
+      "implemented": false,
+      "status": "prohibited_by_this_baseline"
+    }
+  },
+  "release_states": {
+    "design": "baseline_defined_not_fabrication_released",
+    "simulation": "inherits_v1_b_geometry_requires_candidate_specific_validation",
+    "bench": "not_qualified",
+    "physical": "not_released",
+    "integration": "not_released",
+    "relationship": "orthogonal_evidence_axes_not_a_linear_simulation_after_physical_sequence"
+  },
+  "simulation_scene": {
+    "scenario_id": "raised_tabletop_v1_c",
+    "status": "provisional_simulation_scene_not_physical_release",
+    "fixture_classification": "raised_table_fixture_screening_not_original_task",
+    "distinct_from": "v1_b_floor_level_task_scene",
+    "old_floor_level_success_transferable": false,
+    "surface_top_m": 0.145,
+    "tabletop_top_z_m": 0.145,
+    "object_half_height_m": 0.006,
+    "object_initial_center_m": [0.115, -0.018, 0.151],
+    "goal_center_m": [0.125, 0.024, 0.151],
+    "transfer_waypoint_z_m": 0.19,
+    "geometry_revision_reason": "Old 0.095 m tabletop produced a low target with mount-collision risk; v1-C uses a distinct raised-table screening scene."
+  },
+  "task_targets": {
+    "stationary_payload_kg": 0.02,
+    "commissioning_payload_kg": [0, 0.005, 0.01],
+    "walking_exploratory_payload_kg": [0.005, 0.01],
+    "static_margin_m": 0.01,
+    "tcp_tolerance_m": 0.01,
+    "orientation_tolerance_rad": 0.1745329252,
+    "hold_time_s": 1.0,
+    "lift_height_m": 0.02
+  },
+  "unresolved_release_requirements": [
+    "physical_duck_inventory_and_servo_sku",
+    "measured_mass_com_packaging_and_principal_inertia",
+    "manufacturer_mating_dimensions_and_physical_pin_mapping",
+    "real_gripper_gears_strength_and_center_distance",
+    "qualified_continuous_torque_speed_and_thermal_envelope_at_3x_margin",
+    "candidate_A_B_tracking_energy_and_disturbance_qualification",
+    "pack_bms_charger_converter_and_regenerative_protection",
+    "electrical_fuse_connector_and_wire_coordination",
+    "physical_joint_id_mapping_and_calibration",
+    "independent_watchdog_and_software_heartbeat_validation",
+    "sensor_estimator_latency_and_dynamic_balance_validation"
+  ],
+  "source_urls": [
+    "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/",
+    "https://emanual.robotis.com/docs/en/dxl/x/xl330-m077/",
+    "https://mujoco.readthedocs.io/en/stable/XMLreference.html"
+  ]
+}

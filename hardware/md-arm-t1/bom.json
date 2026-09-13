@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.0",
+  "design_id": "md-arm-t1",
+  "scope": "one arm unless quantity_dual_station is specified",
+  "currency": null,
+  "pricing_status": "not_quoted",
+  "items": [
+    {
+      "id": "ACT-XL330-M288-T",
+      "category": "actuator",
+      "manufacturer": "ROBOTIS",
+      "manufacturer_part_number": "XL330-M288-T",
+      "shared_geometry_source": "rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl",
+      "shared_geometry_scope": "Microduck visual reference only; exact body gearbox SKU and precision mounting interface unverified",
+      "quantity_per_arm": 6,
+      "quantity_dual_station": 12,
+      "status": "candidate_exact_variant_required",
+      "compatibility_checks": [
+        "Label must read XL330-M288-T; reject M077 or other voltage/protocol variants.",
+        "Read model number 1200 and firmware before torque enable.",
+        "Confirm unique IDs on each isolated arm bus.",
+        "Confirm 3-pin TTL connector and cable keying.",
+        "Do not treat 0.52 N*m stall torque as continuous allowable torque."
+      ],
+      "source_url": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/",
+      "source_accessed": "2026-09-12"
+    },
+    {
+      "id": "IF-U2D2",
+      "category": "communication",
+      "manufacturer": "ROBOTIS",
+      "manufacturer_part_number": "U2D2",
+      "quantity_per_arm": 1,
+      "quantity_dual_station": 2,
+      "status": "candidate",
+      "compatibility_checks": [
+        "Use only the 3-pin TTL port for XL330-M288-T.",
+        "U2D2 TTL port pin labels are 1 GND, 2 N/C, 3 DATA.",
+        "U2D2 does not power DYNAMIXEL.",
+        "Verify the delivered USB connector revision and provide the matching host cable.",
+        "Confirm stable device identity and 1 Mbps communication before integration."
+      ],
+      "source_url": "https://emanual.robotis.com/docs/en/parts/interface/u2d2/",
+      "source_accessed": "2026-09-12"
+    },
+    {
+      "id": "CAB-JST-EH3",
+      "category": "wiring",
+      "manufacturer": "JST or ROBOTIS-assembled equivalent",
+      "manufacturer_part_number": "EHR-03 / B3B-EH-A / SEH-001T-P0.6 interface",
+      "quantity_per_arm": 7,
+      "quantity_dual_station": 14,
+      "status": "length_and_assembly_tbd",
+      "compatibility_checks": [
+        "Continuity-test every cable by pin number, not wire color.",
+        "Preserve pin 1 GND, pin 2 VDD, pin 3 DATA end-to-end.",
+        "Cable current and flex life must be checked for the actual topology.",
+        "Provide strain relief and connector service loops."
+      ],
+      "source_url": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/",
+      "source_accessed": "2026-09-12"
+    },
+    {
+      "id": "PSU-5V-ARM",
+      "category": "power",
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "quantity_per_arm": 1,
+      "quantity_dual_station": 2,
+      "status": "blocked_pending_component_selection",
+      "requirements": [
+        "Regulated 5.0 V output; adjustment cannot exceed the XL330 6.0 V maximum.",
+        "Candidate capacity 10 A per arm, subject to measured transient and continuous load.",
+        "Documented over-voltage, over-current, short-circuit, and thermal protection.",
+        "Mains-powered products must have appropriate third-party listing for the deployment region.",
+        "No electrical connection to the original Microduck battery positive."
+      ]
+    },
+    {
+      "id": "ESTOP-2POLE-DC",
+      "category": "safety_power",
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "quantity_per_arm": 0.5,
+      "quantity_dual_station": 1,
+      "status": "blocked_pending_dc_load_and_component_selection",
+      "requirements": [
+        "Manual latching mushroom actuator with deliberate manual reset.",
+        "Two independent normally closed power poles or a suitable DC contactor arrangement, one arm per pole.",
+        "DC interrupt rating verified at the selected 5 V fault current and load characteristics.",
+        "Reset must not automatically resume motion or re-enable servo torque."
+      ]
+    },
+    {
+      "id": "PROTECT-MAIN",
+      "category": "branch_protection",
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "quantity_per_arm": 1,
+      "quantity_dual_station": 2,
+      "status": "blocked_pending_wire_and_connector_selection",
+      "requirements": [
+        "Fuse or resettable breaker protects the arm feeder.",
+        "Rating and trip curve coordinate with the selected conductor, connector, PSU, and measured startup current."
+      ]
+    },
+    {
+      "id": "PROTECT-JOINT",
+      "category": "branch_protection",
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "quantity_per_arm": 6,
+      "quantity_dual_station": 12,
+      "status": "blocked_pending_wire_and_connector_selection",
+      "requirements": [
+        "One protected VDD branch per actuator.",
+        "Protection must isolate a branch fault without relying on a thin daisy-chain conductor as the fuse."
+      ]
+    },
+    {
+      "id": "DIST-TTL-POWER",
+      "category": "distribution",
+      "manufacturer": null,
+      "manufacturer_part_number": null,
+      "quantity_per_arm": 1,
+      "quantity_dual_station": 2,
+      "status": "custom_design_blocked",
+      "requirements": [
+        "Route TTL DATA as one multidrop bus.",
+        "Distribute VDD through individually protected branches.",
+        "Common GND between arm PSU, U2D2 TTL reference, and all six actuators.",
+        "No route from arm VDD to USB VBUS or the original robot power bus.",
+        "Clearly label pin numbers on PCB and harness."
+      ]
+    },
+    {
+      "id": "MECH-LINK-BLANKS",
+      "category": "mechanical",
+      "manufacturer": "custom",
+      "manufacturer_part_number": "generated concept blanks",
+      "quantity_per_arm": 1,
+      "quantity_dual_station": 2,
+      "status": "concept_only_not_servo_mounting_parts",
+      "requirements": [
+        "Axis distances 65 mm, 55 mm, and 30 mm are design inputs.",
+        "Servo mounting holes remain blocked until official CAD and physical fit review.",
+        "Load-bearing joints require dual-side support or bearings in the released design."
+      ]
+    },
+    {
+      "id": "STATION-DUAL-BASE",
+      "category": "mechanical_station",
+      "manufacturer": "custom",
+      "manufacturer_part_number": "scenario-adjustable station concept",
+      "quantity_per_arm": 0,
+      "quantity_dual_station": 1,
+      "status": "concept_only_fit_unverified",
+      "requirements": [
+        "Retain 220 mm nominal and 180-240 mm adjustment only as the historical candidate.",
+        "Current simulation layouts use 150 mm base-center spacing for arms-handover-v1 and 242 mm for arms-co-carry-v1.",
+        "A shared physical station must adjust across at least 150-242 mm, or separate/redesigned platforms and updated simulation validation are required.",
+        "Do not claim actual arm, clamp, tray, cable, or workspace fit from the simulation base-center dimensions.",
+        "No servo mounting holes or actuator mating tolerances are defined by this station concept."
+      ]
+    },
+    {
+      "id": "CATCH-TRAY",
+      "category": "passive_safety",
+      "manufacturer": "custom",
+      "manufacturer_part_number": "md-arm-t1 catch tray concept",
+      "quantity_per_arm": 1,
+      "quantity_dual_station": 1,
+      "status": "non_precision_concept",
+      "requirements": [
+        "Soft liner and rounded edges.",
+        "Tray covers the tested low-height drop zone.",
+        "Tray does not substitute for guarding, supervision, or an e-stop."
+      ]
+    }
+  ],
+  "forbidden_connections": [
+    "arm VDD to original Microduck battery",
+    "arm VDD to original Microduck actuator bus",
+    "U2D2 TTL port used as a servo power source",
+    "two arms sharing one unprotected 5 V feeder",
+    "unverified hobby-servo three-pin cable substituted by appearance"
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "schema_version": "1.0",
+  "design_id": "md-arm-t1",
+  "revision": "T1-design-2026-09-12-layout-2",
+  "status": "design_only_not_fabrication_released",
+  "shared_component_reference": {
+    "family": "XL330",
+    "source_xml": "rlx/rlx/mjlab_microduck/robot/microduck/robot_allcollisions_backlash.xml",
+    "source_mesh": "rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl",
+    "audit": "hardware/md-arm-t1/generated/component-consistency.json",
+    "microduck_exact_variant": null,
+    "geometry_policy": "Reuse source STL unchanged, with meter-to-mm conversion and explicit CAD orientation only.",
+    "dynamics_policy": "Never infer gearbox, torque, gains, backlash, or collision validity from shared visual geometry."
+  },
+  "units": {
+    "length": "mm",
+    "mass": "g",
+    "voltage": "V",
+    "current": "A",
+    "torque": "N*m",
+    "speed": "rev/min"
+  },
+  "manufacturer_candidate": {
+    "manufacturer": "ROBOTIS",
+    "model": "XL330-M288-T",
+    "model_number": {
+      "value": 1200,
+      "fact_class": "manufacturer_fact"
+    },
+    "mass_g": {
+      "value": 18,
+      "fact_class": "manufacturer_fact"
+    },
+    "body_envelope_w_h_d_mm": {
+      "value": [20.0, 34.0, 26.0],
+      "fact_class": "manufacturer_fact",
+      "use_limit": "Envelope and clearance studies only; not a mounting interface."
+    },
+    "input_voltage_v": {
+      "minimum": 3.7,
+      "recommended": 5.0,
+      "maximum": 6.0,
+      "fact_class": "manufacturer_fact"
+    },
+    "stall_at_5v": {
+      "torque_nm": 0.52,
+      "current_a": 1.47,
+      "fact_class": "manufacturer_fact",
+      "use_limit": "Stall data is not a continuous torque or allowable duty-cycle rating."
+    },
+    "no_load_speed_at_5v_rpm": {
+      "value": 103,
+      "fact_class": "manufacturer_fact"
+    },
+    "gear_ratio": {
+      "value": "288.4:1",
+      "fact_class": "manufacturer_fact"
+    },
+    "operating_temperature_c": {
+      "minimum": -5,
+      "maximum": 70,
+      "fact_class": "manufacturer_fact"
+    },
+    "standby_current_ma": {
+      "value": 17,
+      "fact_class": "manufacturer_fact"
+    },
+    "communication": {
+      "physical": "TTL multidrop bus",
+      "logic": "3.3 V TTL, 5 V compatible",
+      "duplex": "half-duplex asynchronous serial",
+      "framing": "8 data bits, 1 stop bit, no parity",
+      "protocol": "DYNAMIXEL Protocol 2.0",
+      "fact_class": "manufacturer_fact"
+    },
+    "connector": {
+      "family": "JST EH 3-position",
+      "housing": "JST EHR-03",
+      "pcb_header": "JST B3B-EH-A",
+      "crimp_terminal": "JST SEH-001T-P0.6",
+      "manufacturer_documented_dynamixel_wire_gauge_awg": 21,
+      "pins": [
+        {"pin": 1, "label": "GND"},
+        {"pin": 2, "label": "VDD"},
+        {"pin": 3, "label": "DATA"}
+      ],
+      "fact_class": "manufacturer_fact"
+    },
+    "feedback": [
+      "position",
+      "velocity",
+      "input current",
+      "realtime tick",
+      "trajectory",
+      "temperature",
+      "input voltage"
+    ],
+    "current_measurement_caveat": "XL330 measures current at its input power source; it is not a direct phase-current or calibrated output-force measurement.",
+    "sources": [
+      {
+        "title": "ROBOTIS XL330-M288-T e-Manual",
+        "url": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/",
+        "accessed": "2026-09-12"
+      },
+      {
+        "title": "ROBOTIS XL330 dimensional PDF",
+        "url": "https://www.robotis.com/service/download.php?no=1986",
+        "accessed": "2026-09-12"
+      },
+      {
+        "title": "ROBOTIS XL330 DWG",
+        "url": "https://www.robotis.com/service/download.php?no=1985",
+        "accessed": "2026-09-12"
+      },
+      {
+        "title": "ROBOTIS XL330 STEP",
+        "url": "https://www.robotis.com/service/download.php?no=1987",
+        "accessed": "2026-09-12"
+      }
+    ]
+  },
+  "u2d2": {
+    "manufacturer": "ROBOTIS",
+    "product": "U2D2",
+    "mass_g": {
+      "value": 9,
+      "fact_class": "manufacturer_fact"
+    },
+    "body_envelope_mm": {
+      "value": [48.0, 18.0, 14.9],
+      "fact_class": "manufacturer_fact"
+    },
+    "ttl_port_pins": [
+      {"pin": 1, "label": "GND"},
+      {"pin": 2, "label": "N/C"},
+      {"pin": 3, "label": "DATA"}
+    ],
+    "power_behavior": {
+      "fact_class": "manufacturer_fact",
+      "statement": "U2D2 does not supply power to DYNAMIXEL; an external supply is required."
+    },
+    "source": {
+      "title": "ROBOTIS U2D2 e-Manual",
+      "url": "https://emanual.robotis.com/docs/en/parts/interface/u2d2/",
+      "accessed": "2026-09-12"
+    }
+  },
+  "design_geometry": {
+    "fact_class": "project_design_input",
+    "pose_joint_count": 5,
+    "coupled_gripper_actuator_count": 1,
+    "active_actuator_count_per_arm": 6,
+    "upper_arm_axis_distance_mm": 65.0,
+    "forearm_axis_distance_mm": 55.0,
+    "wrist_to_tcp_mm": 30.0,
+    "maximum_geometric_reach_mm": 150.0,
+    "gripper_opening_mm": {
+      "minimum": 0.0,
+      "maximum": 30.0,
+      "mapping_status": "requires_physical_calibration"
+    },
+    "installation": "fixed tabletop",
+    "dual_arm_base_spacing_mm": {
+      "nominal": 220.0,
+      "adjustable_minimum": 180.0,
+      "adjustable_maximum": 240.0,
+      "fact_class": "historical_project_design_candidate",
+      "status": "retained_for_history_not_sufficient_for_current_simulation_scenarios",
+      "simulation_layouts": {
+        "arms-handover-v1": {
+          "base_center_spacing": 150.0,
+          "fact_class": "simulation_model_input",
+          "derivation": "Two arm bases at y = -75 mm and +75 mm in rlx/rlx/environments/arm.py."
+        },
+        "arms-co-carry-v1": {
+          "base_center_spacing": 242.0,
+          "fact_class": "simulation_model_input",
+          "derivation": "Two arm bases at y = -121 mm and +121 mm in rlx/rlx/environments/arm.py."
+        }
+      },
+      "physical_station_requirement": {
+        "minimum_adjustable_center_spacing": 150.0,
+        "maximum_adjustable_center_spacing": 242.0,
+        "alternative": "Use separate scenario-specific base plates or redesign and revalidate the platform and simulation layouts.",
+        "verification": "unverified",
+        "fit_claim": "none"
+      }
+    },
+    "catch_tray_mm": {
+      "width": 250.0,
+      "depth": 200.0,
+      "base_thickness": 2.4,
+      "wall_height": 20.0,
+      "wall_thickness": 2.4,
+      "fact_class": "project_design_input"
+    }
+  },
+  "payload": {
+    "target_g": 20.0,
+    "fact_class": "project_design_target",
+    "verification": "unverified",
+    "release_condition": "Bench torque, thermal, tracking, grip, drop, and repeated-cycle tests must pass for the actual arm."
+  },
+  "power_architecture": {
+    "fact_class": "project_design_requirement",
+    "per_arm_supply": "independent regulated 5.0 V branch",
+    "candidate_capacity_a": 10.0,
+    "capacity_basis": "Six published 5 V stall currents sum arithmetically to 8.82 A; stall is prohibited as an operating condition.",
+    "protection": [
+      "DC-rated manually latched e-stop opens the positive conductor for each arm",
+      "one upstream fuse or breaker per arm sized after conductor and connector selection",
+      "one protected power branch per actuator",
+      "common signal reference between each arm supply and its U2D2 TTL bus",
+      "no connection to the original Microduck battery positive or body actuator bus"
+    ]
+  },
+  "interfaces": {
+    "servo_mount": {
+      "status": "blocked",
+      "reason": "Published nominal CAD/drawings do not define project manufacturing process, mating-part tolerances, purchased-part variation, horn stack, cable bend clearance, or fit allowance.",
+      "prohibited_output": "No servo mounting holes, horn bolt circle, pilot fit, or tapped-hole depth is encoded in generated fabrication geometry.",
+      "unblock_evidence": [
+        "Official XL330 STEP/DWG imported and revision recorded",
+        "Purchased XL330-M288-T and horn measured",
+        "Fastener and thread engagement selected from official instructions",
+        "Cable bend and connector insertion/removal clearance measured",
+        "Printed or machined fit coupon passes",
+        "Tolerance stack reviewed for the chosen manufacturing process"
+      ]
+    },
+    "base_clamp": {
+      "status": "blocked",
+      "reason": "Actual table thickness, clamp geometry, friction, overturning load, and a physical adjustment mechanism spanning the 150-242 mm simulation layouts are not measured or validated."
+    },
+    "gripper": {
+      "status": "concept_only",
+      "reason": "Coupling geometry, fingertip force, contact sensing, and width mapping require prototype measurements."
+    }
+  },
+  "certification": {
+    "claim": "none",
+    "statement": "These files are engineering concept artifacts and do not claim machinery, electrical, functional-safety, or manufacturing certification."
+  }
+}

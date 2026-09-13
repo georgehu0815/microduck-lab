@@ -1,0 +1,88 @@
+Eight scenario cards ready
+Eight live ducks mounted
+Physical brush color stream verified
+Source-bound Studio API verified
+Selected brush rollout playback verified
+{
+  "checkedAt": "2026-09-12T21:36:35.223Z",
+  "run": "brush-color-v2-03",
+  "passed": true,
+  "scope": "Bounded eight-case live UI/contact-color stream smoke; the complete four-color painting is verified separately from the source-bound full render and 40-episode ONNX gate.",
+  "catalog": {
+    "cards": 8
+  },
+  "live": {
+    "ducks": 8,
+    "step": 600,
+    "falls": 0,
+    "contract": "microduck-brush-v2",
+    "points": 284,
+    "colors": [
+      0
+    ],
+    "palette": [
+      [
+        0.95,
+        0.69,
+        0.08
+      ],
+      [
+        0.96,
+        0.32,
+        0.05
+      ],
+      [
+        0.13,
+        0.12,
+        0.1
+      ],
+      [
+        0.1,
+        0.49,
+        0.84
+      ]
+    ],
+    "brushRadius": 0.001,
+    "assistance": 0
+  },
+  "fullRender": {
+    "colors": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "seconds": 119.96000000000001,
+    "passed": true,
+    "unassisted": true,
+    "paintSource": "actual MuJoCo brush-tip contact trace only",
+    "sourceSha256": "6e083a2a1a0e3114016be9ef0d377d9e9245648ca174303c5f8d0340bdf4500e",
+    "evaluationSourceSha256": "6e083a2a1a0e3114016be9ef0d377d9e9245648ca174303c5f8d0340bdf4500e"
+  },
+  "apiSnapshot": {
+    "runName": "brush-color-v2-03",
+    "drawingTool": "brush",
+    "renderVerified": true,
+    "acceptedEpisodes": 40,
+    "requiredEpisodes": 40,
+    "provenanceErrors": [],
+    "sourceSha256": "6e083a2a1a0e3114016be9ef0d377d9e9245648ca174303c5f8d0340bdf4500e"
+  },
+  "reviewAction": {
+    "tagName": "A",
+    "href": "#evaluation"
+  },
+  "video": {
+    "before": 0.030737,
+    "after": 1.393484,
+    "duration": 120,
+    "paused": false,
+    "src": "/api/rlx/artifact?experiment=drawing&run=brush-color-v2-03&kind=video&inline=1&source=6e083a2a1a0e3114016be9ef0d377d9e9245648ca174303c5f8d0340bdf4500e"
+  },
+  "mobile": {
+    "width": 390,
+    "scrollWidth": 390,
+    "bodyScrollWidth": 390
+  },
+  "errors": []
+}

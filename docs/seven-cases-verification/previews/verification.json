@@ -1,0 +1,345 @@
+{
+  "passed": true,
+  "checkedAt": "2026-09-11T15:28:30.067Z",
+  "baseUrl": "http://127.0.0.1:63317",
+  "liveCatalogSize": 59,
+  "cases": {
+    "live": {
+      "rows": [
+        {
+          "experimentId": "dance",
+          "runName": "dance-e2e-20260907-low-noise",
+          "trainedAt": "2026-09-07T23:27:04.781Z",
+          "renderEvidenceId": "3414cb45a46aa74e662c30967ebf7a7ee72aafdd2b98cdff1b831e801f39a363",
+          "video": "/api/rlx/artifact?experiment=dance&run=dance-e2e-20260907-low-noise&kind=video&inline=1&v=3414cb45a46aa74e662c30967ebf7a7ee72aafdd2b98cdff1b831e801f39a363",
+          "evaluation": "/api/rlx?experiment=dance&run=dance-e2e-20260907-low-noise",
+          "playback": {
+            "currentTime": 0.243703,
+            "duration": 8,
+            "readyState": 4,
+            "videoWidth": 640,
+            "videoHeight": 360,
+            "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=dance&run=dance-e2e-20260907-low-noise&kind=video&inline=1&v=3414cb45a46aa74e662c30967ebf7a7ee72aafdd2b98cdff1b831e801f39a363",
+            "error": null
+          }
+        },
+        {
+          "experimentId": "swing",
+          "runName": "swing-e2e-20260907-v3",
+          "trainedAt": "2026-09-08T01:25:12.986Z",
+          "renderEvidenceId": "dee5b2805efcd8339f9e2389c78fbc6bcd4d095e4caa693d2f2e872bdfeb54ea",
+          "video": "/api/rlx/artifact?experiment=swing&run=swing-e2e-20260907-v3&kind=video&inline=1&v=dee5b2805efcd8339f9e2389c78fbc6bcd4d095e4caa693d2f2e872bdfeb54ea",
+          "evaluation": "/api/rlx?experiment=swing&run=swing-e2e-20260907-v3",
+          "playback": {
+            "currentTime": 0.247075,
+            "duration": 24,
+            "readyState": 4,
+            "videoWidth": 640,
+            "videoHeight": 360,
+            "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=swing&run=swing-e2e-20260907-v3&kind=video&inline=1&v=dee5b2805efcd8339f9e2389c78fbc6bcd4d095e4caa693d2f2e872bdfeb54ea",
+            "error": null
+          }
+        },
+        {
+          "experimentId": "running",
+          "runName": "running-e2e-20260907-v4",
+          "trainedAt": "2026-09-08T01:30:41.375Z",
+          "renderEvidenceId": "cf1b3fc6abd932ae0693451993ff3fcf0f081a8046ab42c68e0f211966e23655",
+          "video": "/api/rlx/artifact?experiment=running&run=running-e2e-20260907-v4&kind=video&inline=1&v=cf1b3fc6abd932ae0693451993ff3fcf0f081a8046ab42c68e0f211966e23655",
+          "evaluation": "/api/rlx?experiment=running&run=running-e2e-20260907-v4",
+          "playback": {
+            "currentTime": 0.240382,
+            "duration": 12,
+            "readyState": 4,
+            "videoWidth": 640,
+            "videoHeight": 360,
+            "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=running&run=running-e2e-20260907-v4&kind=video&inline=1&v=cf1b3fc6abd932ae0693451993ff3fcf0f081a8046ab42c68e0f211966e23655",
+            "error": null
+          }
+        },
+        {
+          "experimentId": "stilts",
+          "runName": "stilts-e2e-20260907-v3",
+          "trainedAt": "2026-09-08T01:23:37.696Z",
+          "renderEvidenceId": "7cfddb35396c563d568d805dcda302aa83c41b805d2f3deaaaae89d85a67ada8",
+          "video": "/api/rlx/artifact?experiment=stilts&run=stilts-e2e-20260907-v3&kind=video&inline=1&v=7cfddb35396c563d568d805dcda302aa83c41b805d2f3deaaaae89d85a67ada8",
+          "evaluation": "/api/rlx?experiment=stilts&run=stilts-e2e-20260907-v3",
+          "playback": {
+            "currentTime": 0.305286,
+            "duration": 10,
+            "readyState": 4,
+            "videoWidth": 640,
+            "videoHeight": 360,
+            "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=stilts&run=stilts-e2e-20260907-v3&kind=video&inline=1&v=7cfddb35396c563d568d805dcda302aa83c41b805d2f3deaaaae89d85a67ada8",
+            "error": null
+          }
+        },
+        {
+          "experimentId": "backflip",
+          "runName": "backflip-e2e-20260908-v5",
+          "trainedAt": "2026-09-08T19:10:09.067Z",
+          "renderEvidenceId": "cf8a0481660574776bd4921fd83b2cc77ec34236cf1ebc9a5d4feca3067efe2f",
+          "video": "/api/rlx/artifact?experiment=backflip&run=backflip-e2e-20260908-v5&kind=video&inline=1&v=cf8a0481660574776bd4921fd83b2cc77ec34236cf1ebc9a5d4feca3067efe2f",
+          "evaluation": "/api/rlx?experiment=backflip&run=backflip-e2e-20260908-v5",
+          "playback": {
+            "currentTime": 0.22649,
+            "duration": 12,
+            "readyState": 4,
+            "videoWidth": 640,
+            "videoHeight": 360,
+            "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=backflip&run=backflip-e2e-20260908-v5&kind=video&inline=1&v=cf8a0481660574776bd4921fd83b2cc77ec34236cf1ebc9a5d4feca3067efe2f",
+            "error": null
+          }
+        },
+        {
+          "experimentId": "basketball",
+          "runName": "basketball-balance-01",
+          "trainedAt": "2026-09-10T17:09:40.399Z",
+          "renderEvidenceId": "6edd549a7d4e66b5f8056093b7ef0d5e776609707fbf90118a18e3cd0d3772e6",
+          "video": "/api/rlx/artifact?experiment=basketball&run=basketball-balance-01&kind=video&inline=1&v=6edd549a7d4e66b5f8056093b7ef0d5e776609707fbf90118a18e3cd0d3772e6",
+          "evaluation": "/api/rlx?experiment=basketball&run=basketball-balance-01",
+          "playback": {
+            "currentTime": 0.218084,
+            "duration": 60.04,
+            "readyState": 4,
+            "videoWidth": 640,
+            "videoHeight": 360,
+            "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=basketball&run=basketball-balance-01&kind=video&inline=1&v=6edd549a7d4e66b5f8056093b7ef0d5e776609707fbf90118a18e3cd0d3772e6",
+            "error": null
+          }
+        },
+        {
+          "experimentId": "bridge",
+          "runName": "bridge-studio-02",
+          "trainedAt": "2026-09-10T22:00:50.428Z",
+          "renderEvidenceId": "7386c84eb8065d2f4ac2b297ba5b082dc658648657e4190a9491872bab6e50a6",
+          "video": "/api/rlx/artifact?experiment=bridge&run=bridge-studio-02&kind=video&inline=1&v=7386c84eb8065d2f4ac2b297ba5b082dc658648657e4190a9491872bab6e50a6",
+          "evaluation": "/api/rlx?experiment=bridge&run=bridge-studio-02",
+          "playback": {
+            "currentTime": 0.392605,
+            "duration": 20,
+            "readyState": 4,
+            "videoWidth": 640,
+            "videoHeight": 360,
+            "src": "http://127.0.0.1:63317/api/rlx/artifact?experiment=bridge&run=bridge-studio-02&kind=video&inline=1&v=7386c84eb8065d2f4ac2b297ba5b082dc658648657e4190a9491872bab6e50a6",
+            "error": null
+          }
+        }
+      ],
+      "desktopLayout": {
+        "viewport": {
+          "width": 1600,
+          "height": 1100
+        },
+        "document": {
+          "clientWidth": 1600,
+          "scrollWidth": 1600
+        },
+        "section": {
+          "clientWidth": 1318,
+          "scrollWidth": 1318
+        },
+        "rows": [
+          {
+            "text": "Dance imitation",
+            "clientWidth": 328,
+            "scrollWidth": 328
+          },
+          {
+            "text": "Self-pumped swing",
+            "clientWidth": 328,
+            "scrollWidth": 328
+          },
+          {
+            "text": "Fast running",
+            "clientWidth": 328,
+            "scrollWidth": 328
+          },
+          {
+            "text": "Stilt walking",
+            "clientWidth": 328,
+            "scrollWidth": 328
+          },
+          {
+            "text": "Backflip showcase",
+            "clientWidth": 328,
+            "scrollWidth": 328
+          },
+          {
+            "text": "Basketball balancing",
+            "clientWidth": 328,
+            "scrollWidth": 328
+          },
+          {
+            "text": "Suspended bridge",
+            "clientWidth": 328,
+            "scrollWidth": 328
+          }
+        ]
+      },
+      "mobileLayout": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "document": {
+          "clientWidth": 390,
+          "scrollWidth": 390
+        },
+        "section": {
+          "clientWidth": 364,
+          "scrollWidth": 364
+        },
+        "rows": [
+          {
+            "text": "Dance imitation",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "text": "Self-pumped swing",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "text": "Fast running",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "text": "Stilt walking",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "text": "Backflip showcase",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "text": "Basketball balancing",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          },
+          {
+            "text": "Suspended bridge",
+            "clientWidth": 362,
+            "scrollWidth": 362
+          }
+        ]
+      }
+    },
+    "newerIneligibleIgnored": {
+      "rows": [
+        {
+          "experimentId": "dance",
+          "runName": "dance-e2e-20260907-low-noise",
+          "trainedAt": "2026-09-07T23:27:04.781Z",
+          "renderEvidenceId": "3414cb45a46aa74e662c30967ebf7a7ee72aafdd2b98cdff1b831e801f39a363",
+          "video": "/api/rlx/artifact?experiment=dance&run=dance-e2e-20260907-low-noise&kind=video&inline=1&v=3414cb45a46aa74e662c30967ebf7a7ee72aafdd2b98cdff1b831e801f39a363",
+          "evaluation": "/api/rlx?experiment=dance&run=dance-e2e-20260907-low-noise",
+          "playback": null
+        },
+        {
+          "experimentId": "swing",
+          "runName": "swing-e2e-20260907-v3",
+          "trainedAt": "2026-09-08T01:25:12.986Z",
+          "renderEvidenceId": "dee5b2805efcd8339f9e2389c78fbc6bcd4d095e4caa693d2f2e872bdfeb54ea",
+          "video": "/api/rlx/artifact?experiment=swing&run=swing-e2e-20260907-v3&kind=video&inline=1&v=dee5b2805efcd8339f9e2389c78fbc6bcd4d095e4caa693d2f2e872bdfeb54ea",
+          "evaluation": "/api/rlx?experiment=swing&run=swing-e2e-20260907-v3",
+          "playback": null
+        },
+        {
+          "experimentId": "running",
+          "runName": "running-e2e-20260907-v4",
+          "trainedAt": "2026-09-08T01:30:41.375Z",
+          "renderEvidenceId": "cf1b3fc6abd932ae0693451993ff3fcf0f081a8046ab42c68e0f211966e23655",
+          "video": "/api/rlx/artifact?experiment=running&run=running-e2e-20260907-v4&kind=video&inline=1&v=cf1b3fc6abd932ae0693451993ff3fcf0f081a8046ab42c68e0f211966e23655",
+          "evaluation": "/api/rlx?experiment=running&run=running-e2e-20260907-v4",
+          "playback": null
+        },
+        {
+          "experimentId": "stilts",
+          "runName": "stilts-e2e-20260907-v3",
+          "trainedAt": "2026-09-08T01:23:37.696Z",
+          "renderEvidenceId": "7cfddb35396c563d568d805dcda302aa83c41b805d2f3deaaaae89d85a67ada8",
+          "video": "/api/rlx/artifact?experiment=stilts&run=stilts-e2e-20260907-v3&kind=video&inline=1&v=7cfddb35396c563d568d805dcda302aa83c41b805d2f3deaaaae89d85a67ada8",
+          "evaluation": "/api/rlx?experiment=stilts&run=stilts-e2e-20260907-v3",
+          "playback": null
+        },
+        {
+          "experimentId": "backflip",
+          "runName": "backflip-e2e-20260908-v5",
+          "trainedAt": "2026-09-08T19:10:09.067Z",
+          "renderEvidenceId": "cf8a0481660574776bd4921fd83b2cc77ec34236cf1ebc9a5d4feca3067efe2f",
+          "video": "/api/rlx/artifact?experiment=backflip&run=backflip-e2e-20260908-v5&kind=video&inline=1&v=cf8a0481660574776bd4921fd83b2cc77ec34236cf1ebc9a5d4feca3067efe2f",
+          "evaluation": "/api/rlx?experiment=backflip&run=backflip-e2e-20260908-v5",
+          "playback": null
+        },
+        {
+          "experimentId": "basketball",
+          "runName": "basketball-balance-01",
+          "trainedAt": "2026-09-10T17:09:40.399Z",
+          "renderEvidenceId": "6edd549a7d4e66b5f8056093b7ef0d5e776609707fbf90118a18e3cd0d3772e6",
+          "video": "/api/rlx/artifact?experiment=basketball&run=basketball-balance-01&kind=video&inline=1&v=6edd549a7d4e66b5f8056093b7ef0d5e776609707fbf90118a18e3cd0d3772e6",
+          "evaluation": "/api/rlx?experiment=basketball&run=basketball-balance-01",
+          "playback": null
+        },
+        {
+          "experimentId": "bridge",
+          "runName": "bridge-studio-02",
+          "trainedAt": "2026-09-10T22:00:50.428Z",
+          "renderEvidenceId": "7386c84eb8065d2f4ac2b297ba5b082dc658648657e4190a9491872bab6e50a6",
+          "video": "/api/rlx/artifact?experiment=bridge&run=bridge-studio-02&kind=video&inline=1&v=7386c84eb8065d2f4ac2b297ba5b082dc658648657e4190a9491872bab6e50a6",
+          "evaluation": "/api/rlx?experiment=bridge&run=bridge-studio-02",
+          "playback": null
+        }
+      ]
+    },
+    "reducedMotion": {
+      "rows": [
+        {
+          "experimentId": "dance",
+          "runName": "dance-e2e-20260907-low-noise",
+          "sheet": "/api/rlx/artifact?experiment=dance&run=dance-e2e-20260907-low-noise&kind=sheet&v=3414cb45a46aa74e662c30967ebf7a7ee72aafdd2b98cdff1b831e801f39a363"
+        },
+        {
+          "experimentId": "swing",
+          "runName": "swing-e2e-20260907-v3",
+          "sheet": "/api/rlx/artifact?experiment=swing&run=swing-e2e-20260907-v3&kind=sheet&v=dee5b2805efcd8339f9e2389c78fbc6bcd4d095e4caa693d2f2e872bdfeb54ea"
+        },
+        {
+          "experimentId": "running",
+          "runName": "running-e2e-20260907-v4",
+          "sheet": "/api/rlx/artifact?experiment=running&run=running-e2e-20260907-v4&kind=sheet&v=cf1b3fc6abd932ae0693451993ff3fcf0f081a8046ab42c68e0f211966e23655"
+        },
+        {
+          "experimentId": "stilts",
+          "runName": "stilts-e2e-20260907-v3",
+          "sheet": "/api/rlx/artifact?experiment=stilts&run=stilts-e2e-20260907-v3&kind=sheet&v=7cfddb35396c563d568d805dcda302aa83c41b805d2f3deaaaae89d85a67ada8"
+        },
+        {
+          "experimentId": "backflip",
+          "runName": "backflip-e2e-20260908-v5",
+          "sheet": "/api/rlx/artifact?experiment=backflip&run=backflip-e2e-20260908-v5&kind=sheet&v=cf8a0481660574776bd4921fd83b2cc77ec34236cf1ebc9a5d4feca3067efe2f"
+        },
+        {
+          "experimentId": "basketball",
+          "runName": "basketball-balance-01",
+          "sheet": "/api/rlx/artifact?experiment=basketball&run=basketball-balance-01&kind=sheet&v=6edd549a7d4e66b5f8056093b7ef0d5e776609707fbf90118a18e3cd0d3772e6"
+        },
+        {
+          "experimentId": "bridge",
+          "runName": "bridge-studio-02",
+          "sheet": "/api/rlx/artifact?experiment=bridge&run=bridge-studio-02&kind=sheet&v=7386c84eb8065d2f4ac2b297ba5b082dc658648657e4190a9491872bab6e50a6"
+        }
+      ]
+    },
+    "missingEligible": {
+      "experimentId": "dance",
+      "placeholder": "No verified rollout yet",
+      "mediaCount": 0
+    }
+  },
+  "pageErrors": []
+}

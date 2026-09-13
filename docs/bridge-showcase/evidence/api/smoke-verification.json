@@ -1,0 +1,199 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "experimentId": "basketball",
+      "runName": "basketball-api-smoke-1789097689759",
+      "phase": "succeeded",
+      "artifacts": {
+        "checkpoint": true,
+        "metadata": true,
+        "onnx": true,
+        "renderSheet": false,
+        "renderVideo": false,
+        "evaluation": false,
+        "checkpointPath": "runs/studio/basketball/basketball-api-smoke-1789097689759/checkpoint.pt",
+        "onnxPath": "runs/studio/basketball/basketball-api-smoke-1789097689759/policy.onnx",
+        "renderDirectory": "runs/studio/basketball/basketball-api-smoke-1789097689759/render"
+      },
+      "result": {
+        "adapter_adjustments": [
+          {
+            "applied": 10,
+            "option": "max_episode_s",
+            "reason": "the standalone recurrent learner has a sealed 10-second horizon",
+            "requested": 1
+          },
+          {
+            "applied": true,
+            "option": "random_yaw",
+            "reason": "the standalone basketball protocol evaluates randomized headings",
+            "requested": false
+          },
+          {
+            "applied": true,
+            "option": "action_delay",
+            "reason": "BasketballEnv and the source policy use inherited action delay",
+            "requested": false
+          }
+        ],
+        "artifact_hashes": {
+          "checkpoint_sha256": "bf4b1768b2f80531cf32abc296252796ea0e507dc8d5e600aa29326d49cd9b86",
+          "metadata_sha256": "4567c2b928a78c1fecc3e779fe0d990e08e247d8b3167d316043a00a9998635d",
+          "policy_sha256": "19b12e4960d890b853da69fb53563d47aadb38510801d5edf8294ef107d0baf1"
+        },
+        "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/basketball/basketball-api-smoke-1789097689759/checkpoint.pt",
+        "command": "train",
+        "continuation_kind": "actor warm-start with fresh local critic and optimizer",
+        "full_upstream_resume": false,
+        "learner_summary": {
+          "actor_observation_dim": 61,
+          "actor_weight_change_l2": 0.015564873814582825,
+          "ball_state_actor": false,
+          "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/basketball/basketball-api-smoke-1789097689759/training-xzpm5kgd/learner/checkpoint.pt",
+          "checkpoint_sha256": "bf4b1768b2f80531cf32abc296252796ea0e507dc8d5e600aa29326d49cd9b86",
+          "continuation_kind": "actor warm-start with fresh local critic and optimizer",
+          "created_at": "2026-09-11T03:34:51.841441+00:00",
+          "environment": {
+            "exact_upstream_recipe": false,
+            "hold_levels": [
+              1,
+              0.5,
+              0.25,
+              0.1,
+              0.03,
+              0
+            ],
+            "omitted_upstream_terms": [
+              "pose",
+              "angular_momentum",
+              "joint_limits",
+              "self_collision"
+            ],
+            "reward_scale": 0.02,
+            "reward_weights": {
+              "action_rate_penalty": 0.2,
+              "angular_velocity_penalty": 0.05,
+              "ball_speed_penalty": 0.05,
+              "centered": 2,
+              "feet_on_ball": 1,
+              "height": 1,
+              "linear_tracking": 1,
+              "upright": 1,
+              "yaw_tracking": 0.5
+            },
+            "source_sha256": "6bff54a8b1f7c856ec00cce59bb2b9b3c528d3c16054d1f730446fe68c65c757"
+          },
+          "full_upstream_resume": false,
+          "local_steps": 4,
+          "local_updates": 1,
+          "normalization_frozen": true,
+          "onnx": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/basketball/basketball-api-smoke-1789097689759/training-xzpm5kgd/learner/policy.onnx",
+          "onnx_parity": {
+            "max_abs_error": 0.0000016689300537109375,
+            "max_state_abs_error": 0.00000858306884765625,
+            "reset_at": 20,
+            "steps": 40
+          },
+          "onnx_sha256": "37e97f8840780038382ae95a48d55cb68ddc47101f330a14fff567913cb97a61",
+          "settings": {
+            "actuator": "bam",
+            "command": [
+              0.15,
+              0,
+              0
+            ],
+            "control_dt": 0.02,
+            "curriculum": false,
+            "domain_rand": false,
+            "hold": 0,
+            "initial_std": 0.03,
+            "learning_rate": 0.00002,
+            "num_envs": 2,
+            "obs_noise": false,
+            "pushes": false,
+            "randomized_commands": false,
+            "seed": 42,
+            "steps": 2,
+            "target_kl": 0.02
+          },
+          "source_checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/basketball/basketball-api-smoke-1789097689759/training-xzpm5kgd/source/checkpoint.pt",
+          "source_checkpoint_sha256": "57a322eff092cb71e7cba831791232f0cc4fd45ede0441cad6d87813b0033e41",
+          "source_iteration": 6999,
+          "source_kind": "released_actor",
+          "source_onnx_sha256": "e105148b160b3a86170621648215be38dd5018e955930ce182394f4513c7569b",
+          "source_training_steps": 0,
+          "total_steps": 4,
+          "updates": [
+            {
+              "approx_kl": 0.9919903874397278,
+              "completed_episodes": 0,
+              "entropy": -29.226669311523438,
+              "epochs_completed": 1,
+              "gradient_norm": 499.3454284667969,
+              "hold_max": 0,
+              "hold_min": 0,
+              "kl_early_stop": 1,
+              "loss": 0.31371110677719116,
+              "policy_loss": -1.1920928955078125e-7,
+              "update": 1,
+              "value_loss": 0.021444519981741905
+            }
+          ]
+        },
+        "metadata": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/basketball/basketball-api-smoke-1789097689759/checkpoint.pt.json",
+        "onnx": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/basketball/basketball-api-smoke-1789097689759/policy.onnx",
+        "onnx_parity": {
+          "max_abs_error": 0.0000016689300537109375,
+          "max_state_abs_error": 0.00000858306884765625,
+          "reset_at": 20,
+          "steps": 40
+        },
+        "recipe": "basketball",
+        "requested_steps": 4,
+        "result_json": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/basketball/basketball-api-smoke-1789097689759/result.json",
+        "resumed_from": null,
+        "source_files_sha256": {
+          "/Volumes/ExternalSSD/geoagent/microduck-lab/microduck-playground/artifacts/basketball/checkpoint.pt": "57a322eff092cb71e7cba831791232f0cc4fd45ede0441cad6d87813b0033e41",
+          "/Volumes/ExternalSSD/geoagent/microduck-lab/microduck-playground/artifacts/basketball/policy.onnx": "e105148b160b3a86170621648215be38dd5018e955930ce182394f4513c7569b"
+        },
+        "source_sha256": "57a322eff092cb71e7cba831791232f0cc4fd45ede0441cad6d87813b0033e41",
+        "steps": 4,
+        "trained_steps": 4,
+        "training_assistance": {
+          "curriculum": false,
+          "hold": 0
+        },
+        "training_directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/basketball/basketball-api-smoke-1789097689759/training-xzpm5kgd",
+        "training_metrics": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/basketball/basketball-api-smoke-1789097689759/training-metrics.jsonl"
+      }
+    },
+    {
+      "experimentId": "bridge",
+      "runName": "bridge-api-smoke-1789097692802",
+      "phase": "succeeded",
+      "artifacts": {
+        "checkpoint": true,
+        "metadata": true,
+        "onnx": true,
+        "renderSheet": false,
+        "renderVideo": false,
+        "evaluation": false,
+        "checkpointPath": "runs/studio/bridge/bridge-api-smoke-1789097692802/bridge.safetensors",
+        "onnxPath": "runs/studio/bridge/bridge-api-smoke-1789097692802/bridge.onnx",
+        "renderDirectory": "runs/studio/bridge/bridge-api-smoke-1789097692802/render"
+      },
+      "result": {
+        "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-api-smoke-1789097692802/bridge.safetensors",
+        "command": "train",
+        "metadata": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-api-smoke-1789097692802/bridge.safetensors.json",
+        "onnx": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-api-smoke-1789097692802/bridge.onnx",
+        "recipe": "bridge",
+        "resumed_from": null,
+        "steps": 4,
+        "trained_steps": 4,
+        "training_metrics": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-api-smoke-1789097692802/training-metrics.jsonl"
+      }
+    }
+  ]
+}

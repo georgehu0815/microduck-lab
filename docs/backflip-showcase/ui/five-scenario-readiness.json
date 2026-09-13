@@ -1,0 +1,266 @@
+{
+  "passed": true,
+  "mode": "strict",
+  "baseUrl": "http://127.0.0.1:63317",
+  "checkedAt": "2026-09-09T02:02:57.820Z",
+  "scope": "Read-only cold restart verification; not fresh training or physical skill proof.",
+  "checks": {
+    "ui": {
+      "passed": true,
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23724
+    },
+    "clips": {
+      "passed": true,
+      "count": 11
+    },
+    "runsApi": {
+      "passed": true,
+      "count": 52
+    },
+    "scenario:dance": {
+      "passed": true,
+      "scenario": "dance",
+      "runName": "dance-e2e-20260907-low-noise",
+      "modifiedAt": "2026-09-08T15:39:19.730Z",
+      "rewardSamples": 1954,
+      "ppoSegments": 1,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "dance-e2e-20260907-low-noise",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    },
+    "scenario:swing": {
+      "passed": true,
+      "scenario": "swing",
+      "runName": "swing-e2e-20260907-v3",
+      "modifiedAt": "2026-09-08T01:25:25.072Z",
+      "rewardSamples": 128,
+      "ppoSegments": 1,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "swing-e2e-20260907-v3",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    },
+    "scenario:running": {
+      "passed": true,
+      "scenario": "running",
+      "runName": "running-e2e-20260907-v4",
+      "modifiedAt": "2026-09-08T01:30:57.576Z",
+      "rewardSamples": 1024,
+      "ppoSegments": 2,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "running-e2e-20260907-v4",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    },
+    "scenario:stilts": {
+      "passed": true,
+      "scenario": "stilts",
+      "runName": "stilts-e2e-20260907-v3",
+      "modifiedAt": "2026-09-08T01:23:48.109Z",
+      "rewardSamples": 512,
+      "ppoSegments": 2,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "stilts-e2e-20260907-v3",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    },
+    "scenario:backflip": {
+      "passed": true,
+      "scenario": "backflip",
+      "runName": "backflip-e2e-20260908-v5",
+      "modifiedAt": "2026-09-08T19:24:29.412Z",
+      "rewardSamples": 196,
+      "ppoSegments": 1,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "backflip-e2e-20260908-v5",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "scenarios": {
+    "dance": {
+      "passed": true,
+      "scenario": "dance",
+      "runName": "dance-e2e-20260907-low-noise",
+      "modifiedAt": "2026-09-08T15:39:19.730Z",
+      "rewardSamples": 1954,
+      "ppoSegments": 1,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "dance-e2e-20260907-low-noise",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    },
+    "swing": {
+      "passed": true,
+      "scenario": "swing",
+      "runName": "swing-e2e-20260907-v3",
+      "modifiedAt": "2026-09-08T01:25:25.072Z",
+      "rewardSamples": 128,
+      "ppoSegments": 1,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "swing-e2e-20260907-v3",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    },
+    "running": {
+      "passed": true,
+      "scenario": "running",
+      "runName": "running-e2e-20260907-v4",
+      "modifiedAt": "2026-09-08T01:30:57.576Z",
+      "rewardSamples": 1024,
+      "ppoSegments": 2,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "running-e2e-20260907-v4",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    },
+    "stilts": {
+      "passed": true,
+      "scenario": "stilts",
+      "runName": "stilts-e2e-20260907-v3",
+      "modifiedAt": "2026-09-08T01:23:48.109Z",
+      "rewardSamples": 512,
+      "ppoSegments": 2,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "stilts-e2e-20260907-v3",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    },
+    "backflip": {
+      "passed": true,
+      "scenario": "backflip",
+      "runName": "backflip-e2e-20260908-v5",
+      "modifiedAt": "2026-09-08T19:24:29.412Z",
+      "rewardSamples": 196,
+      "ppoSegments": 1,
+      "video": {
+        "passed": true,
+        "status": 206,
+        "contentType": "video/mp4",
+        "boxType": "ftyp",
+        "boxSize": 32,
+        "majorBrand": "isom",
+        "sampledBytes": 64
+      },
+      "attempts": [
+        {
+          "runName": "backflip-e2e-20260908-v5",
+          "passed": true,
+          "issues": []
+        }
+      ]
+    }
+  },
+  "errors": []
+}

@@ -172,6 +172,7 @@ from pydantic import BaseModel
 from . import behaviors as behaviors_mod
 from . import contract as C
 from . import motion as motion_mod
+from . import studio_policies as studio_policies_mod
 from .train import RUNS_DIR
 from .walk_env import MicroduckWalkEnv, shared_model_scope
 
@@ -185,6 +186,7 @@ SEND_EVERY = 2          # broadcast at 25 Hz
 # speeds up, stalls or falls over inside a second.
 SPEED_WINDOW = 25
 EPISODE_RESET_S = 30.0  # periodic reset so wandering ducks regroup
+MAX_DRAWING_POINTS = TICK_HZ * 120
 OVERRIDE_HOLD_S = 6.0
 POLICIES_DIR = Path(__file__).resolve().parents[3] / "microduck" / "policies"
 # Authored keyframe clips (the 🎬 animate panel), beside runs/ — same
@@ -338,6 +340,9 @@ class Duck:
         self.seed = seed
         self.env = self._make_env(seed)
         self.obs, _ = self.env.reset(seed=seed)
+        if hasattr(self.infer, "reset"):
+            self.infer.reset()
+        self.scene_key = uuid.uuid4().hex if getattr(self.env, "studio_recipe", None) else None
         self._hold_yaw = None   # heading-hold anchor (see set_cmd)
         self._settle = 0        # ticks since handoff (see _recenter_wz)
         self.falls = 0
@@ -364,6 +369,9 @@ class Duck:
         # self.env_kwargs (see rebuild_env), so a failed build can't poison
         # the memo the rebuild guard compares against.
         kw = dict(self.env_kwargs if kwargs is None else kwargs)
+        studio_path = kw.pop("studio_policy_path", None)
+        if studio_path is not None:
+            return studio_policies_mod.make_studio_env(Path(studio_path), seed)
         behavior_id = kw.pop("behavior_id", None)
         standing = kw.pop("standing_spawns", False)  # BehaviorEnv-only knob
         # 30 s episodes, matching EPISODE_RESET_S: the env default of 10 s
@@ -404,6 +412,12 @@ class Duck:
             return MicroduckWalkEnv(**common, **kw)
 
     def set_cmd(self, cmd: np.ndarray) -> None:
+        studio_recipe = getattr(self.env, "studio_recipe", None)
+        if studio_recipe in {"basketball", "bridge"}:
+            self.env.set_command(tuple(np.asarray(cmd, np.float32)))
+            return
+        if studio_recipe and studio_recipe not in {"running", "stilts"}:
+            return
         tw = np.asarray(cmd, np.float32).copy()
         # Deployment heading-hold, same 3 lines the robot runtime would run:
         # the policy is compass-blind (61 obs carry no yaw), so an unsteered
@@ -451,9 +465,13 @@ class Duck:
         # retry with the same kwargs then returned instantly without rebuilding.
         want = dict(env_kwargs)
         env = self._make_env(seed, kwargs=want)
+        observation, _ = env.reset(seed=seed)
         self.env_kwargs = want
         self.env = env
-        self.obs, _ = self.env.reset(seed=seed)
+        self.obs = observation
+        if hasattr(self.infer, "reset"):
+            self.infer.reset()
+        self.scene_key = uuid.uuid4().hex if getattr(env, "studio_recipe", None) else None
         # Per-episode heading state belongs to the env that just died: the
         # hold anchor is a yaw in the OLD sim's frame, and carrying it into a
         # fresh one commands a saturated turn until the next episode reset.
@@ -470,6 +488,8 @@ class Duck:
                     onnx_path: str | None = None) -> None:
         self.label = label
         self.infer = infer
+        if hasattr(self.infer, "reset"):
+            self.infer.reset()
         self.policy_id = policy_id
         self.onnx_path = onnx_path
         self.falls = 0
@@ -592,6 +612,8 @@ class Duck:
         # duck standing still at 0.3 m/s.
         self.speed_hist.clear()
         self.obs, _ = self.env.reset()
+        if hasattr(self.infer, "reset"):
+            self.infer.reset()
         self.set_cmd(cmd)  # resets resample commands; keep the shared one
 
     def sample_speed(self) -> None:
@@ -609,6 +631,8 @@ class Duck:
         Reached through the module (not a `from … import`) so the hot
         reload in POST /teach keeps this binding live.
         """
+        if not hasattr(self.env, "heading_lin_vel"):
+            return
         self.speed_hist.append(float(behaviors_mod._base_vel(self.env)[0]))
 
     def forward_speed(self) -> float | None:
@@ -631,6 +655,34 @@ class Duck:
             out.append([round(float(v), 4) for v in (*p, *q)])
         return out
 
+    def drawing_payload(self) -> dict | None:
+        payload_fn = getattr(self.env, "drawing_payload", None)
+        if payload_fn is None:
+            return None
+        payload = payload_fn()
+        points = payload.get("points", [])
+        assistance = payload.get("assistance")
+        color_fields = {}
+        if payload.get("contract") == "microduck-brush-v2":
+            colors = payload.get("colors")
+            if not isinstance(colors, list) or len(colors) != len(points):
+                return None
+            color_fields = {
+                "colors": list(colors[-MAX_DRAWING_POINTS:]),
+                "palette": [list(color) for color in payload["palette"]],
+                "brush_radius": payload["brush_radius"],
+            }
+        return {
+            "points": [list(point) for point in points[-MAX_DRAWING_POINTS:]],
+            "contract": payload.get("contract"),
+            "assistance": 0 if assistance == 0 else assistance,
+            **color_fields,
+        }
+
+
+def _uses_global_regroup(duck: Duck) -> bool:
+    return getattr(duck.env, "studio_recipe", None) != "drawing"
+
 
 # ------------------------------------------------------------ policy loading
 
@@ -638,10 +690,33 @@ def _onnx_infer(path: Path):
     import onnxruntime as ort
     sess = ort.InferenceSession(str(path))
     in_name = sess.get_inputs()[0].name
+    if len(sess.get_inputs()) > 1:
+        return _RecurrentOnnxInfer(sess)
 
     def infer(obs: np.ndarray) -> np.ndarray:
         return sess.run(None, {in_name: obs[None]})[0][0].astype(np.float32)
     return infer
+
+
+class _RecurrentOnnxInfer:
+    def __init__(self, session):
+        self.session = session
+        if [value.name for value in session.get_inputs()] != ["obs", "h_in", "c_in"]:
+            raise ValueError("unsupported recurrent ONNX inputs")
+        if [value.name for value in session.get_outputs()] != ["actions", "h_out", "c_out"]:
+            raise ValueError("unsupported recurrent ONNX outputs")
+        self.reset()
+
+    def reset(self):
+        self.hidden = np.zeros((1, 1, 256), dtype=np.float32)
+        self.cell = np.zeros_like(self.hidden)
+
+    def __call__(self, observation):
+        actions, self.hidden, self.cell = self.session.run(None, {
+            "obs": np.asarray(observation, dtype=np.float32)[None],
+            "h_in": self.hidden, "c_in": self.cell,
+        })
+        return np.asarray(actions[0], dtype=np.float32)
 
 
 def _checkpoint_infer(zip_path: Path, vecnorm_path: Path):
@@ -663,15 +738,28 @@ def _checkpoint_infer(zip_path: Path, vecnorm_path: Path):
     return infer
 
 
+def _newest_run_policy(run: Path) -> tuple[Path, float] | None:
+    """Newest assignable ONNX in a run, with its artifact mtime."""
+    candidates: list[tuple[Path, float]] = []
+    for name in ("policy.onnx", "live.onnx"):
+        path = run / name
+        try:
+            if path.is_file():
+                candidates.append((path, path.stat().st_mtime))
+        except OSError:
+            continue
+    return max(candidates, key=lambda item: (item[1], item[0].name)) if candidates else None
+
+
 def _run_mtime(run: Path) -> float | None:
-    """A run's newest-artifact timestamp (epoch seconds, float): policy.onnx
-    is the finished product; live.onnx then progress.jsonl cover runs still
-    training or stopped before export. None for a dir with none of them."""
-    for name in ("policy.onnx", "live.onnx", "progress.jsonl"):
-        f = run / name
-        if f.exists():
-            return f.stat().st_mtime
-    return None
+    """Newest meaningful run timestamp: assignable ONNX, then progress."""
+    policy = _newest_run_policy(run)
+    if policy is not None:
+        return policy[1]
+    try:
+        return (run / "progress.jsonl").stat().st_mtime
+    except OSError:
+        return None
 
 
 def _run_size(run: Path) -> int:
@@ -694,6 +782,11 @@ def _run_size(run: Path) -> int:
 _CHAIN_RE = re.compile(r"^(teach-.+)-s(\d+)$")
 
 
+def _checkpoint_step_label(steps: int) -> str:
+    """Stable legacy label for whole thousands, exact identity otherwise."""
+    return f"{steps // 1000}k" if steps % 1000 == 0 else f"{steps}steps"
+
+
 def discover_policies() -> list[dict]:
     """Everything assignable, grouped for the palette. Run entries carry
     `mtime` (epoch seconds, see _run_mtime) and are sorted newest-first —
@@ -714,10 +807,13 @@ def discover_policies() -> list[dict]:
         # mtime descending, name as the tiebreak so the order is stable.
         runs.sort(key=lambda r: (-(_run_mtime(r) or 0.0), r.name))
         for run in runs:
-            if (run / "policy.onnx").exists():
+            run_policy = _newest_run_policy(run)
+            if run_policy is not None:
+                policy_path, policy_mtime = run_policy
                 entry = {"id": f"run:{run.name}", "label": run.name,
-                         "group": "runs", "path": str(run / "policy.onnx"),
-                         "mtime": _run_mtime(run),
+                         "group": "runs", "path": str(policy_path),
+                         "artifact": policy_path.name,
+                         "mtime": policy_mtime,
                          "sizeBytes": _run_size(run)}
                 m = _CHAIN_RE.match(run.name)
                 if m:
@@ -725,14 +821,22 @@ def discover_policies() -> list[dict]:
                     entry["stage"] = int(m.group(2))
                 run_entries.append(entry)
             for z in sorted(run.glob("checkpoints/model_*_steps.zip"),
-                            key=lambda p: int(p.stem.split("_")[1])):
+                            key=lambda p: int(p.stem.split("_")[1]),
+                            reverse=True):
                 steps = z.stem.split("_")[1]
                 vn = z.parent / f"model_vecnormalize_{steps}_steps.pkl"
-                if vn.exists():
-                    label = f"{run.name}@{int(steps) // 1000}k"
+                if z.is_file() and vn.is_file():
+                    try:
+                        checkpoint_mtime = max(z.stat().st_mtime,
+                                               vn.stat().st_mtime)
+                    except OSError:
+                        continue
+                    checkpoint_steps = int(steps)
+                    label = f"{run.name}@{_checkpoint_step_label(checkpoint_steps)}"
                     ckpt_entries.append({"id": f"ckpt:{label}", "label": label,
-                                         "group": "checkpoints", "path": str(z)})
-    return out + run_entries + ckpt_entries
+                                         "group": "checkpoints", "path": str(z),
+                                         "mtime": checkpoint_mtime})
+    return out + run_entries + ckpt_entries + studio_policies_mod.discover_studio_policies()
 
 
 # Run names as they arrive off the wire on DELETE /runs/{name}. Restrictive on
@@ -831,20 +935,63 @@ def delete_runs(names: list[str], st: "LabState | None" = None) -> dict:
 _infer_cache: dict[str, object] = {}
 
 
+def _stat_signature(path: Path) -> tuple[str, int, int, int, int, int]:
+    st = path.stat()
+    return (str(path.resolve()), st.st_dev, st.st_ino, st.st_size,
+            st.st_mtime_ns, st.st_ctime_ns)
+
+
+def _policy_entry(policy_id: str) -> dict | None:
+    policies = discover_policies()
+    entry = next((policy for policy in policies
+                  if policy["id"] == policy_id), None)
+    if entry is not None:
+        return entry
+
+    legacy = re.fullmatch(r"ckpt:(.+)@(\d+)k", policy_id)
+    if legacy is None:
+        return None
+    run_name = legacy.group(1)
+    checkpoint_bucket = int(legacy.group(2))
+    candidates: list[tuple[int, dict]] = []
+    for policy in policies:
+        if policy.get("group") != "checkpoints":
+            continue
+        path = Path(policy["path"])
+        if path.parent.parent.name != run_name:
+            continue
+        steps = int(path.stem.split("_")[1])
+        if steps // 1000 == checkpoint_bucket:
+            candidates.append((steps, policy))
+    return min(candidates, default=(0, None), key=lambda item: item[0])[1]
+
+
 def load_policy_infer(policy_id: str):
-    """Resolve a palette id to an infer callable (cached). Runs in a thread."""
-    if policy_id in _infer_cache:
-        return _infer_cache[policy_id]
-    entry = next((p for p in discover_policies() if p["id"] == policy_id), None)
+    """Resolve a palette id to an infer callable, cached by source stat."""
+    entry = _policy_entry(policy_id)
     if entry is None:
+        _infer_cache.pop(policy_id, None)
         raise KeyError(policy_id)
     path = Path(entry["path"])
     if path.suffix == ".onnx":
+        signature = (_stat_signature(path),)
+        cached = _infer_cache.get(policy_id)
+        if isinstance(cached, tuple) and len(cached) == 2 and cached[0] == signature:
+            if isinstance(cached[1], _RecurrentOnnxInfer):
+                return _RecurrentOnnxInfer(cached[1].session)
+            return cached[1]
         infer = _onnx_infer(path)
     else:
         steps = path.stem.split("_")[1]
-        infer = _checkpoint_infer(path, path.parent / f"model_vecnormalize_{steps}_steps.pkl")
-    _infer_cache[policy_id] = infer
+        vecnorm = path.parent / f"model_vecnormalize_{steps}_steps.pkl"
+        signature = (_stat_signature(path), _stat_signature(vecnorm))
+        cached = _infer_cache.get(policy_id)
+        if isinstance(cached, tuple) and len(cached) == 2 and cached[0] == signature:
+            return cached[1]
+        infer = _checkpoint_infer(path, vecnorm)
+    _infer_cache[policy_id] = (signature, infer)
+    if isinstance(infer, _RecurrentOnnxInfer):
+        return _RecurrentOnnxInfer(infer.session)
     return infer
 
 
@@ -852,8 +999,10 @@ def build_ducks(args) -> list[Duck]:
     ducks: list[Duck] = []
 
     def add(label, infer, policy_id=None, onnx_path=None):
+        env_kwargs = env_kwargs_for_policy_path(onnx_path) if onnx_path else {}
         ducks.append(Duck(f"d{len(ducks)}", label, infer, seed=len(ducks),
-                          policy_id=policy_id, onnx_path=onnx_path))
+                          policy_id=policy_id, onnx_path=onnx_path,
+                          env_kwargs=env_kwargs))
 
     if args.checkpoints:
         run = Path(args.checkpoints)
@@ -863,7 +1012,7 @@ def build_ducks(args) -> list[Duck]:
             steps = z.stem.split("_")[1]
             vn = z.parent / f"model_vecnormalize_{steps}_steps.pkl"
             if vn.exists():
-                label = f"{run.name}@{int(steps) // 1000}k"
+                label = f"{run.name}@{_checkpoint_step_label(int(steps))}"
                 add(label, _checkpoint_infer(z, vn), policy_id=f"ckpt:{label}")
         if (run / "policy.onnx").exists():
             add(f"{run.name}@final", _onnx_infer(run / "policy.onnx"),
@@ -1712,19 +1861,22 @@ def restore_ducks(path: Path) -> list[Duck]:
                   f"{type(e).__name__}: {e}")
             continue
         run_path = entry.get("onnxPath")
-        if not run_path and str(entry.get("policy", "")).startswith("run:"):
-            e2 = next((p for p in discover_policies()
-                       if p["id"] == entry["policy"]), None)
+        if not run_path and entry.get("policy"):
+            e2 = _policy_entry(entry["policy"])
             run_path = e2["path"] if e2 else None
         # A showcase duck comes back showcasing — falling back to the plain
         # preview env when the behavior can't be resolved any more (the flag
         # then quietly drops rather than mislabeling the env).
         skw = showcase_env_kwargs(run_path) if entry.get("showcase") else None
-        duck = Duck(str(entry["id"]), str(entry["label"]), infer, seed=i,
-                    policy_id=entry.get("policy"),
-                    onnx_path=entry.get("onnxPath"),
-                    env_kwargs=(skw if skw is not None
-                                else env_kwargs_for_policy_path(run_path)))
+        try:
+            duck = Duck(str(entry["id"]), str(entry["label"]), infer, seed=i,
+                        policy_id=entry.get("policy"),
+                        onnx_path=entry.get("onnxPath"),
+                        env_kwargs=(skw if skw is not None
+                                    else env_kwargs_for_policy_path(run_path)))
+        except Exception as error:
+            print(f"[lab] skipping {entry.get('id')}: cannot restore environment ({error})")
+            continue
         duck.showcase = skw is not None
         ho = handoff_for(run_path) if skw is not None else None
         duck.handoff_infer, duck.handoff_label = ho if ho else (None, None)
@@ -2000,6 +2152,9 @@ def env_kwargs_for_policy_path(path: str | None) -> dict:
     restored teach-run policies)."""
     if not path:
         return {}
+    if studio_policies_mod.is_studio_policy_path(Path(path)):
+        return {"studio_policy_path": path,
+                "studio_source": studio_policies_mod.studio_policy_signature(Path(path))}
     bj = Path(path).parent / "behavior.json"
     try:
         behavior_id = json.loads(bj.read_text()).get("behavior")
@@ -2115,6 +2270,9 @@ def is_trick_duck(d: Duck) -> bool:
     them drive commands, and the UI surfaces them as non-steerable (a fully
     decluttered roster of trick ducks once made WASD look broken: every
     command was correctly ignored by everyone)."""
+    studio_recipe = getattr(getattr(d, "env", None), "studio_recipe", None)
+    if studio_recipe:
+        return studio_recipe not in {"running", "stilts", "basketball", "bridge"}
     if d.id == "trainee" or d.id.startswith("helper"):
         # trainee/helpers mirror the ACTIVE job; the loop already sends drive
         # commands to locomotion behaviors via the env.behavior check.
@@ -2177,15 +2335,38 @@ def spawn_duck_error(st: LabState, policy_id: str | None) -> str | None:
     return None
 
 
-def extract_scene() -> dict:
+def extract_scene(model=None) -> dict:
     """Visual geometry for Three.js, straight from the compiled model
     (jenga-stacker's extract_visual_scene, deduplicated by mesh id)."""
     import mujoco
 
-    m = mujoco.MjModel.from_xml_path(str(C.SCENE_WALK_XML))
+    m = model if model is not None else mujoco.MjModel.from_xml_path(str(C.SCENE_WALK_XML))
     mesh_ids: dict[int, int] = {}
     meshes: list[dict] = []
     geoms: list[dict] = []
+    primitives: list[dict] = []
+    primitive_types = {
+        int(mujoco.mjtGeom.mjGEOM_CAPSULE): "capsule",
+        int(mujoco.mjtGeom.mjGEOM_BOX): "box",
+        int(mujoco.mjtGeom.mjGEOM_SPHERE): "sphere",
+        int(mujoco.mjtGeom.mjGEOM_CYLINDER): "cylinder",
+        int(mujoco.mjtGeom.mjGEOM_ELLIPSOID): "ellipsoid",
+    }
+    if model is not None:
+        for geom_index in range(m.ngeom):
+            primitive_type = primitive_types.get(int(m.geom_type[geom_index]))
+            if primitive_type is None or m.geom_group[geom_index] != 2:
+                continue
+            material_id = int(m.geom_matid[geom_index])
+            color = m.mat_rgba[material_id] if material_id >= 0 else m.geom_rgba[geom_index]
+            primitives.append({
+                "type": primitive_type, "body": int(m.geom_bodyid[geom_index]),
+                "pos": m.geom_pos[geom_index].tolist(),
+                "quat": m.geom_quat[geom_index].tolist(),
+                "size": m.geom_size[geom_index].tolist(),
+                "rgba": color.tolist(),
+                "mat": m.material(material_id).name if material_id >= 0 else "",
+            })
     for i in range(m.ngeom):
         if m.geom_type[i] != mujoco.mjtGeom.mjGEOM_MESH or m.geom_group[i] != 2:
             continue
@@ -2210,10 +2391,28 @@ def extract_scene() -> dict:
             "mat": m.material(mat_id).name if mat_id >= 0 else "",
             "rgba": [round(float(x), 4) for x in rgba],
         })
+    tendons: list[dict] = []
+    if model is not None:
+        for tendon_index in range(m.ntendon):
+            sites: list[dict] = []
+            wrap_start = int(m.tendon_adr[tendon_index])
+            wrap_end = wrap_start + int(m.tendon_num[tendon_index])
+            for wrap_index in range(wrap_start, wrap_end):
+                if m.wrap_type[wrap_index] != mujoco.mjtWrap.mjWRAP_SITE:
+                    sites = []
+                    break
+                site_id = int(m.wrap_objid[wrap_index])
+                sites.append({"body": int(m.site_bodyid[site_id]),
+                              "pos": m.site_pos[site_id].tolist()})
+            if len(sites) >= 2:
+                tendons.append({"sites": sites, "rgba": m.tendon_rgba[tendon_index].tolist(),
+                                "width": float(m.tendon_width[tendon_index])})
     return {
         "bodies": [m.body(b).name for b in range(m.nbody)],
         "meshes": meshes,
         "geoms": geoms,
+        "primitives": primitives,
+        "tendons": tendons,
     }
 
 
@@ -2589,6 +2788,7 @@ def origin_allowed(origin: str | None) -> bool:
 
 def make_app(ducks: list[Duck]):
     scene = extract_scene()
+    duck_scenes: dict[str, dict] = {}
     st = LabState(ducks)
     stats = StatsSampler()
     st.stats = stats.sample(None)  # frames carry the full stats shape from #1
@@ -2650,8 +2850,21 @@ def make_app(ducks: list[Duck]):
         allow_methods=["*"], allow_headers=["*"])
 
     @app.get("/scene")
-    def get_scene() -> dict:
-        return scene
+    def get_scene(duck: str | None = None, version: str | None = None) -> dict:
+        if duck is None:
+            return scene
+        selected = st.duck(duck)
+        if selected is None or version != getattr(selected, "scene_key", None):
+            raise HTTPException(404, "Duck scene changed; request its current scene version")
+        if selected.scene_key is None:
+            return scene
+        active_keys = {getattr(entry, "scene_key", None) for entry in st.ducks}
+        for key in list(duck_scenes):
+            if key not in active_keys:
+                duck_scenes.pop(key, None)
+        if selected.scene_key not in duck_scenes:
+            duck_scenes[selected.scene_key] = extract_scene(selected.env.model)
+        return duck_scenes[selected.scene_key]
 
     @app.get("/policies")
     def get_policies() -> dict:
@@ -3274,19 +3487,23 @@ def make_app(ducks: list[Duck]):
         except Exception as e:
             st.events.append(f"assign failed: {policy_id} ({type(e).__name__})")
             return
-        entry = next((p for p in discover_policies() if p["id"] == policy_id), None)
+        entry = _policy_entry(policy_id)
         path = entry["path"] if entry else None
         # Showcase = the "whole trick" assign: rehearse spawns across the
         # whole trick arc (final-stage knobs). Quietly a plain assign when
         # the policy has no curriculum behind it — the flag can't mean
         # anything there, and refusing would make the chip feel broken.
         skw = showcase_env_kwargs(path) if showcase else None
-        if skw is None:
-            label = policy_id.split(":", 1)[-1]
-            duck.rebuild_env(env_kwargs_for_policy_path(path))
-        else:
-            label = showcase_label(policy_id, bool(skw.get("spotter")))
-            duck.rebuild_env(skw)
+        try:
+            if skw is None:
+                label = entry["label"] if entry else policy_id.split(":", 1)[-1]
+                duck.rebuild_env(env_kwargs_for_policy_path(path))
+            else:
+                label = showcase_label(policy_id, bool(skw.get("spotter")))
+                duck.rebuild_env(skw)
+        except Exception as error:
+            st.events.append(f"assign failed: {policy_id} ({error})")
+            return
         duck.showcase = skw is not None
         duck.swap_policy(label, infer, policy_id=policy_id)
         ho = handoff_for(path) if skw is not None else None
@@ -3360,17 +3577,21 @@ def make_app(ducks: list[Duck]):
             st.events.append(f"spawn failed: {policy_id} ({type(e).__name__})")
             return
         n = next_duck_slot(st.ducks)
-        entry = next((p for p in discover_policies() if p["id"] == policy_id), None)
+        entry = _policy_entry(policy_id)
         path = entry["path"] if entry else None
         # The "whole trick" chip drops on empty floor like any other chip —
         # the spawned duck showcases too (same no-op fallback as do_assign).
         skw = showcase_env_kwargs(path) if showcase else None
         label = (showcase_label(policy_id, bool(skw.get("spotter"))) if skw is not None
                  else policy_id.split(":", 1)[-1])
-        duck = Duck(f"d{n}", label, infer, seed=37 + n,
-                    policy_id=policy_id,
-                    env_kwargs=(skw if skw is not None
-                                else env_kwargs_for_policy_path(path)))
+        try:
+            duck = Duck(f"d{n}", label, infer, seed=37 + n,
+                        policy_id=policy_id,
+                        env_kwargs=(skw if skw is not None
+                                    else env_kwargs_for_policy_path(path)))
+        except Exception as error:
+            st.events.append(f"spawn failed: {policy_id} ({error})")
+            return
         duck.showcase = skw is not None
         ho = handoff_for(path) if skw is not None else None
         duck.handoff_infer, duck.handoff_label = ho if ho else (None, None)
@@ -3434,7 +3655,8 @@ def make_app(ducks: list[Duck]):
                 # the same story from the top: walk, turn, sprint, ...
                 st.script_t = 0.0
                 for d in st.ducks:
-                    d.reset()
+                    if _uses_global_regroup(d):
+                        d.reset()
             training = bool(st.job and st.job.status == "training")
             for d in st.ducks:
                 # Trick policies (trainee/helpers, and anything assigned from a
@@ -3448,8 +3670,9 @@ def make_app(ducks: list[Duck]):
                 # viewer-vs-reality split the user kept catching.
                 b = getattr(d.env, "behavior", None)
                 locomotion = bool(getattr(b, "forward_cmd", 0.0))
-                d.set_cmd(cmd if (locomotion or not is_trick_duck(d))
-                          else np.zeros(3, np.float32))
+                if not getattr(d.env, "studio_recipe", None) or mode == "manual":
+                    d.set_cmd(cmd if (locomotion or not is_trick_duck(d))
+                              else np.zeros(3, np.float32))
                 # Helpers are visual clones. While a trainer is running they
                 # step at 25 Hz (every other 50 Hz tick) so the lab's BAM
                 # loop gives those cores back to the 16 training workers.
@@ -3507,6 +3730,7 @@ def make_app(ducks: list[Duck]):
                         # or null) — lets the viewer load a selected duck's
                         # run into the teach panel (POST /teach/load).
                         "policy": d.policy_id,
+                        "sceneKey": getattr(d, "scene_key", None),
                         "falls": d.falls,
                         "steerable": not is_trick_duck(d),
                         "step": d.env.step_count,
@@ -3523,8 +3747,11 @@ def make_app(ducks: list[Duck]):
                                      round(float(d.env.twist_cmd[0]), 3)),
                         "spawn": getattr(d.env, "last_spawn", None),
                         "assist": bool(getattr(d.env, "spotter_active", False)),
-                        "handed": bool(getattr(d, "handed", False)),
-                        "handoff": getattr(d, "handoff_label", None),
+                        "handed": bool(getattr(d, "handed", False) or getattr(d.env, "stage", None) == "stand"),
+                        "handoff": ("alpha_stand" if getattr(d.env, "studio_recipe", None) == "backflip"
+                                    else getattr(d, "handoff_label", None)),
+                        **({"drawing": drawing}
+                           if (drawing := d.drawing_payload()) is not None else {}),
                         "bodies": d.pose_payload(),
                     } for d in st.ducks],
                 })

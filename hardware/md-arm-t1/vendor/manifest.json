@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-09-12",
+  "scope": "Official ROBOTIS XL330-M288 CAD source files; no generated or project CAD files are modified.",
+  "retrieval_status": "blocked: direct official download endpoints returned identical HTML responses, not binary STEP/PDF files; no invalid artifacts retained",
+  "assets": [
+    {
+      "filename": "XL330-M288.step",
+      "source_url": "https://www.robotis.com/service/download.php?no=1987",
+      "sha256": null,
+      "status": "not downloaded; validate STEP magic/content before use"
+    },
+    {
+      "filename": "XL330-M288.pdf",
+      "source_url": "https://www.robotis.com/service/download.php?no=1986",
+      "sha256": null,
+      "status": "not downloaded; validate PDF magic (%PDF-) before use"
+    }
+  ]
+}

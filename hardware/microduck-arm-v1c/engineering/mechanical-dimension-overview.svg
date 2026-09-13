@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="850" viewBox="0 0 1100 850" role="img" aria-label="MicroDuck arm v1-C mechanical dimension overview">
+  <defs>
+    <marker id="dimArrow" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto-start-reverse">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#027a48"/>
+    </marker>
+    <style>
+      text { font-family: Arial, "PingFang SC", sans-serif; fill: #182230; }
+      .title { font-size: 25px; font-weight: 700; }
+      .warn { font-size: 15px; font-weight: 700; fill: #b42318; }
+      .label { font-size: 14px; font-weight: 700; }
+      .small { font-size: 12px; }
+      .tiny { font-size: 10px; }
+      .link { stroke: #b54708; stroke-width: 16; stroke-linecap: round; }
+      .joint { fill: #ffffff; stroke: #344054; stroke-width: 3; }
+      .motor { fill: #e9d7fe; stroke: #6941c6; stroke-width: 2; }
+      .table { fill: #d7e3ea; stroke: #344054; stroke-width: 2; }
+      .object { fill: #fdb022; stroke: #93370d; stroke-width: 2; }
+      .goal { fill: none; stroke: #027a48; stroke-width: 3; stroke-dasharray: 6 4; }
+      .dim { fill: none; stroke: #027a48; stroke-width: 1.5; marker-start: url(#dimArrow); marker-end: url(#dimArrow); }
+      .guide { stroke: #98a2b3; stroke-width: 1; stroke-dasharray: 4 4; }
+      .note { fill: #fff4cc; stroke: #b54708; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="1100" height="850" fill="#ffffff"/>
+  <text class="title" x="32" y="40">MicroDuck arm v1-C - mechanical dimension overview / 机械尺寸概览</text>
+  <text class="warn" x="32" y="66">CONCEPT - NOT SCALE-CONTROLLED - NOT FABRICATION READY / 概念图，非比例控制，不可加工</text>
+
+  <text class="label" x="45" y="115">Nominal side view / 标称侧视图</text>
+  <rect class="note" x="55" y="300" width="125" height="65"/>
+  <text class="small" x="117" y="326" text-anchor="middle">trunk interface</text>
+  <text class="small" x="117" y="347" text-anchor="middle">physical datums TBD</text>
+  <circle class="joint" cx="180" cy="285" r="9"/>
+  <rect class="motor" x="145" y="205" width="70" height="55"/>
+  <text class="small" x="180" y="238" text-anchor="middle">M2 envelope</text>
+  <line class="guide" x1="180" y1="285" x2="180" y2="205"/>
+  <text class="small" x="225" y="222">shoulder pivot local z = +18 mm</text>
+  <line class="link" x1="180" y1="285" x2="400" y2="245"/>
+  <circle class="joint" cx="400" cy="245" r="9"/>
+  <line class="link" x1="400" y1="245" x2="600" y2="285"/>
+  <circle class="joint" cx="600" cy="285" r="9"/>
+  <line class="link" x1="600" y1="285" x2="720" y2="285"/>
+  <circle class="joint" cx="720" cy="285" r="7"/>
+  <text class="small" x="735" y="280">TCP nominal</text>
+
+  <line class="guide" x1="180" y1="285" x2="180" y2="155"/>
+  <line class="guide" x1="400" y1="245" x2="400" y2="155"/>
+  <line class="dim" x1="180" y1="165" x2="400" y2="165"/>
+  <text class="small" x="290" y="154" text-anchor="middle">55 mm shoulder-elbow</text>
+  <line class="guide" x1="400" y1="245" x2="400" y2="390"/>
+  <line class="guide" x1="600" y1="285" x2="600" y2="390"/>
+  <line class="dim" x1="400" y1="378" x2="600" y2="378"/>
+  <text class="small" x="500" y="368" text-anchor="middle">50 mm elbow-wrist</text>
+  <line class="guide" x1="600" y1="285" x2="600" y2="155"/>
+  <line class="guide" x1="720" y1="285" x2="720" y2="155"/>
+  <line class="dim" x1="600" y1="165" x2="720" y2="165"/>
+  <text class="small" x="660" y="154" text-anchor="middle">30 mm wrist-TCP</text>
+  <text class="small" x="180" y="410">Motor clearance envelope: 20 x 26 x 34 mm; not a mounting-hole drawing.</text>
+  <text class="small" x="180" y="432">Nominal geometric reach sum: 135 mm; not a load rating or collision-free workspace.</text>
+
+  <text class="label" x="800" y="115">Jaw plan / 夹爪俯视图</text>
+  <circle class="note" cx="865" cy="230" r="42"/>
+  <circle class="note" cx="913" cy="230" r="42"/>
+  <circle class="joint" cx="865" cy="230" r="5"/>
+  <circle class="joint" cx="913" cy="230" r="5"/>
+  <line class="link" x1="865" y1="230" x2="840" y2="350"/>
+  <line class="link" x1="913" y1="230" x2="938" y2="350"/>
+  <rect class="note" x="828" y="342" width="24" height="8"/>
+  <rect class="note" x="926" y="342" width="24" height="8"/>
+  <line class="dim" x1="865" y1="170" x2="913" y2="170"/>
+  <text class="small" x="889" y="156" text-anchor="middle">24 mm centers</text>
+  <text class="small" x="889" y="395" text-anchor="middle">30 mm nominal jaw length</text>
+  <text class="small" x="889" y="420" text-anchor="middle">pads: 24 x 5 x 8 mm</text>
+  <text class="tiny" x="889" y="441" text-anchor="middle">material/contact stiffness unmeasured</text>
+
+  <text class="label" x="45" y="485">Changed v1-C raised-table scene / v1-C 已变更的高桌面场景</text>
+  <line class="guide" x1="70" y1="735" x2="1020" y2="735"/>
+  <text class="tiny" x="75" y="754">simulation world z = 0 reference</text>
+  <rect class="table" x="200" y="690" width="650" height="18"/>
+  <line class="dim" x1="170" y1="735" x2="170" y2="690"/>
+  <text class="small" x="160" y="680" text-anchor="end">tabletop top z = 145 mm</text>
+  <rect class="object" x="430" y="678" width="48" height="12"/>
+  <text class="small" x="454" y="670" text-anchor="middle">object center [115, -18, 151] mm</text>
+  <rect class="goal" x="605" y="678" width="48" height="12"/>
+  <text class="small" x="629" y="660" text-anchor="middle">goal center [125, 24, 151] mm</text>
+  <line class="dim" x1="650" y1="690" x2="650" y2="555"/>
+  <text class="small" x="545" y="545">transfer waypoint z = 190 mm</text>
+  <line class="guide" x1="610" y1="555" x2="680" y2="555"/>
+
+  <rect class="note" x="45" y="520" width="490" height="110"/>
+  <text class="label" x="65" y="548">Scenario change / 场景变更</text>
+  <text class="small" x="65" y="574">v1-B floor-level or 95 mm-table outcomes do not qualify v1-C.</text>
+  <text class="small" x="65" y="597">The 145 mm top was introduced to reduce low-target mount-collision risk.</text>
+  <text class="small" x="65" y="620">It remains a provisional simulation scene, not a physical table release.</text>
+
+  <rect class="note" x="760" y="500" width="300" height="125"/>
+  <text class="label" x="780" y="528">Still unknown / 仍未知</text>
+  <text class="small" x="780" y="553">All mounting holes and mating datums</text>
+  <text class="small" x="780" y="575">Gear material, pressure angle and backlash</text>
+  <text class="small" x="780" y="597">Bearing/shaft/horn/spacer/fastener PNs</text>
+  <text class="small" x="780" y="619">Real clearances, tolerances and compliance</text>
+
+  <text class="tiny" x="32" y="820">Dimensions shown are configuration values for review. Measure real hardware and issue controlled drawings before fabrication.</text>
+</svg>

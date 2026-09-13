@@ -1,4 +1,4 @@
-import { rename } from "node:fs/promises";
+import { rename, writeFile } from "node:fs/promises";
 import { spawn } from "node:child_process";
 import path from "node:path";
 import process from "node:process";
@@ -28,6 +28,8 @@ try {
   });
   if (exitCode !== 0) {
     process.exitCode = exitCode;
+  } else {
+    await writeFile(path.join(root, "out", ".nojekyll"), "");
   }
 } finally {
   await rename(parkedApiDirectory, apiDirectory);

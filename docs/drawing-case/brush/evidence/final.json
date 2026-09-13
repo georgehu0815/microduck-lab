@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-09-12T21:38:58.101Z",
+  "passed": true,
+  "checks": {
+    "eval": {
+      "passed": true,
+      "episodes": 40,
+      "sourceSha256": "6e083a2a1a0e3114016be9ef0d377d9e9245648ca174303c5f8d0340bdf4500e"
+    },
+    "bc-eval": {
+      "passed": true,
+      "episodes": 40,
+      "sourceSha256": "75f584999c255f5f326df724698c1c98972f71f7545b663cd4dfc994fce4023b"
+    }
+  },
+  "browser": true,
+  "pythonTests": 120,
+  "viewerTests": 181,
+  "lint": true,
+  "typecheck": true,
+  "productionBuild": true,
+  "rosterPreserved": true
+}

@@ -1,0 +1,34 @@
+[Unit]
+Description=Microduck arm control coordinator (locked by default)
+Documentation=file:///opt/robot/arm-control/docs/CONTROL.md
+After=local-fs.target robotd.service
+Wants=robotd.service
+
+[Service]
+Type=exec
+User=microduck-arm
+Group=microduck-arm
+RuntimeDirectory=microduck-arm
+RuntimeDirectoryMode=0750
+UMask=0007
+ExecStart=/usr/bin/python3 -m arm_control.daemon --transport locked --socket /run/microduck-arm/control.sock
+Restart=on-failure
+RestartSec=2s
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

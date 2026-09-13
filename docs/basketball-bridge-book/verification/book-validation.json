@@ -1,0 +1,70 @@
+{
+  "scope": "book syntax/provenance/PDF and executable arithmetic, not retraining",
+  "passed": true,
+  "source_hashes": 41,
+  "asset_hashes": 36,
+  "tool_example_syntax": 8,
+  "markdown": [
+    {
+      "file": "microduck-basketball-bridge-zh.md",
+      "counts": {
+        "python": 22,
+        "bash": 21,
+        "json": 1,
+        "images": 15
+      },
+      "characters": 192942,
+      "failures": []
+    },
+    {
+      "file": "microduck-basketball-bridge-en.md",
+      "counts": {
+        "python": 22,
+        "bash": 21,
+        "json": 1,
+        "images": 15
+      },
+      "characters": 256668,
+      "failures": []
+    }
+  ],
+  "pdf": [
+    {
+      "file": "microduck-basketball-bridge-zh.pdf",
+      "pages": 112,
+      "bytes": 5189535,
+      "sha256": "b68014b9d74cfcfbe2d5075652c8548aae5d29735301bdc7c1727cb9e41c4a60",
+      "extracted_characters": 230295,
+      "layout_warnings": [],
+      "words_outside_page": []
+    },
+    {
+      "file": "microduck-basketball-bridge-en.pdf",
+      "pages": 122,
+      "bytes": 4982745,
+      "sha256": "77d53b49c9d78a0757b5f19b263a771e5af16808a73713f6718d722fa48e1fa0",
+      "extracted_characters": 301496,
+      "layout_warnings": [],
+      "words_outside_page": []
+    }
+  ],
+  "arithmetic": {
+    "scope": "synthetic arithmetic fixture, not measured training data",
+    "advantages": [
+      2.3873285749999997,
+      1.37515,
+      0.30000000000000004
+    ],
+    "returns": [
+      2.8873285749999997,
+      1.9751500000000002,
+      1.0
+    ],
+    "terminal_advantage": 0.5,
+    "timeout_advantage": 10.4,
+    "normal_density_at_mean_std_003": 13.298076013381092,
+    "positive_advantage_clipped": 2.4,
+    "negative_advantage_clipped": -1.6,
+    "passed": true
+  }
+}

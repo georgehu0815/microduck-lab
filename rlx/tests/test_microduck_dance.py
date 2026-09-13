@@ -205,6 +205,40 @@ def test_microduck_actor_log_std_is_constrained():
     )
 
 
+def test_bounded_dance_actor_and_onnx_share_action_limit(tmp_path):
+    if importlib.util.find_spec("onnxruntime") is None:
+        pytest.skip("onnxruntime is not installed")
+    import mlx.core as mx
+    import onnxruntime as ort
+
+    from rlx.export.microduck_onnx import export_deterministic_actor
+    from rlx.models.microduck import create_actor_critic, save_checkpoint
+
+    model = create_actor_critic(action_limit=1.0)
+    mx.eval(model.parameters())
+    final_layer = model.actor_mean.layers[6]
+    final_layer.weight = mx.zeros_like(final_layer.weight)
+    final_layer.bias = mx.full_like(final_layer.bias, 20.0)
+    checkpoint = tmp_path / "bounded-dance.safetensors"
+    save_checkpoint(
+        checkpoint,
+        model,
+        np.zeros(61, dtype=np.float32),
+        np.ones(61, dtype=np.float32),
+        1.0,
+        metadata={"recipe": "dance", "policy_action_limit": 1.0},
+    )
+
+    policy = export_deterministic_actor(checkpoint, tmp_path / "bounded-dance.onnx")
+    session = ort.InferenceSession(str(policy), providers=["CPUExecutionProvider"])
+    output = session.run(
+        None,
+        {session.get_inputs()[0].name: np.zeros((2, 61), dtype=np.float32)},
+    )[0]
+    assert np.max(np.abs(output)) <= 1.0
+    np.testing.assert_allclose(output, np.ones((2, 14)), atol=1e-6)
+
+
 def test_gae_does_not_cross_truncated_or_terminated_boundaries():
     import mlx.core as mx
 

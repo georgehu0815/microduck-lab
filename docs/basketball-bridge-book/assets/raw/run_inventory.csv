@@ -1,0 +1,4 @@
+case,run_id,source,seed,num_envs,rollout_steps_per_env,updates,recorded_env_steps,independence_note
+basketball,local,rlx/artifacts/basketball-local-20260910/summary.json,42,8,128,100,102400,separate continuation run from the same upstream checkpoint; fresh local critic and optimizer
+basketball,mixed,rlx/artifacts/basketball-mixed-20260910/summary.json,42,8,128,150,153600,separate continuation run from the same upstream checkpoint; fresh local critic and optimizer
+bridge,bridge_studio_02,rlx/runs/studio/bridge/bridge-studio-02/training-metrics.jsonl,7,4,128,64,32768,single bridge-studio-02 run warm-started from alpha_walking actor; fresh critic and optimizer

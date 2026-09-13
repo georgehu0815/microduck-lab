@@ -1,0 +1,13 @@
+{
+  "source_spec_sha256": "e075dcc2b82eac6832d982aa6fb03be399bab5990174fba2c9734878f753065d",
+  "generator_sha256": "d6219be571d342aba7a0b5e2872a82b818758821d98c295a6453cf6429c77379",
+  "structural_addition_mass_kg": 0.0041976,
+  "structural_mass_status": "analytical_blank_volume_excludes_unresolved_horns_fasteners",
+  "units": "mm",
+  "files": {
+    "wide-gripper-concept.scad": "50bf3f7372097eae326068ab837eeb5254c63cc246f018f88f65b1dd27ed24a0",
+    "wide-gripper-dimensions.svg": "a2a625216cd6a16d6dd27c873f5c63f9bbf2feed59050e5f600254115ec4c009"
+  },
+  "fabrication_release": false,
+  "hardware_release": false
+}

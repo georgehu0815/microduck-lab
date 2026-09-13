@@ -1,0 +1,59 @@
+
+> duck-viewer@0.1.0 build
+> next build
+
+▲ Next.js 16.3.3 (Turbopack)
+✓ Running next.config.ts took 12ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 915ms
+  Running TypeScript ...
+  Finished TypeScript in 1574ms ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/5) ...
+  Generating static pages using 11 workers (1/5) 
+  Generating static pages using 11 workers (2/5) 
+  Generating static pages using 11 workers (3/5) 
+✓ Generating static pages using 11 workers (5/5) in 266ms
+Turbopack build encountered 1 warning:
+./lib/rlx-job.ts:1343:48
+Warning: Dynamic filesystem access causes tracing of the whole project
+  [90m1341 |[0m ...d.push(paths.onnx);
+  [90m1342 |[0m ...
+[33m[1m>[0m [90m1343 |[0m ...sing = required.filter((file) => !existsSync(file));
+  [90m     |[0m                                      [33m[1m^^^^^^^^^^^^^^^^[0m
+  [90m1344 |[0m ...ng.length) {
+  [90m1345 |[0m ...[36mew[0m [33mError[0m(
+  [90m1346 |[0m ...[32metball local reference setup is incomplete. Missing: [0m${missing.join([32m", "[0m)[32m}. `[0m +
+
+Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+This can slow down deployments or lead to failures when size limits are exceeded.
+To resolve this, you can
+- make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+- only use them in development, or
+- opt out by adding an ignore comment to the highlighted call: fs.existsSync(/*turbopackIgnore: true*/ ...), or
+- remove them.
+
+Import trace:
+  App Route:
+    ./lib/rlx-job.ts
+    ./app/api/rlx/runs/route.ts
+
+
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/rlx
+├ ƒ /api/rlx/artifact
+├ ƒ /api/rlx/choreography
+├ ƒ /api/rlx/clips
+├ ƒ /api/rlx/runs
+└ ƒ /viewer
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

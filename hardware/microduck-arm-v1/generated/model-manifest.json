@@ -1,0 +1,19 @@
+{
+  "design_id": "microduck-single-arm-v1-b",
+  "spec_sha256": "57aed79ec22c5e651950271e089a578766dc49e7a30961353c9d3a308688a50d",
+  "source_sha256": "248c712e13258104ccab3f96c5cc47c7faa8f718f56f2c7de03efda653c8fb6b",
+  "status": "unvalidated_engineering_prototype",
+  "files": {
+    "microduck-arm-v1-free.xml": "e6088692bf8489d82f43b59fcb8c9e7cc700a09ed9ff591cf4a6e4598d15881f",
+    "microduck-arm-v1-fixture.xml": "e80b3e0b2b63a78bc9dd5ba6530740c98fea25f79eb6f209873e7f0188543020",
+    "microduck-arm-v1.urdf": "2fc5db4453c963b31d9ca03d36b10f2f0f5b4eed1fa14b28c67cc19994d937e7"
+  },
+  "urdf_limitations": [
+    "URDF removes colocated backlash DOFs; MJCF remains dynamics authority",
+    "Capsules use conservative cylinder approximations",
+    "URDF gear mimic is kinematic, not a simulated gearbox",
+    "Joint origins match this model's zero joint offsets",
+    "Relative mesh dependencies require the source repository assets",
+    "No ROS controller or hardware deployment qualification"
+  ]
+}

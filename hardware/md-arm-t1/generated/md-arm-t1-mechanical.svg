@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1040"
+     viewBox="0 0 900 1040" role="img">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #16202a; }
+    .title { font-size: 24px; font-weight: 700; }
+    .label { font-size: 14px; }
+    .small { font-size: 12px; }
+    .dim { stroke: #0b6e69; stroke-width: 1.5; fill: none; }
+    .part { stroke: #243746; stroke-width: 2; fill: #d9e2e8; }
+    .link { stroke: #d47716; stroke-width: 12; stroke-linecap: round; }
+    .axis { fill: #ffffff; stroke: #243746; stroke-width: 2; }
+    .blocked { fill: #fff4d6; stroke: #a66b00; stroke-width: 2; }
+    .power { stroke: #c92a2a; stroke-width: 4; fill: none; }
+    .ground { stroke: #30343b; stroke-width: 4; fill: none; }
+    .data { stroke: #087f5b; stroke-width: 3; fill: none; }
+    .box { fill: #f7f9fa; stroke: #243746; stroke-width: 2; }
+    .danger { fill: #a61e1e; font-weight: 700; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4"
+            orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#0b6e69"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text class="title" x="36" y="42">MD-Arm-T1 mechanical concept</text>
+  <text class="small" x="36" y="65">DESIGN ONLY - servo mounting interface BLOCKED</text>
+  <text class="small" x="36" y="85">Link sketch only. Shared motor geometry: shared-xl330-comparison.svg (same source as Microduck).</text>
+
+  <line x1="45" y1="350.0" x2="780" y2="350.0"
+        stroke="#59636e" stroke-width="4"/>
+  <text class="label" x="48" y="374.0">fixed tabletop plane</text>
+
+  <rect class="part" x="84.0" y="265.0" width="62" height="85"/>
+  <circle class="axis" cx="115.0" cy="300.0" r="8"/>
+  <line class="link" x1="115.0" y1="300.0" x2="316.5" y2="245.0"/>
+  <rect class="part" x="285.5" y="205.0" width="62" height="80"/>
+  <circle class="axis" cx="316.5" cy="245.0" r="8"/>
+  <line class="link" x1="316.5" y1="245.0" x2="487.0" y2="275.0"/>
+  <rect class="part" x="456.0" y="235.0" width="62" height="80"/>
+  <circle class="axis" cx="487.0" cy="275.0" r="8"/>
+  <line class="link" x1="487.0" y1="275.0" x2="580.0" y2="261.0"/>
+  <circle cx="580.0" cy="261.0" r="7" fill="#087f5b"/>
+  <text class="label" x="592.0" y="253.0">TCP</text>
+
+  <line class="dim" x1="115.0" y1="208.0" x2="316.5" y2="208.0" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="label" x="215.8" y="201.0" text-anchor="middle">65 mm axis distance</text>
+
+  <line class="dim" x1="316.5" y1="314.0" x2="487.0" y2="329.0" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="label" x="401.8" y="314.5" text-anchor="middle">55 mm axis distance</text>
+
+  <line class="dim" x1="487.0" y1="205.0" x2="580.0" y2="213.0" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="label" x="533.5" y="202.0" text-anchor="middle">30 mm to TCP</text>
+
+
+  <rect class="blocked" x="36" y="430" width="744" height="98" rx="4"/>
+  <text class="label" x="52" y="458">BLOCKED FABRICATION INTERFACE</text>
+  <text class="small" x="52" y="482">Servo rectangles are only the published 20 x 34 x 26 mm W x H x D envelope.</text>
+  <text class="small" x="52" y="504">No mounting holes, horn pilot, bolt circle, bearing seats, or manufacturing tolerances are defined.</text>
+
+  <text class="label" x="36" y="570">Straight geometric reach: 150 mm</text>
+  <text class="label" x="36" y="594">Coupled gripper opening target: 0-30 mm (mapping unverified)</text>
+  <text class="label" x="36" y="618">Physical payload target: 20 g (UNVERIFIED)</text>
+
+  <g transform="translate(520,550)">
+    <rect x="0" y="0" width="225.0" height="90.0"
+          fill="#e7f5ff" stroke="#1971c2" stroke-width="2"/>
+    <text class="small" x="8" y="22">soft catch tray</text>
+    <text class="small" x="8" y="42">250 x 200 x 20 mm concept</text>
+  </g>
+
+  <text class="small" x="36" y="690">Drawing is dimensioned for design review, not scale-controlled manufacturing.</text>
+
+  <line x1="36" y1="718" x2="864" y2="718" stroke="#59636e" stroke-width="1"/>
+  <text class="title" x="36" y="750">Dual-arm station plan-view inputs</text>
+  <text class="small" x="36" y="772">Conceptual base envelopes only - no clamp, rail, lock, mounting holes, or tolerances.</text>
+
+
+  <g>
+    <rect class="box" x="36.0" y="790.0" width="258.0" height="132"/>
+    <text class="label" x="165.0" y="812.0" text-anchor="middle">Handover simulation</text>
+    <text class="small" x="165.0" y="831.0" text-anchor="middle">SIMULATION MODEL INPUT</text>
+    <rect class="part" x="91.5" y="851.0"
+          width="30" height="30"/>
+    <rect class="part" x="208.5" y="851.0"
+          width="30" height="30"/>
+  <line class="dim" x1="106.5" y1="895.0" x2="223.5" y2="895.0" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="label" x="165.0" y="888.0" text-anchor="middle">150 mm base centers</text>
+
+    <text class="small" x="165.0" y="910.0" text-anchor="middle">arms-handover-v1</text>
+  </g>
+
+
+  <g>
+    <rect class="box" x="321.0" y="790.0" width="258.0" height="132"/>
+    <text class="label" x="450.0" y="812.0" text-anchor="middle">Historical candidate</text>
+    <text class="small" x="450.0" y="831.0" text-anchor="middle">HISTORICAL DESIGN INPUT</text>
+    <rect class="part" x="349.2" y="851.0"
+          width="30" height="30"/>
+    <rect class="part" x="520.8" y="851.0"
+          width="30" height="30"/>
+  <line class="dim" x1="364.2" y1="895.0" x2="535.8" y2="895.0" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="label" x="450.0" y="888.0" text-anchor="middle">220 mm base centers</text>
+
+    <text class="small" x="450.0" y="910.0" text-anchor="middle">adjustment candidate 180-240 mm</text>
+  </g>
+
+
+  <g>
+    <rect class="box" x="606.0" y="790.0" width="258.0" height="132"/>
+    <text class="label" x="735.0" y="812.0" text-anchor="middle">Co-carry simulation</text>
+    <text class="small" x="735.0" y="831.0" text-anchor="middle">SIMULATION MODEL INPUT</text>
+    <rect class="part" x="625.6" y="851.0"
+          width="30" height="30"/>
+    <rect class="part" x="814.4" y="851.0"
+          width="30" height="30"/>
+  <line class="dim" x1="640.6" y1="895.0" x2="829.4" y2="895.0" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text class="label" x="735.0" y="888.0" text-anchor="middle">242 mm base centers</text>
+
+    <text class="small" x="735.0" y="910.0" text-anchor="middle">arms-co-carry-v1</text>
+  </g>
+
+
+  <rect class="blocked" x="36" y="942" width="828" height="70" rx="4"/>
+  <text class="label" x="52" y="968">PHYSICAL STATION REQUIREMENT: adjust 150-242 mm, or redesign and revalidate.</text>
+  <text class="small danger" x="52" y="992">SIMULATION LAYOUT ONLY - PHYSICAL FIT UNVERIFIED; fit claim: none.</text>
+
+</svg>

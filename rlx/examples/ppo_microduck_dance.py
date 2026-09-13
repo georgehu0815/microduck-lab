@@ -25,6 +25,7 @@ DEFAULT_WEIGHT_OVERRIDES = {
     "stay_home": 1.0,
     "face_home": 1.0,
 }
+DANCE_ACTION_LIMIT = 1.0
 
 
 def _weight_overrides(value: str) -> dict[str, float]:
@@ -68,6 +69,8 @@ def _environment(args: argparse.Namespace, *, normalize: bool):
 
 def _training_metadata(args: argparse.Namespace, steps: int) -> dict[str, Any]:
     return {
+    "recipe": "dance",
+    "policy_action_limit": DANCE_ACTION_LIMIT,
         "behavior_id": BEHAVIOR_ID,
         "clip_name": CLIP_NAME,
         "steps": steps,
@@ -172,7 +175,7 @@ def train(args: argparse.Namespace) -> dict[str, object]:
             value_coefficient=args.value_coefficient,
             max_grad_norm=args.max_grad_norm,
         )
-        network = create_actor_critic()
+        network = create_actor_critic(action_limit=DANCE_ACTION_LIMIT)
         mx.eval(network.parameters())
         algorithm = PPO(
             config=config,

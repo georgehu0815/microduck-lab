@@ -1,0 +1,106 @@
+{
+  "passed": false,
+  "checkedAt": "2026-09-09T02:02:05.981Z",
+  "baseUrl": "http://127.0.0.1:63317",
+  "runName": "backflip-e2e-20260908-v5",
+  "postRequestsBlocked": 0,
+  "pageErrors": [],
+  "checks": {
+    "api": {
+      "normalizedBudget": 401408,
+      "renderVerified": true,
+      "renderEvidenceId": "cf8a0481660574776bd4921fd83b2cc77ec34236cf1ebc9a5d4feca3067efe2f",
+      "evaluationMode": "skill",
+      "skillStatus": "passed",
+      "pipelinePassed": true,
+      "evaluationSettingsMatch": "implicit-match",
+      "protocol": "spotter-launch-landing-stand-v2",
+      "standPolicySha256": "1569268713e40deea795dd2922dba50d3621e15a872855408b6b1b125b1c094b",
+      "sourceSha256": "1b9712902e9006699a0fa7983116ff016c37337065e551fd75d31af2f3cc34e3",
+      "passedEpisodes": 16,
+      "completedEpisodes": 16,
+      "landingPolicySteps": {
+        "min": 33,
+        "max": 126
+      },
+      "standHoldSeconds": {
+        "min": 7.7,
+        "max": 10.12
+      },
+      "assistAfterReleaseSteps": {
+        "min": 0,
+        "max": 0
+      }
+    },
+    "catalog": {
+      "cards": 5,
+      "title": "Backflip showcase",
+      "runName": "backflip-e2e-20260908-v5",
+      "trainedPassed": true,
+      "matchedEvaluationAndRollout": true
+    },
+    "guidance": {
+      "protocol": "spotter-launch-landing-stand-v2",
+      "exactActorNormalizerTransfer": true,
+      "calibrationSteps": 9600,
+      "criticOnlyCalibrationEpochs": 10,
+      "actorUnchangedDuringCalibration": true,
+      "rewardNormalizationFrozenAfterCalibration": true,
+      "freshPpoOptimizer": true,
+      "positivePpoImprovementClaimed": false,
+      "launchReleaseThresholdRad": 5.3,
+      "measuredReleaseRotationRad": [
+        5.376,
+        5.38
+      ],
+      "launchReleaseRateRadS": [
+        3.5,
+        6.5
+      ],
+      "minRotationBeforeHandoffRad": 5.8,
+      "consecutiveStableLandingSteps": 10,
+      "bodySupportForbidden": true,
+      "standCannotFinishRotation": true,
+      "landingOnnxBoundaryExplicit": true
+    },
+    "evaluationUi": {
+      "skillVerified": true,
+      "episodeResult": "16 / 16",
+      "accepted": true,
+      "renderProvenance": "Matched",
+      "evidenceMetrics": [
+        "rotation_rad",
+        "landing_policy_steps",
+        "stand_hold_seconds",
+        "min_stand_height_m",
+        "stand_upright_fraction",
+        "assist_after_release_steps",
+        "assist_force_n",
+        "assist_torque_nm"
+      ]
+    },
+    "mobileLayout": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "catalog": {
+        "clientWidth": 364,
+        "scrollWidth": 364,
+        "clientHeight": 1795,
+        "scrollHeight": 1795
+      },
+      "evaluation": {
+        "clientWidth": 362,
+        "scrollWidth": 362,
+        "clientHeight": 1775,
+        "scrollHeight": 1775
+      },
+      "document": {
+        "clientWidth": 390,
+        "scrollWidth": 390
+      }
+    }
+  },
+  "error": "locator.screenshot: Timeout 24272.377000000008ms exceeded.\nCall log:\n\u001b[2m  - taking element screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n\n    at /Volumes/ExternalSSD/geoagent/microduck-lab/duck-viewer/scripts/verify-backflip-studio.mjs:265:25"
+}

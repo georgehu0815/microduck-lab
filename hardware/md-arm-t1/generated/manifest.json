@@ -1,0 +1,77 @@
+{
+  "design_id": "md-arm-t1",
+  "fabrication_release": false,
+  "generator": "scripts/generate.py",
+  "generator_dependencies": [
+    "Python standard library"
+  ],
+  "openscad_required": false,
+  "outputs": [
+    {
+      "bytes": 18452,
+      "path": "component-consistency.json",
+      "sha256": "6a2c2b8d124b8c3cd0921cd221d48e6ef787b5a58b9a9d826ca0dee31e0eb2e8"
+    },
+    {
+      "bytes": 8122,
+      "path": "md-arm-t1-catch-tray.stl",
+      "sha256": "3fdc7f804bdec31135373fc87f5994e64e02567bfe71a1f8227ab3b900e11345"
+    },
+    {
+      "bytes": 4436,
+      "path": "md-arm-t1-link-blanks.stl",
+      "sha256": "c3302669e33b156e3f22c1f64bf90ae1d4df722d0d6a3e1a6fa6b2c502829287"
+    },
+    {
+      "bytes": 6864,
+      "path": "md-arm-t1-mechanical.svg",
+      "sha256": "466e4dda07d2ff7d3ca804a9351b3d2fc09476a3608e7d12744db4f034f818b7"
+    },
+    {
+      "bytes": 7122,
+      "path": "md-arm-t1-wiring.svg",
+      "sha256": "28944b5a2f53faf62fa5d78c765e6ee16bac2f16f7b30552105df4cd36efdce0"
+    },
+    {
+      "bytes": 1421775,
+      "path": "shared-xl330-comparison.svg",
+      "sha256": "a8af304201d529a34e0dfee484cf6894d55bf39eaa6cdbe341efe997972258a1"
+    },
+    {
+      "bytes": 629,
+      "path": "shared-xl330-preview.xml",
+      "sha256": "1913f0cf33bfb7f613c1193aaa767ef57d9f1aa05d4e4e839d292cb7f8efd8f0"
+    },
+    {
+      "bytes": 301,
+      "path": "shared-xl330.scad",
+      "sha256": "bc4690af839e6fc67043f29aca81557fb4f69193f86e82a172a8e3555a4706e4"
+    },
+    {
+      "bytes": 1566,
+      "path": "xl330-body-envelope.stl",
+      "sha256": "51b9e23a4f693fed67f4da4b4c0e9e918937f54b0477aea6605e31ae19aea89f"
+    }
+  ],
+  "payload_verification": "unverified",
+  "revision": "T1-design-2026-09-12-layout-2",
+  "schema_version": "1.0",
+  "servo_mount_status": "blocked",
+  "station_layout_contract": {
+    "fit_claim": "none",
+    "historical_candidate_mm": {
+      "adjustable_maximum": 240.0,
+      "adjustable_minimum": 180.0,
+      "nominal": 220.0
+    },
+    "required_physical_adjustment_mm": {
+      "maximum": 242.0,
+      "minimum": 150.0
+    },
+    "simulation_base_center_spacing_mm": {
+      "arms-co-carry-v1": 242.0,
+      "arms-handover-v1": 150.0
+    },
+    "verification": "unverified"
+  }
+}

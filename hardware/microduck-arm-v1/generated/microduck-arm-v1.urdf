@@ -1,0 +1,841 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="microduck_single_arm_v1_b">
+  <link name="world" />
+  <link name="trunk_base">
+    <inertial>
+      <origin xyz="-0.0226332 -2.70828e-05 0.00280064" rpy="0.682653867 -0.005857203322 1.573052806" />
+      <mass value="0.199224" />
+      <inertia ixx="0.00014593161399370665" iyy="0.00014079887191245798" izz="9.852651409383543e-05" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.006 0.0175 -0.005" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration__22x16x4.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.004 -0.0005 -0.0175" rpy="-0 -0 1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/right_shell.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.0042 -0 -0.0175215" rpy="0 0 1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/banana_pcb_locker.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.004 -0 -0.0175" rpy="-0 -0 1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/trunk_base.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.006 0.0175 0.0115" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.004 -0 -0.0175215" rpy="0 0 1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/power_support.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.004 -0 -0.0175215" rpy="0 0 1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/power_support.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.004 -0 -0.0175215" rpy="0 0 1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/power_support.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.0359693 0 -0.00385049" rpy="3.124139371 -0 -1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/np_f970.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0359693 0 -0.00385049" rpy="3.124139371 -0 -1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/np_f970.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.0359693 0 -0.00385049" rpy="3.124139371 -0 -1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/np_f970.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.006 -0.0175 0.0115" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.004 -0 -0.0175785" rpy="0 -0 1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/left_shell.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.006 -0.0175 -0.005" rpy="0 -0 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration__22x16x4.stl" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="trunk_base_freejoint" type="floating">
+    <parent link="world" />
+    <child link="trunk_base" />
+    <origin xyz="0 0 0.12" rpy="0 -0 0" />
+  </joint>
+  <link name="yaw2roll">
+    <inertial>
+      <origin xyz="-8.8e-11 0.00099414 0.0168917" rpy="-0.04650163617 0 0" />
+      <mass value="0.0230406" />
+      <inertia ixx="4.1964e-06" iyy="3.4198877566766147e-06" izz="2.3241322433233854e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.0175 -0.002 0.0125" rpy="3.141592654 -0 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/yaw2roll.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0 0 0.0125" rpy="-3.141592654 -0 -1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0 0.0165 0.0125" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration__22x16x4.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0175 -0.002 0.0125" rpy="3.141592654 -0 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/bearing_roll.stl" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="left_hip_yaw" type="revolute">
+    <parent link="trunk_base" />
+    <child link="yaw2roll" />
+    <origin xyz="0.006 0.0175 -0.005" rpy="3.141592654 -0 1.570796327" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.4363323129985824" upper="0.5235987755982988" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="hip_l">
+    <inertial>
+      <origin xyz="0.014815 1.6179e-08 -0.00829992" rpy="-1.741588155e-06 -0.6544381268 1.334515291e-22" />
+      <mass value="0.00618934" />
+      <inertia ixx="1.1597556037198693e-06" iyy="1.1575300000024421e-06" izz="3.52458396277689e-07" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.021 0 -0.0185" rpy="1.570796327 -0 1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration__22x16x4.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0175 0 -0.0185" rpy="-1.570796327 -0 -0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/hip_l.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0175 0 -0.0185" rpy="-1.570796327 -0 -0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/hip_l.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.0175 0 -0.0185" rpy="-1.570796327 -0 -0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/hip_l.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_hip_roll" type="revolute">
+    <parent link="yaw2roll" />
+    <child link="hip_l" />
+    <origin xyz="0 0.0165 0.0125" rpy="-1.570796327 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.3839724354387525" upper="0.3839724354387525" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="upper_leg_left">
+    <inertial>
+      <origin xyz="0.006766 0.0228838 0.0134531" rpy="0.7758555514 -1.516935759 0.3260386519" />
+      <mass value="0.0482067" />
+      <inertia ixx="1.984526595605749e-05" iyy="1.9108041962471662e-05" izz="8.117992081470831e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0 -0 -0.0425" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/upper_leg_left.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.022 0.0357771 0.0125" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 -0 -0.0425" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/upper_leg_rigidity_plate.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.022 0.0357771 -0.004" rpy="0 -0 3.141592654" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration__22x16x4.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0 -0 0.0125" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="left_hip_pitch" type="revolute">
+    <parent link="hip_l" />
+    <child link="upper_leg_left" />
+    <origin xyz="0.025 0 -0.0185" rpy="-1.570796327 -0 -1.570796327" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.570796326795005" upper="1.5707963267947882" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="leg">
+    <inertial>
+      <origin xyz="-1.52e-10 0.0318937 -0.00953505" rpy="1.265266841 -0 0" />
+      <mass value="0.0215844" />
+      <inertia ixx="5.25056e-06" iyy="4.580536622760802e-06" izz="1.913783377239199e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.022 0.0357771 0.0385" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/leg.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.022 0.0357771 0.0385" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/leg.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.022 0.0357771 0.0385" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/leg.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0.042 -0.0115" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="left_knee" type="revolute">
+    <parent link="upper_leg_left" />
+    <child link="leg" />
+    <origin xyz="0.022 0.0357771 -0.004" rpy="3.141592654 -0 1.570796327" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.570796326795012" upper="1.570796326794781" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="ankle_left">
+    <inertial>
+      <origin xyz="-0.00615738 -0.0137483 -0.0156586" rpy="1.616682127 -0.01562603279 1.609668351" />
+      <mass value="0.0300246" />
+      <inertia ixx="1.1162273349969178e-05" iyy="7.743185360670359e-06" izz="5.903341289360453e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.022 0.00622291 -0.0647" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/sole_left.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.022 0.00622291 -0.0647" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/sole_left.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.022 0.00622291 -0.0647" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/sole_left.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0.022 0.00622291 -0.0647" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/foot_left.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 -0.0322" rpy="0 -0 3.141592654" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration_default.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.022 0.00622291 -0.0647" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/ankle_left.stl" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="left_ankle" type="revolute">
+    <parent link="leg" />
+    <child link="ankle_left" />
+    <origin xyz="0 0.042 -0.026" rpy="3.141592654 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.5707963267949019" upper="1.5707963267948912" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="bearing_roll">
+    <inertial>
+      <origin xyz="-8.8e-11 0.00099414 0.0168917" rpy="-0.04650163617 0 0" />
+      <mass value="0.0230406" />
+      <inertia ixx="4.1964e-06" iyy="3.4198877566766147e-06" izz="2.3241322433233854e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.0175 -0.002 0.0125" rpy="3.141592654 -0 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/yaw2roll.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0 0 0.0125" rpy="-3.141592654 -0 -1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0175 -0.002 0.0125" rpy="3.141592654 -0 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/bearing_roll.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0 0.0165 0.0125" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration__22x16x4.stl" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="right_hip_yaw" type="revolute">
+    <parent link="trunk_base" />
+    <child link="bearing_roll" />
+    <origin xyz="0.006 -0.0175 -0.005" rpy="3.141592654 -0 1.570796327" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.5235987755982988" upper="0.4363323129985824" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="hip_l_2">
+    <inertial>
+      <origin xyz="0.014815 1.6212e-08 -0.00829992" rpy="-1.741588155e-06 -0.6544381268 1.334515291e-22" />
+      <mass value="0.00618934" />
+      <inertia ixx="1.1597556037198693e-06" iyy="1.1575300000024421e-06" izz="3.52458396277689e-07" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.0175 0 -0.0185" rpy="-1.570796327 -0 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/hip_l.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0175 0 -0.0185" rpy="-1.570796327 -0 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/hip_l.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.0175 0 -0.0185" rpy="-1.570796327 -0 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/hip_l.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.025 0 -0.0185" rpy="1.570796327 -0 -1.570796327" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration__22x16x4.stl" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="right_hip_roll" type="revolute">
+    <parent link="bearing_roll" />
+    <child link="hip_l_2" />
+    <origin xyz="-0 0.0165 0.0125" rpy="1.570796327 0 3.141592654" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.3839724354387525" upper="0.3839724354387525" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="upper_leg_right">
+    <inertial>
+      <origin xyz="-0.006766 0.0228838 0.0134531" rpy="-0.7758555514 -1.516935759 2.815554002" />
+      <mass value="0.0482067" />
+      <inertia ixx="1.984526595605749e-05" iyy="1.9108041962471662e-05" izz="8.117992081470831e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.022 0.0357771 0.0125" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.022 0.0357771 0" rpy="3.141592654 -0 -0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration__22x16x4.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0.0435" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/upper_leg_rigidity_plate.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0 0 -0.0425" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/upper_leg_right.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0.0125" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="right_hip_pitch" type="revolute">
+    <parent link="hip_l_2" />
+    <child link="upper_leg_right" />
+    <origin xyz="0.025 0 -0.0185" rpy="-1.570796327 -0 -1.570796327" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.5707963267949268" upper="1.5707963267948664" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="leg_2">
+    <inertial>
+      <origin xyz="-0.0318937 -1.52e-10 -0.00953505" rpy="1.265266841 -0 1.570796327" />
+      <mass value="0.0215844" />
+      <inertia ixx="5.25056e-06" iyy="4.580536622760802e-06" izz="1.913783377239199e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.042 0 -0.0115" rpy="0 -1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0357771 -0.022 0.0385" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/leg.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0357771 -0.022 0.0385" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/leg.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.0357771 -0.022 0.0385" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/leg.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_knee" type="revolute">
+    <parent link="upper_leg_right" />
+    <child link="leg_2" />
+    <origin xyz="-0.022 0.0357771 -0.004" rpy="3.141592654 -0 -0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.570796326794932" upper="1.570796326794861" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="ankle_right">
+    <inertial>
+      <origin xyz="0.00615539 -0.0137482 -0.0156566" rpy="1.524731599 -0.01571330839 1.532015762" />
+      <mass value="0.0300251" />
+      <inertia ixx="1.1162245904558893e-05" iyy="7.743216094205062e-06" izz="5.90343800123603e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.022 0.00622291 -0.0647" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/ankle_right.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.022 0.00622291 -0.0647" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/sole_right.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.022 0.00622291 -0.0647" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/sole_right.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.022 0.00622291 -0.0647" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/sole_right.stl" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="-0 0 -0.0292" rpy="3.141592654 -0 -0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/seeed_bearing__configuration_default.stl" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.022 0.00622291 -0.0647" rpy="0 1.570796327 0" />
+      <geometry>
+        <mesh filename="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/foot_right.stl" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="right_ankle" type="revolute">
+    <parent link="leg_2" />
+    <child link="ankle_right" />
+    <origin xyz="-0.042 0 -0.026" rpy="-3.141592654 -0 1.570796327" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.5707963267949054" upper="1.5707963267948877" effort="0.96" velocity="0.4" />
+  </joint>
+  <link name="assumed_relocated_electronics">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <mass value="0.07" />
+      <inertia ixx="3.7333333333333337e-06" iyy="9.706666666666668e-06" izz="1.2693333333333334e-05" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.04 0.024 0.008" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.04 0.024 0.008" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="assumed_relocated_electronics_fixed" type="fixed">
+    <parent link="trunk_base" />
+    <child link="assumed_relocated_electronics" />
+    <origin xyz="-0.01 0 0.018" rpy="0 -0 0" />
+  </joint>
+  <link name="assumed_dedicated_arm_pack">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <mass value="0.08" />
+      <inertia ixx="7.893333333333335e-06" iyy="1.0373333333333333e-05" izz="1.2933333333333335e-05" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.034 0.028 0.02" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.034 0.028 0.02" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="assumed_dedicated_arm_pack_fixed" type="fixed">
+    <parent link="trunk_base" />
+    <child link="assumed_dedicated_arm_pack" />
+    <origin xyz="-0.04 0 0.015" rpy="0 -0 0" />
+  </joint>
+  <link name="assumed_power_and_communications">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <mass value="0.025" />
+      <inertia ixx="9.666666666666668e-07" iyy="1.766666666666667e-06" izz="2.466666666666667e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.028 0.02 0.008" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.028 0.02 0.008" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="assumed_power_and_communications_fixed" type="fixed">
+    <parent link="trunk_base" />
+    <child link="assumed_power_and_communications" />
+    <origin xyz="-0.02 0 0.034" rpy="0 -0 0" />
+  </joint>
+  <link name="assumed_sensor_shell">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <mass value="0.008" />
+      <inertia ixx="7.893333333333335e-07" iyy="9.493333333333334e-07" izz="1.2053333333333333e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.032 0.028 0.02" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.032 0.028 0.02" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="assumed_sensor_shell_fixed" type="fixed">
+    <parent link="trunk_base" />
+    <child link="assumed_sensor_shell" />
+    <origin xyz="-0.02 0 0.059" rpy="0 -0 0" />
+  </joint>
+  <link name="arm_mount">
+    <inertial>
+      <origin xyz="0 0 -0.01605263158" rpy="0 -0 0" />
+      <mass value="0.038" />
+      <inertia ixx="8.739228070175439e-06" iyy="8.325228070175439e-06" izz="8.067333333333332e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.008" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.044 0.044 0.004" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.008" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.044 0.044 0.004" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 -0.025" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.025" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="arm_mount_fixed" type="fixed">
+    <parent link="trunk_base" />
+    <child link="arm_mount" />
+    <origin xyz="0.015 0 0.04" rpy="0 -0 0" />
+  </joint>
+  <link name="arm_yaw">
+    <inertial>
+      <origin xyz="0 0 0.018" rpy="0 -0 0" />
+      <mass value="0.018" />
+      <inertia ixx="2.7479999999999998e-06" iyy="2.334e-06" izz="1.614e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.018" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.018" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="arm_base_yaw" type="revolute">
+    <parent link="arm_mount" />
+    <child link="arm_yaw" />
+    <origin xyz="0 0 0" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.2" upper="1.2" effort="0.1" velocity="0.4" />
+  </joint>
+  <link name="arm_upper">
+    <inertial>
+      <origin xyz="0.03625 0 0.01" rpy="1.03453488 -0 1.570796327" />
+      <mass value="0.036" />
+      <inertia ixx="1.423704944751381e-05" iyy="1.1789280572900987e-05" izz="4.617223018259235e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0275 0 0" rpy="0 -1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.004" length="0.063" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0275 0 0" rpy="0 -1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.004" length="0.063" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.045 0 0.02" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.045 0 0.02" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="arm_shoulder_pitch" type="revolute">
+    <parent link="arm_yaw" />
+    <child link="arm_upper" />
+    <origin xyz="0 0 0" rpy="0 -0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.7" upper="0.8" effort="0.1" velocity="0.4" />
+  </joint>
+  <link name="arm_forearm">
+    <inertial>
+      <origin xyz="0.025 0 0.01058823529" rpy="0 -0 1.570796327" />
+      <mass value="0.034" />
+      <inertia ixx="9.765818220946914e-06" iyy="6.23256212338594e-06" izz="5.657582926829269e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.025 0 0" rpy="0 -1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0035" length="0.057" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.025 0 0" rpy="0 -1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0035" length="0.057" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0.025 0 0.02" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.025 0 0.02" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="arm_elbow_pitch" type="revolute">
+    <parent link="arm_upper" />
+    <child link="arm_forearm" />
+    <origin xyz="0.055 0 0" rpy="0 -0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.5" upper="1.8" effort="0.1" velocity="0.4" />
+  </joint>
+  <link name="arm_hand">
+    <inertial>
+      <origin xyz="0.0042 0 0.0132" rpy="0 0.2427996716 0" />
+      <mass value="0.03" />
+      <inertia ixx="7.443434323712301e-06" iyy="6.3075999999999995e-06" izz="2.6921656762876992e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.007 0 0.022" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.007 0 0.022" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.01 0.03 0.006" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 -0 0" />
+      <geometry>
+        <box size="0.01 0.03 0.006" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="arm_wrist_pitch" type="revolute">
+    <parent link="arm_forearm" />
+    <child link="arm_hand" />
+    <origin xyz="0.05 0 0" rpy="0 -0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.4" upper="1.4" effort="0.1" velocity="0.4" />
+  </joint>
+  <link name="arm_finger_left">
+    <inertial>
+      <origin xyz="0.019 0 0" rpy="0 -1.570796327 0" />
+      <mass value="0.005" />
+      <inertia ixx="2.76735197368421e-07" iyy="2.76735197368421e-07" izz="1.5213815789473684e-08" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.019 0 0" rpy="0 -1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0025" length="0.027" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.019 0 0" rpy="0 -1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0025" length="0.027" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="arm_gripper" type="revolute">
+    <parent link="arm_hand" />
+    <child link="arm_finger_left" />
+    <origin xyz="0 0.012 0" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.32" upper="0.0" effort="0.1" velocity="0.4" />
+  </joint>
+  <link name="arm_finger_right">
+    <inertial>
+      <origin xyz="0.019 0 0" rpy="0 -1.570796327 0" />
+      <mass value="0.005" />
+      <inertia ixx="2.76735197368421e-07" iyy="2.76735197368421e-07" izz="1.5213815789473684e-08" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0.019 0 0" rpy="0 -1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0025" length="0.027" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.019 0 0" rpy="0 -1.570796327 0" />
+      <geometry>
+        <cylinder radius="0.0025" length="0.027" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="arm_gripper_follower" type="revolute">
+    <parent link="arm_hand" />
+    <child link="arm_finger_right" />
+    <origin xyz="0 -0.012 0" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="0.0" upper="0.32" effort="0.1" velocity="0.4" />
+    <mimic joint="arm_gripper" multiplier="-1" offset="0" />
+  </joint>
+</robot>

@@ -8,6 +8,7 @@ continuation lives in test_train_resume.py."""
 
 import asyncio
 import json
+import os
 import types
 
 import numpy as np
@@ -56,6 +57,7 @@ def fake_popen(monkeypatch, tmp_path):
     monkeypatch.setattr(V.subprocess, "Popen", popen)
     monkeypatch.setattr(V, "RUNS_DIR", tmp_path / "runs")
     monkeypatch.setenv("LAB_STATE_PATH", str(tmp_path / "lab-state.json"))
+    monkeypatch.setenv("MICRODUCK_STUDIO_RUNS_DIR", str(tmp_path / "studio"))
     return launches
 
 
@@ -1076,8 +1078,7 @@ def _mkrun(name, mtime, artifact="policy.onnx"):
     d = V.RUNS_DIR / name
     d.mkdir(parents=True)
     (d / artifact).touch()
-    import os as _os
-    _os.utime(d / artifact, (mtime, mtime))
+    os.utime(d / artifact, (mtime, mtime))
     return d
 
 
@@ -1088,12 +1089,17 @@ def test_discover_policies_timestamps_sort_and_chains(fake_popen):
     _mkrun("teach-backflip-aaaaaa-s1", 1_000)
     _mkrun("teach-backflip-aaaaaa-s2", 5_000)
     _mkrun("plain-run", 3_000)
-    _mkrun("no-policy-yet", 9_000, artifact="live.onnx")  # not assignable yet
-    runs = [p for p in V.discover_policies() if p["group"] == "runs"]
-    assert [p["label"] for p in runs] == [
-        "teach-backflip-aaaaaa-s2", "plain-run", "teach-backflip-aaaaaa-s1"]
-    by = {p["label"]: p for p in runs}
+    _mkrun("live-run", 9_000, artifact="live.onnx")
+    runs = [policy for policy in V.discover_policies()
+            if policy["group"] == "runs"]
+    assert [policy["label"] for policy in runs] == [
+        "live-run", "teach-backflip-aaaaaa-s2", "plain-run",
+        "teach-backflip-aaaaaa-s1"]
+    by = {policy["label"]: policy for policy in runs}
     assert by["plain-run"]["mtime"] == 3_000
+    assert by["live-run"]["path"].endswith("live-run/live.onnx")
+    assert by["live-run"]["artifact"] == "live.onnx"
+    assert by["plain-run"]["artifact"] == "policy.onnx"
     # Non-chain runs carry no chain/stage keys at all.
     assert "chain" not in by["plain-run"] and "stage" not in by["plain-run"]
     assert by["teach-backflip-aaaaaa-s1"]["chain"] == "teach-backflip-aaaaaa"
@@ -1107,21 +1113,292 @@ def test_discover_policies_timestamps_sort_and_chains(fake_popen):
 
 
 def test_run_mtime_fallbacks(fake_popen):
-    """policy.onnx first, then live.onnx, then progress.jsonl — a run still
-    training (or stopped before export) must still get a timestamp."""
-    import os as _os
+    """The newest assignable artifact wins; progress covers empty runs."""
     run = V.RUNS_DIR / "r"
     run.mkdir(parents=True)
     assert V._run_mtime(run) is None
     (run / "progress.jsonl").touch()
-    _os.utime(run / "progress.jsonl", (10, 10))
+    os.utime(run / "progress.jsonl", (10, 10))
     assert V._run_mtime(run) == 10
     (run / "live.onnx").touch()
-    _os.utime(run / "live.onnx", (20, 20))
+    os.utime(run / "live.onnx", (20, 20))
     assert V._run_mtime(run) == 20
     (run / "policy.onnx").touch()
-    _os.utime(run / "policy.onnx", (30, 30))
+    os.utime(run / "policy.onnx", (30, 30))
     assert V._run_mtime(run) == 30
+    os.utime(run / "live.onnx", (40, 40))
+    assert V._run_mtime(run) == 40
+
+
+def test_studio_scene_includes_model_specific_primitives_and_tendons():
+    import mujoco
+
+    model = mujoco.MjModel.from_xml_string("""
+      <mujoco><worldbody>
+        <geom name="floor" type="plane" size="2 2 .1" group="0"/>
+        <geom name="frame" type="capsule" size=".01 .3" group="2"/>
+        <site name="anchor" pos="0 0 1"/>
+        <body name="trunk" pos="0 0 .4">
+          <geom type="box" size=".1 .1 .1" group="2"/>
+          <site name="attachment" pos="0 0 .1"/>
+        </body>
+      </worldbody><tendon><spatial width=".002" rgba="1 .8 .4 1">
+        <site site="anchor"/><site site="attachment"/>
+      </spatial></tendon></mujoco>
+    """)
+    scene = V.extract_scene(model)
+    assert scene["bodies"] == ["world", "trunk"]
+    assert [primitive["type"] for primitive in scene["primitives"]] == ["capsule", "box"]
+    assert [primitive["body"] for primitive in scene["primitives"]] == [0, 1]
+    assert len(scene["tendons"]) == 1
+    assert scene["tendons"][0]["sites"] == [
+        {"body": 0, "pos": [0.0, 0.0, 1.0]},
+        {"body": 1, "pos": [0.0, 0.0, 0.1]},
+    ]
+
+
+def test_studio_rebuild_uses_recipe_factory_and_preserves_duck_on_failure(fake_popen, monkeypatch):
+    duck = V.Duck("d0", "original", V._zero_infer, seed=4)
+    original_env = duck.env
+    original_observation = duck.obs.copy()
+
+    def fail_factory(_path, _seed):
+        raise ValueError("unsupported recipe metadata")
+
+    monkeypatch.setattr(V.studio_policies_mod, "make_studio_env", fail_factory)
+    with pytest.raises(ValueError, match="unsupported recipe"):
+        duck.rebuild_env({"studio_policy_path": "/studio/backflip/latest/backflip.onnx"})
+    assert duck.env is original_env
+    assert duck.label == "original"
+    assert duck.scene_key is None
+    np.testing.assert_array_equal(duck.obs, original_observation)
+
+    def recipe_factory(_path, seed):
+        environment = V.MicroduckWalkEnv(seed=seed, obs_noise=False, domain_rand=False)
+        environment.studio_recipe = "dance"
+        return environment
+
+    monkeypatch.setattr(V.studio_policies_mod, "make_studio_env", recipe_factory)
+    duck.rebuild_env({"studio_policy_path": "/studio/dance/latest/dance.onnx"})
+    assert duck.env is not original_env
+    assert duck.env.studio_recipe == "dance"
+    assert duck.scene_key
+    assert V.is_trick_duck(duck)
+    command = duck.env.twist_cmd.copy()
+    duck.set_cmd(np.ones(3, dtype=np.float32))
+    np.testing.assert_array_equal(duck.env.twist_cmd, command)
+    duck.rebuild_env({})
+    assert duck.scene_key is None
+
+
+def test_studio_roster_restores_policy_environment(fake_popen, monkeypatch):
+    policy_path = V.RUNS_DIR.parent / "studio" / "running" / "saved" / "running.onnx"
+    entry = {"id": "studio:running/saved", "path": str(policy_path), "group": "studio", "label": "saved"}
+    monkeypatch.setattr(V, "load_policy_infer", lambda _policy: V._zero_infer)
+    monkeypatch.setattr(V, "_policy_entry", lambda _policy: entry)
+    monkeypatch.setattr(V.studio_policies_mod, "studio_policy_signature", lambda _path: ("saved",))
+
+    def recipe_factory(_path, seed):
+        environment = V.MicroduckWalkEnv(seed=seed, obs_noise=False, domain_rand=False)
+        environment.studio_recipe = "running"
+        return environment
+
+    monkeypatch.setattr(V.studio_policies_mod, "make_studio_env", recipe_factory)
+    V.save_lab_state([_fake_duck("d0", policy_id=entry["id"], label="saved")])
+    restored = V.restore_ducks(V.lab_state_path())
+    assert len(restored) == 1
+    assert restored[0].policy_id == entry["id"]
+    assert restored[0].env.studio_recipe == "running"
+    assert restored[0].scene_key
+
+
+def test_discover_policies_refreshes_the_selected_run_artifact(fake_popen):
+    run = _mkrun("refresh-me", 10, artifact="live.onnx")
+    first = next(policy for policy in V.discover_policies()
+                 if policy["id"] == "run:refresh-me")
+    assert first["path"] == str(run / "live.onnx")
+    assert first["artifact"] == "live.onnx"
+    assert first["mtime"] == 10
+
+    (run / "policy.onnx").touch()
+    os.utime(run / "policy.onnx", (20, 20))
+    second = next(policy for policy in V.discover_policies()
+                  if policy["id"] == "run:refresh-me")
+    assert second["path"] == str(run / "policy.onnx")
+    assert second["artifact"] == "policy.onnx"
+    assert second["mtime"] == 20
+
+    os.utime(run / "live.onnx", (30, 30))
+    third = next(policy for policy in V.discover_policies()
+                 if policy["id"] == "run:refresh-me")
+    assert third["path"] == str(run / "live.onnx")
+    assert third["artifact"] == "live.onnx"
+    assert third["mtime"] == 30
+
+
+def test_discover_policies_ignores_directory_shaped_onnx_artifacts(fake_popen):
+    run = V.RUNS_DIR / "directory-artifacts"
+    run.mkdir(parents=True)
+    (run / "policy.onnx").mkdir()
+    (run / "live.onnx").mkdir()
+    run_ids = {policy["id"] for policy in V.discover_policies()
+               if policy["group"] == "runs"}
+    assert "run:directory-artifacts" not in run_ids
+
+
+def test_discover_checkpoints_are_newest_first_with_unique_exact_ids(fake_popen):
+    run = V.RUNS_DIR / "steps"
+    checkpoints = run / "checkpoints"
+    checkpoints.mkdir(parents=True)
+    for steps in (1000, 1500, 1999, 2000):
+        checkpoint_path = checkpoints / f"model_{steps}_steps.zip"
+        normalizer_path = checkpoints / f"model_vecnormalize_{steps}_steps.pkl"
+        checkpoint_path.write_bytes(b"model")
+        normalizer_path.write_bytes(b"normalizer")
+        os.utime(checkpoint_path, (steps, steps))
+        os.utime(normalizer_path, (steps + 1, steps + 1))
+
+    entries = [policy for policy in V.discover_policies()
+               if policy["group"] == "checkpoints"]
+    assert [policy["id"] for policy in entries] == [
+        "ckpt:steps@2k",
+        "ckpt:steps@1999steps",
+        "ckpt:steps@1500steps",
+        "ckpt:steps@1k",
+    ]
+    assert len({policy["id"] for policy in entries}) == 4
+    assert entries[0]["mtime"] == 2001
+
+
+def test_discover_checkpoints_skips_transiently_missing_metadata(
+        fake_popen, monkeypatch):
+    run = V.RUNS_DIR / "transient-checkpoint"
+    checkpoints = run / "checkpoints"
+    checkpoints.mkdir(parents=True)
+    checkpoint_path = checkpoints / "model_1500_steps.zip"
+    normalizer_path = checkpoints / "model_vecnormalize_1500_steps.pkl"
+    checkpoint_path.write_bytes(b"model")
+    normalizer_path.write_bytes(b"normalizer")
+    path_type = type(normalizer_path)
+    original_stat = path_type.stat
+    normalizer_stat_calls = 0
+
+    def transient_stat(path, *args, **kwargs):
+        nonlocal normalizer_stat_calls
+        if path == normalizer_path:
+            normalizer_stat_calls += 1
+            if normalizer_stat_calls > 1:
+                raise FileNotFoundError(path)
+        return original_stat(path, *args, **kwargs)
+
+    monkeypatch.setattr(path_type, "stat", transient_stat)
+    checkpoint_ids = {policy["id"] for policy in V.discover_policies()
+                      if policy["group"] == "checkpoints"}
+    assert "ckpt:transient-checkpoint@1500steps" not in checkpoint_ids
+
+
+def test_load_policy_infer_reloads_newest_onnx_and_forgets_deletions(
+        fake_popen, monkeypatch):
+    run = V.RUNS_DIR / "cache-onnx"
+    run.mkdir(parents=True)
+    live = run / "live.onnx"
+    live.write_bytes(b"live-1")
+    monkeypatch.setattr(V, "_onnx_infer",
+                        lambda path: (path.name, path.read_bytes()))
+    policy_id = "run:cache-onnx"
+    try:
+        assert V.load_policy_infer(policy_id) == ("live.onnx", b"live-1")
+        assert V.load_policy_infer(policy_id) == ("live.onnx", b"live-1")
+
+        live.write_bytes(b"live-2-new")
+        assert V.load_policy_infer(policy_id) == ("live.onnx", b"live-2-new")
+
+        final = run / "policy.onnx"
+        final.write_bytes(b"final")
+        os.utime(final, (live.stat().st_mtime + 1,) * 2)
+        assert V.load_policy_infer(policy_id) == ("policy.onnx", b"final")
+
+        final.unlink()
+        live.unlink()
+        with pytest.raises(KeyError):
+            V.load_policy_infer(policy_id)
+        assert policy_id not in V._infer_cache
+    finally:
+        V._infer_cache.pop(policy_id, None)
+
+
+def test_load_policy_infer_tracks_checkpoint_and_normalizer_signature(
+        fake_popen, monkeypatch):
+    run = V.RUNS_DIR / "cache-ckpt"
+    checkpoints = run / "checkpoints"
+    checkpoints.mkdir(parents=True)
+    checkpoint_path = checkpoints / "model_1500_steps.zip"
+    normalizer_path = checkpoints / "model_vecnormalize_1500_steps.pkl"
+    checkpoint_path.write_bytes(b"model-1")
+    normalizer_path.write_bytes(b"norm-1")
+    monkeypatch.setattr(
+        V, "_checkpoint_infer",
+        lambda model, normalizer: (model.read_bytes(), normalizer.read_bytes()))
+    policy_id = "ckpt:cache-ckpt@1500steps"
+    try:
+        assert V.load_policy_infer(policy_id) == (b"model-1", b"norm-1")
+        normalizer_path.write_bytes(b"normalizer-2")
+        assert V.load_policy_infer(policy_id) == (b"model-1", b"normalizer-2")
+        checkpoint_path.write_bytes(b"model-3")
+        assert V.load_policy_infer(policy_id) == (b"model-3", b"normalizer-2")
+
+        normalizer_path.unlink()
+        with pytest.raises(KeyError):
+            V.load_policy_infer(policy_id)
+        assert policy_id not in V._infer_cache
+    finally:
+        V._infer_cache.pop(policy_id, None)
+
+
+def test_old_rounded_checkpoint_id_restores_the_original_first_match(
+        fake_popen, monkeypatch):
+    run = V.RUNS_DIR / "legacy"
+    checkpoints = run / "checkpoints"
+    checkpoints.mkdir(parents=True)
+    for steps in (1500, 1999):
+        (checkpoints / f"model_{steps}_steps.zip").write_bytes(str(steps).encode())
+        (checkpoints / f"model_vecnormalize_{steps}_steps.pkl").write_bytes(b"vn")
+    monkeypatch.setattr(V, "_checkpoint_infer",
+                        lambda model, _normalizer: model.name)
+    V.save_lab_state([
+        _fake_duck("d0", policy_id="ckpt:legacy@1k", label="legacy checkpoint")
+    ])
+    try:
+        legacy_entry = V._policy_entry("ckpt:legacy@1k")
+        assert legacy_entry is not None
+        assert legacy_entry["path"].endswith("model_1500_steps.zip")
+        restored = V.restore_ducks(V.lab_state_path())
+        assert [duck.id for duck in restored] == ["d0"]
+        assert restored[0].infer == "model_1500_steps.zip"
+        assert restored[0].policy_id == "ckpt:legacy@1k"
+    finally:
+        V._infer_cache.pop("ckpt:legacy@1k", None)
+
+
+def test_build_ducks_uses_exact_checkpoint_ids(fake_popen, monkeypatch):
+    run = V.RUNS_DIR / "cli-checkpoints"
+    checkpoints = run / "checkpoints"
+    checkpoints.mkdir(parents=True)
+    for steps in (1000, 1500):
+        (checkpoints / f"model_{steps}_steps.zip").write_bytes(b"model")
+        (checkpoints / f"model_vecnormalize_{steps}_steps.pkl").write_bytes(b"vn")
+    monkeypatch.setattr(V, "_checkpoint_infer",
+                        lambda _model, _normalizer: V._zero_infer)
+    monkeypatch.setattr(V, "Duck",
+                        lambda duck_id, label, infer, **kwargs:
+                        types.SimpleNamespace(id=duck_id, label=label,
+                                              infer=infer, **kwargs))
+    args = types.SimpleNamespace(checkpoints=str(run), policies=[])
+    ducks = V.build_ducks(args)
+    assert [duck.policy_id for duck in ducks] == [
+        "ckpt:cli-checkpoints@1k",
+        "ckpt:cli-checkpoints@1500steps",
+    ]
 
 
 

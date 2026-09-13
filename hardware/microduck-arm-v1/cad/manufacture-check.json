@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "design_id": "microduck-single-arm-v1-b",
+  "notice": "ENGINEERING PROTOTYPE NOT FABRICATION RELEASE",
+  "canonical_spec": "hardware/microduck-arm-v1/spec/design.json",
+  "canonical_revision": "engineering-prototype-1",
+  "canonical_spec_sha256": "57aed79ec22c5e651950271e089a578766dc49e7a30961353c9d3a308688a50d",
+  "fabrication_release": false,
+  "manufacture_check": "FAIL_CLOSED",
+  "blocking_gates": [
+    "servo and horn official revision-controlled mating drawing unavailable",
+    "purchased motor, horn, and fastener stack not measured",
+    "mesh depth approximately 29 mm differs from 26 mm body envelope",
+    "mount holes, horn pilot/bolt circle, thread engagement, and tolerances TBD",
+    "gear module, tooth count, backlash, retention, and material TBD",
+    "dual-side support/bearing geometry and load path TBD",
+    "pack/BMS/fuse/wire/connector/disconnect selections and ratings TBD",
+    "shoulder continuous torque evidence >=3x measured gravity torque missing",
+    "20 g trunk and 160 g cartridge mass targets unverified",
+    "overall packaging, self-interference, cable routing, and table clearance unverified",
+    "hardware SOP and acceptance tests not executed"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "experimentId": "backflip",
+  "runName": "backflip-e2e-20260908-v5",
+  "profile": "full",
+  "totalTimesteps": 401408,
+  "numEnvs": 16,
+  "numSteps": 128,
+  "numMinibatches": 4,
+  "updateEpochs": 2,
+  "learningRate": 0.000003,
+  "initialStd": 0.03,
+  "gamma": 0.99,
+  "clipCoefficient": 0.2,
+  "entropyCoefficient": 0,
+  "normalizeRewards": true,
+  "maxEpisodeS": 12,
+  "seed": 7,
+  "domainRand": false,
+  "obsNoise": false,
+  "actionDelay": false,
+  "randomYaw": false,
+  "checkpointInterval": 100000
+}

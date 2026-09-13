@@ -1,0 +1,11 @@
+{
+  "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/bridge.safetensors",
+  "command": "train",
+  "metadata": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/bridge.safetensors.json",
+  "onnx": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/bridge.onnx",
+  "recipe": "bridge",
+  "resumed_from": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/initialization/bridge.safetensors",
+  "steps": 32768,
+  "trained_steps": 32768,
+  "training_metrics": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/bridge/bridge-studio-02/training-metrics.jsonl"
+}

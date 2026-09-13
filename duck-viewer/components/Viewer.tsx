@@ -907,15 +907,15 @@ export default function Viewer({
             : null
         }
       />
-      <RecordPanel clientRef={clientRef} />
+      {!offline && <RecordPanel clientRef={clientRef} />}
       <CameraNavigator
         clientRef={clientRef}
         connected={connected}
         defaultOpen={layout === "studio"}
       />
-      {showPolicyTools && <PolicyPanel clientRef={clientRef} />}
-      {showTeachTools && <TeachPanel clientRef={clientRef} />}
-      {showAnimationTools && <AnimPanel />}
+      {!offline && showPolicyTools && <PolicyPanel clientRef={clientRef} />}
+      {!offline && showTeachTools && <TeachPanel clientRef={clientRef} />}
+      {!offline && showAnimationTools && <AnimPanel />}
       <Toasts clientRef={clientRef} />
     </div>
   );

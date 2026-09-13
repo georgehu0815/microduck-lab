@@ -16,7 +16,7 @@ EVIDENCE_ARGS=()
 usage() {
   printf '%s\n' 'Usage: ./restart-lab.sh [--check] [--stop-jobs] [--readiness-only]' \
     'Restarts this workspace’s lab, UI and API-owned on-demand RLX workers.' \
-    'Default: preserve roster/runs; refuse active jobs; verify all four saved skills.' \
+    'Default: preserve roster/runs; refuse active jobs; verify all seven saved scenarios.' \
     '--check           Check existing services without restarting them.' \
     '--stop-jobs       Deliberately terminate active local jobs before restarting.' \
     '--readiness-only  Check API/recipe availability without requiring trained evidence.' \
@@ -220,7 +220,7 @@ while :; do
   fi
   sleep 1
 done
-printf '[4/4] Verifying lab protocol and four Studio scenarios...\n'
+printf '[4/4] Verifying lab protocol and seven Studio scenarios...\n'
 check_services
 printf 'Lab: %s\nUI + API: %s/?lab=127.0.0.1:%s\nLogs and verification: %s\n' \
   "http://127.0.0.1:$LAB_PORT" "$BASE_URL" "$LAB_PORT" "$STATE"

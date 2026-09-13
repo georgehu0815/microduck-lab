@@ -1,0 +1,17 @@
+........................................................................ [ 86%]
+...........                                                              [100%]
+=============================== warnings summary ===============================
+tests/test_microduck_drawing_pipeline.py::test_exported_onnx_is_deterministic_and_matches_torch
+tests/test_microduck_drawing_pipeline.py::test_exported_onnx_loads_through_real_drawing_studio_boundary
+tests/test_microduck_drawing_pipeline.py::test_export_cli_updates_sidecar_hash_without_recursive_metadata
+  /Volumes/ExternalSSD/geoagent/microduck-lab/rlx/examples/ppo_microduck_drawing.py:709: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter will be the default. To switch now, set dynamo=True in torch.onnx.export. This new exporter supports features like exporting LLMs with DynamicCache. We encourage you to try it and share feedback to help improve the experience. Learn more about the new export logic: https://pytorch.org/docs/stable/onnx_dynamo.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html.
+    torch.onnx.export(
+
+tests/test_microduck_drawing_pipeline.py::test_exported_onnx_is_deterministic_and_matches_torch
+tests/test_microduck_drawing_pipeline.py::test_exported_onnx_loads_through_real_drawing_studio_boundary
+tests/test_microduck_drawing_pipeline.py::test_export_cli_updates_sidecar_hash_without_recursive_metadata
+  /Volumes/ExternalSSD/geoagent/microduck-lab/rlx/.venv-microduck/lib/python3.12/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py:217: DeprecationWarning: The feature will be removed. Please remove usage of this function
+    setup_onnx_logging(verbose) as log_ctx,
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+83 passed, 6 warnings in 13.40s

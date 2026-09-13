@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-09-11T22:15:14.394Z",
+  "endpoint": "http://127.0.0.1:8788/policies",
+  "passed": true,
+  "rosterSha256": "08e891b498d6f83b64406d7057a223ba71f3071ad58efc1afb7879bcfa25f2e7",
+  "originalRosterSha256": "08e891b498d6f83b64406d7057a223ba71f3071ad58efc1afb7879bcfa25f2e7",
+  "matches": [
+    {
+      "group": "studio",
+      "id": "studio:drawing/brush-color-v2-03",
+      "label": "brush-color-v2-03",
+      "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/policy.onnx",
+      "mtime": 1789159100.427963,
+      "artifact": "policy.onnx",
+      "recipe": "drawing"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="780"
+     viewBox="0 0 900 780" role="img"
+     aria-label="ENGINEERING PROTOTYPE NOT FABRICATION RELEASE">
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #17212b; }
+    .title { font-size: 24px; font-weight: 700; }
+    .subtitle { font-size: 14px; font-weight: 700; fill: #9b1c1c; }
+    .label { font-size: 14px; }
+    .small { font-size: 12px; }
+    .tiny { font-size: 10px; }
+    .part { fill: #dce4e8; stroke: #263746; stroke-width: 2; }
+    .blank { fill: #fff1c7; stroke: #8a5a00; stroke-width: 2; }
+    .link { stroke: #d06b16; stroke-width: 12; stroke-linecap: round; }
+    .axis { fill: white; stroke: #263746; stroke-width: 2; }
+    .dim { fill: none; stroke: #087f5b; stroke-width: 1.5; }
+    .data { fill: none; stroke: #087f5b; stroke-width: 3; }
+    .power { fill: none; stroke: #c92a2a; stroke-width: 4; }
+    .ground { fill: none; stroke: #343a40; stroke-width: 4; }
+    .box { fill: #f7f9fa; stroke: #263746; stroke-width: 2; }
+    .unresolved { fill: #fff4d6; stroke: #a66b00; stroke-width: 2; }
+    .forbidden { fill: #fff0f0; stroke: #c92a2a; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4"
+            orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#087f5b"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text class="title" x="32" y="40">MicroDuck arm v1-B - bench wiring concept</text>
+  <text class="subtitle" x="32" y="64">ENGINEERING PROTOTYPE NOT FABRICATION RELEASE</text>
+  <text class="small" x="32" y="84">Canonical input: hardware/microduck-arm-v1/spec/design.json | SHA-256 57aed79ec22c... | ratings TBD</text>
+
+  <rect class="unresolved" x="32" y="120" width="170" height="92"/>
+  <text class="label" x="48" y="146">SEPARATE ARM PACK</text>
+  <text class="small" x="48" y="168">5 V domain target</text>
+  <text class="small" x="48" y="188">pack/BMS/connector TBD</text>
+  <rect class="unresolved" x="235" y="130" width="82" height="52"/>
+  <text class="tiny" x="276" y="152" text-anchor="middle">F_MAIN</text>
+  <text class="tiny" x="276" y="168" text-anchor="middle">RATING TBD</text>
+  <rect class="unresolved" x="350" y="120" width="155" height="92"/>
+  <text class="label" x="366" y="146">DC DISCONNECT</text>
+  <text class="small" x="366" y="168">candidate function</text>
+  <text class="small" x="366" y="188">device/rating TBD</text>
+  <line class="power" x1="202" y1="149" x2="235" y2="149"/>
+  <line class="power" x1="317" y1="149" x2="350" y2="149"/>
+  <line class="power" x1="505" y1="149" x2="505" y2="520"/>
+
+  <rect class="box" x="32" y="265" width="235" height="105"/>
+  <text class="label" x="48" y="291">HOST USB + U2D2</text>
+  <text class="small" x="48" y="314">bench candidate</text>
+  <text class="small" x="48" y="336">mobile integration: TBD</text>
+  <text class="small" x="48" y="358">TTL: 1 GND, 2 N/C, 3 DATA</text>
+  <rect class="unresolved" x="305" y="238" width="115" height="92"/>
+  <text class="label" x="362.5" y="265" text-anchor="middle">POWER HUB</text>
+  <text class="small" x="362.5" y="288" text-anchor="middle">bench candidate</text>
+  <text class="tiny" x="362.5" y="311" text-anchor="middle">branch protection TBD</text>
+  <line class="data" x1="267" y1="348" x2="420" y2="348"/>
+  <line class="data" x1="420" y1="228" x2="420" y2="552"/>
+  <line class="ground" x1="267" y1="365" x2="292" y2="365"/>
+  <line class="ground" x1="450" y1="228" x2="450" y2="600"/>
+  <line class="ground" x1="202" y1="191" x2="292" y2="191"/>
+  <line class="ground" x1="292" y1="191" x2="292" y2="600"/>
+  <line class="ground" x1="292" y1="600" x2="450" y2="600"/>
+
+  <rect class="box" x="665" y="180" width="195" height="58"/>
+  <text class="label" x="678" y="202">M1 BASE</text>
+  <text class="tiny" x="678" y="223">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="unresolved" x="550" y="189" width="78" height="38"/>
+  <text class="tiny" x="589" y="212" text-anchor="middle">F1 TBD</text>
+  <line class="power" x1="505" y1="208" x2="550" y2="208"/>
+  <line class="power" x1="628" y1="208" x2="665" y2="208"/>
+  <line class="data" x1="420" y1="228" x2="665" y2="228"/>
+  <line class="ground" x1="450" y1="236" x2="665" y2="236"/>
+
+  <rect class="box" x="665" y="258" width="195" height="58"/>
+  <text class="label" x="678" y="280">M2 SHOULDER</text>
+  <text class="tiny" x="678" y="301">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="unresolved" x="550" y="267" width="78" height="38"/>
+  <text class="tiny" x="589" y="290" text-anchor="middle">F2 TBD</text>
+  <line class="power" x1="505" y1="286" x2="550" y2="286"/>
+  <line class="power" x1="628" y1="286" x2="665" y2="286"/>
+  <line class="data" x1="420" y1="306" x2="665" y2="306"/>
+  <line class="ground" x1="450" y1="314" x2="665" y2="314"/>
+
+  <rect class="box" x="665" y="336" width="195" height="58"/>
+  <text class="label" x="678" y="358">M3 ELBOW</text>
+  <text class="tiny" x="678" y="379">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="unresolved" x="550" y="345" width="78" height="38"/>
+  <text class="tiny" x="589" y="368" text-anchor="middle">F3 TBD</text>
+  <line class="power" x1="505" y1="364" x2="550" y2="364"/>
+  <line class="power" x1="628" y1="364" x2="665" y2="364"/>
+  <line class="data" x1="420" y1="384" x2="665" y2="384"/>
+  <line class="ground" x1="450" y1="392" x2="665" y2="392"/>
+
+  <rect class="box" x="665" y="414" width="195" height="58"/>
+  <text class="label" x="678" y="436">M4 WRIST</text>
+  <text class="tiny" x="678" y="457">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="unresolved" x="550" y="423" width="78" height="38"/>
+  <text class="tiny" x="589" y="446" text-anchor="middle">F4 TBD</text>
+  <line class="power" x1="505" y1="442" x2="550" y2="442"/>
+  <line class="power" x1="628" y1="442" x2="665" y2="442"/>
+  <line class="data" x1="420" y1="462" x2="665" y2="462"/>
+  <line class="ground" x1="450" y1="470" x2="665" y2="470"/>
+
+  <rect class="box" x="665" y="492" width="195" height="58"/>
+  <text class="label" x="678" y="514">M5 GRIPPER</text>
+  <text class="tiny" x="678" y="535">1 GND | 2 VDD | 3 DATA</text>
+  <rect class="unresolved" x="550" y="501" width="78" height="38"/>
+  <text class="tiny" x="589" y="524" text-anchor="middle">F5 TBD</text>
+  <line class="power" x1="505" y1="520" x2="550" y2="520"/>
+  <line class="power" x1="628" y1="520" x2="665" y2="520"/>
+  <line class="data" x1="420" y1="540" x2="665" y2="540"/>
+  <line class="ground" x1="450" y1="548" x2="665" y2="548"/>
+
+
+  <rect class="forbidden" x="32" y="635" width="828" height="95"/>
+  <text class="label" x="48" y="661">PROHIBITED / 禁止</text>
+  <text class="small" x="48" y="684">Never connect ARM_5V to original MicroDuck battery positive, body VDD, USB VBUS, or body actuator DATA.</text>
+  <text class="small" x="48" y="707">No mains wiring instructions are provided. No fuse, BMS, pack, cable, connector, or disconnect rating is approved.</text>
+
+</svg>

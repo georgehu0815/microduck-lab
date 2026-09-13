@@ -1,5 +1,52 @@
 # duck-viewer
 
+## GitHub Pages static app
+
+Website: https://georgehu0815.github.io/microduck-lab/
+
+Arm video library: https://georgehu0815.github.io/microduck-lab/arm/
+
+The static app uses the checked-in `public/static` media catalogs, saved videos,
+evaluation JSON, and guides. It needs no Next.js or Python server at runtime.
+Live simulation, training/evaluation jobs, policy exports, teaching, and backend
+recording require the local lab and are unavailable on GitHub Pages. Recorded
+simulation evidence does not imply successful hardware deployment or mastery.
+
+```sh
+cd duck-viewer
+npm ci
+npm test
+npm run build:pages
+```
+
+`build:pages` exports to `out/` with `/microduck-lab` as the asset/navigation base
+and includes `.nojekyll`. GitHub Pages serves `gh-pages`, `/ (root)`.
+After committing and pushing source changes to `main`, publish updated output:
+
+```sh
+npm run deploy:pages
+```
+
+This builds the site and updates `gh-pages` through an isolated temporary Git
+checkout. It requires write access to `georgehu0815/microduck-lab`. A source push
+alone does not republish the site. To refresh the recorded-media snapshot from a
+running local viewer, use `npm run export:static-media` before building and review
+the resulting media changes before committing.
+
+For browser verification, point `PLAYWRIGHT_PACKAGE` at a `package.json` whose
+installed dependencies include Playwright (no runtime dependency is added here):
+
+```sh
+PLAYWRIGHT_PACKAGE=/path/to/browser-tools/package.json node scripts/verify-pages.mjs
+PLAYWRIGHT_PACKAGE=/path/to/browser-tools/package.json node scripts/verify-pages.mjs https://georgehu0815.github.io/microduck-lab/
+```
+
+With no URL, the verifier serves `out/` under the exact Pages prefix without an
+API or SPA fallback. It checks media availability, saved-video playback, eight
+scenario selectors, language switching, navigation, mobile overflow, and absence
+of backend requests. Screenshots and its report stay in ignored
+`.omx/artifacts/github-pages/`.
+
 ## Interface language
 
 Use the **English / 中文** toggle in Studio or Arm Lab. English is the default,

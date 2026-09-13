@@ -1,0 +1,267 @@
+{
+  "schema_version": "1.0",
+  "design_id": "microduck-single-arm-v1-b",
+  "title": "MicroDuck single arm v1-B logical power and TTL netlist",
+  "notice": "ENGINEERING PROTOTYPE NOT FABRICATION RELEASE",
+  "canonical_spec": "hardware/microduck-arm-v1/spec/design.json",
+  "canonical_revision": "engineering-prototype-1",
+  "canonical_spec_sha256": "57aed79ec22c5e651950271e089a578766dc49e7a30961353c9d3a308688a50d",
+  "release": {
+    "fabrication_release": false,
+    "electrical_release": false,
+    "hardware_acceptance": "not_run"
+  },
+  "architecture": {
+    "actuator_count": 5,
+    "actuator_model_candidate": "XL330-M288-T",
+    "arm_voltage_domain_v": 5.0,
+    "arm_power_domain": "separate_from_original_microduck_positive",
+    "bench_interface_candidate": "U2D2 plus compatible hub",
+    "mobile_interface": "TBD"
+  },
+  "components": {
+    "BAT1": {
+      "function": "separate arm battery source",
+      "part_number": null,
+      "voltage_rating": null,
+      "current_rating": null,
+      "status": "unresolved"
+    },
+    "BMS1": {
+      "function": "battery protection/management",
+      "part_number": null,
+      "voltage_rating": null,
+      "current_rating": null,
+      "status": "unresolved"
+    },
+    "F_MAIN": {
+      "function": "arm feeder protection",
+      "part_number": null,
+      "rating": null,
+      "trip_curve": null,
+      "status": "unresolved"
+    },
+    "SW_DC": {
+      "function": "manual DC disconnect or e-stop power pole",
+      "part_number": null,
+      "dc_interrupt_rating": null,
+      "status": "unresolved"
+    },
+    "U2D2": {
+      "function": "bench USB to TTL interface candidate",
+      "part_number": "ROBOTIS U2D2",
+      "status": "bench_candidate_mobile_tbd"
+    },
+    "HUB1": {
+      "function": "bench TTL/power distribution candidate",
+      "part_number": null,
+      "rating": null,
+      "branch_protection": null,
+      "status": "unresolved_not_cad_ready"
+    },
+    "F_M1": {
+      "function": "M1 branch protection",
+      "part_number": null,
+      "rating": null,
+      "status": "unresolved"
+    },
+    "F_M2": {
+      "function": "M2 branch protection",
+      "part_number": null,
+      "rating": null,
+      "status": "unresolved"
+    },
+    "F_M3": {
+      "function": "M3 branch protection",
+      "part_number": null,
+      "rating": null,
+      "status": "unresolved"
+    },
+    "F_M4": {
+      "function": "M4 branch protection",
+      "part_number": null,
+      "rating": null,
+      "status": "unresolved"
+    },
+    "F_M5": {
+      "function": "M5 branch protection",
+      "part_number": null,
+      "rating": null,
+      "status": "unresolved"
+    },
+    "M1": {
+      "function": "base",
+      "candidate": "XL330-M288-T",
+      "mass_g": 18.0,
+      "pins": {
+        "1": "GND",
+        "2": "VDD",
+        "3": "DATA"
+      },
+      "status": "candidate_requires_identity_and_bench_verification"
+    },
+    "M2": {
+      "function": "shoulder",
+      "candidate": "XL330-M288-T",
+      "mass_g": 18.0,
+      "pins": {
+        "1": "GND",
+        "2": "VDD",
+        "3": "DATA"
+      },
+      "status": "candidate_requires_identity_and_bench_verification"
+    },
+    "M3": {
+      "function": "elbow",
+      "candidate": "XL330-M288-T",
+      "mass_g": 18.0,
+      "pins": {
+        "1": "GND",
+        "2": "VDD",
+        "3": "DATA"
+      },
+      "status": "candidate_requires_identity_and_bench_verification"
+    },
+    "M4": {
+      "function": "wrist",
+      "candidate": "XL330-M288-T",
+      "mass_g": 18.0,
+      "pins": {
+        "1": "GND",
+        "2": "VDD",
+        "3": "DATA"
+      },
+      "status": "candidate_requires_identity_and_bench_verification"
+    },
+    "M5": {
+      "function": "rotary_gripper",
+      "candidate": "XL330-M288-T",
+      "mass_g": 18.0,
+      "pins": {
+        "1": "GND",
+        "2": "VDD",
+        "3": "DATA"
+      },
+      "status": "candidate_requires_identity_and_bench_verification"
+    }
+  },
+  "nets": [
+    {
+      "name": "ARM_5V_SOURCE",
+      "nodes": [
+        "QUALIFIED_SOURCE_ASSEMBLY:POS",
+        "F_MAIN:IN"
+      ],
+      "status": "unresolved_source_chain"
+    },
+    {
+      "name": "ARM_5V_FUSED",
+      "nodes": [
+        "F_MAIN:OUT",
+        "SW_DC:IN"
+      ],
+      "status": "unresolved_ratings"
+    },
+    {
+      "name": "ARM_5V_ENABLED",
+      "nodes": [
+        "SW_DC:OUT",
+        "F_M1:IN",
+        "F_M2:IN",
+        "F_M3:IN",
+        "F_M4:IN",
+        "F_M5:IN"
+      ],
+      "status": "unresolved_ratings"
+    },
+    {
+      "name": "ARM_GND",
+      "nodes": [
+        "QUALIFIED_SOURCE_ASSEMBLY:NEG",
+        "U2D2_TTL:1_GND",
+        "M1:1_GND",
+        "M2:1_GND",
+        "M3:1_GND",
+        "M4:1_GND",
+        "M5:1_GND"
+      ],
+      "status": "required_common_signal_reference"
+    },
+    {
+      "name": "TTL_DATA",
+      "nodes": [
+        "U2D2_TTL:3_DATA",
+        "M1:3_DATA",
+        "M2:3_DATA",
+        "M3:3_DATA",
+        "M4:3_DATA",
+        "M5:3_DATA"
+      ],
+      "status": "bench_candidate_mobile_topology_tbd"
+    },
+    {
+      "name": "M1_VDD",
+      "nodes": [
+        "F_M1:OUT",
+        "M1:2_VDD"
+      ],
+      "status": "branch_rating_unresolved"
+    },
+    {
+      "name": "M2_VDD",
+      "nodes": [
+        "F_M2:OUT",
+        "M2:2_VDD"
+      ],
+      "status": "branch_rating_unresolved"
+    },
+    {
+      "name": "M3_VDD",
+      "nodes": [
+        "F_M3:OUT",
+        "M3:2_VDD"
+      ],
+      "status": "branch_rating_unresolved"
+    },
+    {
+      "name": "M4_VDD",
+      "nodes": [
+        "F_M4:OUT",
+        "M4:2_VDD"
+      ],
+      "status": "branch_rating_unresolved"
+    },
+    {
+      "name": "M5_VDD",
+      "nodes": [
+        "F_M5:OUT",
+        "M5:2_VDD"
+      ],
+      "status": "branch_rating_unresolved"
+    }
+  ],
+  "explicit_no_connects": [
+    "ORIGINAL_MICRODUCK_BATTERY:POS",
+    "ORIGINAL_MICRODUCK_BODY_BUS:VDD",
+    "ORIGINAL_MICRODUCK_BODY_BUS:DATA",
+    "USB:VBUS_TO_ARM_5V",
+    "U2D2_TTL:2_NC"
+  ],
+  "unresolved_release_gates": [
+    "battery pack chemistry, cell configuration, capacity, and enclosure",
+    "BMS compatibility and all voltage/current/fault ratings",
+    "main and per-motor fuse part numbers, ratings, and trip behavior",
+    "wire gauge, insulation, flex life, routing, and strain relief",
+    "connector families, mating cycles, polarity keying, and current ratings",
+    "DC disconnect/e-stop device and interrupt rating",
+    "distribution hub topology and branch protection",
+    "mobile compute/interface architecture",
+    "measured startup, transient, continuous, and fault currents"
+  ],
+  "internal_source_topology": "intentionally unspecified until the exact pack, BMS, charger, regulator, regenerative behavior, and protection architecture are reviewed",
+  "prohibited_instructions": [
+    "No mains wiring or exposed-AC assembly is part of this package.",
+    "Do not connect the arm source to the original MicroDuck battery positive.",
+    "Do not infer a safe fuse or connector rating from arithmetic stall-current sums."
+  ]
+}

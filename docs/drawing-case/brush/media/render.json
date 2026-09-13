@@ -1,0 +1,186 @@
+{
+  "assessment": {
+    "assistance": 0,
+    "by_color": {
+      "blue": {
+        "coverage": 1.0,
+        "length_ratio": 1.0006930063879396,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.07835656281009953,
+        "reference_length_m": 0.07830229881682912,
+        "symmetric_chamfer_m": 9.416261849606367e-05
+      },
+      "charcoal": {
+        "coverage": 1.0,
+        "length_ratio": 1.0021381123839794,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.12622015111948207,
+        "reference_length_m": 0.12595085403868916,
+        "symmetric_chamfer_m": 8.807380789670897e-05
+      },
+      "gold": {
+        "coverage": 1.0,
+        "length_ratio": 1.027269607223009,
+        "passed": true,
+        "precision": 0.9993284746732088,
+        "recorded_length_m": 0.3088320421332994,
+        "reference_length_m": 0.3006338744588745,
+        "symmetric_chamfer_m": 0.00011301715433393508
+      },
+      "orange": {
+        "coverage": 1.0,
+        "length_ratio": 1.007314905067086,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.05400282078332903,
+        "reference_length_m": 0.05361066386656167,
+        "symmetric_chamfer_m": 9.756931141348025e-05
+      }
+    },
+    "completed": true,
+    "contact_steps": 3484,
+    "contract_version": "microduck-brush-v2",
+    "coverage": 1.0,
+    "fallen_or_dropped": false,
+    "grasp_fraction": 0.9998332777592531,
+    "max_compression_m": 0.0005489962242775408,
+    "max_normal_force_n": 0.014160002026284108,
+    "palette_contacts": [
+      {
+        "color": 0,
+        "force_n": 0.0014240585460496655,
+        "time": 2.039999999999997
+      },
+      {
+        "color": 1,
+        "force_n": 0.001949110977237967,
+        "time": 69.94600000001839
+      },
+      {
+        "color": 2,
+        "force_n": 0.002071908748112186,
+        "time": 84.63199999998416
+      },
+      {
+        "color": 3,
+        "force_n": 0.0017910282808921687,
+        "time": 107.03399999993195
+      }
+    ],
+    "passed": true,
+    "pen_up_leak_fraction": 0.03864541832669323,
+    "precision": 0.9998321186683022,
+    "unassisted": true
+  },
+  "contract_version": "microduck-brush-v2",
+  "control_steps": 5998,
+  "controller": "onnx",
+  "created_at": "2026-09-11T21:04:19.391022+00:00",
+  "drawing_assessment": {
+    "assistance": 0,
+    "by_color": {
+      "blue": {
+        "coverage": 1.0,
+        "length_ratio": 1.0006930063879396,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.07835656281009953,
+        "reference_length_m": 0.07830229881682912,
+        "symmetric_chamfer_m": 9.416261849606367e-05
+      },
+      "charcoal": {
+        "coverage": 1.0,
+        "length_ratio": 1.0021381123839794,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.12622015111948207,
+        "reference_length_m": 0.12595085403868916,
+        "symmetric_chamfer_m": 8.807380789670897e-05
+      },
+      "gold": {
+        "coverage": 1.0,
+        "length_ratio": 1.027269607223009,
+        "passed": true,
+        "precision": 0.9993284746732088,
+        "recorded_length_m": 0.3088320421332994,
+        "reference_length_m": 0.3006338744588745,
+        "symmetric_chamfer_m": 0.00011301715433393508
+      },
+      "orange": {
+        "coverage": 1.0,
+        "length_ratio": 1.007314905067086,
+        "passed": true,
+        "precision": 1.0,
+        "recorded_length_m": 0.05400282078332903,
+        "reference_length_m": 0.05361066386656167,
+        "symmetric_chamfer_m": 9.756931141348025e-05
+      }
+    },
+    "completed": true,
+    "contact_steps": 3484,
+    "contract_version": "microduck-brush-v2",
+    "coverage": 1.0,
+    "fallen_or_dropped": false,
+    "grasp_fraction": 0.9998332777592531,
+    "max_compression_m": 0.0005489962242775408,
+    "max_normal_force_n": 0.014160002026284108,
+    "palette_contacts": [
+      {
+        "color": 0,
+        "force_n": 0.0014240585460496655,
+        "time": 2.039999999999997
+      },
+      {
+        "color": 1,
+        "force_n": 0.001949110977237967,
+        "time": 69.94600000001839
+      },
+      {
+        "color": 2,
+        "force_n": 0.002071908748112186,
+        "time": 84.63199999998416
+      },
+      {
+        "color": 3,
+        "force_n": 0.0017910282808921687,
+        "time": 107.03399999993195
+      }
+    ],
+    "passed": true,
+    "pen_up_leak_fraction": 0.03864541832669323,
+    "precision": 0.9998321186683022,
+    "unassisted": true
+  },
+  "elapsed_seconds": 119.96000000000001,
+  "environment": {
+    "actuator": "xml",
+    "assistance": 0,
+    "max_episode_s": 120.0,
+    "recipe": "drawing",
+    "recipe_options": {}
+  },
+  "fps": 10.0,
+  "frames": 1200,
+  "outputs": {
+    "contact_sheet": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render/frame_sheet.png",
+    "painting": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render/painting.png",
+    "raw_trace": {
+      "csv": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render/raw_trace.csv",
+      "json": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render/raw_trace.json"
+    },
+    "video": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/render/rollout.mp4"
+  },
+  "paint_source": "actual MuJoCo brush-tip contact trace only",
+  "recipe": "drawing",
+  "requested_fps": 10,
+  "requested_seconds": 120.0,
+  "return": 19801.29852504399,
+  "seed": 10001,
+  "source": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/drawing/brush-color-v2-03/policy.onnx",
+  "source_sha256": "6e083a2a1a0e3114016be9ef0d377d9e9245648ca174303c5f8d0340bdf4500e",
+  "source_type": "policy",
+  "teacher_diagnostic": false,
+  "visible_paint_segments": 2000
+}

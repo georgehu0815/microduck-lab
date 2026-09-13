@@ -1,0 +1,176 @@
+{
+  "passed": true,
+  "links": [
+    {
+      "readme": "README.md",
+      "asset": "docs/seven-cases-verification/media/dance.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "README.md",
+      "asset": "docs/seven-cases-verification/media/swing.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "README.md",
+      "asset": "docs/seven-cases-verification/media/running.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "README.md",
+      "asset": "docs/seven-cases-verification/media/stilts.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "README.md",
+      "asset": "docs/seven-cases-verification/media/backflip.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "README.md",
+      "asset": "docs/seven-cases-verification/media/basketball.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "README.md",
+      "asset": "docs/seven-cases-verification/media/bridge.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "README.md",
+      "asset": "docs/drawing-case/media/drawing.gif",
+      "frames": 48,
+      "size": [
+        440,
+        330
+      ]
+    },
+    {
+      "readme": "README.md",
+      "asset": "docs/drawing-case/media/teacher.gif",
+      "frames": 48,
+      "size": [
+        440,
+        330
+      ]
+    },
+    {
+      "readme": "README.md",
+      "asset": "docs/media/animate-rig.gif",
+      "frames": 111,
+      "size": [
+        440,
+        664
+      ]
+    },
+    {
+      "readme": "duck-viewer/README.md",
+      "asset": "duck-viewer/../docs/seven-cases-verification/media/dance.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "duck-viewer/README.md",
+      "asset": "duck-viewer/../docs/seven-cases-verification/media/swing.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "duck-viewer/README.md",
+      "asset": "duck-viewer/../docs/seven-cases-verification/media/running.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "duck-viewer/README.md",
+      "asset": "duck-viewer/../docs/seven-cases-verification/media/stilts.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "duck-viewer/README.md",
+      "asset": "duck-viewer/../docs/seven-cases-verification/media/backflip.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "duck-viewer/README.md",
+      "asset": "duck-viewer/../docs/seven-cases-verification/media/basketball.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "duck-viewer/README.md",
+      "asset": "duck-viewer/../docs/seven-cases-verification/media/bridge.gif",
+      "frames": 24,
+      "size": [
+        360,
+        203
+      ]
+    },
+    {
+      "readme": "duck-viewer/README.md",
+      "asset": "duck-viewer/../docs/drawing-case/media/drawing.gif",
+      "frames": 48,
+      "size": [
+        440,
+        330
+      ]
+    },
+    {
+      "readme": "duck-viewer/README.md",
+      "asset": "duck-viewer/../docs/drawing-case/media/teacher.gif",
+      "frames": 48,
+      "size": [
+        440,
+        330
+      ]
+    }
+  ]
+}

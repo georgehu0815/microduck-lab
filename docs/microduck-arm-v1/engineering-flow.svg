@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-labelledby="title desc">
+  <title id="title">MicroDuck single arm v1-B engineering flow</title>
+  <desc id="desc">Canonical specification flows through engineering artifacts, checks, teacher, behavior cloning, residual PPO, ONNX export, and blocked fail-closed hardware gates.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#40566f"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, "PingFang SC", sans-serif; fill: #172433; }
+      .subtitle { font: 400 17px Arial, "PingFang SC", sans-serif; fill: #40566f; }
+      .banner { font: 700 16px Arial, "PingFang SC", sans-serif; fill: #ffffff; letter-spacing: 1px; }
+      .box-title { font: 700 18px Arial, "PingFang SC", sans-serif; fill: #172433; text-anchor: middle; }
+      .box-text { font: 400 14px Arial, "PingFang SC", sans-serif; fill: #40566f; text-anchor: middle; }
+      .gate-title { font: 700 18px Arial, "PingFang SC", sans-serif; fill: #7e1f1f; text-anchor: middle; }
+      .gate-text { font: 600 14px Arial, "PingFang SC", sans-serif; fill: #7e1f1f; text-anchor: middle; }
+      .note { font: 400 15px Arial, "PingFang SC", sans-serif; fill: #40566f; }
+      .arrow { stroke: #40566f; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="720" fill="#f7f9fb"/>
+  <rect x="0" y="0" width="1600" height="48" fill="#9d2c2c"/>
+  <text x="800" y="31" class="banner" text-anchor="middle">ENGINEERING PROTOTYPE NOT FABRICATION RELEASE / 工程原型，不是制造放行版本</text>
+
+  <text x="80" y="102" class="title">MicroDuck single arm v1-B engineering flow</text>
+  <text x="80" y="132" class="subtitle">Artifact and training pipeline; stages are not completion or physical-validation claims</text>
+
+  <path class="arrow" d="M240 265 H285"/>
+  <path class="arrow" d="M475 265 H520"/>
+  <path class="arrow" d="M710 265 H755"/>
+  <path class="arrow" d="M945 265 H990"/>
+  <path class="arrow" d="M1180 265 H1225"/>
+  <path class="arrow" d="M1320 345 V390"/>
+  <path class="arrow" d="M1225 470 H1180"/>
+
+  <rect x="50" y="195" width="190" height="140" rx="6" fill="#e8f0f5" stroke="#55758c" stroke-width="2"/>
+  <text x="145" y="235" class="box-title">Canonical spec</text>
+  <text x="145" y="266" class="box-text">design.json</text>
+  <text x="145" y="292" class="box-text">single source of truth</text>
+
+  <rect x="285" y="195" width="190" height="140" rx="6" fill="#eef3e7" stroke="#66804d" stroke-width="2"/>
+  <text x="380" y="231" class="box-title">CAD / BOM / MJCF</text>
+  <text x="380" y="263" class="box-text">generated and reviewed</text>
+  <text x="380" y="289" class="box-text">model artifacts</text>
+  <text x="380" y="315" class="box-text">packaging unverified</text>
+
+  <rect x="520" y="195" width="190" height="140" rx="6" fill="#fff4d8" stroke="#a47b22" stroke-width="2"/>
+  <text x="615" y="235" class="box-title">Checks</text>
+  <text x="615" y="266" class="box-text">schema + drawings</text>
+  <text x="615" y="292" class="box-text">simulation contracts</text>
+  <text x="615" y="318" class="box-text">manufacture: fail closed</text>
+
+  <rect x="755" y="195" width="190" height="140" rx="6" fill="#eeeaf6" stroke="#6e6190" stroke-width="2"/>
+  <text x="850" y="235" class="box-title">Scripted teacher</text>
+  <text x="850" y="266" class="box-text">commanded references</text>
+  <text x="850" y="292" class="box-text">pipeline stage only</text>
+
+  <rect x="990" y="195" width="190" height="140" rx="6" fill="#eeeaf6" stroke="#6e6190" stroke-width="2"/>
+  <text x="1085" y="235" class="box-title">Behavior cloning</text>
+  <text x="1085" y="266" class="box-text">teacher dataset to policy</text>
+  <text x="1085" y="292" class="box-text">pipeline stage only</text>
+
+  <rect x="1225" y="195" width="190" height="140" rx="6" fill="#eeeaf6" stroke="#6e6190" stroke-width="2"/>
+  <text x="1320" y="235" class="box-title">Residual PPO</text>
+  <text x="1320" y="266" class="box-text">simulation refinement</text>
+  <text x="1320" y="292" class="box-text">pipeline stage only</text>
+
+  <rect x="1225" y="390" width="190" height="160" rx="6" fill="#e8f0f5" stroke="#55758c" stroke-width="2"/>
+  <text x="1320" y="438" class="box-title">ONNX export</text>
+  <text x="1320" y="470" class="box-text">deployment-format gate</text>
+  <text x="1320" y="496" class="box-text">not hardware approval</text>
+
+  <rect x="910" y="390" width="270" height="160" rx="6" fill="#fbe7e7" stroke="#9d2c2c" stroke-width="3"/>
+  <text x="1045" y="430" class="gate-title">Hardware gates</text>
+  <text x="1045" y="464" class="gate-title">BLOCKED / FAIL CLOSED</text>
+  <text x="1045" y="496" class="gate-text">TBD interfaces and ratings</text>
+  <text x="1045" y="522" class="gate-text">physical evidence not present</text>
+
+  <rect x="50" y="610" width="1365" height="64" rx="4" fill="#ffffff" stroke="#b8c3cc"/>
+  <text x="75" y="637" class="note">Status boundary: the arrows define the intended engineering pipeline, not evidence that teacher, BC, residual PPO, ONNX, gait, hardware, or UI integration is complete.</text>
+  <text x="75" y="660" class="note">状态边界：箭头表示预期工程流程，不代表教师策略、行为克隆、残差 PPO、ONNX、步态、硬件或 UI 集成已经完成。</text>
+</svg>

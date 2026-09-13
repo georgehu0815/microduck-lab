@@ -1,0 +1,71 @@
+{
+  "scope": "local assets and metadata only; not a training or graphics test",
+  "python": "3.12.7 (main, Oct 16 2024, 07:12:08) [Clang 18.1.8 ]",
+  "executable": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/.venv-microduck/bin/python",
+  "platform": "macOS-15.7.9-arm64-arm-64bit",
+  "packages": {
+    "numpy": "2.5.2",
+    "torch": "2.9.1",
+    "mlx": "0.32.2",
+    "mujoco": "3.10.0",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.29.0",
+    "Pillow": "12.3.0",
+    "matplotlib": "3.11.1",
+    "gymnasium": "1.3.0",
+    "imageio": "2.37.4",
+    "imageio-ffmpeg": "0.6.0",
+    "pytest": "9.1.1",
+    "stable-baselines3": "2.9.0",
+    "microduck-local": "0.1.0",
+    "rlx": "1.0.0"
+  },
+  "commands": {
+    "uv": "/Users/ghu/.local/bin/uv",
+    "node": "/Users/ghu/.nvm/versions/node/v22.22.0/bin/node",
+    "npm": "/Users/ghu/.nvm/versions/node/v22.22.0/bin/npm",
+    "pandoc": "/opt/homebrew/bin/pandoc",
+    "xelatex": "/Library/TeX/texbin/xelatex",
+    "pdfinfo": "/opt/homebrew/bin/pdfinfo",
+    "pdftotext": "/opt/homebrew/bin/pdftotext",
+    "pdftoppm": "/opt/homebrew/bin/pdftoppm"
+  },
+  "files": [
+    {
+      "path": "microduck_local/src/microduck_local/contract.py",
+      "exists": true,
+      "sha256": "a935feef6cfaa6d5303948b5fd3ae2bf8e253a834db223bcf74f450c07f18ed4"
+    },
+    {
+      "path": "rlx/rlx/mjlab_microduck/robot/microduck/robot_allcollisions.xml",
+      "exists": true,
+      "sha256": "7a6fdf437f5a80c7348ad801f43f906b997a834389cb70cca5e1e8517ba38044"
+    },
+    {
+      "path": "microduck/policies/alpha_walking.onnx",
+      "exists": true,
+      "sha256": "e36332d383997d51401897734cd3e79cf5038406feddb18b4d57ecfb141daa6c"
+    },
+    {
+      "path": "microduck-playground/artifacts/basketball/checkpoint.pt",
+      "exists": true,
+      "sha256": "57a322eff092cb71e7cba831791232f0cc4fd45ede0441cad6d87813b0033e41"
+    },
+    {
+      "path": "microduck-playground/artifacts/basketball/policy.onnx",
+      "exists": true,
+      "sha256": "e105148b160b3a86170621648215be38dd5018e955930ce182394f4513c7569b"
+    },
+    {
+      "path": "microduck-playground/src/mjlab_microduck/robot/assets/basketball/basketball.obj",
+      "exists": true,
+      "sha256": "92b3f3ecc349369652f0d723fe95c8e82b8d3a3ea74fe0e589df62f965713108"
+    },
+    {
+      "path": "microduck-playground/src/mjlab_microduck/robot/assets/basketball/basketball.png",
+      "exists": true,
+      "sha256": "fb576ec1dca84629f01c1a7b0063d98cf1f512ebeb939657e7dd42eb1d7ac181"
+    }
+  ],
+  "passed": true
+}

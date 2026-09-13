@@ -1,0 +1,28 @@
+[
+  {
+    "edition": "en",
+    "pdf_pages": [
+      1,
+      7,
+      17,
+      36,
+      65,
+      79
+    ],
+    "contact_sheet": "verification/en-page-contact-sheet.png",
+    "scope": "representative visual review; all pages checked separately for text bounds"
+  },
+  {
+    "edition": "zh",
+    "pdf_pages": [
+      1,
+      6,
+      14,
+      32,
+      58,
+      69
+    ],
+    "contact_sheet": "verification/zh-page-contact-sheet.png",
+    "scope": "representative visual review; all pages checked separately for text bounds"
+  }
+]

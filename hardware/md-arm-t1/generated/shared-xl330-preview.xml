@@ -1,0 +1,10 @@
+<mujoco model="shared_xl330_visual_comparison">
+  <compiler angle="radian"/>
+  <asset><mesh name="shared_xl330" file="../../../rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl"/></asset>
+  <worldbody>
+    <light pos="0 0 0.3"/>
+    <camera name="comparison" pos="0 -.24 .16" xyaxes="1 0 0 0 .5 .8660254"/>
+    <body name="microduck_reference" pos="-.035 0 .04"><geom mesh="shared_xl330" type="mesh" contype="0" conaffinity="0" rgba=".4 .5 .55 1"/></body>
+    <body name="arm_reference" pos=".035 0 .04"><geom mesh="shared_xl330" type="mesh" contype="0" conaffinity="0" rgba=".4 .5 .55 1"/></body>
+  </worldbody>
+</mujoco>

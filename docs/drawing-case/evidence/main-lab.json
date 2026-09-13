@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-09-11T17:13:18.547Z",
+  "port": 8788,
+  "drawingPolicies": [
+    "studio:drawing/drawing-api-smoke-20260911",
+    "studio:drawing/drawing-refinement-02",
+    "studio:drawing/drawing-pilot-01"
+  ],
+  "rosterUnchanged": true,
+  "rosterSha256": "08e891b498d6f83b64406d7057a223ba71f3071ad58efc1afb7879bcfa25f2e7",
+  "passed": true
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "title": "MD-Arm-T1 per-arm 5 V power and U2D2 TTL netlist",
+  "status": "design_only_component_ratings_tbd",
+  "source_accessed": "2026-09-12",
+  "official_pin_source": "https://emanual.robotis.com/docs/en/parts/interface/u2d2/",
+  "nets": [
+    {
+      "name": "ARM_5V_RAW",
+      "purpose": "Independent per-arm regulated supply before manual disconnect",
+      "nodes": ["PSU1:+5V", "F_MAIN:IN"]
+    },
+    {
+      "name": "ARM_5V_FUSED",
+      "purpose": "Protected feeder before e-stop disconnect",
+      "nodes": ["F_MAIN:OUT", "ESTOP_POLE_ARM:IN"]
+    },
+    {
+      "name": "ARM_5V_ENABLED",
+      "purpose": "E-stop controlled arm power",
+      "nodes": [
+        "ESTOP_POLE_ARM:OUT",
+        "F_J1:IN",
+        "F_J2:IN",
+        "F_J3:IN",
+        "F_J4:IN",
+        "F_J5:IN",
+        "F_G:IN"
+      ]
+    },
+    {
+      "name": "ARM_GND",
+      "purpose": "Arm power return and TTL signal reference",
+      "nodes": [
+        "PSU1:GND",
+        "U2D2_TTL:1_GND",
+        "J1:1_GND",
+        "J2:1_GND",
+        "J3:1_GND",
+        "J4:1_GND",
+        "J5:1_GND",
+        "G:1_GND"
+      ]
+    },
+    {
+      "name": "TTL_DATA",
+      "purpose": "Half-duplex multidrop data",
+      "nodes": [
+        "U2D2_TTL:3_DATA",
+        "J1:3_DATA",
+        "J2:3_DATA",
+        "J3:3_DATA",
+        "J4:3_DATA",
+        "J5:3_DATA",
+        "G:3_DATA"
+      ]
+    },
+    {
+      "name": "J1_VDD",
+      "nodes": ["F_J1:OUT", "J1:2_VDD"]
+    },
+    {
+      "name": "J2_VDD",
+      "nodes": ["F_J2:OUT", "J2:2_VDD"]
+    },
+    {
+      "name": "J3_VDD",
+      "nodes": ["F_J3:OUT", "J3:2_VDD"]
+    },
+    {
+      "name": "J4_VDD",
+      "nodes": ["F_J4:OUT", "J4:2_VDD"]
+    },
+    {
+      "name": "J5_VDD",
+      "nodes": ["F_J5:OUT", "J5:2_VDD"]
+    },
+    {
+      "name": "G_VDD",
+      "nodes": ["F_G:OUT", "G:2_VDD"]
+    }
+  ],
+  "ports": {
+    "U2D2_TTL": {
+      "pin_1": "GND",
+      "pin_2": "N/C",
+      "pin_3": "DATA",
+      "note": "The U2D2-specific official pinout labels TTL pin 2 N/C. ROBOTIS also states U2D2 does not supply DYNAMIXEL power. External VDD is injected only by protected actuator branches."
+    },
+    "XL330_TTL": {
+      "pin_1": "GND",
+      "pin_2": "VDD",
+      "pin_3": "DATA"
+    }
+  },
+  "explicit_no_connects": [
+    "U2D2_TTL:2_N/C",
+    "USB:VBUS_TO_ARM_VDD",
+    "MICRODUCK_BATTERY:+",
+    "MICRODUCK_BODY_BUS:VDD",
+    "MICRODUCK_BODY_BUS:DATA"
+  ],
+  "design_notes": [
+    "Duplicate this complete netlist for the second arm with a second PSU and U2D2.",
+    "A common mechanical e-stop actuator may operate two correctly rated independent poles.",
+    "Fuse values, wire gauges, connector current limits, distribution PCB creepage, and e-stop component ratings remain blocked pending component selection and bench measurements.",
+    "Loss of arm power does not remove USB power from U2D2; software must not assume the adapter disappearing proves e-stop operation."
+  ]
+}

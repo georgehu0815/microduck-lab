@@ -1,0 +1,17 @@
+{
+  "design_id": "microduck-single-arm-v1-c",
+  "spec_sha256": "835fd2a77dc49f95760afca43625352e4113893643469ec6c052344ecb781922",
+  "files": {
+    "microduck-arm-v1c-A-free.xml": "a6baa3e8a44eed5d279cc304b1a6dda2a3c7ff0e118dfa412ddf0274fab6d05b",
+    "microduck-arm-v1c-A-fixture.xml": "39254d3170a7d1a075961d9d1128672519fb0d5b103b6bc857adb90d5d6b6a26",
+    "microduck-arm-v1c-A.urdf": "0c3275a510dcaf442cec6044ca3092847fe17845497789096d08174039663f72",
+    "microduck-arm-v1c-B-free.xml": "f851f9bb5c17afd32158105e48fa8d941b5f858759b2bee7774e00bb687d7119",
+    "microduck-arm-v1c-B-fixture.xml": "399085e9a6ea7928379bb5f69e399d1e9cf613ed695200394d25fcab1a1d4f8f",
+    "microduck-arm-v1c-B.urdf": "da3215ed5266380f8a4e22e006980f6567110723710f8f66aa3a236e05165e5c",
+    "mass-com-inertia.json": "b5170e69e0123f09ee935663571eb23be329595a0cadae50474748b3dbf9866b"
+  },
+  "hardware_ready": false,
+  "fabrication_ready": false,
+  "AB_limitations": "Equal mass and unqualified equal dynamics; cannot infer energy/torque superiority.",
+  "urdf_limitations": "Backlash DOFs collapsed; capsules approximated by conservative cylinders; relative upstream meshes required."
+}

@@ -639,6 +639,11 @@ def main() -> None:
     env = build_env(behavior, overrides, seed=args.seed)
     probe = Probe(env)
     cam = make_camera(args.camera, args.distance)
+    # MuJoCo rejects render targets larger than the model's XML framebuffer.
+    # Grow the offscreen target at runtime so CLI width/height options work for
+    # high-resolution videos without requiring a second copy of the robot XML.
+    env.model.vis.global_.offwidth = max(env.model.vis.global_.offwidth, width)
+    env.model.vis.global_.offheight = max(env.model.vis.global_.offheight, height)
     renderer = mujoco.Renderer(env.model, height=height, width=width)
 
     ctrl_hz = 1.0 / C.CTRL_DT

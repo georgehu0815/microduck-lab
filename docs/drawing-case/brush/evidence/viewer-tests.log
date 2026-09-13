@@ -1,0 +1,1439 @@
+
+> duck-viewer@0.1.0 test
+> node --test lib/*.test.mjs
+
+TAP version 13
+# Subtest: lists authored clips and selected artifact references
+ok 1 - lists authored clips and selected artifact references
+  ---
+  duration_ms: 28.879625
+  type: 'test'
+  ...
+# Subtest: skips malformed clips without failing the catalog
+ok 2 - skips malformed clips without failing the catalog
+  ---
+  duration_ms: 10.441458
+  type: 'test'
+  ...
+# Subtest: skips symlinks that escape the allowed clip roots
+ok 3 - skips symlinks that escape the allowed clip roots
+  ---
+  duration_ms: 5.531208
+  type: 'test'
+  ...
+# Subtest: returns an empty catalog when optional roots do not exist
+ok 4 - returns an empty catalog when optional roots do not exist
+  ---
+  duration_ms: 4.701667
+  type: 'test'
+  ...
+# Subtest: drawing ink uses actual xyz points and breaks between stroke ids
+ok 5 - drawing ink uses actual xyz points and breaks between stroke ids
+  ---
+  duration_ms: 159.877333
+  type: 'test'
+  ...
+# Subtest: drawing ink rejects assisted or unknown contracts
+ok 6 - drawing ink rejects assisted or unknown contracts
+  ---
+  duration_ms: 1.522125
+  type: 'test'
+  ...
+# Subtest: brush ink uses palette colors and breaks on stroke or color changes
+ok 7 - brush ink uses palette colors and breaks on stroke or color changes
+  ---
+  duration_ms: 1.48575
+  type: 'test'
+  ...
+# Subtest: drawing ink keeps a full brush trace within the 6000 point bound
+ok 8 - drawing ink keeps a full brush trace within the 6000 point bound
+  ---
+  duration_ms: 27.544375
+  type: 'test'
+  ...
+# Subtest: drawing ink material consumes generated vertex colors
+ok 9 - drawing ink material consumes generated vertex colors
+  ---
+  duration_ms: 0.284958
+  type: 'test'
+  ...
+# Subtest: incomplete brush payload from an older Lab fails closed without crashing
+ok 10 - incomplete brush payload from an older Lab fails closed without crashing
+  ---
+  duration_ms: 1.407167
+  type: 'test'
+  ...
+# Subtest: body geometry merges streamed meshes with primitives and recomputes normals
+ok 11 - body geometry merges streamed meshes with primitives and recomputes normals
+  ---
+  duration_ms: 124.916709
+  type: 'test'
+  ...
+# Subtest: basketball material falls back to orange when its texture is unavailable
+ok 12 - basketball material falls back to orange when its texture is unavailable
+  ---
+  duration_ms: 3.096542
+  type: 'test'
+  ...
+# Subtest: Studio exposes exactly eight scenarios with honest diagnostic readiness
+ok 13 - Studio exposes exactly eight scenarios with honest diagnostic readiness
+  ---
+  duration_ms: 40.71425
+  type: 'test'
+  ...
+# Subtest: Backflip frontend metadata exposes exact teacher transfer, the v2 gate, and controller boundaries
+ok 14 - Backflip frontend metadata exposes exact teacher transfer, the v2 gate, and controller boundaries
+  ---
+  duration_ms: 4.03475
+  type: 'test'
+  ...
+# Subtest: CLI parses the default strict mode and portable readiness-only mode
+ok 15 - CLI parses the default strict mode and portable readiness-only mode
+  ---
+  duration_ms: 1.030583
+  type: 'test'
+  ...
+# Subtest: strict verification discovers accepted runs and falls back from incomplete newer evidence
+ok 16 - strict verification discovers accepted runs and falls back from incomplete newer evidence
+  ---
+  duration_ms: 38.538667
+  type: 'test'
+  ...
+# Subtest: strict snapshot validation requires accepted evaluation, render provenance, reward and loss history
+ok 17 - strict snapshot validation requires accepted evaluation, render provenance, reward and loss history
+  ---
+  duration_ms: 0.198958
+  type: 'test'
+  ...
+# Subtest: readiness-only verifies all routes without requiring saved runs
+ok 18 - readiness-only verifies all routes without requiring saved runs
+  ---
+  duration_ms: 0.837542
+  type: 'test'
+  ...
+# {
+#   "passed": false,
+#   "mode": "strict",
+#   "baseUrl": "http://studio.test",
+#   "checkedAt": "2026-09-12T21:17:01.174Z",
+#   "scope": "Read-only cold restart verification; not fresh training or physical skill proof.",
+#   "checks": {
+#     "ui": {
+#       "passed": true,
+#       "status": 200,
+#       "contentType": "text/html; charset=utf-8",
+#       "bytes": 46
+#     },
+#     "clips": {
+#       "passed": true,
+#       "count": 1
+#     },
+#     "runsApi": {
+#       "passed": true,
+#       "count": 6
+#     },
+#     "scenario:dance": {
+#       "passed": true,
+#       "scenario": "dance",
+#       "runName": "dance-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "dance-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "scenario:swing": {
+#       "passed": true,
+#       "scenario": "swing",
+#       "runName": "swing-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "swing-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "scenario:running": {
+#       "passed": true,
+#       "scenario": "running",
+#       "runName": "running-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "running-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "scenario:stilts": {
+#       "passed": true,
+#       "scenario": "stilts",
+#       "runName": "stilts-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "stilts-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "scenario:backflip": {
+#       "passed": false,
+#       "error": "No saved accepted backflip run was discovered."
+#     },
+#     "scenario:basketball": {
+#       "passed": true,
+#       "scenario": "basketball",
+#       "runName": "basketball-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "basketball-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "scenario:bridge": {
+#       "passed": true,
+#       "scenario": "bridge",
+#       "runName": "bridge-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "bridge-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     }
+#   },
+#   "scenarios": {
+#     "dance": {
+#       "passed": true,
+#       "scenario": "dance",
+#       "runName": "dance-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "dance-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "swing": {
+#       "passed": true,
+#       "scenario": "swing",
+#       "runName": "swing-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "swing-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "running": {
+#       "passed": true,
+#       "scenario": "running",
+#       "runName": "running-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "running-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "stilts": {
+#       "passed": true,
+#       "scenario": "stilts",
+#       "runName": "stilts-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "stilts-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "backflip": {
+#       "passed": false,
+#       "error": "No saved accepted backflip run was discovered."
+#     },
+#     "basketball": {
+#       "passed": true,
+#       "scenario": "basketball",
+#       "runName": "basketball-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "basketball-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     },
+#     "bridge": {
+#       "passed": true,
+#       "scenario": "bridge",
+#       "runName": "bridge-accepted",
+#       "modifiedAt": "2026-09-08T12:00:00.000Z",
+#       "rewardSamples": 1,
+#       "ppoSegments": 1,
+#       "video": {
+#         "passed": true,
+#         "status": 206,
+#         "contentType": "video/mp4",
+#         "boxType": "ftyp",
+#         "boxSize": 24,
+#         "majorBrand": "isom",
+#         "sampledBytes": 24
+#       },
+#       "attempts": [
+#         {
+#           "runName": "bridge-accepted",
+#           "passed": true,
+#           "issues": []
+#         }
+#       ]
+#     }
+#   },
+#   "errors": [
+#     "scenario:backflip: No saved accepted backflip run was discovered."
+#   ]
+# }
+# Subtest: missing Backflip evidence keeps strict restart readiness failed until trained
+ok 19 - missing Backflip evidence keeps strict restart readiness failed until trained
+  ---
+  duration_ms: 22.144041
+  type: 'test'
+  ...
+# Subtest: basic MP4 inspection rejects non-ISO media bytes
+ok 20 - basic MP4 inspection rejects non-ISO media bytes
+  ---
+  duration_ms: 0.178084
+  type: 'test'
+  ...
+# Subtest: live contract labels follow empty roster, not selected recipe
+ok 21 - live contract labels follow empty roster, not selected recipe
+  ---
+  duration_ms: 0.575125
+  type: 'test'
+  ...
+# Subtest: live contract labels follow original seven roster, not selected recipe
+ok 22 - live contract labels follow original seven roster, not selected recipe
+  ---
+  duration_ms: 0.07275
+  type: 'test'
+  ...
+# Subtest: live contract labels follow drawing only roster, not selected recipe
+ok 23 - live contract labels follow drawing only roster, not selected recipe
+  ---
+  duration_ms: 0.051208
+  type: 'test'
+  ...
+# Subtest: live contract labels follow mixed roster, not selected recipe
+ok 24 - live contract labels follow mixed roster, not selected recipe
+  ---
+  duration_ms: 0.1355
+  type: 'test'
+  ...
+# Subtest: live contract labels follow brush only roster, not selected recipe
+ok 25 - live contract labels follow brush only roster, not selected recipe
+  ---
+  duration_ms: 2.554125
+  type: 'test'
+  ...
+# Subtest: live contract labels follow pencil and brush roster, not selected recipe
+ok 26 - live contract labels follow pencil and brush roster, not selected recipe
+  ---
+  duration_ms: 0.119375
+  type: 'test'
+  ...
+# Subtest: live contract labels follow all live contracts roster, not selected recipe
+ok 27 - live contract labels follow all live contracts roster, not selected recipe
+  ---
+  duration_ms: 0.158458
+  type: 'test'
+  ...
+# Subtest: Studio catalog rescans checkpoint and ONNX-only runs across scenarios without including empty or escaped directories
+ok 28 - Studio catalog rescans checkpoint and ONNX-only runs across scenarios without including empty or escaped directories
+  ---
+  duration_ms: 23.291042
+  type: 'test'
+  ...
+# Subtest: refresh bypasses caches, forwards cancellation, and discovers newly saved policies
+ok 29 - refresh bypasses caches, forwards cancellation, and discovers newly saved policies
+  ---
+  duration_ms: 21.549666
+  type: 'test'
+  ...
+# Subtest: refresh reports server errors rather than replacing policies with an empty list
+ok 30 - refresh reports server errors rather than replacing policies with an empty list
+  ---
+  duration_ms: 0.786334
+  type: 'test'
+  ...
+# Subtest: refresh propagates aborts so superseded requests cannot replace the latest list
+ok 31 - refresh propagates aborts so superseded requests cannot replace the latest list
+  ---
+  duration_ms: 1.1115
+  type: 'test'
+  ...
+# Subtest: screenshot and video controls persist without a selected duck
+ok 32 - screenshot and video controls persist without a selected duck
+  ---
+  duration_ms: 2.159666
+  type: 'test'
+  ...
+# Subtest: starting without a selection records the current view with duckId null
+ok 33 - starting without a selection records the current view with duckId null
+  ---
+  duration_ms: 1.0275
+  type: 'test'
+  ...
+# Subtest: a selected duck keeps the framing delay and has no automatic stop timer
+ok 34 - a selected duck keeps the framing delay and has no automatic stop timer
+  ---
+  duration_ms: 0.539042
+  type: 'test'
+  ...
+# Subtest: stop enters processing before uploading and completes the capture
+ok 35 - stop enters processing before uploading and completes the capture
+  ---
+  duration_ms: 5.384125
+  type: 'test'
+  ...
+# Subtest: capture controls remain visible through processing, done, and error and can restart
+ok 36 - capture controls remain visible through processing, done, and error and can restart
+  ---
+  duration_ms: 2.501458
+  type: 'test'
+  ...
+# report: /var/folders/_c/1xkhc3_52ll7xwt342k1tvrw0000gn/T/rlx-report-parent-5mzeRl/new/nested/report.json
+# Subtest: HTTP driver creates report parents even for an early recipe failure
+ok 37 - HTTP driver creates report parents even for an early recipe failure
+  ---
+  duration_ms: 17.384167
+  type: 'test'
+  ...
+# Subtest: Dance HTTP driver merges recipe JSON with explicit CLI precedence
+ok 38 - Dance HTTP driver merges recipe JSON with explicit CLI precedence
+  ---
+  duration_ms: 1.043416
+  type: 'test'
+  ...
+# Subtest: HTTP driver accepts all scenarios and defaults to Dance
+ok 39 - HTTP driver accepts all scenarios and defaults to Dance
+  ---
+  duration_ms: 0.597333
+  type: 'test'
+  ...
+# Subtest: HTTP driver gives explicit --experiment precedence over recipe JSON
+ok 40 - HTTP driver gives explicit --experiment precedence over recipe JSON
+  ---
+  duration_ms: 0.363459
+  type: 'test'
+  ...
+# Subtest: HTTP driver rejects unknown scenarios and non-object recipe JSON
+ok 41 - HTTP driver rejects unknown scenarios and non-object recipe JSON
+  ---
+  duration_ms: 0.187042
+  type: 'test'
+  ...
+# Subtest: Dance HTTP driver applies and validates a bounded operation timeout
+ok 42 - Dance HTTP driver applies and validates a bounded operation timeout
+  ---
+  duration_ms: 0.595166
+  type: 'test'
+  ...
+# Subtest: Dance HTTP driver requires operation artifacts after successful jobs
+ok 43 - Dance HTTP driver requires operation artifacts after successful jobs
+  ---
+  duration_ms: 0.188541
+  type: 'test'
+  ...
+# Subtest: Full Dance eval accepts explicit pass or failure evidence only
+ok 44 - Full Dance eval accepts explicit pass or failure evidence only
+  ---
+  duration_ms: 0.217083
+  type: 'test'
+  ...
+# Subtest: running full eval rejects a non-assessed skill status
+ok 45 - running full eval rejects a non-assessed skill status
+  ---
+  duration_ms: 0.30175
+  type: 'test'
+  ...
+# Subtest: stilts full eval rejects a non-assessed skill status
+ok 46 - stilts full eval rejects a non-assessed skill status
+  ---
+  duration_ms: 0.678084
+  type: 'test'
+  ...
+# Subtest: backflip full eval rejects a non-assessed skill status
+ok 47 - backflip full eval rejects a non-assessed skill status
+  ---
+  duration_ms: 0.20175
+  type: 'test'
+  ...
+# eval: accepted
+# eval: skill failed
+# render: accepted
+# render: succeeded
+# export: accepted
+# export: succeeded
+# report: /var/folders/_c/1xkhc3_52ll7xwt342k1tvrw0000gn/T/dance-api-e2e-a7MTsw/report.json
+# Subtest: Full Dance skill failure still renders, exports, and persists its report
+ok 48 - Full Dance skill failure still renders, exports, and persists its report
+  ---
+  duration_ms: 94.739875
+  type: 'test'
+  ...
+# eval: accepted
+# eval: skill failed
+# render: accepted
+# render: succeeded
+# export: accepted
+# export: succeeded
+# report: /var/folders/_c/1xkhc3_52ll7xwt342k1tvrw0000gn/T/swing-api-e2e-C8p4cx/report.json
+# Subtest: Swing selection is used for status, launches, and failure evidence
+ok 49 - Swing selection is used for status, launches, and failure evidence
+  ---
+  duration_ms: 10.150208
+  type: 'test'
+  ...
+# Subtest: summary samples use actual steps without merging asynchronous metrics
+ok 50 - summary samples use actual steps without merging asynchronous metrics
+  ---
+  duration_ms: 513.025917
+  type: 'test'
+  ...
+# Subtest: history survives process restart and keeps resumed normalization segments separate
+ok 51 - history survives process restart and keeps resumed normalization segments separate
+  ---
+  duration_ms: 330.505625
+  type: 'test'
+  ...
+# Subtest: completed latest invocation is not duplicated on cold access
+ok 52 - completed latest invocation is not duplicated on cold access
+  ---
+  duration_ms: 221.912958
+  type: 'test'
+  ...
+# Subtest: prepare preserves the journal when atomic history archival fails
+ok 53 - prepare preserves the journal when atomic history archival fails
+  ---
+  duration_ms: 18.629917
+  type: 'test'
+  ...
+# Subtest: malformed and torn journal records are ignored without losing valid samples
+ok 54 - malformed and torn journal records are ignored without losing valid samples
+  ---
+  duration_ms: 36.633334
+  type: 'test'
+  ...
+# Subtest: step resets create explicit segments instead of connecting scales
+ok 55 - step resets create explicit segments instead of connecting scales
+  ---
+  duration_ms: 53.7975
+  type: 'test'
+  ...
+# Subtest: trusted parent metadata contributes cumulative lineage and BC initializer
+ok 56 - trusted parent metadata contributes cumulative lineage and BC initializer
+  ---
+  duration_ms: 40.118209
+  type: 'test'
+  ...
+# Subtest: self-copied checkpoint resolves a unique exact-hash sibling journal
+ok 57 - self-copied checkpoint resolves a unique exact-hash sibling journal
+  ---
+  duration_ms: 64.528792
+  type: 'test'
+  ...
+# Subtest: self-copied checkpoint with wrong hashes keeps an explicit unsampled gap
+ok 58 - self-copied checkpoint with wrong hashes keeps an explicit unsampled gap
+  ---
+  duration_ms: 19.858625
+  type: 'test'
+  ...
+# Subtest: lineage never follows metadata paths outside the RLX root
+ok 59 - lineage never follows metadata paths outside the RLX root
+  ---
+  duration_ms: 26.087667
+  type: 'test'
+  ...
+# Subtest: lineage rejects in-root symlinks that resolve outside the RLX root
+ok 60 - lineage rejects in-root symlinks that resolve outside the RLX root
+  ---
+  duration_ms: 26.994708
+  type: 'test'
+  ...
+# Subtest: same-run resume metadata preserves an explicit unsampled ancestor segment
+ok 61 - same-run resume metadata preserves an explicit unsampled ancestor segment
+  ---
+  duration_ms: 20.211625
+  type: 'test'
+  ...
+# Subtest: restart drain lock rejects every launch without spawning or changing artifacts
+ok 62 - restart drain lock rejects every launch without spawning or changing artifacts
+  ---
+  duration_ms: 367.133416
+  type: 'test'
+  ...
+# Subtest: a preinstalled Python runtime bypasses uv for all four operation types
+ok 63 - a preinstalled Python runtime bypasses uv for all four operation types
+  ---
+  duration_ms: 560.845042
+  type: 'test'
+  ...
+# Subtest: export includes the CLI-required recipe and checkpoint/output without environment arguments
+ok 64 - export includes the CLI-required recipe and checkpoint/output without environment arguments
+  ---
+  duration_ms: 60.118667
+  type: 'test'
+  ...
+# Subtest: Basketball uses recurrent artifact names and the standalone shared-shaped adapter
+ok 65 - Basketball uses recurrent artifact names and the standalone shared-shaped adapter
+  ---
+  duration_ms: 149.496375
+  type: 'test'
+  ...
+# Subtest: Drawing uses only the agreed independent CLI adapter flags and normal artifacts
+ok 66 - Drawing uses only the agreed independent CLI adapter flags and normal artifacts
+  ---
+  duration_ms: 141.443292
+  type: 'test'
+  ...
+# Subtest: Brush defaults and all commands use the bounded brush CLI contract
+ok 67 - Brush defaults and all commands use the bounded brush CLI contract
+  ---
+  duration_ms: 158.568417
+  type: 'test'
+  ...
+# Subtest: Drawing eval reads the requested eval.json when the CLI does not print JSON
+ok 68 - Drawing eval reads the requested eval.json when the CLI does not print JSON
+  ---
+  duration_ms: 44.828
+  type: 'test'
+  ...
+# Subtest: saved Drawing runs restore brush only from recipe or exact contract metadata
+ok 69 - saved Drawing runs restore brush only from recipe or exact contract metadata
+  ---
+  duration_ms: 241.793875
+  type: 'test'
+  ...
+# Subtest: Basketball fails before spawn when local reference inputs are incomplete
+ok 70 - Basketball fails before spawn when local reference inputs are incomplete
+  ---
+  duration_ms: 139.241208
+  type: 'test'
+  ...
+# Subtest: Bridge Full enables curriculum only for training and enforces unassisted evaluation horizon
+ok 71 - Bridge Full enables curriculum only for training and enforces unassisted evaluation horizon
+  ---
+  duration_ms: 221.522208
+  type: 'test'
+  ...
+# Subtest: smoke Swing evaluation declares its scope, horizon, and explicit default target
+ok 72 - smoke Swing evaluation declares its scope, horizon, and explicit default target
+  ---
+  duration_ms: 62.8415
+  type: 'test'
+  ...
+# Subtest: full Swing evaluation declares its scope, horizon, and explicit default target
+ok 73 - full Swing evaluation declares its scope, horizon, and explicit default target
+  ---
+  duration_ms: 31.44825
+  type: 'test'
+  ...
+# Subtest: evaluation selects ONNX when present and forwards an edited target
+ok 74 - evaluation selects ONNX when present and forwards an edited target
+  ---
+  duration_ms: 30.942375
+  type: 'test'
+  ...
+# Subtest: non-Swing evaluation declares scope without Swing-specific criteria
+ok 75 - non-Swing evaluation declares scope without Swing-specific criteria
+  ---
+  duration_ms: 51.636917
+  type: 'test'
+  ...
+# Subtest: Dance API flow preserves its PPO, evaluation, render, and export contract
+ok 76 - Dance API flow preserves its PPO, evaluation, render, and export contract
+  ---
+  duration_ms: 34.007417
+  type: 'test'
+  ...
+# Subtest: policy exploration and reward normalization defaults remain recipe-specific
+ok 77 - policy exploration and reward normalization defaults remain recipe-specific
+  ---
+  duration_ms: 44.949083
+  type: 'test'
+  ...
+# Subtest: Backflip smoke stays four steps while Full emits the fixed PPO preset
+ok 78 - Backflip smoke stays four steps while Full emits the fixed PPO preset
+  ---
+  duration_ms: 99.172334
+  type: 'test'
+  ...
+# Subtest: Backflip evaluation requires current stand-policy provenance and explicit skill scope
+ok 79 - Backflip evaluation requires current stand-policy provenance and explicit skill scope
+  ---
+  duration_ms: 42.816625
+  type: 'test'
+  ...
+# Subtest: Backflip render receipts require and record the exact Python protocol provenance
+ok 80 - Backflip render receipts require and record the exact Python protocol provenance
+  ---
+  duration_ms: 84.226875
+  type: 'test'
+  ...
+# Subtest: Backflip render completion reads protocol provenance from renderer output
+ok 81 - Backflip render completion reads protocol provenance from renderer output
+  ---
+  duration_ms: 33.409667
+  type: 'test'
+  ...
+# Subtest: Backflip render verification matches the evaluated protocol and stand-policy hash
+ok 82 - Backflip render verification matches the evaluated protocol and stand-policy hash
+  ---
+  duration_ms: 37.134625
+  type: 'test'
+  ...
+# Subtest: Dance clip paths are explicit, existing, and confined to owned roots
+ok 83 - Dance clip paths are explicit, existing, and confined to owned roots
+  ---
+  duration_ms: 43.063667
+  type: 'test'
+  ...
+# Subtest: Dance pose sigma is optional, positive, finite, and Dance-only
+ok 84 - Dance pose sigma is optional, positive, finite, and Dance-only
+  ---
+  duration_ms: 34.07175
+  type: 'test'
+  ...
+# Subtest: new rollout overrides reject invalid or incompatible values
+ok 85 - new rollout overrides reject invalid or incompatible values
+  ---
+  duration_ms: 37.208958
+  type: 'test'
+  ...
+# Subtest: render accepts ONNX-only runs while artifact-free runs cannot evaluate or render
+ok 86 - render accepts ONNX-only runs while artifact-free runs cannot evaluate or render
+  ---
+  duration_ms: 36.680625
+  type: 'test'
+  ...
+# Subtest: selecting another run loads only that run's persisted evaluation
+ok 87 - selecting another run loads only that run's persisted evaluation
+  ---
+  duration_ms: 31.62225
+  type: 'test'
+  ...
+# Subtest: training keeps its PPO arguments and never receives evaluation-only flags
+ok 88 - training keeps its PPO arguments and never receives evaluation-only flags
+  ---
+  duration_ms: 36.288667
+  type: 'test'
+  ...
+# Subtest: fresh training refuses to overwrite an existing checkpoint before touching history
+ok 89 - fresh training refuses to overwrite an existing checkpoint before touching history
+  ---
+  duration_ms: 27.461667
+  type: 'test'
+  ...
+# Subtest: live reward history retains the full selected invocation beyond 240 samples
+ok 90 - live reward history retains the full selected invocation beyond 240 samples
+  ---
+  duration_ms: 35.837
+  type: 'test'
+  ...
+# Subtest: cold snapshots restore the latest invocation graph and counters from disk
+ok 91 - cold snapshots restore the latest invocation graph and counters from disk
+  ---
+  duration_ms: 32.586709
+  type: 'test'
+  ...
+# Subtest: eval clears old-run telemetry and evaluation on name change
+ok 92 - eval clears old-run telemetry and evaluation on name change
+  ---
+  duration_ms: 34.052791
+  type: 'test'
+  ...
+# Subtest: eval clears old-run telemetry and evaluation on experiment change
+ok 93 - eval clears old-run telemetry and evaluation on experiment change
+  ---
+  duration_ms: 32.801458
+  type: 'test'
+  ...
+# Subtest: render clears old-run telemetry and evaluation on name change
+ok 94 - render clears old-run telemetry and evaluation on name change
+  ---
+  duration_ms: 34.834917
+  type: 'test'
+  ...
+# Subtest: render clears old-run telemetry and evaluation on experiment change
+ok 95 - render clears old-run telemetry and evaluation on experiment change
+  ---
+  duration_ms: 30.676959
+  type: 'test'
+  ...
+# Subtest: same-run eval/render preserve training stats and persist settings with authoritative outcomes
+ok 96 - same-run eval/render preserve training stats and persist settings with authoritative outcomes
+  ---
+  duration_ms: 39.311875
+  type: 'test'
+  ...
+# Subtest: cancelled callbacks cannot mutate a replacement job (test-a)
+ok 97 - cancelled callbacks cannot mutate a replacement job (test-a)
+  ---
+  duration_ms: 39.068834
+  type: 'test'
+  ...
+# Subtest: cancelled callbacks cannot mutate a replacement job (test-b)
+ok 98 - cancelled callbacks cannot mutate a replacement job (test-b)
+  ---
+  duration_ms: 30.123375
+  type: 'test'
+  ...
+# Subtest: cancelled evaluation cannot publish its buffered report
+ok 99 - cancelled evaluation cannot publish its buffered report
+  ---
+  duration_ms: 40.7555
+  type: 'test'
+  ...
+# Subtest: a previous evaluation persistence error cannot append to a new job
+ok 100 - a previous evaluation persistence error cannot append to a new job
+  ---
+  duration_ms: 38.385083
+  type: 'test'
+  ...
+# Subtest: policy evaluation remains bound only to the evaluated current bytes
+ok 101 - policy evaluation remains bound only to the evaluated current bytes
+  ---
+  duration_ms: 43.204584
+  type: 'test'
+  ...
+# Subtest: checkpoint evaluation remains bound only to the evaluated current bytes
+ok 102 - checkpoint evaluation remains bound only to the evaluated current bytes
+  ---
+  duration_ms: 72.191125
+  type: 'test'
+  ...
+# Subtest: same-run retrain/render cannot revive saved evidence after checkpoint changes
+ok 103 - same-run retrain/render cannot revive saved evidence after checkpoint changes
+  ---
+  duration_ms: 34.609708
+  type: 'test'
+  ...
+# Subtest: same-run retrain/render cannot revive saved evidence after metadata changes
+ok 104 - same-run retrain/render cannot revive saved evidence after metadata changes
+  ---
+  duration_ms: 31.405167
+  type: 'test'
+  ...
+# Subtest: missing checkpoint sidecars and missing sidecar hashes invalidate saved evaluations
+ok 105 - missing checkpoint sidecars and missing sidecar hashes invalidate saved evaluations
+  ---
+  duration_ms: 31.489083
+  type: 'test'
+  ...
+# Subtest: changing reference clip bytes invalidates a saved dance verdict and recipe
+ok 106 - changing reference clip bytes invalidates a saved dance verdict and recipe
+  ---
+  duration_ms: 29.722875
+  type: 'test'
+  ...
+# Subtest: nominal rendering retains the evaluation of its unchanged randomized recipe
+ok 107 - nominal rendering retains the evaluation of its unchanged randomized recipe
+  ---
+  duration_ms: 33.343291
+  type: 'test'
+  ...
+# Subtest: source hashes never authorize reads of report-supplied paths
+ok 108 - source hashes never authorize reads of report-supplied paths
+  ---
+  duration_ms: 29.378959
+  type: 'test'
+  ...
+# Subtest: saved recipes are exposed only from currently bound evaluation evidence
+ok 109 - saved recipes are exposed only from currently bound evaluation evidence
+  ---
+  duration_ms: 29.933125
+  type: 'test'
+  ...
+# Subtest: reports without source hashes remain visible only as unassessed
+ok 110 - reports without source hashes remain visible only as unassessed
+  ---
+  duration_ms: 28.685167
+  type: 'test'
+  ...
+# Subtest: snapshot captures run ownership before asynchronous evidence reads
+ok 111 - snapshot captures run ownership before asynchronous evidence reads
+  ---
+  duration_ms: 30.01725
+  type: 'test'
+  ...
+# Subtest: UI requires authoritative scoped skill verdict, not finite output or large spans
+ok 112 - UI requires authoritative scoped skill verdict, not finite output or large spans
+  ---
+  duration_ms: 0.366041
+  type: 'test'
+  ...
+# Subtest: running yaw-only shaping is optional and reaches the CLI
+ok 113 - running yaw-only shaping is optional and reaches the CLI
+  ---
+  duration_ms: 349.59375
+  type: 'test'
+  ...
+# Subtest: stilts yaw-only shaping is optional and reaches the CLI
+ok 114 - stilts yaw-only shaping is optional and reaches the CLI
+  ---
+  duration_ms: 186.24375
+  type: 'test'
+  ...
+# Subtest: Full Running defaults satisfy the 600-step horizon without changing smoke
+ok 115 - Full Running defaults satisfy the 600-step horizon without changing smoke
+  ---
+  duration_ms: 104.079333
+  type: 'test'
+  ...
+# Subtest: running retains matching evaluation across render and export
+ok 116 - running retains matching evaluation across render and export
+  ---
+  duration_ms: 93.721791
+  type: 'test'
+  ...
+# Subtest: stilts retains matching evaluation across render and export
+ok 117 - stilts retains matching evaluation across render and export
+  ---
+  duration_ms: 42.578375
+  type: 'test'
+  ...
+# Subtest: dance retains matching evaluation across render and export
+ok 118 - dance retains matching evaluation across render and export
+  ---
+  duration_ms: 61.619042
+  type: 'test'
+  ...
+# Subtest: running render change {"locomotionForwardCommand":0.7} invalidates prior skill evidence
+ok 119 - running render change {"locomotionForwardCommand":0.7} invalidates prior skill evidence
+  ---
+  duration_ms: 31.903583
+  type: 'test'
+  ...
+# Subtest: running render change {"locomotionForwardCommand":null} invalidates prior skill evidence
+ok 120 - running render change {"locomotionForwardCommand":null} invalidates prior skill evidence
+  ---
+  duration_ms: 51.36275
+  type: 'test'
+  ...
+# Subtest: running render change {"seed":42} invalidates prior skill evidence
+ok 121 - running render change {"seed":42} invalidates prior skill evidence
+  ---
+  duration_ms: 39.409042
+  type: 'test'
+  ...
+# Subtest: stilts render change {"stiltHeightCm":15} invalidates prior skill evidence
+ok 122 - stilts render change {"stiltHeightCm":15} invalidates prior skill evidence
+  ---
+  duration_ms: 26.131542
+  type: 'test'
+  ...
+# Subtest: stilts render change {"stiltBlend":0.8} invalidates prior skill evidence
+ok 123 - stilts render change {"stiltBlend":0.8} invalidates prior skill evidence
+  ---
+  duration_ms: 27.078041
+  type: 'test'
+  ...
+# Subtest: stilts render change {"stiltMassKg":0.05} invalidates prior skill evidence
+ok 124 - stilts render change {"stiltMassKg":0.05} invalidates prior skill evidence
+  ---
+  duration_ms: 34.15325
+  type: 'test'
+  ...
+# Subtest: dance render change {"dancePoseSigma":0.2} invalidates prior skill evidence
+ok 125 - dance render change {"dancePoseSigma":0.2} invalidates prior skill evidence
+  ---
+  duration_ms: 25.746209
+  type: 'test'
+  ...
+# Subtest: changing video duration preserves the saved evaluation but does not grant visual provenance
+ok 126 - changing video duration preserves the saved evaluation but does not grant visual provenance
+  ---
+  duration_ms: 28.310209
+  type: 'test'
+  ...
+# Subtest: nominal video projection does not relabel the evaluation's domainRand=true scope
+ok 127 - nominal video projection does not relabel the evaluation's domainRand=true scope
+  ---
+  duration_ms: 24.514625
+  type: 'test'
+  ...
+# Subtest: nominal video projection does not relabel the evaluation's obsNoise=true scope
+ok 128 - nominal video projection does not relabel the evaluation's obsNoise=true scope
+  ---
+  duration_ms: 24.442667
+  type: 'test'
+  ...
+# Subtest: nominal video projection does not relabel the evaluation's actionDelay=true scope
+ok 129 - nominal video projection does not relabel the evaluation's actionDelay=true scope
+  ---
+  duration_ms: 24.5785
+  type: 'test'
+  ...
+# Subtest: nominal video projection does not relabel the evaluation's randomYaw=true scope
+ok 130 - nominal video projection does not relabel the evaluation's randomYaw=true scope
+  ---
+  duration_ms: 32.433334
+  type: 'test'
+  ...
+# Subtest: changing the requested evaluation recipe is not hidden by renderer normalization
+ok 131 - changing the requested evaluation recipe is not hidden by renderer normalization
+  ---
+  duration_ms: 37.693291
+  type: 'test'
+  ...
+# Subtest: forward command preserves absent/null defaults for every recipe
+ok 132 - forward command preserves absent/null defaults for every recipe
+  ---
+  duration_ms: 24.188
+  type: 'test'
+  ...
+# Subtest: observation normalization freezing defaults for Full Backflip and Bridge plus all recurrent Basketball runs
+ok 133 - observation normalization freezing defaults for Full Backflip and Bridge plus all recurrent Basketball runs
+  ---
+  duration_ms: 21.216459
+  type: 'test'
+  ...
+# Subtest: only resumed training receives the observation normalization freeze flag
+ok 134 - only resumed training receives the observation normalization freeze flag
+  ---
+  duration_ms: 28.660958
+  type: 'test'
+  ...
+# Subtest: changing freezeObservationNormalization from false does not change the environment key
+ok 135 - changing freezeObservationNormalization from false does not change the environment key
+  ---
+  duration_ms: 26.485708
+  type: 'test'
+  ...
+# Subtest: changing freezeObservationNormalization from true does not change the environment key
+ok 136 - changing freezeObservationNormalization from true does not change the environment key
+  ---
+  duration_ms: 31.614833
+  type: 'test'
+  ...
+# Subtest: forward command accepts only finite positive numbers up to 1.5 for locomotion
+ok 137 - forward command accepts only finite positive numbers up to 1.5 for locomotion
+  ---
+  duration_ms: 29.760209
+  type: 'test'
+  ...
+# Subtest: running forwards the same command for train/eval/render, not export
+ok 138 - running forwards the same command for train/eval/render, not export
+  ---
+  duration_ms: 25.877875
+  type: 'test'
+  ...
+# Subtest: stilts forwards the same command for train/eval/render, not export
+ok 139 - stilts forwards the same command for train/eval/render, not export
+  ---
+  duration_ms: 53.508959
+  type: 'test'
+  ...
+# Subtest: unset forward commands emit no CLI override or evaluation setting
+ok 140 - unset forward commands emit no CLI override or evaluation setting
+  ---
+  duration_ms: 50.237
+  type: 'test'
+  ...
+# Subtest: binds render media to ONNX, clip, and recipe bytes
+ok 141 - binds render media to ONNX, clip, and recipe bytes
+  ---
+  duration_ms: 11.736333
+  type: 'test'
+  ...
+# Subtest: checkpoint evidence includes and validates its metadata sidecar
+ok 142 - checkpoint evidence includes and validates its metadata sidecar
+  ---
+  duration_ms: 7.627708
+  type: 'test'
+  ...
+# Subtest: supports renders without a choreography clip
+ok 143 - supports renders without a choreography clip
+  ---
+  duration_ms: 4.506625
+  type: 'test'
+  ...
+# Subtest: binds Backflip render evidence to the external pretrained stand policy
+ok 144 - binds Backflip render evidence to the external pretrained stand policy
+  ---
+  duration_ms: 3.661709
+  type: 'test'
+  ...
+# Subtest: invalidates evidence when source bytes change
+ok 145 - invalidates evidence when source bytes change
+  ---
+  duration_ms: 5.540958
+  type: 'test'
+  ...
+# Subtest: invalidates evidence when video bytes change
+ok 146 - invalidates evidence when video bytes change
+  ---
+  duration_ms: 13.876042
+  type: 'test'
+  ...
+# Subtest: invalidates evidence when sheet bytes change
+ok 147 - invalidates evidence when sheet bytes change
+  ---
+  duration_ms: 6.197541
+  type: 'test'
+  ...
+# Subtest: invalidates evidence when clip bytes change
+ok 148 - invalidates evidence when clip bytes change
+  ---
+  duration_ms: 2.506583
+  type: 'test'
+  ...
+# Subtest: invalidates evidence when settings or owned paths change
+ok 149 - invalidates evidence when settings or owned paths change
+  ---
+  duration_ms: 2.817291
+  type: 'test'
+  ...
+# Subtest: missing files and legacy or malformed receipts are unbound
+ok 150 - missing files and legacy or malformed receipts are unbound
+  ---
+  duration_ms: 8.896959
+  type: 'test'
+  ...
+# Subtest: finalize refuses to claim media after source or clip changes
+ok 151 - finalize refuses to claim media after source or clip changes
+  ---
+  duration_ms: 24.087625
+  type: 'test'
+  ...
+# Subtest: finalize refuses missing media and prepare requires owned source files
+ok 152 - finalize refuses missing media and prepare requires owned source files
+  ---
+  duration_ms: 2.997042
+  type: 'test'
+  ...
+# Subtest: run catalog includes unevaluated checkpoints and excludes empty or linked directories
+ok 153 - run catalog includes unevaluated checkpoints and excludes empty or linked directories
+  ---
+  duration_ms: 205.956125
+  type: 'test'
+  ...
+# Subtest: video verification invalidates old success on missing recipe
+ok 154 - video verification invalidates old success on missing recipe
+  ---
+  duration_ms: 196.38675
+  type: 'test'
+  ...
+# Subtest: video verification invalidates old success on wrong run
+ok 155 - video verification invalidates old success on wrong run
+  ---
+  duration_ms: 108.478667
+  type: 'test'
+  ...
+# Subtest: video verification invalidates old success on stale policy
+ok 156 - video verification invalidates old success on stale policy
+  ---
+  duration_ms: 86.037125
+  type: 'test'
+  ...
+# Subtest: scene fetch preserves the global endpoint without a duck id
+ok 157 - scene fetch preserves the global endpoint without a duck id
+  ---
+  duration_ms: 49.309375
+  type: 'test'
+  ...
+# Subtest: scene fetch encodes duck and version and forwards cancellation
+ok 158 - scene fetch encodes duck and version and forwards cancellation
+  ---
+  duration_ms: 0.6685
+  type: 'test'
+  ...
+# Subtest: custom-scene rosters use one wide spacing contract
+ok 159 - custom-scene rosters use one wide spacing contract
+  ---
+  duration_ms: 0.572
+  type: 'test'
+  ...
+# Subtest: numeric callers retain standard spacing
+ok 160 - numeric callers retain standard spacing
+  ---
+  duration_ms: 0.087
+  type: 'test'
+  ...
+# Subtest: evidence shows worst/best episodes without substituting average reward for acceptance
+ok 161 - evidence shows worst/best episodes without substituting average reward for acceptance
+  ---
+  duration_ms: 0.727375
+  type: 'test'
+  ...
+# Subtest: missing, malformed and nonfinite measurements stay unmeasured
+ok 162 - missing, malformed and nonfinite measurements stay unmeasured
+  ---
+  duration_ms: 0.111084
+  type: 'test'
+  ...
+# Subtest: Backflip evidence uses the authoritative assessment and landing handoff metrics
+ok 163 - Backflip evidence uses the authoritative assessment and landing handoff metrics
+  ---
+  duration_ms: 0.471833
+  type: 'test'
+  ...
+# Subtest: Backflip actual-unit assistance channels use rollout metric ranges
+ok 164 - Backflip actual-unit assistance channels use rollout metric ranges
+  ---
+  duration_ms: 0.134083
+  type: 'test'
+  ...
+# Subtest: acceptance requires skill mode, pipeline validity, matching scenario and settings
+ok 165 - acceptance requires skill mode, pipeline validity, matching scenario and settings
+  ---
+  duration_ms: 0.197208
+  type: 'test'
+  ...
+# Subtest: Basketball exposes verified balance-only evidence without passing steering
+ok 166 - Basketball exposes verified balance-only evidence without passing steering
+  ---
+  duration_ms: 0.314958
+  type: 'test'
+  ...
+# Subtest: Bridge requires an explicit unassisted bridge assessment
+ok 167 - Bridge requires an explicit unassisted bridge assessment
+  ---
+  duration_ms: 0.084667
+  type: 'test'
+  ...
+# Subtest: Drawing requires explicit passed and unassisted assessment fields
+ok 168 - Drawing requires explicit passed and unassisted assessment fields
+  ---
+  duration_ms: 0.52525
+  type: 'test'
+  ...
+# Subtest: policy refresh scans without cache and sorts training/export timestamps rather than evaluation dates
+ok 169 - policy refresh scans without cache and sorts training/export timestamps rather than evaluation dates
+  ---
+  duration_ms: 12.84675
+  type: 'test'
+  ...
+# Subtest: Studio policy refresh exposes failures for retry
+ok 170 - Studio policy refresh exposes failures for retry
+  ---
+  duration_ms: 0.682417
+  type: 'test'
+  ...
+# Subtest: previews choose the newest successful training, not the newest evaluation
+ok 171 - previews choose the newest successful training, not the newest evaluation
+  ---
+  duration_ms: 0.226583
+  type: 'test'
+  ...
+# Subtest: previews exclude failed, stale, missing and unmatched artifacts
+ok 172 - previews exclude failed, stale, missing and unmatched artifacts
+  ---
+  duration_ms: 0.10675
+  type: 'test'
+  ...
+# Subtest: each scenario selects its own verified rollout; missing evidence has no fallback
+ok 173 - each scenario selects its own verified rollout; missing evidence has no fallback
+  ---
+  duration_ms: 0.171625
+  type: 'test'
+  ...
+# Subtest: completed smoke gets a separate Full run for every scenario
+ok 174 - completed smoke gets a separate Full run for every scenario
+  ---
+  duration_ms: 0.331667
+  type: 'test'
+  ...
+# Subtest: Basketball balance-only evidence is previewable but never generalizes to other tasks
+ok 175 - Basketball balance-only evidence is previewable but never generalizes to other tasks
+  ---
+  duration_ms: 0.08
+  type: 'test'
+  ...
+# Subtest: source-bound failed Bridge pilots are diagnostic previews but never verified previews
+ok 176 - source-bound failed Bridge pilots are diagnostic previews but never verified previews
+  ---
+  duration_ms: 0.120417
+  type: 'test'
+  ...
+# Subtest: source-bound failed Drawing pilots remain diagnostic until accepted
+ok 177 - source-bound failed Drawing pilots remain diagnostic until accepted
+  ---
+  duration_ms: 0.334167
+  type: 'test'
+  ...
+# Subtest: Drawing preview selection preserves the saved tool contract
+ok 178 - Drawing preview selection preserves the saved tool contract
+  ---
+  duration_ms: 0.37675
+  type: 'test'
+  ...
+# Subtest: unoccupied custom names are preserved
+ok 179 - unoccupied custom names are preserved
+  ---
+  duration_ms: 0.136667
+  type: 'test'
+  ...
+# Subtest: repeated presets avoid existing runs without chaining suffixes
+ok 180 - repeated presets avoid existing runs without chaining suffixes
+  ---
+  duration_ms: 0.071708
+  type: 'test'
+  ...
+# Subtest: collision checks match API canonicalization and the 48-character limit
+ok 181 - collision checks match API canonicalization and the 48-character limit
+  ---
+  duration_ms: 0.134625
+  type: 'test'
+  ...
+1..181
+# tests 181
+# suites 0
+# pass 181
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5173.304541

@@ -1,0 +1,187 @@
+{
+  "date": "2026-09-11",
+  "author": "George Hu",
+  "scenario": "drawing",
+  "teacher": {
+    "assistance": 0.0,
+    "completed": true,
+    "contact_steps": 922,
+    "contract_version": "microduck-drawing-v1",
+    "coverage": 1.0,
+    "fallen_or_dropped": false,
+    "grasp_fraction": 0.999375,
+    "ink_contact_fraction": 0.57625,
+    "length_ratio": 0.960452537087351,
+    "max_normal_force_n": 0.28371143069352833,
+    "passed": true,
+    "pen_up_leak_fraction": 0.0125,
+    "precision": 1.0,
+    "recorded_length_m": 0.2397422235627786,
+    "reference_length_m": 0.24961381672207983,
+    "symmetric_chamfer_m": 0.00015934585301295132,
+    "unassisted": true
+  },
+  "runs": [
+    {
+      "run": "drawing-pilot-01",
+      "training_config": {
+        "bc_batch_size": 512,
+        "bc_epochs": 40,
+        "bc_learning_rate": 0.0003,
+        "dagger_bc_epochs": 12,
+        "eval_episodes": 1,
+        "initial_std": 0.02,
+        "learning_rate": 3e-05,
+        "render_seconds": 32.0
+      },
+      "timesteps": 32768,
+      "assistance_curriculum": [
+        1.0,
+        0.3,
+        0.0
+      ],
+      "training_source_hashes": {
+        "environment_sha256": "fab8cf260b01c0427973b67d1bb3476e1014c312aa2c91eb2b5715e6d8ac5f3a",
+        "pipeline_sha256": "c0b5316d100177d7e44efe09a86d9b0d39f8b0c1679ea9807e2f78e521d1e846"
+      },
+      "ppo": {
+        "episodes": 32,
+        "passed_episodes": 0,
+        "mean_coverage": 0.15882820414497575,
+        "mean_precision": 0.40290473570745516,
+        "mean_grasp_fraction": 0.9878950997688432,
+        "completed_episodes": 0,
+        "max_normal_force_n": 0.7730322484400574,
+        "passed": false
+      },
+      "bc": {
+        "episodes": 32,
+        "passed_episodes": 0,
+        "mean_coverage": 0.33423315992084046,
+        "mean_precision": 0.6792497554501432,
+        "mean_grasp_fraction": 0.999375,
+        "completed_episodes": 32,
+        "max_normal_force_n": 0.6035594331088606,
+        "passed": false
+      },
+      "comparison": {
+        "bc_passed": false,
+        "mean_return_delta": -3511.3814791813866,
+        "metric_deltas": {
+          "coverage": -0.17540495577586468,
+          "grasp_fraction": -0.011479900231156859,
+          "precision": -0.27634501974268805
+        },
+        "note": "Deltas are reported as finite-run evidence, not a success guarantee.",
+        "ppo_improvement_claimed": false,
+        "ppo_passed": false
+      },
+      "evaluation_sha256": "8c5db0b43163435ff201644f86b97fb141ce50ce0c26e296a5987400ae75d01c",
+      "policy_sha256": "ee19a1209af4a6163c1f9e74867f7a99d2b794bc180d771d45cbe718f2b0f2cc",
+      "checkpoint_sha256": "91c6b231cf21e9ce8651546b097ad9934c4dca1c4b3e698237b3db7e301d82f8",
+      "render": {
+        "assistance": 0.0,
+        "completed": false,
+        "contact_steps": 174,
+        "contract_version": "microduck-drawing-v1",
+        "coverage": 0.16156992157466846,
+        "fallen_or_dropped": true,
+        "grasp_fraction": 0.9943246311010215,
+        "ink_contact_fraction": 0.19750283768444948,
+        "length_ratio": 0.4372393786103728,
+        "max_normal_force_n": 0.7496349598301797,
+        "passed": false,
+        "pen_up_leak_fraction": 0.003703703703703704,
+        "precision": 0.44783395175058716,
+        "recorded_length_m": 0.10914099011612567,
+        "reference_length_m": 0.24961381672207983,
+        "symmetric_chamfer_m": 0.0066743592031836925,
+        "unassisted": true
+      }
+    },
+    {
+      "run": "drawing-refinement-02",
+      "training_config": {
+        "bc_batch_size": 512,
+        "bc_epochs": 200,
+        "bc_learning_rate": 0.0003,
+        "dagger_bc_epochs": 24,
+        "eval_episodes": 1,
+        "initial_std": 0.005,
+        "learning_rate": 3e-06,
+        "render_seconds": 32.0,
+        "teacher_domain_spread": true
+      },
+      "timesteps": 32768,
+      "assistance_curriculum": [
+        0.0
+      ],
+      "training_source_hashes": {
+        "environment_sha256": "fab8cf260b01c0427973b67d1bb3476e1014c312aa2c91eb2b5715e6d8ac5f3a",
+        "pipeline_sha256": "9bf69fa5d4100b7cafafe618d1b409658905d9788bd6cdbac4501b34347264b7"
+      },
+      "ppo": {
+        "episodes": 32,
+        "passed_episodes": 0,
+        "mean_coverage": 0.24231523952050402,
+        "mean_precision": 0.6239295324671911,
+        "mean_grasp_fraction": 0.9988079698836679,
+        "completed_episodes": 30,
+        "max_normal_force_n": 0.6105968634894235,
+        "passed": false
+      },
+      "bc": {
+        "episodes": 32,
+        "passed_episodes": 0,
+        "mean_coverage": 0.6721359783804847,
+        "mean_precision": 0.8677570662181091,
+        "mean_grasp_fraction": 0.9961873714375695,
+        "completed_episodes": 8,
+        "max_normal_force_n": 0.3613643989250103,
+        "passed": false
+      },
+      "comparison": {
+        "bc_passed": false,
+        "mean_return_delta": -1261.5922042446987,
+        "metric_deltas": {
+          "coverage": -0.4298207388599806,
+          "grasp_fraction": 0.00262059844609841,
+          "precision": -0.24382753375091804
+        },
+        "note": "Deltas are reported as finite-run evidence, not a success guarantee.",
+        "ppo_improvement_claimed": false,
+        "ppo_passed": false
+      },
+      "evaluation_sha256": "4f3cdce7ecf88bc8ad99d93f5e3e714d1fd0d49672367675a29639fbe1e2e37d",
+      "policy_sha256": "8274f1cfe17b213223489b87a1d231eb6b1d7b0d3a21aa2802dbedf7ef0f8f7d",
+      "checkpoint_sha256": "0997000b290b1d569785c5df78e6d541ef516458539e56682e4cd0ab95f5dd6b",
+      "render": {
+        "assistance": 0.0,
+        "completed": true,
+        "contact_steps": 225,
+        "contract_version": "microduck-drawing-v1",
+        "coverage": 0.30503723499113644,
+        "fallen_or_dropped": false,
+        "grasp_fraction": 0.999375,
+        "ink_contact_fraction": 0.140625,
+        "length_ratio": 0.26446999659934733,
+        "max_normal_force_n": 0.5982322248773543,
+        "passed": false,
+        "pen_up_leak_fraction": 0.0015625,
+        "precision": 0.566247027134532,
+        "recorded_length_m": 0.06601536525963857,
+        "reference_length_m": 0.24961381672207983,
+        "symmetric_chamfer_m": 0.002598810583656334,
+        "unassisted": true
+      }
+    }
+  ],
+  "learned_skill_accepted": false,
+  "scope": "simulation-only, preloaded free pencil, independent 83/15 interface, strong XML servos",
+  "teacher_video_sha256": "97875c84930987e991a152ff07b253f1fc8a1c323e4d081ef445db410cf23033",
+  "current_sources": {
+    "rlx/rlx/environments/drawing.py": "af82e83179b1034b1154a0448e7d042dfea2cc8ce805b0fde9b98e56d8abf816",
+    "rlx/rlx/environments/drawing_reference.py": "51567b96322ab48eb1e90c27ad888cd0f7536660e9989d8c6abffb830bc89278",
+    "rlx/examples/ppo_microduck_drawing.py": "a175aef58e67629b94c501561176bf82ffbc50acbfd6955131b74f33baf93d40"
+  }
+}
