@@ -1,0 +1,99 @@
+{
+  "design": "WingPod Camera v2 Soft",
+  "success": true,
+  "source_episode": "nominal-0",
+  "source_directory": "artifacts/microduck-arm-v1c/tennis-return/half-height-planned-v13",
+  "phase_events": [
+    {
+      "time_s": 0.0,
+      "phase": "approach"
+    },
+    {
+      "time_s": 7.501999999999396,
+      "phase": "grasp"
+    },
+    {
+      "time_s": 7.927999999999349,
+      "phase": "lift"
+    },
+    {
+      "time_s": 13.008000000001013,
+      "phase": "carry"
+    },
+    {
+      "time_s": 30.393999999994033,
+      "phase": "lower"
+    },
+    {
+      "time_s": 44.55200000000848,
+      "phase": "release"
+    },
+    {
+      "time_s": 46.62200000001101,
+      "phase": "retreat"
+    },
+    {
+      "time_s": 50.80800000001613,
+      "phase": "success"
+    }
+  ],
+  "replay": {
+    "complete": true,
+    "claimed_video_pass": true,
+    "generation_method": "action_replay",
+    "simulation_only": true,
+    "hardware_release": false,
+    "ppo": false,
+    "trained_policy": false,
+    "physics_tolerance": 1e-09,
+    "time_tolerance_s": 1e-09,
+    "action_tolerance": 1e-07,
+    "steps_expected": 2541,
+    "steps_replayed": 2541,
+    "frames_written": 1271,
+    "substep_monitoring": "ReturnMonitor.advance observed on every env.step physics substep",
+    "substep_monitor_calls": 25404,
+    "source_evaluation_sha256": "f7af5b19c1262689ecd1ef7c6333baae8a15421bfb8b956cf19838de3588bed2",
+    "source_result_sha256": "7950936fb49b8134cfc9076b14380ff2b147288b4942fad10fd3b5e04e12a4fe",
+    "source_telemetry_sha256": "432b612751431522ca7e3fee9418571b3878829d291c4ddb3b6270d0a96d9d44",
+    "source_snapshot_hashes": {
+      "__init__.py": "d1e0a4a94e8f1327e2d0869aa7a2b7355fe5d4e438c74b77208ca1e2dfa0741d",
+      "tennis-return.json": "3f7aa76bc2bb891e99d4fa7c3114e95ec14a6b22d9f364acc48235f507f217fa",
+      "tennis_controller.py": "bd3bc645ebc523e4d46cfa3fe8429a24ad53a93dd572b02318738ce3db87616d",
+      "tennis_navigation.py": "6f24093a5f1b21546a77d2a99ae4f52b794af079b50b8a97d2dad21518a2eaa0",
+      "tennis_release.py": "7b79df70978ff2ec5a75b545d0197f50a2e251563b284baa3f2768c24aa7a257",
+      "tennis_return.py": "af8715a76d22388c1de94eb8e31e5246a6aff08f3d1a19b257147c9fdf1147c2"
+    },
+    "max_time_error_s": 0.0,
+    "max_ball_position_error_m": 0.0,
+    "max_joint_position_error_rad": 0.0,
+    "max_action_roundtrip_error": 0.0,
+    "zero_error": true,
+    "video_sha256": "b4fb213210c91acdc4db1baf702ab3ef81e59cddd99a551cd9d0d6ad8c59bda8",
+    "telemetry_sha256": "432b612751431522ca7e3fee9418571b3878829d291c4ddb3b6270d0a96d9d44"
+  },
+  "video": {
+    "file": "rollout.mp4",
+    "sha256": "b4fb213210c91acdc4db1baf702ab3ef81e59cddd99a551cd9d0d6ad8c59bda8",
+    "decoded_frames": 1271,
+    "fps": 25,
+    "duration_seconds": 50.84,
+    "resolution": [
+      640,
+      480
+    ]
+  },
+  "appearance_and_renderer_sha256": {
+    "microduck_arm_design/wingpod.py": "be39e1d8417d7b6b32269f5355d3d12d0327fdac85b5c7adb53295e2c0c83964",
+    "microduck_arm_design/wingpod_camera.py": "31d4df6abe1b76bfc48832166b8336a24755661ac279a694956467d3cd60d66c",
+    "microduck_arm_design/wingpod_camera_soft.py": "151b870e3812c067a296c23601b52f3981f053a93c7751833671c54b1527e8f6",
+    "scripts/build_wingpod_camera.py": "7ee4c7b0b6aeb85527a6fcf9ade05f91faf24a80757c63261816ac07351ccd29",
+    "scripts/build_wingpod_camera_soft.py": "bd9585a1c1788da122143c7a81809333f44984c9303c5ef55e6a7e323b2a90c5",
+    "scripts/replay_tennis_evidence.py": "000e472ee1be4ee1cbbf0aaf2085bd6b6d8314d9f6a1bd45fc67d8d054362a00"
+  },
+  "new_training": false,
+  "vision_control": false,
+  "hardware_release": false,
+  "scope": "One soft-style exact action replay; 32-case library retains original graphite styling.",
+  "release_note": "Low supported placement; not a demonstrated half-bin airborne drop."
+}

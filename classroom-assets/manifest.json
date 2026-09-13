@@ -1,0 +1,3439 @@
+{
+  "files": {
+    "videos/dance-rollout-3414cb45a46a.mp4": {
+      "sha256": "3414cb45a46aa74e662c30967ebf7a7ee72aafdd2b98cdff1b831e801f39a363",
+      "bytes": 183769,
+      "source": "docs/classroom-ppt/videos/dance-rollout.mp4"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-001.jpg": {
+      "sha256": "a1415647c3fae6994d24a0d9768a963cc1a37bc1b2b444b323ea50e6aa44eddd",
+      "bytes": 69388,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-002.jpg": {
+      "sha256": "7d0f6b78e40ecc3665570024d415e0038c501721f78c359589c49438c582710e",
+      "bytes": 110343,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-003.jpg": {
+      "sha256": "f2e8dfe5e9b0e5c0afbcae97be3060a937e5851d466a58c4450623d132cc1bef",
+      "bytes": 99872,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-004.jpg": {
+      "sha256": "e766252100bd02289dec32b8506966ab6f2255b63f312a5d569fcc2da8d42209",
+      "bytes": 54163,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-005.jpg": {
+      "sha256": "d7a8c984f617f1b55ac6b1ab227b10ec5dd42d738c38002294ffe47416d6e1b3",
+      "bytes": 111651,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-006.jpg": {
+      "sha256": "02aa4ebfbff3b9c509237083409cd8cf682da512e461dceb1562057b22b3225e",
+      "bytes": 74144,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-007.jpg": {
+      "sha256": "9c9081604bf6cde3e8b494f4c2435ab3a11f36d126497c3461a7f4d39e0552f6",
+      "bytes": 76457,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-008.jpg": {
+      "sha256": "8d0821fff0c8d68b5f757d5c349713ffbb6db5d17f8f32ae11f0f7143dacb6a7",
+      "bytes": 109378,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-009.jpg": {
+      "sha256": "dc70f1f56687524f4424e1329a4b9491aa49cc61e00df4dba48b96d72f079944",
+      "bytes": 75487,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-010.jpg": {
+      "sha256": "fd9ad57209424647bd7ab4ac1bd6ea9ddf5ea292efcd205511aeb2cb6578cda1",
+      "bytes": 79756,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-011.jpg": {
+      "sha256": "dac498ac214d4199975087a4e0c87c68b6b86c59fef8807a4887eb0e383f8b60",
+      "bytes": 109859,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-012.jpg": {
+      "sha256": "b1d617d10957de6c719850d0888f7418d326e5f778cf8536016c009596c05c69",
+      "bytes": 112728,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-013.jpg": {
+      "sha256": "cd329961dfabfe1ba37ecae07484e44f6e4e09771e39c1fcbee53de8722e7d83",
+      "bytes": 92047,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-014.jpg": {
+      "sha256": "97c777f742c50ab084069ea7f02c8d16d9861802500f47beb3f431eaa8d4adde",
+      "bytes": 69585,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-015.jpg": {
+      "sha256": "2e55040ddc8fd7feb5a177c5bdf16f9fe02ab292f3a80faf4c728c0764c6480c",
+      "bytes": 104437,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-016.jpg": {
+      "sha256": "efadf6afb8b76fbe914c57f72f3ab56c8bf69eaff42a485ae811f7a349a6033f",
+      "bytes": 76943,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-017.jpg": {
+      "sha256": "ffedb190b7eff67561452c1022ad0e0d4a5393361c6adff401f3f709892717c0",
+      "bytes": 64724,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-018.jpg": {
+      "sha256": "c7d8f2f6d122d96b50afe86e2c5043823db70eed13b168cda1cca9fbf83f0310",
+      "bytes": 123118,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-019.jpg": {
+      "sha256": "11748dd19a059f9dd2a0d3318ea565ea5ac14f434c9cdb740465b5a59dc179fd",
+      "bytes": 61395,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-020.jpg": {
+      "sha256": "030c4efc39e065785858656b4f2bdb744a607b579df61442aa060e67efcb7e15",
+      "bytes": 111873,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-021.jpg": {
+      "sha256": "e204b47da3013e2e11f79be78c44a00e3d1273208d3e361df736a77f7ddacb56",
+      "bytes": 92204,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-022.jpg": {
+      "sha256": "4efac08e8983cb68edcd4c26bd3112b0f9c0df0a06145971dfdaaa1d5e4bfb8f",
+      "bytes": 104567,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-023.jpg": {
+      "sha256": "2eef801a4ed1bf3ac854d28374a4b5cb66fe28674798d0d2e585b773f573dc4d",
+      "bytes": 92416,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-024.jpg": {
+      "sha256": "23fee273e1ce7d0d685cb798bf946a1a05f5404a30b9e3b84a14d9c8924f89e4",
+      "bytes": 92807,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-025.jpg": {
+      "sha256": "42f5b8c7c0bc65eced380d3affdd3de16f29dc41c976a6c5090cac30b3f6d7aa",
+      "bytes": 52126,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-026.jpg": {
+      "sha256": "9862e54c60f4fad637e3ee78a4c75de633328447c7adbaf46730938ac68237e5",
+      "bytes": 111181,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-027.jpg": {
+      "sha256": "52247b6f69c207c6a5fcd19e201c7f0701ef73a9b2f7e4f51b8d8d31b5f56736",
+      "bytes": 76839,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-028.jpg": {
+      "sha256": "f4b2328fea3365e6c08c5c82ead3948904f9d27a1c2349b5968d68b85a4fbb3f",
+      "bytes": 115012,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-029.jpg": {
+      "sha256": "56aaffc53cfea2b279cd5df171f184752e39f1d8baf8f06b211ba704a6d5c780",
+      "bytes": 113815,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-030.jpg": {
+      "sha256": "a163c22055ff7976ec007d57089f5c70490297fa8156a65a3d15ce7992ee78af",
+      "bytes": 60144,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-031.jpg": {
+      "sha256": "83337c939f223685a20b58c6d21bd2aa420d3f790bcb8c56435e3386b1ad7679",
+      "bytes": 81268,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-032.jpg": {
+      "sha256": "3d3c6f4c357b02eb91f64b4a4c445169a74285f68b83ad7560c90009045e17c0",
+      "bytes": 106813,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-033.jpg": {
+      "sha256": "3c52fbeabbdad9ab8d3f34a21e5799333ccc07981e7f012b6483ee7e824a2bce",
+      "bytes": 69019,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-034.jpg": {
+      "sha256": "36cfdcb3a9b1726c22001077bf394109be524a6c5576904cac78bed17bd3e9eb",
+      "bytes": 118076,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-035.jpg": {
+      "sha256": "8343feb50cd2ad982f60682cb529afe54bf5e95105c29b841c333b252c9f652d",
+      "bytes": 61473,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-036.jpg": {
+      "sha256": "3325ca140937f1121fed97f9728c4656ebac0fb5475b65d403bbb63a968e27fd",
+      "bytes": 112638,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-037.jpg": {
+      "sha256": "467374da6ca07f6f9e7a9215c5994c25c0d6195196c8150e7a118b93112020e7",
+      "bytes": 58086,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/slide-038.jpg": {
+      "sha256": "51d527180218b4435c4ef1390a4c0201df4b0475141e4ea2d48e53e4e7f96e55",
+      "bytes": 62215,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/01-dance-ppo-classroom.pptx": {
+      "sha256": "267a5d836c6715616dabde3dafea0464d379b5d77a739ea185c89cdc2039df90",
+      "bytes": 1481691,
+      "source": "docs/classroom-ppt/decks/01-dance-ppo-classroom.pptx"
+    },
+    "dance/en-267a5d836c67-7aea5883f52d/01-dance-ppo-classroom.pdf": {
+      "sha256": "7aea5883f52de80e6775eeecfdeea5c7aeab4fb1e5dde98ba7eb24c7c427ab35",
+      "bytes": 802153,
+      "source": "docs/classroom-ppt/pdf/01-dance-ppo-classroom.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-001.jpg": {
+      "sha256": "eac73c2e2f64ed35237f8a4eec1c7dbd033f9fa205897547e3a4452c9488c8c8",
+      "bytes": 62792,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-002.jpg": {
+      "sha256": "ea33ffa02fc028dae23bab3bda8be9ee9ac2d4844922f5a9d66c9d15946be2cd",
+      "bytes": 104058,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-003.jpg": {
+      "sha256": "43e06f6a0f61d80c13815df028bc5b01f375669b24000839be8317a22a9fc237",
+      "bytes": 97714,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-004.jpg": {
+      "sha256": "37eb31a6d798d3f77d1fff91a7ca98e3eae58865a57e580a79937b9759622f0a",
+      "bytes": 51704,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-005.jpg": {
+      "sha256": "d180e5ee8464bfca83f2ef27dde8c00755d417ec1956e1ca8fe82276638e2d7b",
+      "bytes": 108139,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-006.jpg": {
+      "sha256": "b8f3e8f2e50c253ccd8b25097712435f88c970dc05b3db8c74c8ff59c278f890",
+      "bytes": 68768,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-007.jpg": {
+      "sha256": "11a5c379b2998f02428bc49a73c81098bbde2fb74208d47e5fb9203d47d5f129",
+      "bytes": 79818,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-008.jpg": {
+      "sha256": "aff7b5e36e0c4d40309855a217d04c08eced70bce2d8781ec80ddc228827ccea",
+      "bytes": 107131,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-009.jpg": {
+      "sha256": "84cccf43be91c66f093af639890d03bed7be0e822ad478f330abaff139d7c79b",
+      "bytes": 69423,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-010.jpg": {
+      "sha256": "b72c70ba3ff89535a5e7d485f148199037fe19c71b4c7e202c6a6a7360f9b942",
+      "bytes": 86328,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-011.jpg": {
+      "sha256": "173bde934d70698aa30f91579fda4cfa0abfb265db7cf2a5449b1a356b999182",
+      "bytes": 109376,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-012.jpg": {
+      "sha256": "e4e1487765bb58cd90b69b3ddc88fee22f8e242026947b22c0d23b742d0ac5fb",
+      "bytes": 109470,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-013.jpg": {
+      "sha256": "f713139ecc27677868cb5261a407eb0a4ac8234e34e321805a5c993b49e00f58",
+      "bytes": 88390,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-014.jpg": {
+      "sha256": "a29181078963ea486049b21167cdcf75d158cd909d554082a1a39a460901b6fb",
+      "bytes": 66085,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-015.jpg": {
+      "sha256": "5967b18794ec1f512d64d724bdf3cb5f1d1a4d2968c0d832fb9a3eb22cf7d463",
+      "bytes": 112242,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-016.jpg": {
+      "sha256": "61dc72fda8983099708b5f734f8ad5dc7392cd4105adbd45855b3eb2296084f3",
+      "bytes": 74184,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-017.jpg": {
+      "sha256": "5e75a2edc60ebe09c3f8f924f310574dd81ce244ba54b7bdff81c2d7f9479771",
+      "bytes": 57955,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-018.jpg": {
+      "sha256": "7ab0414fc37a70d86d495449a038d216586b599e8682c50c08ba5add9f6175b2",
+      "bytes": 111700,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-019.jpg": {
+      "sha256": "05b94749f308189d9ed9980169b356125f145fae15de71551119253ecca5ae76",
+      "bytes": 56110,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-020.jpg": {
+      "sha256": "73d2ac9fedd118053e56f53106331b38d0459408686bbf5a5380063e096ae6f4",
+      "bytes": 106122,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-021.jpg": {
+      "sha256": "53c07fe6aeb914295f38e30f85455f81d6a113a913e41318a3ae6a956dc4d339",
+      "bytes": 87978,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-022.jpg": {
+      "sha256": "dccde3294ba2bc655dbb7364d59a6c4d0f1b93ba4284461582f11e7eceaf0ee9",
+      "bytes": 98474,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-023.jpg": {
+      "sha256": "c07215faf8945113c7f58ca36de6c85cb998e5db2b83c25ff26dde059d4d4089",
+      "bytes": 100264,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-024.jpg": {
+      "sha256": "677b0ed21991e41b503a6d6ffdb2f6f6de6079ea07edf4161ad359310b42453a",
+      "bytes": 101211,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-025.jpg": {
+      "sha256": "2fe465beea88d8fb29443f46417f6dc93d224acf5cd339bba5088e1d5e108e7b",
+      "bytes": 52138,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-026.jpg": {
+      "sha256": "761630a1c4f3d23c4b053f817c7a9241adc313cd793b0af83cee5ed0ed391df7",
+      "bytes": 109117,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-027.jpg": {
+      "sha256": "f020df52e7968ce671eae27e057291114c44b68f25706015d20400e84ce919b6",
+      "bytes": 72867,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-028.jpg": {
+      "sha256": "bcc89bea605d883746f24514c9d1e4234bf502208611e4c21674954839364a99",
+      "bytes": 107793,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-029.jpg": {
+      "sha256": "b4424468dff26c3c66700bc7c650dcfe8683119a69ff11f28a9a694fcb0cf782",
+      "bytes": 112945,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-030.jpg": {
+      "sha256": "c9c4f71cb0e45d5843b550edce48cd0a3087907f1cb89a4d89f0e55404629b1a",
+      "bytes": 60184,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-031.jpg": {
+      "sha256": "05bdab54a58f1b599aaa32d407c71316a8c692684898eb9720a043a9a94f61fa",
+      "bytes": 78466,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-032.jpg": {
+      "sha256": "59c58b3902a8c4a7b69a016cdb5321d7806db067fddb464f839b4254007d7307",
+      "bytes": 100316,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-033.jpg": {
+      "sha256": "71659f576e3d7f326fcdde374f5c4c5b3cc67d1ffe805cf526735ba8c57be10c",
+      "bytes": 61218,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-034.jpg": {
+      "sha256": "27ab45375d6cb7649a26ba37c7e9ea8b8cf4d415c9361411e2f2660bb20b296d",
+      "bytes": 107825,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-035.jpg": {
+      "sha256": "7f26323d888ae0ae8118ffd10eb7092562b97b1b76682b4a4fbe8be049e0e46e",
+      "bytes": 57930,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-036.jpg": {
+      "sha256": "21c8d1c38e8efbad17c2000c656bd84cdef2888a013c3ef709fb604caa550e05",
+      "bytes": 104884,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-037.jpg": {
+      "sha256": "565d3c72d88ee23810b645803d7a6e3e7119a77135504b026220e54e7989e7d7",
+      "bytes": 53372,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/slide-038.jpg": {
+      "sha256": "5b39a6da96bf973b88e889ac341ada0fb98cd76bac5cd078bf77a7bec8627a9e",
+      "bytes": 57613,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/01-dance-ppo-classroom.zh-CN.pptx": {
+      "sha256": "0ce5b083e547da2c758d4e1cdf8f8d8167cd1a3fbab380becebb423097ae4a2a",
+      "bytes": 1013936,
+      "source": "docs/classroom-ppt/zh-CN/decks/01-dance-ppo-classroom.zh-CN.pptx"
+    },
+    "dance/zh-0ce5b083e547-e6d108ca2ddc/01-dance-ppo-classroom.zh-CN.pdf": {
+      "sha256": "e6d108ca2ddc184a467d60f13d77db880df620b5155fa119a556343b49b00ac7",
+      "bytes": 993486,
+      "source": "docs/classroom-ppt/zh-CN/pdf/01-dance-ppo-classroom.zh-CN.pdf"
+    },
+    "videos/swing-rollout-dee5b2805efc.mp4": {
+      "sha256": "dee5b2805efcd8339f9e2389c78fbc6bcd4d095e4caa693d2f2e872bdfeb54ea",
+      "bytes": 2155746,
+      "source": "docs/classroom-ppt/videos/swing-rollout.mp4"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-001.jpg": {
+      "sha256": "8400d5caad04d68de734f1a49ac50e8eee3a5f3ef743de1d19231275bf3de44b",
+      "bytes": 70146,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-002.jpg": {
+      "sha256": "5e527765a28fd5abdc81bb72b8dd5a13cc5d585118a985a8f3af6afe8f72ae53",
+      "bytes": 112703,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-003.jpg": {
+      "sha256": "31d7bb0918e39575547199fca748754498439ac1c3eb8ea1ed2d38ecf11432de",
+      "bytes": 100459,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-004.jpg": {
+      "sha256": "1be1cc3740fceefd0ecc6c299aeecd10735b68059bbbb1d7bc97850a1f09f984",
+      "bytes": 54147,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-005.jpg": {
+      "sha256": "18bdeca858a0613c8d6035480ef1658f9ac8d036f60965ba35ea31f525e5daf2",
+      "bytes": 107381,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-006.jpg": {
+      "sha256": "a0214fa38b6866a2ffec5c75ffd1ec3abe33406b8952a88ed21899476ae15ba0",
+      "bytes": 73895,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-007.jpg": {
+      "sha256": "430e77b6b3984881d96c91c6fb29caa41224747e79f4ddff3edda95009b727e2",
+      "bytes": 76582,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-008.jpg": {
+      "sha256": "18a954bb720c01e27165a24553f260c709d07ab98747f8f984fcd04b12d60393",
+      "bytes": 103647,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-009.jpg": {
+      "sha256": "7f0047c92065ef5e680348075be100a052a23545c1c040d13d4a61952fd63004",
+      "bytes": 92198,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-010.jpg": {
+      "sha256": "b509a1c31c89b53ac9d017542a89252a45a1f18aec85dd8420176075ad5d8f52",
+      "bytes": 79406,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-011.jpg": {
+      "sha256": "51c545270ec1acca713fedf9bc3dd6af2fdfb59da3f8386e5b77b86b6b9ccb5e",
+      "bytes": 109800,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-012.jpg": {
+      "sha256": "a5e71f368a4087b736a192a40e818891c7842aaa900b3bf04e9ffd6b476b0dad",
+      "bytes": 112691,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-013.jpg": {
+      "sha256": "f9681dd1dadd1b78e5704d4259d57538618d310883c182094cb69be7ae7e4f71",
+      "bytes": 104716,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-014.jpg": {
+      "sha256": "b0d07fbdd4af36bc46aeba45f60de6f02eacf9162f80b55d4389bf82bf997e3d",
+      "bytes": 69518,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-015.jpg": {
+      "sha256": "ef92d67822706661de9f4c98dc37a8c3293f26da4665cc2dd17cdf85b358f5aa",
+      "bytes": 107807,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-016.jpg": {
+      "sha256": "973505fed888d44489a6b201a8a33f9574fc5b49a827ba94fbefeebf5f91740e",
+      "bytes": 96751,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-017.jpg": {
+      "sha256": "3db777dcba97af0444f2b7cfc189627e246b760b97416dc0af59e093e5fb7b17",
+      "bytes": 67320,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-018.jpg": {
+      "sha256": "d3f979b74544acdfc899a652eb297ca8f0febd86ca9b36a4eb3e88897fa7227a",
+      "bytes": 112302,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-019.jpg": {
+      "sha256": "1e4ceee6d89d1b18782485c861766450e3d432a64f78e05f480ff90d23cfb7c4",
+      "bytes": 65258,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-020.jpg": {
+      "sha256": "55e428dc2f73cef6663be094507aadafdb2b323d57066f0ec2444290bbf9df00",
+      "bytes": 93158,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-021.jpg": {
+      "sha256": "ce019c9585e74c8be88adf1eb2cafe011a8b375ec7ce7adfe6d9a141fdb1e1cf",
+      "bytes": 92259,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-022.jpg": {
+      "sha256": "23870e6552be09bcab3d1de6dfaef1f81fb275e179d2b7e92cc83e4c062d0705",
+      "bytes": 102262,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-023.jpg": {
+      "sha256": "4267814d4d032721d1972e4fe436bd0a9574ff6c30d0c477f4a94686c280d751",
+      "bytes": 93262,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-024.jpg": {
+      "sha256": "c091ba1ccdf934e432e81b5d73316b114e97476073a7ecd2716bf1fd76c5e09e",
+      "bytes": 94386,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-025.jpg": {
+      "sha256": "c00fd1163a76942eb5bf31418d0f0aac25add35a93928948f683db58554fdb11",
+      "bytes": 51758,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-026.jpg": {
+      "sha256": "9548f0d6b38d5cfb4d3bc1fe7a4f6a66928311b2598bbd7ab9c47527801847d5",
+      "bytes": 114028,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-027.jpg": {
+      "sha256": "6e8a96fc9a229726a953b2fee41e122ebc1374f63429a9eaf84e98266435833b",
+      "bytes": 77392,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-028.jpg": {
+      "sha256": "9b871b9a057889897470407b6dd47c4641205ee49a0e3eff74a86242c8adbc30",
+      "bytes": 117736,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-029.jpg": {
+      "sha256": "212ebb1f464a19d6dd5f205bb03f7b51b0da544eecd7cd1557b41bfb31ec1994",
+      "bytes": 115678,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-030.jpg": {
+      "sha256": "b02bbd3c06240c1c33dcd2718f0a83123c759563ac0dccc5e890d8887dada7f5",
+      "bytes": 78750,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-031.jpg": {
+      "sha256": "9c9c180b2cbe1e5147b009d69467c48d0e7ec7c57a661b8af73000d56c3662c4",
+      "bytes": 88494,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-032.jpg": {
+      "sha256": "3b5d195e302ca22788ae41e629245791f58db3cc605c78ca2aad27ea0bfa513b",
+      "bytes": 107527,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-033.jpg": {
+      "sha256": "ea4edde32a63a011c21b36f71d4e50811a58b0e3a69c99d0dbf9cabea101d6b2",
+      "bytes": 71342,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-034.jpg": {
+      "sha256": "0f193ff0fe033b761efeec3b60e93974aae75a05cf7e24ef50892d5e2ccaec10",
+      "bytes": 116044,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-035.jpg": {
+      "sha256": "3ecd67e2998235499f665be67b6da5d60f872247b2a3c5960e88f7bd8e07e349",
+      "bytes": 60752,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-036.jpg": {
+      "sha256": "cb356adbab87ae2c567bf7e93795ff6de1de4f75e2cccf828fcf42562b0f556f",
+      "bytes": 112414,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-037.jpg": {
+      "sha256": "f97670969305653ae58623137ea9b5343a0c463fa086d39803f27106eec0e124",
+      "bytes": 50401,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/slide-038.jpg": {
+      "sha256": "2d29a4e99441f11ad57ce353a0cdcf558d8a4efb75cda7e6903a7ae6f74d39b3",
+      "bytes": 62080,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/02-swing-ppo-classroom.pptx": {
+      "sha256": "22b22ba131d9a46a8ad364e4fe01f8e4f1d7f727a0565790373945e163746fe5",
+      "bytes": 3614965,
+      "source": "docs/classroom-ppt/decks/02-swing-ppo-classroom.pptx"
+    },
+    "swing/en-22b22ba131d9-0fb748765391/02-swing-ppo-classroom.pdf": {
+      "sha256": "0fb74876539121b0d96e12bc369e331e46a31fd82b43a99de29d636776f9f913",
+      "bytes": 826057,
+      "source": "docs/classroom-ppt/pdf/02-swing-ppo-classroom.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-001.jpg": {
+      "sha256": "f7b779ab669a3ae2c1959eb6473a49dc03820a86615dd708d68a6f9565695cd0",
+      "bytes": 62333,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-002.jpg": {
+      "sha256": "2e7c565144b068243adf93a27c7d2b9b02932b43260b115dd2c14e74894ff207",
+      "bytes": 102330,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-003.jpg": {
+      "sha256": "b0ac5f005ae71721464ee47b463212e2be852edd423ba0d7d6bc4d3e16985488",
+      "bytes": 97309,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-004.jpg": {
+      "sha256": "e2d97460afe97ac71cadd9c37bab43663261ac021011c407516f1cff7a877e96",
+      "bytes": 51942,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-005.jpg": {
+      "sha256": "e4b8ae7ac3fcdbc33083ebca5f16772f7a5f3da449d70c759f3fb62f24e5f2f0",
+      "bytes": 107201,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-006.jpg": {
+      "sha256": "f6aae75a7c09270cba7756ca6cc1177ab972886988ff36d06f7aba80feb9d54e",
+      "bytes": 69539,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-007.jpg": {
+      "sha256": "9796dce86c9e00886c2b4af4b6f65aefa32d0f404061bb6c21b0927d3e3e7d0c",
+      "bytes": 74763,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-008.jpg": {
+      "sha256": "8069d23342e149e4ad593632111dfb63ebf38ec5531962bdbbd67a15118bce84",
+      "bytes": 101785,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-009.jpg": {
+      "sha256": "b34050299cf0bf33d3c1b817a497fc64165f02d8201fedbfd6fea78bfaf98e77",
+      "bytes": 95761,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-010.jpg": {
+      "sha256": "700ccb75cc32003efdcb783c225411dd96bbb1162a52914d249234dfa311ca63",
+      "bytes": 85946,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-011.jpg": {
+      "sha256": "88af32d12cb4a7e2e911569a9062f836d3d1229e12460be975a105b3083f0561",
+      "bytes": 109027,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-012.jpg": {
+      "sha256": "8693bfed651775ec00bff5e016e0f87900804bb923ca36d0c2be962921ebc277",
+      "bytes": 109401,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-013.jpg": {
+      "sha256": "132a535837257dd33dc1d82a06a0965a2aef76e16f4f5e64632d38ec82264c55",
+      "bytes": 101929,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-014.jpg": {
+      "sha256": "8b7efb0b573e0408e9ff5745914bb7468bf4035f1b4a8faf5a3971d175e30edf",
+      "bytes": 68708,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-015.jpg": {
+      "sha256": "f37c17d2830ddae8d755a89f9e8f68f3983b286581d47997b108a3b31e4c531f",
+      "bytes": 105933,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-016.jpg": {
+      "sha256": "84ff134e58d71aecf171e32acdf090b568305a3fe3bf522311d2b84ee687fba7",
+      "bytes": 95644,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-017.jpg": {
+      "sha256": "71eea6630256faf2fc1f42cb6a98e30d87ee127ad4f5c47f151e8c68246fb707",
+      "bytes": 57900,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-018.jpg": {
+      "sha256": "254b28be8c13a1d8d10775ed2d3136d01b5bf45bd3c632a846d0b062e8ad1781",
+      "bytes": 102700,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-019.jpg": {
+      "sha256": "d409434b8fe6cebd0acf72b6a1e786f488ca9faa06de573472999068329971a4",
+      "bytes": 57482,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-020.jpg": {
+      "sha256": "842422614db37370f09f1aea623edadbb0162c692e2faf858184534883cd3851",
+      "bytes": 88195,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-021.jpg": {
+      "sha256": "1796aa9062ea274501636d2e3b31eee61a7cf43173b63afd7ec70e2f26655f06",
+      "bytes": 89000,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-022.jpg": {
+      "sha256": "1b1280808fdd9a04a72e84bd986ac9daefb4f330175cce9b386e6c5ed7546e55",
+      "bytes": 95301,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-023.jpg": {
+      "sha256": "89f165dd7345b1f67e3339653761281fbf4d112aed24ae0fa46c6ae02c4d2874",
+      "bytes": 102126,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-024.jpg": {
+      "sha256": "125d372084d6463a842af42c3b799ca158a2ecffe8d5eb497c00a8e4bedf1c00",
+      "bytes": 102995,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-025.jpg": {
+      "sha256": "656c60e8aa92c942d7e15ba2eda16051f63242f502bcf36e789054796acbf8f0",
+      "bytes": 52386,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-026.jpg": {
+      "sha256": "b462386e0da843eb26fe405c2c1af9068d7b0e1dd9e2c252a20063150d06e602",
+      "bytes": 106901,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-027.jpg": {
+      "sha256": "7977df652375ef48acda3b8497a6c10b3254deaef55c63a1c4991c4833922023",
+      "bytes": 75847,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-028.jpg": {
+      "sha256": "b9942a7e44de31b442f21ef1dcbf51dc99f22a9d683f9ca330380c79b1c1726a",
+      "bytes": 114992,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-029.jpg": {
+      "sha256": "a5e4a4aaa8c453f3f8698d61c054036407d1c7851ae9ef9443961a90ad8b8488",
+      "bytes": 113091,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-030.jpg": {
+      "sha256": "6e60f0a225bac74411074fb2eee875f367ffc3feb69a5381f9c59c8ad3fd51ba",
+      "bytes": 78798,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-031.jpg": {
+      "sha256": "30bccfb63adb60e938b901b04e9ed0f0a0dddc4933f55f27ab4a1067624cb159",
+      "bytes": 85470,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-032.jpg": {
+      "sha256": "858470d9a89518555ee8b4a5534e8431dda6de34dbde6f32a904daafadfbf482",
+      "bytes": 100045,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-033.jpg": {
+      "sha256": "2061e8ac472a6378f2fcb5176f89908bd7ac1c7341e0cee78062d13aacdfdd18",
+      "bytes": 66096,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-034.jpg": {
+      "sha256": "e0059ad285d19aaafbd0959d73be0824069cf71dfe10900cd61c8af8ef084e1f",
+      "bytes": 111807,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-035.jpg": {
+      "sha256": "19fc7e5251b9b2c3a43d36adca12495788ae8921bf4c454d2deaa11e10b2b547",
+      "bytes": 57878,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-036.jpg": {
+      "sha256": "0c3d07d2a025ec1648a27811fd9454d62e49c6a8da39e53c5b7e714654731d58",
+      "bytes": 104712,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-037.jpg": {
+      "sha256": "6ac17c7444b5a5f17656920740954cc82043e2a4eb4bf2b2b09af6447733e4e7",
+      "bytes": 45785,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/slide-038.jpg": {
+      "sha256": "91321e95845bd95efb18c78d7b9cdb22d6339fabb6b85a8b5b7c496176fa404e",
+      "bytes": 57214,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/02-swing-ppo-classroom.zh-CN.pptx": {
+      "sha256": "4256c71a73fd7df88bde44f301d36231239218d2d772ada6f0e6cc879d6e2f3a",
+      "bytes": 3138131,
+      "source": "docs/classroom-ppt/zh-CN/decks/02-swing-ppo-classroom.zh-CN.pptx"
+    },
+    "swing/zh-4256c71a73fd-e1f6d9431ac2/02-swing-ppo-classroom.zh-CN.pdf": {
+      "sha256": "e1f6d9431ac21bc572dd5bf7082fdd440bd21fcabccf125c1ce45e120f98503e",
+      "bytes": 1002001,
+      "source": "docs/classroom-ppt/zh-CN/pdf/02-swing-ppo-classroom.zh-CN.pdf"
+    },
+    "videos/running-rollout-cf1b3fc6abd9.mp4": {
+      "sha256": "cf1b3fc6abd932ae0693451993ff3fcf0f081a8046ab42c68e0f211966e23655",
+      "bytes": 967405,
+      "source": "docs/classroom-ppt/videos/running-rollout.mp4"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-001.jpg": {
+      "sha256": "87df553ae7495265f65c881099e9f873cd37a259f1196db4d9320623ed5cb1d3",
+      "bytes": 63001,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-002.jpg": {
+      "sha256": "122da4e16dbef1d4d9651208df35b5f690b62a7d71e33d8a865fb836d32447ed",
+      "bytes": 110562,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-003.jpg": {
+      "sha256": "9c8a7ccad099e3ee999bc3684a30fd4788ed6f75dfa51de48b530eae0eaf69c2",
+      "bytes": 90689,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-004.jpg": {
+      "sha256": "e0f9ca22504a6abde68fbd4ef89b312cecf8a17891d4459d22c804b7463a0613",
+      "bytes": 52809,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-005.jpg": {
+      "sha256": "ea9a9152f4b086df0977e9342d1053a7539cf68e74ac0154ce3102cd66540959",
+      "bytes": 109538,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-006.jpg": {
+      "sha256": "9e60d3b87deb9f542858f1d947eb42519547ca2cb53167b26d780c95deeb64fa",
+      "bytes": 73153,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-007.jpg": {
+      "sha256": "5a8060e28c3de68ea17790fe7298976dd0e7c285406e534bca4ceb47679cd217",
+      "bytes": 75527,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-008.jpg": {
+      "sha256": "f4c03b7c743befa7a83158ad717c7892f828876f7be715754607f8c38b4940b7",
+      "bytes": 102750,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-009.jpg": {
+      "sha256": "ab6f976b2d1ab50beae0377f7b3c35869e599024aad4107de18cd2d440483b34",
+      "bytes": 90408,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-010.jpg": {
+      "sha256": "1561abf05d7ad0e4a52df0e4159950107f5985ebe944be9984a4eb06ec27b38c",
+      "bytes": 78387,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-011.jpg": {
+      "sha256": "311eb8cec237be85a0e077b86d4b7997c05f166e67e89a3f2ce65385e402074e",
+      "bytes": 108601,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-012.jpg": {
+      "sha256": "1c034097b92b4517cedaedbab7085fb0bb231782d323cab544f4207ecd9778a7",
+      "bytes": 111468,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-013.jpg": {
+      "sha256": "b805e8805cb1e53b7efff327ea8616ba78be924c70d2a422f3abf2b964221af3",
+      "bytes": 100103,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-014.jpg": {
+      "sha256": "cc66209321e50f5c1df0e349591a0d0c619798282776616525e0be92786fe5b9",
+      "bytes": 68856,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-015.jpg": {
+      "sha256": "a2198cfb8c0a2cc1e8f8758486079da75ef7ff19c762b099657ad7f989d525c3",
+      "bytes": 103358,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-016.jpg": {
+      "sha256": "9eefd7cef4b0e0e7a91db7ae3772791a08c1f39ffd8b99b29fbe8b181f47cbfe",
+      "bytes": 76159,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-017.jpg": {
+      "sha256": "0b4d9d9a493bbb5a6d2e59dde7884ba10d466402995a3d463cfa1f2cf66cb9a5",
+      "bytes": 64432,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-018.jpg": {
+      "sha256": "099e907f904567423addee3e15902260413b29a15dced77c96ff6e87648d3a71",
+      "bytes": 119702,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-019.jpg": {
+      "sha256": "d007e97a29d288a0a285391ca5eb7062e9117cfabd4cd5dc3e6e7dbdc30f1c6f",
+      "bytes": 53213,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-020.jpg": {
+      "sha256": "c561c4f00ed14ab3e9eb3bbcf252e3d89a63dcea0737ba694683198f4a1b5262",
+      "bytes": 104026,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-021.jpg": {
+      "sha256": "afb7f70e6e974fc4a59db666fe8bc9d1d7523b2e011edfacc24459b4c9fc7e40",
+      "bytes": 91070,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-022.jpg": {
+      "sha256": "43ee2ece95dd3c79c29753a810d6982ed8ff94e8d38f1ccd9ef2c576213ee9ec",
+      "bytes": 96434,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-023.jpg": {
+      "sha256": "ec8f9ec1ccf046a27d199267e3aed04d746b4e5b7b362c61e08997cda73c789a",
+      "bytes": 90506,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-024.jpg": {
+      "sha256": "56189fbdb4935ae7a23c628e9497bfa9a6f8c05ba98b74642ab106f419832f40",
+      "bytes": 91912,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-025.jpg": {
+      "sha256": "571ce534903a134d07ba2aa948ddbe85fc4314ce2e582ccae26747545421a5f3",
+      "bytes": 52208,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-026.jpg": {
+      "sha256": "10ff8604ae8fe4162490d1b582e6a82dc6c5517f23a1696e9d263a7b4e222ff9",
+      "bytes": 106361,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-027.jpg": {
+      "sha256": "b20b33ed6f2bd6509a758957497a3d7be6ca0c2108227b72250fdf49f0401655",
+      "bytes": 76274,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-028.jpg": {
+      "sha256": "fdfa4d680e9817ed6705d160429b97b9626174a1f96ad81e8878012d569c8aea",
+      "bytes": 113808,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-029.jpg": {
+      "sha256": "b6abcaa8c940088c8a2e24c2e883e106286e86e5dd87524b26f23401feefd69d",
+      "bytes": 111944,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-030.jpg": {
+      "sha256": "f78064bd02d254d13b7be955ee0ba69ffd72c39886564c068b2dfdbe714b722e",
+      "bytes": 77263,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-031.jpg": {
+      "sha256": "97e1e14f7e0ed16ee16d49b441aff9f22700746caafda01ca6ae283b2ff4b9a4",
+      "bytes": 80014,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-032.jpg": {
+      "sha256": "8f914c2fd08822bb5ba94706ae0795e8a676e721514ea8d9efd84b0ab91ac62d",
+      "bytes": 107687,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-033.jpg": {
+      "sha256": "9cb7bf0534c8ab5e3515102f865a8deb6977c6e9ce83a5f4bcfeb5a07d24793f",
+      "bytes": 69566,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-034.jpg": {
+      "sha256": "e29df551f45a6de96fab6e116e287f8b31a9e4bc0f8a7fa30435d470d9bbeac6",
+      "bytes": 113113,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-035.jpg": {
+      "sha256": "c83e35c51698fde74067d0751e1712dcc10482ba934b55a8fb990169da98eaf0",
+      "bytes": 61694,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-036.jpg": {
+      "sha256": "cbfe27fd7b5a77b9569cd40c8b8f8931e56090c858dc2ed25d841171e25c48a9",
+      "bytes": 111720,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-037.jpg": {
+      "sha256": "10a7a00cbc9cd1ca7597cb55727b41c4efe9f3221f4b83ad68bb1dae975bf1e0",
+      "bytes": 53354,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/slide-038.jpg": {
+      "sha256": "ea92be39590c0ab55a0092d745dc71d1c31018f426c210df1403b64e05e6899c",
+      "bytes": 61123,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/03-running-ppo-classroom.pptx": {
+      "sha256": "b2fb0428783c02ed8fca37b04a403d7624ea6d2b2c8348a56c3108b0bc58bb71",
+      "bytes": 2343046,
+      "source": "docs/classroom-ppt/decks/03-running-ppo-classroom.pptx"
+    },
+    "running/en-b2fb0428783c-d6365079eadc/03-running-ppo-classroom.pdf": {
+      "sha256": "d6365079eadc838b9616288d263e28fc437530ec92327825dfdfd1512e131284",
+      "bytes": 853357,
+      "source": "docs/classroom-ppt/pdf/03-running-ppo-classroom.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-001.jpg": {
+      "sha256": "986cebc223f21404b81f58efb3e21c7102fd27ac5c03f416469881a888921817",
+      "bytes": 59377,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-002.jpg": {
+      "sha256": "5471371326b0571ffe0aa52c04c695290846fddef19813e54121d2b2f3d9da86",
+      "bytes": 103562,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-003.jpg": {
+      "sha256": "4f3f79781854243857f2005aaa635b240ca7be6272a6c5f1c394588e32a37ead",
+      "bytes": 87963,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-004.jpg": {
+      "sha256": "a3db82e73a7b1ce69405c3582be17c5c97666b3175c178b4f2eb5c90551ab8c7",
+      "bytes": 51253,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-005.jpg": {
+      "sha256": "e9dab64ff399c4d3cf14485c24f319c6ab0dd99390389123e8654aceed9f5136",
+      "bytes": 112583,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-006.jpg": {
+      "sha256": "79273357d0658bb67c296b5622200b96b38a912be8d8b4d751bff2df4905acb1",
+      "bytes": 66539,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-007.jpg": {
+      "sha256": "941fcad8969d505981c2edca8bc92b3c054f4b4cf788393ae01cd36e01d78744",
+      "bytes": 76028,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-008.jpg": {
+      "sha256": "4d7c173cba4c87c112435d8ae2b7de64aed51643a7849ee6ade858d1e736c3c2",
+      "bytes": 111144,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-009.jpg": {
+      "sha256": "25989f75e12bb1f8f467651867dc9a7f78d44fe5b4635c8f44ef13a3dccec12a",
+      "bytes": 88066,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-010.jpg": {
+      "sha256": "ce73183adca97c08c368481335e2ade2d4adc0346f0fc08eb4ba550ab7ca36fa",
+      "bytes": 86350,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-011.jpg": {
+      "sha256": "9d56a1f6afd5a39f0c238562a2379e5e06a74b23a0e8875b092523bbe65f0618",
+      "bytes": 109375,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-012.jpg": {
+      "sha256": "3ce2496cbcecc5811f8ecc457fa29feb97cecfee9ac3a0c87953cf98d729a7d6",
+      "bytes": 109587,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-013.jpg": {
+      "sha256": "1975fc58b6e7784dd611fad0bbda2205cfd8386de2b2997294e1ae21c67c8d2e",
+      "bytes": 100727,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-014.jpg": {
+      "sha256": "eb8d15ee2dc99cfc81bc3b0e58d5dcd09d0268533b28e8c3e15fcad9a00e54e5",
+      "bytes": 69566,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-015.jpg": {
+      "sha256": "34561ef7b43ed512d6abf8e8b2a5fda938979a72bd1b372014dc94c1b3581482",
+      "bytes": 107991,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-016.jpg": {
+      "sha256": "a0c4d4c70c8ee07b5090cfe9e3755e9b3f22b3625b3019b2c41f07592cc087e7",
+      "bytes": 87025,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-017.jpg": {
+      "sha256": "c80eeba530808df46762806fcd8d4f93c21834175e8d4e45d16b26ef864d98ec",
+      "bytes": 58437,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-018.jpg": {
+      "sha256": "f0d3d74f5dc61389f1f3e5b9cda12a70e68a14db7294a16b452d13ef44ae6eab",
+      "bytes": 110846,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-019.jpg": {
+      "sha256": "e2284a3e5294ea7ac4882a5a594d0526377541d08e3a21d00dd40b233ca64ec3",
+      "bytes": 48090,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-020.jpg": {
+      "sha256": "024973a3ae7984186ab06b702d34e149a6a7b1d9319101667c74191fa34c0ffc",
+      "bytes": 100358,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-021.jpg": {
+      "sha256": "c9aa25818fe395d073769aa2ea857df277e79a811563dbebfb09d66e4f66b72c",
+      "bytes": 88840,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-022.jpg": {
+      "sha256": "39cb6a523a12f1433e4e438f9a1bca240bb70986c40aedffb665e1bdcc3238c9",
+      "bytes": 92101,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-023.jpg": {
+      "sha256": "d77641639472e622ba2570f548d57b52557f5b0149eb04a7064dab1d837f0f8c",
+      "bytes": 100124,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-024.jpg": {
+      "sha256": "10a528c4c5004be61324c1469315cfca249110a2d664140bf15ef17bdf1de9bf",
+      "bytes": 101674,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-025.jpg": {
+      "sha256": "5ed8fa44fac69f43f5ae22cc113a02f4f1a16d08947e8b977432062d192e3d9e",
+      "bytes": 54397,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-026.jpg": {
+      "sha256": "c5a74dbaf8b22bf82d683aa5a912a0db6e43c48954c3859438a6b48347a25f72",
+      "bytes": 107412,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-027.jpg": {
+      "sha256": "28240b6e4c83597dc6e151ce53cabd33e89a89a68c9443a32d496549fd9af8c9",
+      "bytes": 77539,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-028.jpg": {
+      "sha256": "1ea89ffc51ea45deb50f518e488724774e65353f6d83a81bb3e4012aeded6c74",
+      "bytes": 111980,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-029.jpg": {
+      "sha256": "c27300ad674e32fc0a901f6c24b82d5d2615ba1eaf09461fdbf22c8a554d26f4",
+      "bytes": 111903,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-030.jpg": {
+      "sha256": "133f9db9e9750473f545b2143cc61f88ce75aecfb18059916ff06055e563782c",
+      "bytes": 81253,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-031.jpg": {
+      "sha256": "11e1eef19f202cd4398a3fc3db422392496cc9eddffe6ff96ef74ddd34c7eff6",
+      "bytes": 77961,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-032.jpg": {
+      "sha256": "b592a6addbd8f7545bd155641c4742547eacef9dbd4b5b74c166083ad63ec2b8",
+      "bytes": 103883,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-033.jpg": {
+      "sha256": "8608c3ab45d1e8dfac36830864e460a5a58fc264e2e4d36e2852c2cc95237459",
+      "bytes": 66149,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-034.jpg": {
+      "sha256": "e74933c08aa9b1362fda5dcef71c410295d518ebb4f8d20b7e0f1a651df459ee",
+      "bytes": 110139,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-035.jpg": {
+      "sha256": "da75b7b895725d3b7237d455f99e44c497a01938d7b5ae181e12bdd9a3a5f9fe",
+      "bytes": 55747,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-036.jpg": {
+      "sha256": "ab249b02df49707753496367dbbd6041f838172688346a02e730bd9afd3bbf4c",
+      "bytes": 104957,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-037.jpg": {
+      "sha256": "9c5ecdbef8888b397c6f0296057575b114f61b5452ff81a799e94d8c6d88f88a",
+      "bytes": 49894,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/slide-038.jpg": {
+      "sha256": "39a43faf53798ab57db5295922de9f4106c0eb51b371176d0673501ba679bd97",
+      "bytes": 57894,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/03-running-ppo-classroom.zh-CN.pptx": {
+      "sha256": "ea13c031fe97ceb90735566e89861c017a21d3605069f84ee777b0b418a99aac",
+      "bytes": 1871414,
+      "source": "docs/classroom-ppt/zh-CN/decks/03-running-ppo-classroom.zh-CN.pptx"
+    },
+    "running/zh-ea13c031fe97-398f24d1a0f9/03-running-ppo-classroom.zh-CN.pdf": {
+      "sha256": "398f24d1a0f9927733667fb742cd34404079cd711b1feb98a8ddd7b6d3f2e8fd",
+      "bytes": 1038887,
+      "source": "docs/classroom-ppt/zh-CN/pdf/03-running-ppo-classroom.zh-CN.pdf"
+    },
+    "videos/stilts-rollout-7cfddb35396c.mp4": {
+      "sha256": "7cfddb35396c563d568d805dcda302aa83c41b805d2f3deaaaae89d85a67ada8",
+      "bytes": 442905,
+      "source": "docs/classroom-ppt/videos/stilts-rollout.mp4"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-001.jpg": {
+      "sha256": "d91556aa828965fa898204be3869e9f8852f100774614f497295d58b7e19e3c4",
+      "bytes": 69704,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-002.jpg": {
+      "sha256": "9a32a2caa385ea6fcfdeecabb79f1f929ab9816babcd80b09444abdf09e30973",
+      "bytes": 114582,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-003.jpg": {
+      "sha256": "8dd5e00ddc19388f4d642feb715cbc7f0fec68b9cd2394c9e3656486c3e2bea3",
+      "bytes": 91110,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-004.jpg": {
+      "sha256": "4237e55d036d42aaac388a0a218bcdfa44ff1939eccd2aa7b0a5af3cdfd3cd47",
+      "bytes": 53568,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-005.jpg": {
+      "sha256": "a6560282c84eef71ee83e4cb0dfc5e3acaebc460bc4c44dc5fd900e8d69896a3",
+      "bytes": 103348,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-006.jpg": {
+      "sha256": "bfcd7f334b4fe0a0c720818a1ba811b9697984bd67826a9f4d018d1669cc45d0",
+      "bytes": 66935,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-007.jpg": {
+      "sha256": "953bd8519649fdaf52d2108dda2f8fe3548fdf9265443d9854ec52bb6f59478b",
+      "bytes": 77678,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-008.jpg": {
+      "sha256": "e3e8c6116793f37af68806ac876dafc876a8c9cdeee924cf1274ce2a8f9cf3b9",
+      "bytes": 103165,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-009.jpg": {
+      "sha256": "8eeb92132cb2c113c977167561948d96002a969f964cfd92b1c5f97c671a0729",
+      "bytes": 90932,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-010.jpg": {
+      "sha256": "65b3cc4846ad6a287e0914cbde121f777eff5d9d112deb307dea136ba8e3f8a8",
+      "bytes": 79903,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-011.jpg": {
+      "sha256": "0aa8f00e6fac78aaa77b807c579c4b88e7dcb827aa45227e964d62ce41969fef",
+      "bytes": 110124,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-012.jpg": {
+      "sha256": "94a1ed07c77dfebb855e1f2ab9e1b3c3ceeb69ab6bd2530a23972a5e5ec5f252",
+      "bytes": 112949,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-013.jpg": {
+      "sha256": "aba4b4f2d029ec1ac69589e29b753ca5b0395eabdb333e0afd1df1df6c9fd4c0",
+      "bytes": 91831,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-014.jpg": {
+      "sha256": "e926cca6d679393fe6b4f7a2385cccda4d795823191d2bdfa2505976043a6c53",
+      "bytes": 71192,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-015.jpg": {
+      "sha256": "abcf7663510e4134b8eb4e5f8460b2ca6d6c92b049cc6a7892f6d598790f3da4",
+      "bytes": 104342,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-016.jpg": {
+      "sha256": "de402ec6a2714190cb3167b5176d56c02a3f349da01ec8a230f2ce5e3b57c2c2",
+      "bytes": 76920,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-017.jpg": {
+      "sha256": "7cc3b63d3b96d8622f7b4cb59a4136a056a6466d2b027dc6cc264ad49c85f1ac",
+      "bytes": 65369,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-018.jpg": {
+      "sha256": "473815191515802733666b636d7a45aee340d2e644828f5c644661f6f0cc9b5f",
+      "bytes": 120384,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-019.jpg": {
+      "sha256": "4969291a9f7a156a51039997c17473fd4bc33bce881339cad6a2ebd0b0f1a4bb",
+      "bytes": 54628,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-020.jpg": {
+      "sha256": "28f89d9a3918127f666d71f63039467196d8266d4bf84019684486a0f598855d",
+      "bytes": 107924,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-021.jpg": {
+      "sha256": "c23d53f755bf54ea6526e3cf2fa926c0e47ed3dc01ea6cc561a4a148cb8dc651",
+      "bytes": 99607,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-022.jpg": {
+      "sha256": "f9981230a631f5377d2660a006d1fad293358a546363ac12675da2cf61fb4d16",
+      "bytes": 98878,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-023.jpg": {
+      "sha256": "79daebefd041d9844efbcbdcc7940ddb470e49ce941080e0a7759f44be0b1037",
+      "bytes": 91411,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-024.jpg": {
+      "sha256": "a254bf294745747ec4007472d84209cfe8f95243a27b6556c496eba164e05d71",
+      "bytes": 94087,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-025.jpg": {
+      "sha256": "929ec7eb8c57e8f63173995268709f8a1a0c3c5e7472928d53d0dcf0a6706fb2",
+      "bytes": 53445,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-026.jpg": {
+      "sha256": "cf0630d9655ecf84d58e738bef58f7b664a0a2a821cb5fb95e5680a93333745b",
+      "bytes": 111076,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-027.jpg": {
+      "sha256": "4d23cc10ac06554a17af82091e495384982cd738f0c9f71445ceac49bf2bea55",
+      "bytes": 77830,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-028.jpg": {
+      "sha256": "50598ddb34d76a769272a500304837461a6fabdc074a76cf0fbeeea84e81ad26",
+      "bytes": 114907,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-029.jpg": {
+      "sha256": "c4284671efb89b2305242f5c2acfd8952b7e569cbd2c39daef8d05fd34d538f4",
+      "bytes": 110504,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-030.jpg": {
+      "sha256": "af4a76a1a00993ba959e39d0cae8a901eb26660b6d310c551166a18d594e4991",
+      "bytes": 77727,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-031.jpg": {
+      "sha256": "45098eaa7ac6894383caa3c74342faa848c22d0aee26ded9faa6562a5c70e5fd",
+      "bytes": 81638,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-032.jpg": {
+      "sha256": "b470b1dfa80c00634e546cb26d907aff95c3fcf7437a0da7f9738ed646785151",
+      "bytes": 109073,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-033.jpg": {
+      "sha256": "ffbabcb0392699d6c77a6232ee785f207f28340dccab93b9d7d332569906bdff",
+      "bytes": 71228,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-034.jpg": {
+      "sha256": "3d7f6ef0191f81d05ad03df40855ae20d8b172b7c214cef5a56217cee82e18f3",
+      "bytes": 120368,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-035.jpg": {
+      "sha256": "f11bffd8a573b267afdb7045edcc7d644bfe3619575b343c47017c87a476774a",
+      "bytes": 63432,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-036.jpg": {
+      "sha256": "79a524cabd5bd934b6942fe37ad711293d63421a7bf2f0aa0b73c10112c0a974",
+      "bytes": 113030,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-037.jpg": {
+      "sha256": "36fb442ae8b57a88977abab24e7a1a321923f24e792d9d0742d9ee8a5f69e0c1",
+      "bytes": 54679,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/slide-038.jpg": {
+      "sha256": "fbb9f80fbf77fe429b086af0810f945a23b6f91c7fbb8191ae6622acbd9c33c4",
+      "bytes": 62778,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/04-stilts-ppo-classroom.pptx": {
+      "sha256": "fba0f6738552a601ff628afb68c1f837c7250d7398fdd6db2a80c28aa1e61dc5",
+      "bytes": 1867547,
+      "source": "docs/classroom-ppt/decks/04-stilts-ppo-classroom.pptx"
+    },
+    "stilts/en-fba0f6738552-a04b499fe7c9/04-stilts-ppo-classroom.pdf": {
+      "sha256": "a04b499fe7c9e09a2835fafff9cf05e2a6b44ab92c4b33cdd9ec9bb7ee4d6351",
+      "bytes": 917893,
+      "source": "docs/classroom-ppt/pdf/04-stilts-ppo-classroom.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-001.jpg": {
+      "sha256": "8323aed675dfc2fac1f4ed85e2c01b9bd21f81fd9e3de6ce242bda7da7f345ad",
+      "bytes": 63498,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-002.jpg": {
+      "sha256": "2fe41c4d4169134852b681daeda7041adb5b9b19316ddfbaf5a43ba51c158a5c",
+      "bytes": 107210,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-003.jpg": {
+      "sha256": "86c33dd109ceb3bdf6a4bf06a9ea1511ed029d05e3c111bf05d7af05908c7bf3",
+      "bytes": 89267,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-004.jpg": {
+      "sha256": "6d44e66aa22104c417bc7c993dbf9d622a939d5eab6f73fad9ba4906e19ac910",
+      "bytes": 51172,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-005.jpg": {
+      "sha256": "d9d749e6fa06410954675218e0e00c2a46dc01e323f79599feed575ceeafc5d3",
+      "bytes": 108635,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-006.jpg": {
+      "sha256": "36ca9affe1043f982dff81669ba97dad92ea624cd61b9195f272e59529a5d167",
+      "bytes": 59281,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-007.jpg": {
+      "sha256": "e754e641c118a0c1750f55651abaf4f8ad899100748c3d1c191471459bb71eaf",
+      "bytes": 77599,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-008.jpg": {
+      "sha256": "f9f33260a662ba2bce90d382372fc08627cb4883fdb320600da0acf5ca232acf",
+      "bytes": 111118,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-009.jpg": {
+      "sha256": "f3a0729e241da2d9f2c85447f7d838011acf2cef20054b38f0e464345142895e",
+      "bytes": 84487,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-010.jpg": {
+      "sha256": "0c7e1069e8e46e60aa1428163933dacd2899de5e59bcf8c5db1da066598b8b1a",
+      "bytes": 87020,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-011.jpg": {
+      "sha256": "b17294182a95a362ba13dd3487b7b2ce6131b6c427a28227c965a37aa580a682",
+      "bytes": 109970,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-012.jpg": {
+      "sha256": "adf201f1bcaec2c8a1d323c64114038431e724b882b5ab03ed084235002583a4",
+      "bytes": 109993,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-013.jpg": {
+      "sha256": "508fc4c3e2f3b310a6844502c61ef13268d3ab6586bebfdbc510f46e8b42a4f4",
+      "bytes": 89023,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-014.jpg": {
+      "sha256": "bdf5d75fbddf3afb413be4d7d38119642fdd2479d870b794f4b247029656f068",
+      "bytes": 69941,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-015.jpg": {
+      "sha256": "1a9e877b064aab59f88fc246ede9f9556ab7eda13ee3ac82c86b2b209d2f1b27",
+      "bytes": 108031,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-016.jpg": {
+      "sha256": "60d8b3669c41c7e3a5fc0aab4d32b4272b3363b2e7ebd246d3870e04c451180b",
+      "bytes": 86702,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-017.jpg": {
+      "sha256": "104777f9763304701b15bcca8f59aaf3ce8e03e77f475c286085094b2306da5f",
+      "bytes": 58230,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-018.jpg": {
+      "sha256": "56a57fc53a41b595e9d5edf39c5f6c9616a75120e739c8498792cdf9ca286c6c",
+      "bytes": 110589,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-019.jpg": {
+      "sha256": "b55ffe96ef7145c9d00f4cf48603eb274370be83a0e205f70d3cbfa8db9c7168",
+      "bytes": 48689,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-020.jpg": {
+      "sha256": "d90bcdc129fe91e56fe4b09fc3eccd3081ffc0ff90c64b13d2f5952e86eb03ba",
+      "bytes": 102094,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-021.jpg": {
+      "sha256": "4cb7cf953f5d4a05eda98274ea9f47dd134976961b066a82e5659893e8d7460d",
+      "bytes": 96034,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-022.jpg": {
+      "sha256": "9bd4dca4454a303d48a2dd809fa4c9e54c70b00383faaa4a8685ba4f206fbe50",
+      "bytes": 92600,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-023.jpg": {
+      "sha256": "fbe0396160fd95bd5a227342dd79a3e68698d5cf8a58af109b0368eafee8da0e",
+      "bytes": 100367,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-024.jpg": {
+      "sha256": "7e102f7aa1ec8883f8a5e63ec945958938ea37b253ca00ec4f30aba6df919898",
+      "bytes": 103330,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-025.jpg": {
+      "sha256": "4cdf5a728351e89cc8a74d6f0c74b977db8de6bc9c88470f8a364a7c862e0d42",
+      "bytes": 54447,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-026.jpg": {
+      "sha256": "f2382d14cdc6998360a05f0a119d50ccd8aaefd2bec4d4f5b7df5b5971f49577",
+      "bytes": 108193,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-027.jpg": {
+      "sha256": "7b6ed75e8f20e584e628c8ac652cd10490ba76c949190560fefb1ac2abab4e5b",
+      "bytes": 73578,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-028.jpg": {
+      "sha256": "efdf1a059131dcebf2f683b19ebbfc14bafa429ab922153c86051a7d2745a49d",
+      "bytes": 117313,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-029.jpg": {
+      "sha256": "898d3f65a67317c1aa24dae103ef13bf6324528ec98bc9920b2ad1398336fdc5",
+      "bytes": 109887,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-030.jpg": {
+      "sha256": "a8d2dd6f23a8d416f6c71d256584db339c9bf86332fede82bfebc8c0f71a43da",
+      "bytes": 79870,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-031.jpg": {
+      "sha256": "6e9c41175bcfc0a0a3f6b5adbf17434908df20c652565f6a4b6aff8c8059c49c",
+      "bytes": 78773,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-032.jpg": {
+      "sha256": "768a4011d6ef71ae390cb61c19fcffb0811830b0ca7a6819983735160f24ea9f",
+      "bytes": 102446,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-033.jpg": {
+      "sha256": "87602f8a48f26ce0af72c98629b623c7a6093c5c755e305027caf174699acdaa",
+      "bytes": 63390,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-034.jpg": {
+      "sha256": "2bb20d9385eb06c0bde2bbb21eb1743b0b76e504f6eecff8ba2abec94f5c6fc6",
+      "bytes": 114082,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-035.jpg": {
+      "sha256": "2448ff43e65de7fbfd5c66bc73cded4ba447d8568a498136f45e93f727271d68",
+      "bytes": 58395,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-036.jpg": {
+      "sha256": "6cff78d2f5c07450b5fc6942166c8f8847a4b9077c408f08c41b36a78b31a3fe",
+      "bytes": 105539,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-037.jpg": {
+      "sha256": "63b5a90b9b12d14387df42da8c523c380fdbfb1948415644d9fc4a3be3900e32",
+      "bytes": 50382,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/slide-038.jpg": {
+      "sha256": "37c657b00edca33d44bffea4a5625598195e2a02c9dd5fd7f50265f6248c6c8d",
+      "bytes": 58544,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/04-stilts-ppo-classroom.zh-CN.pptx": {
+      "sha256": "170490e97c9725f1782534a4e7558dd118b75384c690cb61676b47ac7fadf580",
+      "bytes": 1392915,
+      "source": "docs/classroom-ppt/zh-CN/decks/04-stilts-ppo-classroom.zh-CN.pptx"
+    },
+    "stilts/zh-170490e97c97-2b243cbec6bd/04-stilts-ppo-classroom.zh-CN.pdf": {
+      "sha256": "2b243cbec6bda0bf9eb1c092ccd2dc3a4e6a1758c7ea6c8e263770d9e972ef9d",
+      "bytes": 1111202,
+      "source": "docs/classroom-ppt/zh-CN/pdf/04-stilts-ppo-classroom.zh-CN.pdf"
+    },
+    "videos/backflip-rollout-cf8a04816605.mp4": {
+      "sha256": "cf8a0481660574776bd4921fd83b2cc77ec34236cf1ebc9a5d4feca3067efe2f",
+      "bytes": 228060,
+      "source": "docs/classroom-ppt/videos/backflip-rollout.mp4"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-001.jpg": {
+      "sha256": "aab74a01571f3cd1cdfc74c5aa1133c5a88ee32f7713c8d4618ac3b3206bd066",
+      "bytes": 74108,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-002.jpg": {
+      "sha256": "46dc2a2f62dad9638573f6198931aa44d9b8a06b0452054d649cd15438702b64",
+      "bytes": 116884,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-003.jpg": {
+      "sha256": "8db18e64138831b30042ced4f80d5f971c42da0309e91a044cb3ae34b0ada5fb",
+      "bytes": 92502,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-004.jpg": {
+      "sha256": "87a2e845fd8738d13fec2d6799c9fd83f781bfe58573fa8b73f2ac624f9169de",
+      "bytes": 96631,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-005.jpg": {
+      "sha256": "c26bce5af6c0ae73d901ecd27014770ffb195f5d47854a3a3fac5cd2939961d5",
+      "bytes": 118869,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-006.jpg": {
+      "sha256": "704a1670880f2b79ef864deeff075655ed89c7e5bd3fdd62ae2c12fe30cd86d9",
+      "bytes": 113285,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-007.jpg": {
+      "sha256": "9cc596bd01291d21d9dd6e48fc9dd0df3042d03b6aa381e6d2009ceae44d1b43",
+      "bytes": 52657,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-008.jpg": {
+      "sha256": "3a07e7a1dc47dcc737fe10d045d2c399b7b5ffdb18c438c7af65a363bfa7d89f",
+      "bytes": 77520,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-009.jpg": {
+      "sha256": "1e2e4f898f7054c662441ff494d76113f1e6cb1f4373b253551f6c9d67840746",
+      "bytes": 105258,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-010.jpg": {
+      "sha256": "b339c42c6340015673542a3876617e2ccd7e41c40cb9b55e02e2736dbdd31819",
+      "bytes": 103980,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-011.jpg": {
+      "sha256": "ed566bef2059745919f08aa49cc35d6c021cf06152cf386e9e90959c5b7364a3",
+      "bytes": 90214,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-012.jpg": {
+      "sha256": "8a82b1b18c2a65c9f781cafd9c53e6324bbe1619ea5c2fb7012e817466344153",
+      "bytes": 79712,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-013.jpg": {
+      "sha256": "0835a2335b3e8ded2faf9498c6b8cfb5df9846350ad5bc7e7b2a70b506f6fad9",
+      "bytes": 109826,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-014.jpg": {
+      "sha256": "dc7e85074203b5f6cbdc3342d78f6dc41827babf5b973302048fe714becba529",
+      "bytes": 112669,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-015.jpg": {
+      "sha256": "106e7cb008d0c7d3a9bae9e469e9a9acc814c13a1a699d2daf41ed7d1275fe08",
+      "bytes": 111709,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-016.jpg": {
+      "sha256": "b390d94b86c37d9e39f07e731602825bd805b5853a80edf2f9f2fb8d24ed131c",
+      "bytes": 117014,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-017.jpg": {
+      "sha256": "81ab50610c6ea39c088a0c42752d069ae0492718c0a0c12635bfa8a288768950",
+      "bytes": 102075,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-018.jpg": {
+      "sha256": "1c049a0cea49212b39b93e40b63c2fcba95a71ed70cfd523140857e7aad45010",
+      "bytes": 111301,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-019.jpg": {
+      "sha256": "d0043cc0967e2435e8f8e8b04d59389cf0f88d096da729455c0c7af5304c648f",
+      "bytes": 86809,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-020.jpg": {
+      "sha256": "cde9ce66f2dcd532bbb0f79580904954ec761d22df315c93e4e9102b473dde6d",
+      "bytes": 96225,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-021.jpg": {
+      "sha256": "8e1bb73abc311001f8164df9ff0f675070afa631d3fcbbb5e77540d8bfe3dbf5",
+      "bytes": 98268,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-022.jpg": {
+      "sha256": "2d011903b0bd817747150fed2b3c6ba14d8ccb098b3964c13824cca0eb9d3076",
+      "bytes": 106616,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-023.jpg": {
+      "sha256": "62e665908e64a959357022009110c918d370e08887e774f828cd21c65d78ad6b",
+      "bytes": 105424,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-024.jpg": {
+      "sha256": "acb7db45e602571cc786f76f4668921cf22c7faa2136931abaa67a65d22e0a4c",
+      "bytes": 93189,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-025.jpg": {
+      "sha256": "e8154110b78145b0bc8d1c633fc6be0f55a7a3ec9a790ff82b970eb3ac6f0fd3",
+      "bytes": 94885,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-026.jpg": {
+      "sha256": "e872f6e02e65cb96a1f7e844962dfff132e8bdf59e6bb9b15b9b20f78679acc2",
+      "bytes": 53586,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-027.jpg": {
+      "sha256": "8325afb4e900b924e366a047f56cc18723e700268ae8294c1f7dadfbd23de5f4",
+      "bytes": 93371,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-028.jpg": {
+      "sha256": "4d6672e7c5ac281a4d1ee7dffe1894bd4fb4b3de8cfed869f89470a78ab6ba8d",
+      "bytes": 105751,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-029.jpg": {
+      "sha256": "7ab4de0a4ddb5595316718e8212eb1b1a7855f2ff134992adbb65966adcdeb8b",
+      "bytes": 55362,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-030.jpg": {
+      "sha256": "fb96dea433cd0249700fb8d7d042d444b717f7072c74b6e38b05bf7c9996b611",
+      "bytes": 121249,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-031.jpg": {
+      "sha256": "8bcec8dfda15b800c17590c7640e0a71535c0f9b6966a8b2b2f3632f75311d22",
+      "bytes": 129229,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-032.jpg": {
+      "sha256": "76a858dd109474302f7d1363b3e02ecc70facd8910c4200d48e3f9ec6745d5e3",
+      "bytes": 125384,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-033.jpg": {
+      "sha256": "ad11572f4702e0bd3a2a10c0c6cbc9f219bd8934a056add8b5823d7f06b49b96",
+      "bytes": 86613,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-034.jpg": {
+      "sha256": "d664e1f901a09b941050283b7462e600c9e7ece2c77d96c4c1ca8ad076263f2a",
+      "bytes": 97936,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-035.jpg": {
+      "sha256": "0212b5f16d86b94bf4b2a715803dfdf3d47ada08d838499c4927332fd06b9f96",
+      "bytes": 94968,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-036.jpg": {
+      "sha256": "1152ec21e0e233a4c46ea56a3f6dde9ffbe08fee2b312147c1fecfd12065748e",
+      "bytes": 109301,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-037.jpg": {
+      "sha256": "309b549dbdc7d1c731cedd36af4cc4b47093e90dc31979dbea5aa588c5abceb4",
+      "bytes": 112677,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-038.jpg": {
+      "sha256": "08a5be7f1aafa7d7463e2645c9819fbffa3fccee663571b62cb081ba695ab8bf",
+      "bytes": 58197,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-039.jpg": {
+      "sha256": "4aabe57c564c8307fef1de5df470bb263cc2bf0767ee751c1d0d5e4765d57213",
+      "bytes": 112588,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-040.jpg": {
+      "sha256": "8714b07e4e75a16e1c837d2e29a619ea68a01f09049e3b532db8cc660a4e0bb0",
+      "bytes": 59323,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/slide-041.jpg": {
+      "sha256": "5f66576a443636f975c0428772cdaa4286496e71e25592cdd05ad45f5145be07",
+      "bytes": 62327,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/05-backflip-ppo-classroom.pptx": {
+      "sha256": "dae175939315999c16a4c95f9bb1450a1eb8def92eb1c094f31128ee962dedad",
+      "bytes": 1801622,
+      "source": "docs/classroom-ppt/decks/05-backflip-ppo-classroom.pptx"
+    },
+    "backflip/en-dae175939315-cb492833a3e5/05-backflip-ppo-classroom.pdf": {
+      "sha256": "cb492833a3e5a65e4394d3eee57f6f10abcf16ca7f6bece6394d60349e7e9eb8",
+      "bytes": 950736,
+      "source": "docs/classroom-ppt/pdf/05-backflip-ppo-classroom.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-001.jpg": {
+      "sha256": "92fa6f62179543ba79e6ba165a7cd60381199caeea5d932f14858b6ffa7d2077",
+      "bytes": 70376,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-002.jpg": {
+      "sha256": "f67133ae54a2ab9754d230e9e3c5f5468a385de4e52cae9f500b1bc935cf903e",
+      "bytes": 109444,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-003.jpg": {
+      "sha256": "464ca12541c19a8f1a89038a903f8a14d0314c5b6759211d1fc395436ad7e16d",
+      "bytes": 91602,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-004.jpg": {
+      "sha256": "1e8bbd47de81ddb1a5ea6001cbfae36588938aa5ec236718d8a8fec220346c13",
+      "bytes": 97091,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-005.jpg": {
+      "sha256": "4437c57e43638f6ad1d7d9992cd34da89fc70501f88992131ee504ecc457aeb4",
+      "bytes": 116829,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-006.jpg": {
+      "sha256": "8690bc41e982efc974b1fb8fc9a1f7dbcc7a638472037423f238491719e39d93",
+      "bytes": 114050,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-007.jpg": {
+      "sha256": "71c4857575cced33d012cb1777ddb13a36833867c559e801b61285662271ef75",
+      "bytes": 50134,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-008.jpg": {
+      "sha256": "c453e6a874359d38e768a2cba79020861cff68b731e1681fd84f156e7fa84f7c",
+      "bytes": 79349,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-009.jpg": {
+      "sha256": "44109f2644834eb0d6ab7ac4ea0b6d23b4e6015eadf16a4c8edcd7414fbdeaa0",
+      "bytes": 104094,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-010.jpg": {
+      "sha256": "81a9bdffd634d167bf708d62fbb9ef635920af7a611a45d2ac66743cc0c0951d",
+      "bytes": 104433,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-011.jpg": {
+      "sha256": "6b50d847a2fa06806aa6a47a584ef2cf21a79ae3a383ad9b0429b457a0b5d691",
+      "bytes": 90872,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-012.jpg": {
+      "sha256": "f47940dd48f7925946754ef9c59871ed544c6ff3b9ed6ec8612ac954f8f5482d",
+      "bytes": 87352,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-013.jpg": {
+      "sha256": "487ad3f180feed17b1ca1cd5d32ae5dc90a8889ce788a95414f22e75c84b2264",
+      "bytes": 110681,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-014.jpg": {
+      "sha256": "e05cd15baf7e6545917e2e83bccb0e28c379aa1449769005c5660cef7f8c87e3",
+      "bytes": 110515,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-015.jpg": {
+      "sha256": "ba496b84977598bf41f7d3b834ee7326184311e9ceee474a88e14e9bdd54cadf",
+      "bytes": 112751,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-016.jpg": {
+      "sha256": "d19cc519132fa153c3e53f6de5d507fd237f898dd346b78f1c82192fde248a86",
+      "bytes": 119357,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-017.jpg": {
+      "sha256": "b845ccc7457e3ccc0264765732d444289fb1ead04a968240936df3c8ad1484c3",
+      "bytes": 96367,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-018.jpg": {
+      "sha256": "b76acdb29b91546764858a4e13ee9c0892b53e39ccab2a83e5bd9943393efdaf",
+      "bytes": 105846,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-019.jpg": {
+      "sha256": "2ead87d4e6c261f85c61558519b6530123c75e8210eb5e22ff9cf1e6533d671f",
+      "bytes": 80194,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-020.jpg": {
+      "sha256": "6258f73fb259df7771469fd9f0fe6a14b00e26aaeb8e60d605ba2112e7f66735",
+      "bytes": 87451,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-021.jpg": {
+      "sha256": "bef6fcb01d019a366c181fe2a82df3b2c50179c7e39a62a78736f5f02fd33cd9",
+      "bytes": 93645,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-022.jpg": {
+      "sha256": "d98e83a17c1f1a91b7df5e28767e4b89a5615777173e757d2ae217aff74b421c",
+      "bytes": 103587,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-023.jpg": {
+      "sha256": "1159fa8599084cfe3fe48f635ce03daa3f9143e113d71e340a3c877121489b86",
+      "bytes": 98568,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-024.jpg": {
+      "sha256": "e151df00a46a97259e88b5b769973b0d72b9895bbc55cab586baa78a54c8247c",
+      "bytes": 103089,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-025.jpg": {
+      "sha256": "51f25f676afdc285f5f2aa25b1ece8ace6e6d203fab0d9b57dbbf26d1e895309",
+      "bytes": 103819,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-026.jpg": {
+      "sha256": "f2235d6437bd904975805dd9cf12727657d00567767055e94abd532aea054961",
+      "bytes": 55668,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-027.jpg": {
+      "sha256": "9fec026f1313eb83bf4c0ddf9ab3c3a4dabe90f1f5576f1339b54b8f3368bfd0",
+      "bytes": 89793,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-028.jpg": {
+      "sha256": "45de569610e9ca4bc6ee8539089b6bbb168ebe0ebe1c850635f0e690013f1b1e",
+      "bytes": 106767,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-029.jpg": {
+      "sha256": "b9209cf426a9cddf1c97290b25ec2e83d1e49a6ba63ce5dcf05a2dbe01b2a0ca",
+      "bytes": 54484,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-030.jpg": {
+      "sha256": "3578da9b654054b4ab14318b9d6b46fc13d172a1db8fa2cc499461467332c675",
+      "bytes": 130664,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-031.jpg": {
+      "sha256": "271791d16c449bc9001d499fa23ef05b1bfc507d37e81dc5d13583ded3e89d20",
+      "bytes": 135626,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-032.jpg": {
+      "sha256": "6e1c5dfa0b4e084b3b9e8b5c665b3803a6f9573e4976ac8078dcc48a3cf84f28",
+      "bytes": 124848,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-033.jpg": {
+      "sha256": "96d21ede19bc4fbff0d4de41e302a5b96a0e65c5d46157edb9230eaf245b2530",
+      "bytes": 84514,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-034.jpg": {
+      "sha256": "8e29e92524b89df1ce6e721748889ceb8cfbac1605d5b68740de17123c2d049a",
+      "bytes": 90808,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-035.jpg": {
+      "sha256": "44ab54d31b4ba7ef53471a4cf75994561446f4673526d6c1a140c9dfe8d3161b",
+      "bytes": 91062,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-036.jpg": {
+      "sha256": "2d5f72273ea51381fc2d6e8e0270e8f62a2dd4be8ed34fcf17d090dcf90da9f5",
+      "bytes": 102318,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-037.jpg": {
+      "sha256": "45a4c2e4e1323f9f8e0499e4d2c7f9a058e1aa09afcfb0ced963f7deb8e9c193",
+      "bytes": 105611,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-038.jpg": {
+      "sha256": "1f8741e0ff4c7255dfd76f91f56968f2a5d6ad3bfdbcc46c402e017dae45e126",
+      "bytes": 50017,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-039.jpg": {
+      "sha256": "b4308da685b25164e5b36b5a56999f4e6c9bee2d5fecd0387593228ac288c7d0",
+      "bytes": 105922,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-040.jpg": {
+      "sha256": "9baf1f0c59cdcce2399ef8170c8aec43df19c7a7ec4ad3826332194b6e50e775",
+      "bytes": 55708,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/slide-041.jpg": {
+      "sha256": "df6fde671ebb2771731276a35aa64e41018f421c66d9dfc4a225ac2185ce5854",
+      "bytes": 58401,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/05-backflip-ppo-classroom.zh-CN.pptx": {
+      "sha256": "2c49f5f13c035df4fa8fa3bdaad080a677fd19afc433da4dee2de3aabac4ed01",
+      "bytes": 1256147,
+      "source": "docs/classroom-ppt/zh-CN/decks/05-backflip-ppo-classroom.zh-CN.pptx"
+    },
+    "backflip/zh-2c49f5f13c03-22f045ede06e/05-backflip-ppo-classroom.zh-CN.pdf": {
+      "sha256": "22f045ede06e6df60aea3e08b446b239efaf9a97c7ab94298613fb962aa1542e",
+      "bytes": 1169515,
+      "source": "docs/classroom-ppt/zh-CN/pdf/05-backflip-ppo-classroom.zh-CN.pdf"
+    },
+    "videos/basketball-rollout-6edd549a7d4e.mp4": {
+      "sha256": "6edd549a7d4e66b5f8056093b7ef0d5e776609707fbf90118a18e3cd0d3772e6",
+      "bytes": 1732076,
+      "source": "docs/classroom-ppt/videos/basketball-rollout.mp4"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-001.jpg": {
+      "sha256": "bf3326972e484a359a5e5b508f6107889ce88c608cea17ea92f5993e7a7f72ef",
+      "bytes": 69314,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-002.jpg": {
+      "sha256": "5f611fc2a968bcd5c51d8671891fdb952c68f67c5101329aaa7a5f26db07c57a",
+      "bytes": 114458,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-003.jpg": {
+      "sha256": "345598462e006299f7790af9e7fe91ca852f90dc555f032d4da6fc24713c1e13",
+      "bytes": 94307,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-004.jpg": {
+      "sha256": "534522bc0da3d462ce52c9681bb3a8e70c2059794a42182eda34b88f0ef45e2b",
+      "bytes": 89239,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-005.jpg": {
+      "sha256": "04a67b9365be7e0e658f4fe9678899b8bd9042ebd86853fc80e277a2769ca734",
+      "bytes": 64099,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-006.jpg": {
+      "sha256": "b26c6addaba0b37689b527c0d30eb8d69f73f06afe553ffb0569406d2f6dfd6f",
+      "bytes": 111062,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-007.jpg": {
+      "sha256": "633fc82281346b01cd1c749be3cdb9d30ca56c4163a58f3e09dde0dec7aa0eb1",
+      "bytes": 108438,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-008.jpg": {
+      "sha256": "775312a99efe5c7743d65fbd0ace5dd7c60e04b3b4eadec7c11c17f35f5ae0e0",
+      "bytes": 85739,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-009.jpg": {
+      "sha256": "05ebd1c728c4aeb4288fe2ed97060f7b4543671e9592d9f3ca5708bbd42d2c8f",
+      "bytes": 75553,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-010.jpg": {
+      "sha256": "800d97120785ab41b211cd7696b67c26861a0bbcdb3be892b53abe6ec43789a2",
+      "bytes": 92658,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-011.jpg": {
+      "sha256": "b4333d840c002df82ef4f4130937ac721b7e4b6c71d22f43582eed0b8224ec00",
+      "bytes": 101468,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-012.jpg": {
+      "sha256": "82a388f8b02193dfb9af6a4055a0a0a48152bd16f52f902216bbddce40178aae",
+      "bytes": 87055,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-013.jpg": {
+      "sha256": "21112eb96902550585ee66baff5f4787dde1b611a5f43d202cfc905a9931b389",
+      "bytes": 78846,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-014.jpg": {
+      "sha256": "a23272de979ca57c0ad4ef87ecdea8eadba599be9b491f9345c36279e593c2e5",
+      "bytes": 109141,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-015.jpg": {
+      "sha256": "71a1f9912d08dd21a03b8034d58230c2f487154f8b373f5e77fc3420c9b63ecb",
+      "bytes": 111989,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-016.jpg": {
+      "sha256": "7b2b959405f6d8217c6e6c5fd2c410c96577d8f5f9af8028630a6a9e3fa23304",
+      "bytes": 100983,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-017.jpg": {
+      "sha256": "6d54543fc302600b96e6d47594e35eeb7d0f211869b98ab813f4c40331270afe",
+      "bytes": 106403,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-018.jpg": {
+      "sha256": "0220af62ae123f740c2605546a53728ed0732a1e54ec2420b1e4276d3d3c06d4",
+      "bytes": 83147,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-019.jpg": {
+      "sha256": "1358fa4904958dfe96c54a02891d23e6670b8d0e502b83052c60a060de7b73d4",
+      "bytes": 106307,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-020.jpg": {
+      "sha256": "33f68584c4904da393b77847b18f00f5e0148dbf66c998f07e2b82e755461b31",
+      "bytes": 117265,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-021.jpg": {
+      "sha256": "31a462fff901e58f504c2d3c5468702bf97d8a4366ba464dad6dc831f65ba0cb",
+      "bytes": 84753,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-022.jpg": {
+      "sha256": "de393523edafe9bc98db36b32684262c4c252dd5d8a6c0ef13f115a5e5818c4c",
+      "bytes": 99998,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-023.jpg": {
+      "sha256": "26f8fef4dbfac8722744e1e57b80dd7d9cb08b005fca76fc89e98340a14e2722",
+      "bytes": 52839,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-024.jpg": {
+      "sha256": "d70019492520b64d1944804700811335c8192c48dca8d0fddd65fbd500f3eeae",
+      "bytes": 62976,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-025.jpg": {
+      "sha256": "fcbf1c9a1822d7632c67fe30d17fc71ec88d00f39b7c2bf48f604d64b41ffc04",
+      "bytes": 107491,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-026.jpg": {
+      "sha256": "f08e3819c4a49e0481ce90794a8a9d808003d5b257daa441b6909ccbb7449512",
+      "bytes": 105625,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-027.jpg": {
+      "sha256": "aff0adfb225518321570b2d9c47f6860ded071a9859b5d259d79cf43db355e4a",
+      "bytes": 87362,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-028.jpg": {
+      "sha256": "4560cd79f791a50d2e2f8cdfb2b208153efead34a29ceef5e6445d219c57f3dc",
+      "bytes": 63516,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-029.jpg": {
+      "sha256": "2142da0fcf7ab1b91e72d6a156889bc23345f8851a4576e688cd5a9cae7b57f1",
+      "bytes": 93201,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-030.jpg": {
+      "sha256": "2657d82b5dfaa762f4492de87e462d99354c3b6b252b9b5b699d824350d0e5f6",
+      "bytes": 106242,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-031.jpg": {
+      "sha256": "b2f2ffb5b4bb59ce83821f13a34c2ad27f86be62e92a4676beef01ded69dbc0e",
+      "bytes": 53281,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-032.jpg": {
+      "sha256": "8e673326b55bf7802a28369fa4a9df59d3791cbc8b556b17cec29ad1c2a0a33f",
+      "bytes": 125875,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-033.jpg": {
+      "sha256": "f46178dc01d140f4c02d96a16b2e4b1898939c3a4b4c2b61da4a0786889ad5dc",
+      "bytes": 136243,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-034.jpg": {
+      "sha256": "af4001d7794b5ba0e1fdfd966e3eacd1fc21a9890815f3d6fd64aa5a697f8769",
+      "bytes": 80399,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-035.jpg": {
+      "sha256": "32c536fe7f665c5391a6cae8dafffbc11d4d710651e5ab6d8bffe303900876bf",
+      "bytes": 95782,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-036.jpg": {
+      "sha256": "b3b3f415caf5d7622a1fe08f3f678c92b49f6340a31a226989f07fc8966fa875",
+      "bytes": 108283,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-037.jpg": {
+      "sha256": "6dec7d71e2643bde556cefbe3571bdfa4e6e4c418a0ce7d4148f5b37bac7e630",
+      "bytes": 41609,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-038.jpg": {
+      "sha256": "eab93995ccffb21ba801cb61cef5abfb330f5aed53b02bf63bfb4b264d7fee08",
+      "bytes": 106414,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-039.jpg": {
+      "sha256": "028a27f7b215433db33a42daaca592d1386db64c0c2191f363ce772b4361dc75",
+      "bytes": 111963,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-040.jpg": {
+      "sha256": "bb09173c7c199efe10deeee677d56dbdcd3e590f99407bbd910ccab29e9f43ee",
+      "bytes": 59530,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-041.jpg": {
+      "sha256": "6528a86e4cae504f574c1c006609280928284ec3e8cb1d3059c0197e1411d031",
+      "bytes": 112053,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-042.jpg": {
+      "sha256": "8c38ab927951068df3f0e0fe15dd7ba5b40c8af35254c7c0d567f14a1cbd268e",
+      "bytes": 63045,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/slide-043.jpg": {
+      "sha256": "1445b297f889bfe2785ca90e43f084596fffc67c8a3b978e38f25f4cafc523ff",
+      "bytes": 61613,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/06-basketball-ppo-classroom.pptx": {
+      "sha256": "06aad083dde1961cffebdaa2c0f43d6a9f1deaf590be9a7ed7b0d49b373fd175",
+      "bytes": 2485622,
+      "source": "docs/classroom-ppt/decks/06-basketball-ppo-classroom.pptx"
+    },
+    "basketball/en-06aad083dde1-94036b6046d0/06-basketball-ppo-classroom.pdf": {
+      "sha256": "94036b6046d026e91cb520adbad69a3d67f491e46aa6a060621ba8ef4089b805",
+      "bytes": 822515,
+      "source": "docs/classroom-ppt/pdf/06-basketball-ppo-classroom.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-001.jpg": {
+      "sha256": "f126cdf70d9e053c2fc7b19b360456f7f3c94a2330632c0498dd9c2ae9fcb122",
+      "bytes": 60761,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-002.jpg": {
+      "sha256": "cb9c6772f2e3962db7fef02c1c337e6ed4b98d3bd4c1d5444c3f7b50407cc83b",
+      "bytes": 108234,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-003.jpg": {
+      "sha256": "da78dfa76ce6ac214e7a31f0da8796b798a8617d692f855e5864a76a2ee5f5b1",
+      "bytes": 96579,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-004.jpg": {
+      "sha256": "ab47b040915815183c21053d4027b89d15a0eadeb00b15e0beec3398a38f69ab",
+      "bytes": 93480,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-005.jpg": {
+      "sha256": "b1f9b8e92cf9d074764d7b6d440c647c7fe34d6fea5842f9c25888c5ff7fa9db",
+      "bytes": 60077,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-006.jpg": {
+      "sha256": "066bd58267ec1113c092edc679f3945c5d376c238482d4ec3b71830bc2037ada",
+      "bytes": 103353,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-007.jpg": {
+      "sha256": "86edf04b21180fca2a60351327126f79a123150d3d8d70b2d6f218991e82e2e9",
+      "bytes": 103223,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-008.jpg": {
+      "sha256": "2298cbcc733cf41d3af1db2e508f97add0b4addb12f27f06c344ce89fe54e1af",
+      "bytes": 81273,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-009.jpg": {
+      "sha256": "310a222c908771b15525c84cabbe4beea705cd90297621939e26c0105a95a755",
+      "bytes": 77418,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-010.jpg": {
+      "sha256": "989b21698a0e2a41a64c7fa330dc39967e6cb10827a322981ccdd93d0a3976fc",
+      "bytes": 95126,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-011.jpg": {
+      "sha256": "f43c072b3910e9e6f9c4c2f53cf2eff8b0b01a8b5df275422e9c156a59ad187f",
+      "bytes": 99120,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-012.jpg": {
+      "sha256": "50ff12aad914cb8d351f4b63b262bf17a2b23df2f56e0904de5bc7420605a65d",
+      "bytes": 81181,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-013.jpg": {
+      "sha256": "7ce8d4c247af94f83488a43221e1fc03e378a65854f2d7ffaca9a94e926cc3c1",
+      "bytes": 84174,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-014.jpg": {
+      "sha256": "15af9857bcca1c6d623a0c8393e8fdc5ed831944f08bdd11139e05894b3408ec",
+      "bytes": 109109,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-015.jpg": {
+      "sha256": "41fa61715cdbe2353122507410d263181ac72252936143c3803bd4f1c6691555",
+      "bytes": 109279,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-016.jpg": {
+      "sha256": "71a05d1e0286b6eb8797f7b8e29f6df5b5710f4f1a8edf93db7da5a100729a92",
+      "bytes": 103244,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-017.jpg": {
+      "sha256": "7d759e51c4cd65f83f38a4122fa25d5c25e24de853584edf99154b0a06d3a07f",
+      "bytes": 107209,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-018.jpg": {
+      "sha256": "b1b64eeb388144f44cd68843107aa406c50abe8572766ef4a82afc06bc4488e1",
+      "bytes": 77704,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-019.jpg": {
+      "sha256": "b4613291cf2c981ef7ea93feff533c1f00b89dc2bdb4d574d89f305008fc1183",
+      "bytes": 106267,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-020.jpg": {
+      "sha256": "d0081cd020d5c415909b1015f520e9cec70f9c80307e2e0a3da8d97d836994ca",
+      "bytes": 116237,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-021.jpg": {
+      "sha256": "8a022fd91193a105b59936ad018232203b4455241d14ce6ee262b20e291e1d28",
+      "bytes": 78309,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-022.jpg": {
+      "sha256": "fb97bd3f3a17d100f92d1efc110852328242056ea5ee839c7502ab7cc6b91b8b",
+      "bytes": 91342,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-023.jpg": {
+      "sha256": "f480bbfafefe301da754f7429e7d3e8aa375c6916f6821288864b5603ef92567",
+      "bytes": 48539,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-024.jpg": {
+      "sha256": "ebfb23f857427dced76a48deba9f4a2d755e987c5aa01f61c23f8a0346009936",
+      "bytes": 56137,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-025.jpg": {
+      "sha256": "d3b3286a3aa3886eb0d58e736f48facb0cd07111cc1e9e07e6c520bb559734c0",
+      "bytes": 104840,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-026.jpg": {
+      "sha256": "8bfa971edc28282f12c20151f98cf96feab6d036ce34568e4814cc8e9b56f376",
+      "bytes": 99801,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-027.jpg": {
+      "sha256": "93f69219ee5f395390efd61c69a1ac31ebf291399c5457389254b1a5ca18469a",
+      "bytes": 90820,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-028.jpg": {
+      "sha256": "89fa07b0ea5ba06904b043acacf85b70e131f6edc4fd040c70b7eebca3bb3e14",
+      "bytes": 64638,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-029.jpg": {
+      "sha256": "fe4f89d6ffa555df9b9304f6c287a224da0c63f267818ebf40068cdd23f9f46a",
+      "bytes": 93393,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-030.jpg": {
+      "sha256": "4fd074fb8b932846223cb24b82e93a7a6733a2a6ac97471e5e7793bd867cbda3",
+      "bytes": 106612,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-031.jpg": {
+      "sha256": "dfa84841555a6a557ba2ae16fb4ab20d936934b43a45f80b4e98993c35ac29fb",
+      "bytes": 47984,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-032.jpg": {
+      "sha256": "15ba7d9fe34c2f5eb68006624526c2cfb451c8a9f274ba148b810a40ee156e3c",
+      "bytes": 129574,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-033.jpg": {
+      "sha256": "b4e73b41723d7786892cb093f57e55ab965235fd2deb4cb31b9fac993d66729e",
+      "bytes": 136191,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-034.jpg": {
+      "sha256": "d284f009d5baf56e0b7c0a42d008a9ce8c853f09245e0f299590e73407bac88a",
+      "bytes": 77401,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-035.jpg": {
+      "sha256": "f012a2bdf695ef5220913b4bbdf4948cb317d832f2ad3f73addf29b83bb3fa6d",
+      "bytes": 94573,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-036.jpg": {
+      "sha256": "a22ebb751e71e82620d52e0e1ac370ca3d3aad64150fb3b59f41141022086356",
+      "bytes": 103565,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-037.jpg": {
+      "sha256": "1393f2d4ad29bcda670dbe4fea22db8500487c16b19956a4be290b8e81a6aaa0",
+      "bytes": 38321,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-038.jpg": {
+      "sha256": "059ea1ccd6e828064199338004f81ca0eb66acf7d482e65412eeb7bbd85508fc",
+      "bytes": 100273,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-039.jpg": {
+      "sha256": "281ab5d533aa9fd61302a4252eb91b52eb78c6dc61b4d87b4a4ee8e5cf367309",
+      "bytes": 106737,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-040.jpg": {
+      "sha256": "a9475ba36d990d47fbe0c2ceb382ff5fc0c6a8a18e879187f27110abcc49bc52",
+      "bytes": 51336,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-041.jpg": {
+      "sha256": "8596a9e8240bbf424fcc2f4c62f12f83d71bbab63ffbb5f65dd040dc24ab60ef",
+      "bytes": 104615,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-042.jpg": {
+      "sha256": "9f21b7f39363171cdce67e640ed72adb8c6fd4d9a79860b3c310f8f61ed0c923",
+      "bytes": 59040,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/slide-043.jpg": {
+      "sha256": "f83ae6ff2da4e265ec3f79b0d9ab2e284ef118955c0077378c06e69bc5eeba12",
+      "bytes": 57645,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/06-basketball-ppo-classroom.zh-CN.pptx": {
+      "sha256": "f7b84bb120fe73e65c24aecba09baaf13b4c4e06724f83f7a111b34f84950367",
+      "bytes": 2497410,
+      "source": "docs/classroom-ppt/zh-CN/decks/06-basketball-ppo-classroom.zh-CN.pptx"
+    },
+    "basketball/zh-f7b84bb120fe-e03312993ed8/06-basketball-ppo-classroom.zh-CN.pdf": {
+      "sha256": "e03312993ed8092edac838a86e5e9be087173cb8a626ed5fdb0eafcce62476f3",
+      "bytes": 1046461,
+      "source": "docs/classroom-ppt/zh-CN/pdf/06-basketball-ppo-classroom.zh-CN.pdf"
+    },
+    "videos/bridge-rollout-7386c84eb806.mp4": {
+      "sha256": "7386c84eb8065d2f4ac2b297ba5b082dc658648657e4190a9491872bab6e50a6",
+      "bytes": 167418,
+      "source": "docs/classroom-ppt/videos/bridge-rollout.mp4"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-001.jpg": {
+      "sha256": "5a6ee8731de839a354092cb37a5ef28b4b021414d1dc85f612e2f51aaee11454",
+      "bytes": 65140,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-002.jpg": {
+      "sha256": "dcf669fa70b8405330a463ca8e774e54d26e7f89109862877c7a89977c2dfbe1",
+      "bytes": 114249,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-003.jpg": {
+      "sha256": "a2c89451587ae894dce0fb2d4c1c869199c878cc51407cb2947962c279601f12",
+      "bytes": 79994,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-004.jpg": {
+      "sha256": "c650268a81beb9dfd1daf63133b37f62ae83c51b5adcac578dc5bfff072ce00e",
+      "bytes": 89807,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-005.jpg": {
+      "sha256": "676ba619d9cf599700ab9064cba5f6d3bbdb2977d95e95b370d089b402aefc89",
+      "bytes": 66566,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-006.jpg": {
+      "sha256": "786445bd28dee5554833aa4a091a00c1d0ba2a4e85baa991be8746d896eb974b",
+      "bytes": 105947,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-007.jpg": {
+      "sha256": "36d5ecd87132d268cedfc3a9bd75daa1cdbcd53c0235654486b0fc6d99cf462f",
+      "bytes": 122360,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-008.jpg": {
+      "sha256": "c10fb9a76786a7c74d42c7219a1adcf330659f1ce1f4fb5caabb9b482d357448",
+      "bytes": 111770,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-009.jpg": {
+      "sha256": "38527c28464636822eed4aa1d54dbd894e1da3e671213aef349ca11c54a908d3",
+      "bytes": 77906,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-010.jpg": {
+      "sha256": "131894692b8b033aacd2eaaa93c24abecb5f93094c46c99d72242ab4b09fed6e",
+      "bytes": 103233,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-011.jpg": {
+      "sha256": "82a263b24ce889d3bede85b4d20d5221b9a84a6691d55b7cb50960c38308cb45",
+      "bytes": 97853,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-012.jpg": {
+      "sha256": "6e6366f03b331a2d62a375a587836d5dbd990f8b0e0614f49af7565a0ac36f15",
+      "bytes": 95457,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-013.jpg": {
+      "sha256": "89cc37ed59dd041d2ec9ba18fdafd1ff2ca4800b7ff31130ca6d30badec7d514",
+      "bytes": 79153,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-014.jpg": {
+      "sha256": "e7cdfe0494592082cb90c89d7966ef1d7643cba66f01f2f872132360211e94db",
+      "bytes": 109550,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-015.jpg": {
+      "sha256": "c76c27c75b585a802cf7695e397a652fcbc23c6370f02f078e99353437e347a5",
+      "bytes": 112432,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-016.jpg": {
+      "sha256": "3445451efa3b0f86c8ceabae371a05c0bf26a2bd4453cd9a4841564c8bfd8d6d",
+      "bytes": 98707,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-017.jpg": {
+      "sha256": "b142c370021ce87bd27674fc003d5fe394bc05f38414c7ca5d0bc30352f0bdb1",
+      "bytes": 112637,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-018.jpg": {
+      "sha256": "d3e110610beddab53f225860605b4c959596893b083b90f8e9b96799f1ae9ef0",
+      "bytes": 77390,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-019.jpg": {
+      "sha256": "bd0f682fa90e3f8adb23757c9cc1dfa270162775832485d49fde3725c992b5f7",
+      "bytes": 97704,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-020.jpg": {
+      "sha256": "aed305abf3b2713294e2233d019ff413b0aa0f1767a2b4f56234deab4a9dfdc2",
+      "bytes": 118902,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-021.jpg": {
+      "sha256": "c1a61c2eb1722c7126409c2b5f39227299ac761fcab6a6ae5315a8568e99512c",
+      "bytes": 108904,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-022.jpg": {
+      "sha256": "83ff53c31fde73f1deb1ce661378f20d62e409040f1dc74e9c57c7dd4a8ec036",
+      "bytes": 66719,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-023.jpg": {
+      "sha256": "b51cf3f47c68e71908db7c0b0cdc564fabecb8cc185112705c300c6810b82e23",
+      "bytes": 56372,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-024.jpg": {
+      "sha256": "d07a90bc38ea9bf99557f62571e844ef493c4fb3997fe4bddcd1401d2cf3d5ab",
+      "bytes": 107950,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-025.jpg": {
+      "sha256": "8d6cae8a9859a31014a30da2954f514e4fc279e8a49d196d6db26d97e7570c1c",
+      "bytes": 99830,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-026.jpg": {
+      "sha256": "dfd1959d6c46fc25bc24ae3dd53ab23e070750c18e2a5a18a9fec0d95ef73c0a",
+      "bytes": 98336,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-027.jpg": {
+      "sha256": "73b84899c02a0fa6ccd8e79a7cb14039a67839290a272e7c6ddb23727c9c6d09",
+      "bytes": 92507,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-028.jpg": {
+      "sha256": "f067e681a2674a0319c234c6b7f09166aaaf53af278debe9276be0df9b2d02a0",
+      "bytes": 89217,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-029.jpg": {
+      "sha256": "6368ca6c415915e07617d7bef45bf72267cb0768eefaae4c1ada1878759ea37d",
+      "bytes": 49917,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-030.jpg": {
+      "sha256": "58d793021f9cd220893d15d250240bf5d8c736469518d682bea353bee7b2cd9a",
+      "bytes": 92438,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-031.jpg": {
+      "sha256": "85c2a1f438425dc4c686afe5537eebd19b1e53252b1d644790e5ad887d51b48e",
+      "bytes": 103858,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-032.jpg": {
+      "sha256": "72067415b3e3132fdeefc3f8e05431e8fa2e64e4fa01acbe3e51c4292d5e305b",
+      "bytes": 59753,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-033.jpg": {
+      "sha256": "4974285e49b44d00719ae82eaf7e3a6f7ba0489b5205c97c9e6698f6ca6ef16d",
+      "bytes": 119973,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-034.jpg": {
+      "sha256": "b7c0b47b71614ec785f3a2b3c0b2eaf7959702ec8276c561907a3638b38b6048",
+      "bytes": 130221,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-035.jpg": {
+      "sha256": "545b8e00492e10246073d81ee707146733f30601aa9fb23482c51c754dfbcae0",
+      "bytes": 69047,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-036.jpg": {
+      "sha256": "f902a8348caf6b2b5f12dfed7c3d032f84ee96015c3c603e49fb7fe533444d14",
+      "bytes": 72932,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-037.jpg": {
+      "sha256": "94c0ca8f5ccfa20f23f46a5bb646b272c29439aacccc22c1683a8f1aa348542e",
+      "bytes": 102101,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-038.jpg": {
+      "sha256": "0e222c9e9eff6c1a165a6878ba91300b4ac6557966c61877206a897dabbf6abc",
+      "bytes": 93907,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-039.jpg": {
+      "sha256": "5deb0da284e29e5e245e589589c92005177c6588f9e85dd7f61a3a9cb9fad1d3",
+      "bytes": 95500,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-040.jpg": {
+      "sha256": "27acad3d113360f44a8631596768ca0eb79cbd4e42535cf160554b1c0b88aec8",
+      "bytes": 99907,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-041.jpg": {
+      "sha256": "10d587a0777721ec032d0c5cd2c420295461a16525ba375c46188199882c3523",
+      "bytes": 73361,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-042.jpg": {
+      "sha256": "e9ab1d04f2740fb1fe708292e7541beae7c81a1d27db6170b1086d9e328ac8a8",
+      "bytes": 112160,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-043.jpg": {
+      "sha256": "82952de82e2f729ff6e07366b1a46dc63aaa06b60ace4172b6b969c1e9d45245",
+      "bytes": 62957,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/slide-044.jpg": {
+      "sha256": "d21b8b52ca5c8e7df722ca3019c723db531dd89e068c437112741d6ebdae8755",
+      "bytes": 62020,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/07-bridge-ppo-classroom.pptx": {
+      "sha256": "9817c7061c1c8def2f0f13e632d8f8e64a61d76aa178d32792c1d02e988cb24c",
+      "bytes": 973818,
+      "source": "docs/classroom-ppt/decks/07-bridge-ppo-classroom.pptx"
+    },
+    "bridge/en-9817c7061c1c-d3b8e7da6ac6/07-bridge-ppo-classroom.pdf": {
+      "sha256": "d3b8e7da6ac6ee363fa7c48e59d2c3876fce6e6bba9234d7000e146bcad21c58",
+      "bytes": 929220,
+      "source": "docs/classroom-ppt/pdf/07-bridge-ppo-classroom.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-001.jpg": {
+      "sha256": "46c0243a87fa5040de29dde1943b0ffe2bcb9d8b15106015dbff8a8435be88d3",
+      "bytes": 55733,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-002.jpg": {
+      "sha256": "38e5c61d0e6d1dc6ee08d22465c51bf95cc62cefe5d85c188ed4bf00d7d46d29",
+      "bytes": 105893,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-003.jpg": {
+      "sha256": "391b69578b75bb8c3a5e5c67837eaf8106514e0272fc797399630d602116b1c1",
+      "bytes": 78824,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-004.jpg": {
+      "sha256": "adc2792c8454b6f667a2217df4db8f96956f371698fc646700f1a40dd5fd2534",
+      "bytes": 89195,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-005.jpg": {
+      "sha256": "590c15de9b4d05fc06cb5e4b14e2e389a4b531cd3985d89f7a7a2923cc2a7f7e",
+      "bytes": 63450,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-006.jpg": {
+      "sha256": "49621b4694f9db356d6c5d41ebf03a597be6ece4f5c65a8f47f184eef286e038",
+      "bytes": 103256,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-007.jpg": {
+      "sha256": "a606e876c95eaab91baeb86eb6d6024ebddb312a4ed73da4606d06f78691ba9e",
+      "bytes": 118864,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-008.jpg": {
+      "sha256": "f3e68b41aad220da8f3eac486bc1ce8f4f0ba6bff760202271eb3bed67ebf39d",
+      "bytes": 103239,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-009.jpg": {
+      "sha256": "c398455370deccc62f43b2a2eab4775958c0574c789c65f122d17f5443324879",
+      "bytes": 77906,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-010.jpg": {
+      "sha256": "5c2a01020abcaa64520d10eb35c16a0f1bf09259903a84ecf42ecc7b2c0df7eb",
+      "bytes": 101095,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-011.jpg": {
+      "sha256": "75aa55a3afc558a25440faecf767f6449070b7c0d19b21726c21dc16b1387fe2",
+      "bytes": 92433,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-012.jpg": {
+      "sha256": "6d483ff52ec6b6ac7c2be15b4c2b009616192854d897d4d91e9b9bafc12fc5bf",
+      "bytes": 88596,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-013.jpg": {
+      "sha256": "8c4eee0de91c21476ff7f7b64fd9f2a1838a817a32c94bdbffde01ef59422613",
+      "bytes": 85082,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-014.jpg": {
+      "sha256": "b70bb2fa667e6701a4298dfbd092cbbb2fc22f4367bb596fa12372db84ccd04c",
+      "bytes": 109430,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-015.jpg": {
+      "sha256": "db0325616395c51cd18dc0dd540ed4b73c56fd8973eb4aba8b5a01e1bafe162e",
+      "bytes": 109500,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-016.jpg": {
+      "sha256": "2a7b4e7f4dd337ee25bc5ebe93d3b63538fe580166aa36b3dee841f0097af136",
+      "bytes": 101617,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-017.jpg": {
+      "sha256": "514cbd62edfadc09523f150d1a57c9078e82a46f10f6d1dd1fdf169e09a0820d",
+      "bytes": 119994,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-018.jpg": {
+      "sha256": "8149b6f1a8af306460269595bfd2299033dd20e6055054ece6b579bddde6b7d3",
+      "bytes": 74020,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-019.jpg": {
+      "sha256": "5f4788c80cc1f336d6e867a3daafe10f78cac12a850c1a6046f9f9a2b083ac57",
+      "bytes": 98562,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-020.jpg": {
+      "sha256": "6a145fc44a106f536c6ad44d9ec7d2a05d458b5e0cfabb6fd456fb47aed62e7d",
+      "bytes": 113936,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-021.jpg": {
+      "sha256": "32f933448a710980090c333e20a3344b03064960ce44b98360f733840901e30d",
+      "bytes": 101431,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-022.jpg": {
+      "sha256": "46a48981485c4da57559354c8985bc592aa83013e406ccd235f69027a85a0450",
+      "bytes": 58505,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-023.jpg": {
+      "sha256": "a5c91a37ce063eb6713fc6e6a8b5ba3efb39f6013951f721519d9868c9741a4d",
+      "bytes": 48806,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-024.jpg": {
+      "sha256": "5779f43de93bf2e4229ce33894e60880c31ca9affb57280598ed5fd6f2ba6fa6",
+      "bytes": 102368,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-025.jpg": {
+      "sha256": "904fbd212411c7ccb33e4ad48fb4dbd2c1cfae10f251e2a801fd2636ab9a762a",
+      "bytes": 97690,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-026.jpg": {
+      "sha256": "a977cd8f46b35648c65e1afd8a226d293163b0140e682e3ba555276e08a4abb2",
+      "bytes": 92041,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-027.jpg": {
+      "sha256": "1f6f586028390b060a15f6c61e2ab31ad2f9122fd30cec4231b11dc29dd3e4d7",
+      "bytes": 96519,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-028.jpg": {
+      "sha256": "86d6d9d4f3ac4d125b1f960750070e1144d622560152bcf9a20f0ba7ebf9251e",
+      "bytes": 93124,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-029.jpg": {
+      "sha256": "61830e787d695061a664e549b59b5189d064f206b2403c39261c3fb72fd3a531",
+      "bytes": 49040,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-030.jpg": {
+      "sha256": "b49d81859fe71e06d4af2d95e1dac8650bdb13e4451a254604f3695919e07d7c",
+      "bytes": 89997,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-031.jpg": {
+      "sha256": "bc07e7bf24413bc86716674d7ddbdb5bd85bd197fd64591e126e7e1b17da2b66",
+      "bytes": 103604,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-032.jpg": {
+      "sha256": "3059bfb3ebc151a312dda88fe120a894f43acb5b1bc42dbf6fda5c8a089918d7",
+      "bytes": 57105,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-033.jpg": {
+      "sha256": "4ab77bab7e16e891d858a951b51a52e25c12c6ec009c43427cfa6eaf831a673a",
+      "bytes": 122339,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-034.jpg": {
+      "sha256": "082edb6c4e5a4656c904a0f18abfd022be6a495146eabb51cc1d3f4e198795f3",
+      "bytes": 131946,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-035.jpg": {
+      "sha256": "b96d867564d6bfdbe90478a009c7922b9c36b5741c236b81ac6c11d9d2c70ab6",
+      "bytes": 70250,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-036.jpg": {
+      "sha256": "19ed6f2a0777789abdb8ee58df76eee47c8f07a59abf341564d4fdcbc7e13aac",
+      "bytes": 69968,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-037.jpg": {
+      "sha256": "94768affa979e2856dc9ac103512f40b7c371aee66cb7c02199cb65e224b6ef7",
+      "bytes": 102970,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-038.jpg": {
+      "sha256": "e0997ec642fd69afb0e7078027502f7160a5ef738ec2772f70d07e490c20d529",
+      "bytes": 90937,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-039.jpg": {
+      "sha256": "5e55c0dc6e0d944f41c767b6b44f8a6f204d5ad828d6052b6861c326f9b5adbb",
+      "bytes": 89104,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-040.jpg": {
+      "sha256": "d86db8cd89b52f14d2d282962a1c577d87835d5f6691c5940b71b5978de94f1c",
+      "bytes": 99275,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-041.jpg": {
+      "sha256": "84c67e234808ce4af24d7c008114aef04f9bc4a9d844f461a8b205aaac30f4e2",
+      "bytes": 68358,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-042.jpg": {
+      "sha256": "074f674dbac0c118c806bf839610ce1ed1a46f5d5b76ffbcd7139e8adbb9f80f",
+      "bytes": 105077,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-043.jpg": {
+      "sha256": "de0327b6d5c20d879eee4e43a450527b50296521b01dc9b157f7a2eea8ca78df",
+      "bytes": 58649,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/slide-044.jpg": {
+      "sha256": "3594abcf389dc8f308a8d23a323754a06909d36f0f60d406bf3c575644073d1d",
+      "bytes": 57665,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/07-bridge-ppo-classroom.zh-CN.pptx": {
+      "sha256": "8d692cce3d3c3330e7d0f5f0ad74600b9578f0bfe1434ac4c9d0ff15ea56370c",
+      "bytes": 1007989,
+      "source": "docs/classroom-ppt/zh-CN/decks/07-bridge-ppo-classroom.zh-CN.pptx"
+    },
+    "bridge/zh-8d692cce3d3c-3b9327c7dac0/07-bridge-ppo-classroom.zh-CN.pdf": {
+      "sha256": "3b9327c7dac0ba21e4ad99c5515252d958580539fb8e4ad490bc085d2f5b4088",
+      "bytes": 1162441,
+      "source": "docs/classroom-ppt/zh-CN/pdf/07-bridge-ppo-classroom.zh-CN.pdf"
+    },
+    "videos/drawing-rollout-f27400ba6b7d.mp4": {
+      "sha256": "f27400ba6b7d266cf1792c684c439ec27ffbaaf949ecb2a6c66ac9f891ea308a",
+      "bytes": 1455039,
+      "source": "docs/classroom-ppt/videos/drawing-rollout.mp4"
+    },
+    "videos/drawing-teacher-97875c849309.mp4": {
+      "sha256": "97875c84930987e991a152ff07b253f1fc8a1c323e4d081ef445db410cf23033",
+      "bytes": 584704,
+      "source": "docs/classroom-ppt/videos/drawing-teacher.mp4"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-001.jpg": {
+      "sha256": "d48b259c8bfa0d59f911dac4375d0140b6219ff62c86efb7bd7a3d592f2c81f2",
+      "bytes": 74518,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-002.jpg": {
+      "sha256": "bcc06ee983849d6388fb0db3082a2f9b8607fb14219cfa7f4f5457f6efdadce4",
+      "bytes": 126840,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-003.jpg": {
+      "sha256": "6a5e6c85bf10f27889eeba1c619266fe8c5c46407093c1d71c845adb03157d8f",
+      "bytes": 113742,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-004.jpg": {
+      "sha256": "5c91f305d38ca2b31afadf829d3d76b1db0a53b5702085caec557fdcd89735a7",
+      "bytes": 121498,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-005.jpg": {
+      "sha256": "b53da6f9f5757078d731c98d143dc4c6a5e74a8cd23452a77c262ca1455f5cde",
+      "bytes": 132895,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-006.jpg": {
+      "sha256": "e9a0737bd1c38671119a2cf0da4efd3a58fb4a2f8fca53cab461f7f35b88194e",
+      "bytes": 127246,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-007.jpg": {
+      "sha256": "e761238fba961ade14aff8f1ded967c5b2216a7deacb0cc109fa8eac6e1c9d7d",
+      "bytes": 67922,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-008.jpg": {
+      "sha256": "3f76e30437e14f393733022c6f21a30980ccf5bfcb8c49fca3311d2cb172c634",
+      "bytes": 80219,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-009.jpg": {
+      "sha256": "7c2e53febd69c48ebdf63d2d1b7fd9edbcca75c0df3d40a2fca8b040695b86c1",
+      "bytes": 125570,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-010.jpg": {
+      "sha256": "5c1877da5901073239c2a65c26881c9e50fbd2e99072fe4e2bdeb2ee032d065a",
+      "bytes": 127387,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-011.jpg": {
+      "sha256": "6071016227dacd11dd98bdd36fdfdfa375cbeb0ee8c34f34b3d935abc812d630",
+      "bytes": 79756,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-012.jpg": {
+      "sha256": "562e2ac7d0605e915bd1dec3fa5cefb161b983dff86b1df61033e778b1946f30",
+      "bytes": 110006,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-013.jpg": {
+      "sha256": "4fc747d492a842b8e9b0a4264330850f4432d08b0b26af0f51896e0c520b2b46",
+      "bytes": 112861,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-014.jpg": {
+      "sha256": "aabdf2e2accb0cf9b9117bc4796a128fd49741dbcde2c5eb24b5830ff1cf9412",
+      "bytes": 107543,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-015.jpg": {
+      "sha256": "38e1ff5c2a8d7fffa7afc87825ab47db8d2296f5cd71cb57d2a02fdb9362dee0",
+      "bytes": 107824,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-016.jpg": {
+      "sha256": "a4d3c162447faaf4c02f6c427403fd05ea18661574263b2c5499310a2f16c807",
+      "bytes": 127159,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-017.jpg": {
+      "sha256": "3d522cce186833a7541841b492c70aaa9aa61f324cefc1d53d02fc2cfdc6ed5c",
+      "bytes": 121336,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-018.jpg": {
+      "sha256": "5fdbd5ba483ec8c052b87ab30745277a97237635b994714538a7b34a78494248",
+      "bytes": 69021,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-019.jpg": {
+      "sha256": "f676c7894f174678a7dcfb991240c36688afde856ef256e883dd8bdb781e7aa0",
+      "bytes": 101692,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-020.jpg": {
+      "sha256": "faaf0da5b1ae9a3bdbcd7a4cd50f062713dc205fbb50590fa9fb716d909e8e0a",
+      "bytes": 129567,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-021.jpg": {
+      "sha256": "b7d2f97482b7e5e6db6870c73b7e0b64a72beec1c2de6ff9988d6147b38f64b1",
+      "bytes": 124310,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-022.jpg": {
+      "sha256": "c281c169c98681330515617dbf5007806d4166ddec2dfc99f7c665bc70240461",
+      "bytes": 70766,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-023.jpg": {
+      "sha256": "8a226105cfb91db5067eec58b06a97faae12c88ebd881dc179f80316a11baae5",
+      "bytes": 80493,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-024.jpg": {
+      "sha256": "a4e12863b430020917e3d42e214891d2a207b09617332e355eb7352d9ef90582",
+      "bytes": 79212,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-025.jpg": {
+      "sha256": "eb590742c94ad528ccaa71b6eafa0269fba625afd0f699f1ed67ea8fd7873131",
+      "bytes": 94333,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-026.jpg": {
+      "sha256": "b3be591c77097de0113cb3a918ecbf6bb10e2dd2d554c8aa58592b83e1bf432f",
+      "bytes": 79192,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-027.jpg": {
+      "sha256": "d76c294fced981b17a6d13f3c49b139f1ff8dc4aa9dad1046d0b6e82090d30a3",
+      "bytes": 130948,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-028.jpg": {
+      "sha256": "8352e22e267100250a87ff70051be04786bc5a70136563ae91cc5c796f7bf322",
+      "bytes": 135054,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-029.jpg": {
+      "sha256": "0d0466d61a06d5d3808189d4216b2a77fefab20f39c4173dc0df407c13c4b43c",
+      "bytes": 73174,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-030.jpg": {
+      "sha256": "d03f1dde4ba4bde072fe752d1a939d90035526b1e7e9cd6ab0fec81d8ff0e4bc",
+      "bytes": 132078,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-031.jpg": {
+      "sha256": "1f2cd45b541a8f99df998fda66333c5b5fd25b6cee973781d9d92a0bb288c4b9",
+      "bytes": 134223,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-032.jpg": {
+      "sha256": "88998a4567b6149dc12d1838176d2cfbd86a906323f3233ab5129322c3163d47",
+      "bytes": 76571,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-033.jpg": {
+      "sha256": "0dbd90762b7a8fb77142f2b9ee9c64bf1d2b1f0b2088b7f86fd032975b7cf178",
+      "bytes": 62960,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-034.jpg": {
+      "sha256": "e97a7b5d952a10dd716332950eb14e3933c5829dd7be805df188c1f1dad1bcb6",
+      "bytes": 83401,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-035.jpg": {
+      "sha256": "7b9c2fc0e0043471db4c19a69c084a531ba3ad257e629dffa4632d0c79430ec7",
+      "bytes": 95414,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-036.jpg": {
+      "sha256": "fefd9f301a3255116a0c0b3bb2e19314d42bd5d3affcc0a103eb1d8eca35e304",
+      "bytes": 119381,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-037.jpg": {
+      "sha256": "d9c6818662db79a25df891a5f9fc8b117df72d0403435dedc28fa5f3afacb7e7",
+      "bytes": 110965,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-038.jpg": {
+      "sha256": "f5fe34a4a9fb7447b3b3fbb93a4d15ede8f6d2524d98cda5c4563458b880bf45",
+      "bytes": 120067,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-039.jpg": {
+      "sha256": "df7649cbc4eb37f1de587c77f2d74abfffe29763bcfd0b677c940b2c35e44b7d",
+      "bytes": 103246,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-040.jpg": {
+      "sha256": "5288f371807ffa9ddb5156c8eb88ad6a38a025d8d140a8c56aa0075d6f58854f",
+      "bytes": 113106,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-041.jpg": {
+      "sha256": "52bca8b3982ad33c9282c9eb24141251a7d611f22533ec6a1493d5c61e54fd44",
+      "bytes": 60372,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/slide-042.jpg": {
+      "sha256": "363fce8d3a863d4b4e7e7490734902d6f95c28089e174da0e8eb35dafb448fda",
+      "bytes": 62600,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/08-drawing-ppo-classroom.pptx": {
+      "sha256": "61fb2862758e0c711553764d8b59d10d2d244685559e2037703fa4cce62345ea",
+      "bytes": 3407040,
+      "source": "docs/classroom-ppt/decks/08-drawing-ppo-classroom.pptx"
+    },
+    "drawing/en-61fb2862758e-76db99834f85/08-drawing-ppo-classroom.pdf": {
+      "sha256": "76db99834f856863203f19dafab53bb818e542d91bf83d3227cc728767627251",
+      "bytes": 719533,
+      "source": "docs/classroom-ppt/pdf/08-drawing-ppo-classroom.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-001.jpg": {
+      "sha256": "5fe765cb483ca8e3052b0064017a3891345114a7deb56c9d29893a799dcfaee3",
+      "bytes": 65210,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-002.jpg": {
+      "sha256": "57493a2dcbdc1f88b598ad7638d91eeab48d8b5f83e9a6cbcd139871448403b7",
+      "bytes": 115754,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-003.jpg": {
+      "sha256": "dbdc2fc99171b9278b43cc4d92e074ada3aa4f68695aa888dbd6b7c49b168f74",
+      "bytes": 107657,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-004.jpg": {
+      "sha256": "d0a4065c75bc0a905fb4929da41a15f9026744fa366a2cdc9330a66b8747a94f",
+      "bytes": 116931,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-005.jpg": {
+      "sha256": "6614e3bfd830213726ad7c46fca42b4ee5a255db02bb7b6050656ec38637fa9c",
+      "bytes": 124306,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-006.jpg": {
+      "sha256": "543e7e830107a423c1b0d4ada39e72f8c52f9f43a48451874e6fb8aa2104654b",
+      "bytes": 121341,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-007.jpg": {
+      "sha256": "06d26ac2b4739ffa9e96b8b3f996b3e48c1b12f45c66d4f1d15a426532d68c41",
+      "bytes": 59186,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-008.jpg": {
+      "sha256": "bed364580ef5fbb50ade77c44c711953e46f7f24762bbb4e941ffee19808f0fa",
+      "bytes": 79897,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-009.jpg": {
+      "sha256": "64f8c7e6bb68d73afae51e9bf948378a6d213c14c1fa457f58daf1d60d20484d",
+      "bytes": 117568,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-010.jpg": {
+      "sha256": "806733d3dcee27f45b2e03feed36b1210596b134a974b4e9807f96c335ef7615",
+      "bytes": 124703,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-011.jpg": {
+      "sha256": "9e082b573c057ae1fd4f3cf0b2dc8d94d47551f2461bd55074a65a4a8cdf14ec",
+      "bytes": 86754,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-012.jpg": {
+      "sha256": "64aeedb6dec55479772b902b82362b74bd1101cd68510b2a46e93c8991defc8d",
+      "bytes": 110021,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-013.jpg": {
+      "sha256": "08a68d7f3f99583a1a57be971376a52b3be11cf9ac55622eeb812a58b348a34b",
+      "bytes": 110083,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-014.jpg": {
+      "sha256": "52594593f022d965a6d1c6c2d0250885143aac599c4edc90432b5798059d3078",
+      "bytes": 105086,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-015.jpg": {
+      "sha256": "b6de66f0420895a38bc1e3a6605bc878ea2b409fafb3517d94ec3a7ea60ba164",
+      "bytes": 108565,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-016.jpg": {
+      "sha256": "9a5bce6a45c97da9d2b188d939494fc468ea00842403a999ed93bca80aa2f285",
+      "bytes": 124732,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-017.jpg": {
+      "sha256": "b68ac3e902a85851bda21ebb82c598d0e7cd1d325b96bd56f17eddebd07bdb83",
+      "bytes": 121193,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-018.jpg": {
+      "sha256": "4ed67e4de73fb682d242745bd6edd9b663ac082048912d91611a6dd4321e9838",
+      "bytes": 66813,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-019.jpg": {
+      "sha256": "7737ed78de3cb0e81b94ede38dfe25c3ba27d7bb1e21c29999475163a63f8284",
+      "bytes": 90491,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-020.jpg": {
+      "sha256": "4c16810d084c698b6e2f619a470b9b6d97adfec7272b81566a63c6312603cbae",
+      "bytes": 118005,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-021.jpg": {
+      "sha256": "fe0310f6ea8f493615de1caf87ec7dc4453da12c5acab48ca5ced53058395449",
+      "bytes": 117342,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-022.jpg": {
+      "sha256": "0453dbc907ebaa4bb5cc7bf54c65daea421b9925c27f930a85c98e406ea9c34c",
+      "bytes": 64266,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-023.jpg": {
+      "sha256": "bc5e677748fb55ef508f3f379c9d1095b2209862dc0c04a8dd31898d706c2b01",
+      "bytes": 77419,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-024.jpg": {
+      "sha256": "8c566cede21220fdb65478d29d98454717d2ab7dafd62fd3ad958c6a43c5472e",
+      "bytes": 73620,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-025.jpg": {
+      "sha256": "aac09425fa37bce54302c106dee3e68a40fec178d83c1340c257fc482ddf4074",
+      "bytes": 102302,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-026.jpg": {
+      "sha256": "582e97e61ad6f3209ca192b99acf45f12730951dd27ae8b4397d24d79fdc7759",
+      "bytes": 85339,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-027.jpg": {
+      "sha256": "377af5ac2e5aa094cc1cf08e2d7f9b4198010c2f403a94fa2e461451ef269319",
+      "bytes": 130070,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-028.jpg": {
+      "sha256": "de8265165aff527628058e799bf749bcbf68eb53c199f65bcf94955f1dca0e34",
+      "bytes": 128134,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-029.jpg": {
+      "sha256": "3bc2f06b3883c4660d0504a8e5e721670764167b06d12310135590553c6cd25b",
+      "bytes": 70749,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-030.jpg": {
+      "sha256": "19a0c7c67468a85643e0aed0c894c3c515ace4b0086831815a4b70a02e831354",
+      "bytes": 129273,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-031.jpg": {
+      "sha256": "8f4810230d1e7d940fe2d1effa2dd7ede90a5e528c775530a6e985db6d5f6a3b",
+      "bytes": 136708,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-032.jpg": {
+      "sha256": "185cdd528d88b022e580731b53c89808491c732347c0e525d8150b7fafe2595f",
+      "bytes": 67478,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-033.jpg": {
+      "sha256": "dbfd5e011041aa471beac68132d74d8550916ffa24b8a62e36435fb54d6dfa7d",
+      "bytes": 56692,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-034.jpg": {
+      "sha256": "14295de41881291fdfac0e7b8383aa2c648bb387527002b3edcfa69c5b91281c",
+      "bytes": 80370,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-035.jpg": {
+      "sha256": "634aa2d7d7dbaf8bdcf975bd82b1417ad95f923690e1164b6fa79f63e93da3ef",
+      "bytes": 86364,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-036.jpg": {
+      "sha256": "553e7baf83d42c6da4f032df88c47c4719b8f4bfe00d1f9fa77977ffc65e2bf7",
+      "bytes": 107734,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-037.jpg": {
+      "sha256": "b41fb407bcad9dff2f9d56a77e8767083b84d6271c61830b694a3d379afbc19e",
+      "bytes": 98309,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-038.jpg": {
+      "sha256": "6a1eb5291555b4472a90435d1bc56c7c81f0f57e9639941eec01f2bfa40b0abc",
+      "bytes": 115103,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-039.jpg": {
+      "sha256": "060d750b0361a78f04f7066c1ae381f01e1d4f54ab72a5555a14647838eee1f7",
+      "bytes": 95620,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-040.jpg": {
+      "sha256": "e93522674398e2c4be523085c7c24d9593b967f47ef1ad1ef3ca390a3667f63f",
+      "bytes": 105672,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-041.jpg": {
+      "sha256": "c371c8a16f2852a318cb3c4a61022fbf8c8d49629f05fc3e4f50404b0ae4d142",
+      "bytes": 55640,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/slide-042.jpg": {
+      "sha256": "612dd5e68bdbca00dd515711524ad529af332665f17d2bc7f36ac4666682d810",
+      "bytes": 58022,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/08-drawing-ppo-classroom.zh-CN.pptx": {
+      "sha256": "6f8020325ae9ae5638b1226eb916ef0fa0144ec8584db07cda7ba258c4fc0edc",
+      "bytes": 2813212,
+      "source": "docs/classroom-ppt/zh-CN/decks/08-drawing-ppo-classroom.zh-CN.pptx"
+    },
+    "drawing/zh-6f8020325ae9-5904e0b73289/08-drawing-ppo-classroom.zh-CN.pdf": {
+      "sha256": "5904e0b73289bb7c37e57cc4278e4567bca49246b2aeae1969d97c56f91e2609",
+      "bytes": 985303,
+      "source": "docs/classroom-ppt/zh-CN/pdf/08-drawing-ppo-classroom.zh-CN.pdf"
+    },
+    "catalog.json": {
+      "sha256": "1b960412a2ebd5bcf32bb7a7376bb5f33d2ab26c5115c39e354fb98eddd57279",
+      "bytes": 543198,
+      "source": "docs/classroom-ppt/deck-manifest.json"
+    }
+  },
+  "lessonCount": 8,
+  "deckCount": 16,
+  "slideCount": 644,
+  "previewSource": "Existing PDF exports; no live PowerPoint animations. Videos are separate.",
+  "sourceDecksUnmodified": true
+}

@@ -1,0 +1,425 @@
+{
+  "design": "WingPod Camera v2 Soft",
+  "all_cases_included": true,
+  "primary_palette": "cream-sage-peach",
+  "case_library_palette": "original graphite v2",
+  "files": {
+    "hero.png": {
+      "sha256": "2fe5dab4cf70d0f2bb00a70b3aadbe66e8d23a523bfae7334274e36a0f13b03c",
+      "bytes": 110159,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/hero.png"
+    },
+    "camera-eyes-detail.png": {
+      "sha256": "45582996692adc3fd4a46a73819a312eb8083747f48b7e77c10b41a82218bedf",
+      "bytes": 144378,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/camera-eyes-detail.png"
+    },
+    "wingpod-camera-eyes.mp4": {
+      "sha256": "734ba4cd8c1c407a72e7e152f56266bbebef0d0a247c149b6b8de540dd56e503",
+      "bytes": 5067911,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/wingpod-camera-eyes.mp4"
+    },
+    "video-verification.json": {
+      "sha256": "fc52fecf823cf6632f76bf7dceae3a1b6a55b964900735393babb3907a4c87a5",
+      "bytes": 990,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/video-verification.json"
+    },
+    "BOM.csv": {
+      "sha256": "45b03c79753e45b47825285847eafc0990880d92b32d6323913572e317c4f625",
+      "bytes": 39882,
+      "source": "docs/microduck-arm-v1c/appearance/camera-v2-bom/BOM.csv"
+    },
+    "BOM.json": {
+      "sha256": "dc399051832e4f97d98890a89f2a03e057f4c8d14edc3457210a6c6ea56a14ed",
+      "bytes": 87884,
+      "source": "docs/microduck-arm-v1c/appearance/camera-v2-bom/BOM.json"
+    },
+    "PARTS.md": {
+      "sha256": "6001d8a2d27896cb1bf6ba9852ffd30e1521c1f4f99a8431fb09be8e7ab10cb5",
+      "bytes": 21541,
+      "source": "docs/microduck-arm-v1c/appearance/camera-v2-bom/PARTS.md"
+    },
+    "README.md": {
+      "sha256": "60de322504b6441396b6317c4750a80f97dd1031a97bc7bb18b1cbceda7397cb",
+      "bytes": 13045,
+      "source": "docs/microduck-arm-v1c/appearance/camera-v2-bom/README.md"
+    },
+    "CAMERA-V2.md": {
+      "sha256": "2d8e03922bdd2179c81d56ab3112b848528d9254832d8f0e9bb27b420e343916",
+      "bytes": 5289,
+      "source": "docs/microduck-arm-v1c/appearance/CAMERA-V2.md"
+    },
+    "CAMERA-V2-SOFT.md": {
+      "sha256": "b66bffb3cbfac4367fc782efbef1567bde50e5d528fd736634d3914ce5333909",
+      "bytes": 3190,
+      "source": "docs/microduck-arm-v1c/appearance/CAMERA-V2-SOFT.md"
+    },
+    "camera-spec.json": {
+      "sha256": "403528ac6de39069b72dde78a2124a87bd0f9567b16bb083a981a2b7ab16dab5",
+      "bytes": 1818,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/camera-spec.json"
+    },
+    "appearance-validation.json": {
+      "sha256": "7770c876c1d74d5ac1ccad87f22e07f627b56faa4e8133f1c29d5c036e3920df",
+      "bytes": 906,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/appearance-validation.json"
+    },
+    "tennis-return.mp4": {
+      "sha256": "b4fb213210c91acdc4db1baf702ab3ef81e59cddd99a551cd9d0d6ad8c59bda8",
+      "bytes": 757452,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/tennis-return-nominal-0/rollout.mp4"
+    },
+    "sequence-contact-sheet.jpg": {
+      "sha256": "9566648973345f111ad8c7e4e98f8e6e2b476a10fb72e31a682e44564a5f6955",
+      "bytes": 247766,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/tennis-return-nominal-0/sequence-contact-sheet.jpg"
+    },
+    "hero-soft-2fe5dab4cf70.png": {
+      "sha256": "2fe5dab4cf70d0f2bb00a70b3aadbe66e8d23a523bfae7334274e36a0f13b03c",
+      "bytes": 110159,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/hero.png"
+    },
+    "camera-eyes-detail-soft-45582996692a.png": {
+      "sha256": "45582996692adc3fd4a46a73819a312eb8083747f48b7e77c10b41a82218bedf",
+      "bytes": 144378,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/camera-eyes-detail.png"
+    },
+    "sequence-contact-sheet-soft-956664897334.jpg": {
+      "sha256": "9566648973345f111ad8c7e4e98f8e6e2b476a10fb72e31a682e44564a5f6955",
+      "bytes": 247766,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/tennis-return-nominal-0/sequence-contact-sheet.jpg"
+    },
+    "camera-task-verification.json": {
+      "sha256": "47e102bfb05fb1c9a3aae64a9b3864d291e3a7d5d04ae231c10f902ef2385800",
+      "bytes": 3784,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2-soft/tennis-return-nominal-0/camera-task-verification.json"
+    },
+    "cases.json": {
+      "sha256": "6afc1636b252b98e38e923def16309950f670146168b54b52798743459e47130",
+      "bytes": 10756,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/cases.json"
+    },
+    "cases/nominal-0.mp4": {
+      "sha256": "d830753a190c91728a7a25a6bef008a0554829dca46f2cec6228d7168b1c5c26",
+      "bytes": 755659,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-0/rollout.mp4"
+    },
+    "cases/nominal-0.json": {
+      "sha256": "00fba8e7607b38f4acec7ac40f5150218852a1b95e0e2b19241ec475ef604fcf",
+      "bytes": 3268,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-0/camera-receipt.json"
+    },
+    "cases/nominal-1.mp4": {
+      "sha256": "f603cf4811543cc6e1a73c7a5ef5de72d3dd2877e8cff76afe66161be858fb7a",
+      "bytes": 777551,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-1/rollout.mp4"
+    },
+    "cases/nominal-1.json": {
+      "sha256": "a7bd37596846758e3849817d783bc36dca8cdf17f96bf6176a4e16887d95a4e6",
+      "bytes": 3267,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-1/camera-receipt.json"
+    },
+    "cases/nominal-2.mp4": {
+      "sha256": "b43eb654a3325fecc76ae78f88750b94b3186887e8346c50b040c7752888043b",
+      "bytes": 796620,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-2/rollout.mp4"
+    },
+    "cases/nominal-2.json": {
+      "sha256": "b10b818436e5b4e798925dc079e4561fe0e72a1a4d86d866b6559b023ad0bb77",
+      "bytes": 3269,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-2/camera-receipt.json"
+    },
+    "cases/nominal-3.mp4": {
+      "sha256": "8cc9bbd5a6d85270408834ff1870003139f06a65a13be049ad2d1df6097bf714",
+      "bytes": 761806,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-3/rollout.mp4"
+    },
+    "cases/nominal-3.json": {
+      "sha256": "083554cfe2ebd7ab81856260a46c5d2450da9d77e04e12475061719bc294f2af",
+      "bytes": 3268,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-3/camera-receipt.json"
+    },
+    "cases/nominal-4.mp4": {
+      "sha256": "e876075938d7b297f6620c98317d8bd44290328aab0ddda5ded785716a2c70a7",
+      "bytes": 893206,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-4/rollout.mp4"
+    },
+    "cases/nominal-4.json": {
+      "sha256": "91dbf35e8115719c84f9f050a67f5fb369aa6ea3053c25c428d3343adfe3d3e2",
+      "bytes": 3266,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-4/camera-receipt.json"
+    },
+    "cases/nominal-5.mp4": {
+      "sha256": "43cd9d69c4c9f4c400c23c35fd7e9506c2ccca4b445d4bc0063d59424ad77023",
+      "bytes": 819649,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-5/rollout.mp4"
+    },
+    "cases/nominal-5.json": {
+      "sha256": "e5453ad972d1f8b7dc776db98f14b40db0c96b5a21b8d2dd2c9510dbe782c405",
+      "bytes": 3270,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-5/camera-receipt.json"
+    },
+    "cases/nominal-6.mp4": {
+      "sha256": "c8f3ef08e7dc474374f1dab91e564516acc69b0d5cde3ff8e63fd7a8b8271913",
+      "bytes": 820198,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-6/rollout.mp4"
+    },
+    "cases/nominal-6.json": {
+      "sha256": "4c290b54b64444ed3a774b0ca052735fefeb45a4addb69524405b7e5b27d7f98",
+      "bytes": 3266,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-6/camera-receipt.json"
+    },
+    "cases/nominal-7.mp4": {
+      "sha256": "36348c9bb396bdaf21b4c0fcc26e26ab129f0eb839bfc867346a4112f31146ef",
+      "bytes": 800825,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-7/rollout.mp4"
+    },
+    "cases/nominal-7.json": {
+      "sha256": "f39b27ca14195878be90eb00d1af8ec4995b9dc7905f29e26ed266f01562a302",
+      "bytes": 3268,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-7/camera-receipt.json"
+    },
+    "cases/nominal-8.mp4": {
+      "sha256": "84abd2bb29a940aec2e1d7811e9de93355a64276cfbe3f50520bd08fdf6341ce",
+      "bytes": 979818,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-8/rollout.mp4"
+    },
+    "cases/nominal-8.json": {
+      "sha256": "4bee986a4146ddb214c294a4aabb25cfc263b908de189ce16cfdd77883cd773e",
+      "bytes": 3268,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-8/camera-receipt.json"
+    },
+    "cases/nominal-9.mp4": {
+      "sha256": "e224d7ab136b55395a28d03aa882bd0200c7e3b61017106967eb12b2c704eada",
+      "bytes": 955928,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-9/rollout.mp4"
+    },
+    "cases/nominal-9.json": {
+      "sha256": "8492908c7c8aaf0168c7c60621e5ef1b63bd307f090d1ad26f1837c8514e53ab",
+      "bytes": 3266,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/nominal-9/camera-receipt.json"
+    },
+    "cases/small-0.mp4": {
+      "sha256": "b68131c9dc64c8bcccfc693fc4372591719e88b0a4d6cc4aeb6b016a68916550",
+      "bytes": 989394,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-0/rollout.mp4"
+    },
+    "cases/small-0.json": {
+      "sha256": "646e0141691343b103f7e950b5ae0ca4f4b6b546ffa461aff970fce8da0e1603",
+      "bytes": 3259,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-0/camera-receipt.json"
+    },
+    "cases/small-1.mp4": {
+      "sha256": "74617b1b9804508bcb711593b9b107b681ac7d4e41cfabcd6a827a1b3ba461c9",
+      "bytes": 931301,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-1/rollout.mp4"
+    },
+    "cases/small-1.json": {
+      "sha256": "8fa048220de9bbaef73db9af9ac0e25d4f86427bd461f858c01c729044b5113c",
+      "bytes": 3260,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-1/camera-receipt.json"
+    },
+    "cases/small-2.mp4": {
+      "sha256": "8cf46d4f111dac9ab606fdbcd91b0a24b5dc02605d5a8aa95dc85820050b29fc",
+      "bytes": 873642,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-2/rollout.mp4"
+    },
+    "cases/small-2.json": {
+      "sha256": "b6e1158f757bb1d9ccd9665c920f785ac3b46356a48b9ea70130099338a14c2e",
+      "bytes": 3262,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-2/camera-receipt.json"
+    },
+    "cases/small-3.mp4": {
+      "sha256": "9c41413a4656ae01c9ffff4e887103721488c4ae344350207f971c2545515914",
+      "bytes": 867419,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-3/rollout.mp4"
+    },
+    "cases/small-3.json": {
+      "sha256": "6471dcc890da6b9aa6ec6d231686ae025174a69066ea5558e6dfa684da7819e7",
+      "bytes": 3258,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-3/camera-receipt.json"
+    },
+    "cases/small-4.mp4": {
+      "sha256": "91b2da887607d2acc35ad6e6fd50c0e931d8c3242485295dc3a1335b85a12081",
+      "bytes": 1064953,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-4/rollout.mp4"
+    },
+    "cases/small-4.json": {
+      "sha256": "0bedfbfe76b6439b620a933ee1dfd46b0aa1f412e4203b0fd07119380222c117",
+      "bytes": 3259,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-4/camera-receipt.json"
+    },
+    "cases/small-5.mp4": {
+      "sha256": "f06959bc05426f6765a63a8ee7692ba2cbc76db25b6047c7cfb6f7fba47efb13",
+      "bytes": 835570,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-5/rollout.mp4"
+    },
+    "cases/small-5.json": {
+      "sha256": "24243a18cb866ef547377c8387bc33438d57a1e55ae3d246c68763cc782a5303",
+      "bytes": 3262,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-5/camera-receipt.json"
+    },
+    "cases/small-6.mp4": {
+      "sha256": "4c70042e0770f4c85708381d4cba04959c57d46df99b08882ed3fb9debfa57b3",
+      "bytes": 905347,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-6/rollout.mp4"
+    },
+    "cases/small-6.json": {
+      "sha256": "2ab20bb5d8fa576458c1a658232ae5a1a376675c57141912de5fcf63d652e6f6",
+      "bytes": 3259,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-6/camera-receipt.json"
+    },
+    "cases/small-7.mp4": {
+      "sha256": "383c7ea34d44c18bff9f50ee42de54f7d49d85306edecb0c23f39ddff4a08317",
+      "bytes": 981271,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-7/rollout.mp4"
+    },
+    "cases/small-7.json": {
+      "sha256": "c0ea0a7472aae67278022622f6d37e92dfde4fa479b20f2f00fd052a1dc2a4c5",
+      "bytes": 3256,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-7/camera-receipt.json"
+    },
+    "cases/small-8.mp4": {
+      "sha256": "c2b0bcc63dba8fbe497e171c8d9b17115dcff9fb1a448125801fc80a516cee86",
+      "bytes": 953424,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-8/rollout.mp4"
+    },
+    "cases/small-8.json": {
+      "sha256": "8c0854c3555103e323f467087c9b789cd36cc8bacd86f62b60b291159abfcef5",
+      "bytes": 3261,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-8/camera-receipt.json"
+    },
+    "cases/small-9.mp4": {
+      "sha256": "eb8bed10c4baeddaf2c1063687cad9f77de575656e04a5e9b57b198a841a00fa",
+      "bytes": 975868,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-9/rollout.mp4"
+    },
+    "cases/small-9.json": {
+      "sha256": "e101184829b388828cd33f76e270816ceed5dfc89dc47de27c54333d090c2117",
+      "bytes": 3261,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/small-9/camera-receipt.json"
+    },
+    "cases/large-0.mp4": {
+      "sha256": "1fcdd44aafa80ec917e7332cb8f6cbf9693d5e6b75b3684d56db7eaf044b2c84",
+      "bytes": 745985,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-0/rollout.mp4"
+    },
+    "cases/large-0.json": {
+      "sha256": "798af9f9d421f13e83dd5523c9bfa013a7987c713086939a5b560415dacba87b",
+      "bytes": 3261,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-0/camera-receipt.json"
+    },
+    "cases/large-1.mp4": {
+      "sha256": "0516f780dfe9e3cfe18784d45ce03204d9d7995472df3f307f39b6e4cb870c97",
+      "bytes": 1118821,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-1/rollout.mp4"
+    },
+    "cases/large-1.json": {
+      "sha256": "40236283a107c4e18b08403641cc699abc4029a66243fbc156dc26072b7b388f",
+      "bytes": 3258,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-1/camera-receipt.json"
+    },
+    "cases/large-2.mp4": {
+      "sha256": "55c8bd43ec5549b84cca55090c05ad0ff9774bae0e78b2d95471bc265eefc08a",
+      "bytes": 736057,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-2/rollout.mp4"
+    },
+    "cases/large-2.json": {
+      "sha256": "72b4f77476c872a9cab051fdb4046479a8e689524826197c9322832b366921cd",
+      "bytes": 3261,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-2/camera-receipt.json"
+    },
+    "cases/large-3.mp4": {
+      "sha256": "090bf3655a9815f981ac9939697cdbcc9ddd2f24f4aac7c57f456b6465c3f3fa",
+      "bytes": 786064,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-3/rollout.mp4"
+    },
+    "cases/large-3.json": {
+      "sha256": "125c3e13f21c5c236194819f1413aaf272cceb8e984673ada8d7575d96a2ad2f",
+      "bytes": 3258,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-3/camera-receipt.json"
+    },
+    "cases/large-4.mp4": {
+      "sha256": "30568542ef331a0f4e43b08833a76f3ad5ac4dd5abec91bf15a562e59cce145e",
+      "bytes": 714097,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-4/rollout.mp4"
+    },
+    "cases/large-4.json": {
+      "sha256": "ba9871b6763ad437aa22fdb86099377138664be7a29b9b90f2199f0d07d84b4a",
+      "bytes": 3259,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-4/camera-receipt.json"
+    },
+    "cases/large-5.mp4": {
+      "sha256": "3ab93d7e14df1d90a8c38b37f750bc71cb09676b37d506fd14c2ae3830649cd1",
+      "bytes": 733657,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-5/rollout.mp4"
+    },
+    "cases/large-5.json": {
+      "sha256": "ff5ff8afd59a1ec97438daac2358336760977d84a8e8b1e736b925c88c2ec28b",
+      "bytes": 3259,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-5/camera-receipt.json"
+    },
+    "cases/large-6.mp4": {
+      "sha256": "9abb91d0367a73aeba8ad97b420d776059ee250ef3e52123c941450eb6f54b32",
+      "bytes": 840354,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-6/rollout.mp4"
+    },
+    "cases/large-6.json": {
+      "sha256": "c68b40da2e47253b7a4cdffc8f9418d593523f3ccb9d49c817a4a7a0e737a810",
+      "bytes": 3260,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-6/camera-receipt.json"
+    },
+    "cases/large-7.mp4": {
+      "sha256": "33f9e10444c604ec45f3dce235357c76b09cf6a4fe4c9fccf3013ab9b9bd005c",
+      "bytes": 1179439,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-7/rollout.mp4"
+    },
+    "cases/large-7.json": {
+      "sha256": "49e9f340bf7e146163c5fca2631930c4ef54445d95cb3132b20562833007a08d",
+      "bytes": 3260,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-7/camera-receipt.json"
+    },
+    "cases/large-8.mp4": {
+      "sha256": "0f3d65df6f6da0520e393a8e801d2fda558664960d3a6f30872b5ec9cb6f168a",
+      "bytes": 928114,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-8/rollout.mp4"
+    },
+    "cases/large-8.json": {
+      "sha256": "d053b7d8cbc73a283709714270f607f5afaa03f8036bc9abf2d1aaf0cadafcaa",
+      "bytes": 3261,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-8/camera-receipt.json"
+    },
+    "cases/large-9.mp4": {
+      "sha256": "0f374434e71545c2dc25445fa3fc5e8e2a1e66328d733509151ae9f94b25b655",
+      "bytes": 801787,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-9/rollout.mp4"
+    },
+    "cases/large-9.json": {
+      "sha256": "acf6d3486f83526cda252356865ca2643d22ece31d8248d0054bb3407f802c86",
+      "bytes": 3259,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/large-9/camera-receipt.json"
+    },
+    "cases/open_jaw.mp4": {
+      "sha256": "39b9608467c6f16403d55065ef93bb2516779807737807486471bac18e534fcb",
+      "bytes": 537258,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/open_jaw/rollout.mp4"
+    },
+    "cases/open_jaw.json": {
+      "sha256": "274653b1a7fa5fe8afd40104334494740e710121a97478be756cbf48069d799e",
+      "bytes": 2845,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/open_jaw/camera-receipt.json"
+    },
+    "cases/hold.mp4": {
+      "sha256": "b5e59a789551fcf9b9469b6a00911a8138bbc885f49e7408c3e006f0446c8615",
+      "bytes": 441470,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/hold/rollout.mp4"
+    },
+    "cases/hold.json": {
+      "sha256": "3878ba82882351e63fbade97d795bbd3008bd890ead3d5055ed2f8e450fb9bca",
+      "bytes": 2762,
+      "source": "artifacts/microduck-arm-v1c/appearance/wingpod-camera-v2/task-cases/hold/camera-receipt.json"
+    }
+  },
+  "hardware_release": false,
+  "vision_control": false
+}

@@ -1,3 +1,3 @@
-:HL["/microduck-lab/_next/static/chunks/3k7itar8ok6-8.css","style"]
+:HL["/microduck-lab/_next/static/chunks/0w651t7x09592.css","style"]
 :HL["/microduck-lab/_next/static/chunks/3kvmi3ji41bgt.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"viewer","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"deTaoE4qZAQrINiJDUwk2"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"viewer","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"n9Y76UcCL598WMjLVQrEX"}

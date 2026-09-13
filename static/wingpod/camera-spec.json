@@ -1,0 +1,106 @@
+{
+  "version": "WingPod Camera v2 Soft",
+  "reference": "user-provided duck-soft-frame-finished.png",
+  "mount": "fixed chest / lower front of arm root, not moving arm or gripper",
+  "body": "arm_mount",
+  "housing": {
+    "name": "chest_camera",
+    "body": "arm_mount",
+    "center": [
+      0.0145,
+      0,
+      -0.026
+    ],
+    "half_size": [
+      0.0025,
+      0.014,
+      0.0085
+    ],
+    "radius": 0.0015,
+    "color": [
+      1.0,
+      0.97,
+      0.87,
+      1
+    ]
+  },
+  "units": "metres",
+  "optical_centers_local": {
+    "left": [
+      0.0185,
+      0.0065,
+      -0.025
+    ],
+    "right": [
+      0.0185,
+      -0.0065,
+      -0.025
+    ]
+  },
+  "optical_forward_local": [
+    1.0,
+    0.0,
+    0.0
+  ],
+  "optical_up_local": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "synthetic_fov_y_deg": 70.0,
+  "lens_center_spacing_m": 0.013,
+  "sensor_type": "two simulated RGB viewpoints; no qualified stereo/depth hardware",
+  "hardware_model": null,
+  "mass_kg": null,
+  "power_w": null,
+  "hardware_release": false,
+  "vision_policy_trained": false,
+  "dimensions_status": "appearance-envelope proposal, not a selected camera datasheet",
+  "palette": {
+    "cream": [
+      1.0,
+      0.97,
+      0.87,
+      1
+    ],
+    "sage": [
+      0.53,
+      0.6,
+      0.54,
+      1
+    ],
+    "rim": [
+      0.31,
+      0.4,
+      0.39,
+      1
+    ],
+    "navy": [
+      0.035,
+      0.12,
+      0.19,
+      1
+    ],
+    "glint": [
+      0.73,
+      0.88,
+      0.88,
+      1
+    ],
+    "peach": [
+      0.94,
+      0.68,
+      0.52,
+      1
+    ],
+    "honey": [
+      1.0,
+      0.76,
+      0.29,
+      1
+    ]
+  },
+  "revision_scope": "render-only face colors, layered lenses, cheeks and beak",
+  "physical_model_changed": false,
+  "historical_case_palette": "original graphite v2; not soft-revision footage"
+}

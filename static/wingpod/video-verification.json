@@ -1,0 +1,21 @@
+{
+  "file": "wingpod-camera-eyes.mp4",
+  "sha256": "734ba4cd8c1c407a72e7e152f56266bbebef0d0a247c149b6b8de540dd56e503",
+  "decoded_frames": 500,
+  "fps": 25,
+  "duration_seconds": 20.0,
+  "resolution": [
+    960,
+    720
+  ],
+  "design": "WingPod Camera v2 Soft",
+  "task_evaluation": false,
+  "appearance_sources": {
+    "microduck_arm_design/wingpod.py": "be39e1d8417d7b6b32269f5355d3d12d0327fdac85b5c7adb53295e2c0c83964",
+    "microduck_arm_design/wingpod_camera.py": "31d4df6abe1b76bfc48832166b8336a24755661ac279a694956467d3cd60d66c",
+    "microduck_arm_design/wingpod_camera_soft.py": "151b870e3812c067a296c23601b52f3981f053a93c7751833671c54b1527e8f6",
+    "scripts/build_wingpod_camera.py": "7ee4c7b0b6aeb85527a6fcf9ade05f91faf24a80757c63261816ac07351ccd29",
+    "scripts/build_wingpod_camera_soft.py": "bd9585a1c1788da122143c7a81809333f44984c9303c5ef55e6a7e323b2a90c5",
+    "scripts/replay_tennis_evidence.py": "000e472ee1be4ee1cbbf0aaf2085bd6b6d8314d9f6a1bd45fc67d8d054362a00"
+  }
+}

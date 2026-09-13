@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WingPod Camera v2 soft camera-face revision, exact nominal-0 simulation replay, historical graphite case catalog, and candidate BOM.">
+  <title>WingPod v2 · A little duck with a new perspective</title>
+  <style>
+    :root{color-scheme:light;--cream:#f7f3eb;--ink:#263746;--muted:#68756e;--line:#d2d9d0;--sage:#9da99d;--peach:#e9b29f;--honey:#e5ad43;--paper:#fffdf8}
+    *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.6 system-ui,sans-serif}a{color:inherit;text-underline-offset:4px}button,select{font:inherit}button,a,select{touch-action:manipulation}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #008e9b;outline-offset:4px}
+    .wrap{max-width:1160px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}.brand{font-weight:800;letter-spacing:.12em;text-decoration:none}.links{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.toggle{display:flex;border:1px solid var(--line);border-radius:25px;padding:4px}.toggle button{border:0;background:transparent;border-radius:20px;padding:6px 12px;cursor:pointer}.toggle button[aria-pressed=true]{background:var(--ink);color:white}
+    .hero{display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:36px;padding:56px 0}.eyebrow{color:#76500e;text-transform:uppercase;letter-spacing:.15em;font-size:12px;font-weight:750}h1{font-size:clamp(38px,5vw,64px);line-height:1.05;letter-spacing:-.045em;margin:18px 0}h2{font-size:30px;letter-spacing:-.03em;line-height:1.2;margin:0 0 12px}.lead{color:var(--muted);font-size:18px}.hero img{width:100%;border-radius:32px;background:var(--sage)}.pills{display:flex;gap:8px;flex-wrap:wrap}.pill{font-size:12px;padding:5px 10px;border:1px solid var(--line);border-radius:20px;background:var(--paper)}.cta{display:inline-block;background:var(--ink);color:#fff;border-radius:24px;text-decoration:none;padding:12px 22px;margin-top:18px}
+    section{padding:32px 0;border-top:1px solid var(--line)}.intro{display:flex;align-items:start;justify-content:space-between;gap:24px}.muted{color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}.card{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--paper)}.number{font-size:27px;font-weight:750}.card p{margin:4px 0}.media{display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:start}video{display:block;width:100%;background:#172735;border-radius:20px;max-height:620px}.detail{width:100%;border-radius:20px;background:var(--sage)}.notice{padding:16px 20px;background:#f4e4d9;border-radius:14px;font-size:14px}.historynote{border-left:5px solid var(--peach);background:#edf0e8}.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}select,button.choice{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--paper)}button.choice{cursor:pointer}button.choice[aria-pressed=true]{background:var(--ink);color:white}.casegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.case{border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:14px;min-width:0}.case button{border:0;background:transparent;color:var(--ink);font-weight:750;cursor:pointer;padding:0;text-align:left}.case p{font-size:13px;margin:6px 0}.pass{color:#187052}.control{color:#885400}.downloads{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}.downloads a{padding:10px 16px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}.tablewrap{overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;font-size:13px;min-width:680px}td,th{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#e8ece3;position:sticky;top:0}td{overflow-wrap:anywhere}footer{padding:32px 0;color:var(--muted);font-size:13px}#status{min-height:24px}img{max-width:100%}
+    @media(max-width:760px){.wrap{padding:16px}.hero,.media{grid-template-columns:1fr}.hero{gap:24px;padding:32px 0}.cards,.casegrid{grid-template-columns:repeat(2,1fr)}header{flex-wrap:wrap;padding-bottom:14px}.links{gap:12px;font-size:14px}.intro{display:block}.number{font-size:23px}h2{font-size:26px}.card{padding:14px}}
+    img{height:auto}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header><a class="brand" href="../">MICRODUCK / WINGPOD</a><nav class="links" aria-label="Main navigation"><a href="../wingpod/" data-en="Viewer page" data-zh="控制中心页面">Viewer page</a><a href="#videos" data-en="Videos" data-zh="视频">Videos</a><a href="#bom">BOM</a><div class="toggle" aria-label="Language"><button id="english" aria-pressed="true">English</button><button id="chinese" aria-pressed="false">中文</button></div></nav></header>
+  <main>
+    <div class="hero"><div><p class="eyebrow">WINGPOD CAMERA v2</p><h1 data-en="A little duck. A softer perspective." data-zh="小鸭子，更柔和的新视角。">A little duck. A softer perspective.</h1><p class="lead" data-en="A cream off-white face with sage gray lens rings, navy centers, peach cheeks, and a honey beak, shown around the same proposed camera volume." data-zh="奶油白面部搭配鼠尾草灰镜圈、海军蓝镜心、桃色脸颊与蜂蜜色喙，围绕同一拟议相机体积呈现。">A cream off-white face with sage gray lens rings, navy centers, peach cheeks, and a honey beak, shown around the same proposed camera volume.</p><div class="pills"><span class="pill" data-en="Soft appearance revision" data-zh="柔和外观改版">Soft appearance revision</span><span class="pill" data-en="Same simulation controller" data-zh="同一仿真控制器">Same simulation controller</span><span class="pill" data-en="No new hardware validation" data-zh="无新增硬件验证">No new hardware validation</span></div><a class="cta" href="#videos" data-en="Review footage ↗" data-zh="查看视频 ↗">Review footage ↗</a></div><img data-asset="hero.png" width="960" height="720" alt="Soft WingPod Camera v2 with a cream face, sage gray lens rings, navy centers, peach cheeks, and honey beak"></div>
+    <div class="cards"><div class="card"><div class="number">15</div><p data-en="Actuators · 10 legs + 5 arm" data-zh="执行器 · 腿部10 + 机械臂5">Actuators · 10 legs + 5 arm</p></div><div class="card"><div class="number">75 mm</div><p data-en="Modeled open gripper gap" data-zh="仿真夹爪开口">Modeled open gripper gap</p></div><div class="card"><div class="number">28 × 17 × 5</div><p data-en="Eye housing · proposed mm" data-zh="眼睛外壳 · 候选尺寸毫米">Eye housing · proposed mm</p></div><div class="card"><div class="number" id="passcount">—</div><p data-en="Verified positive task replays" data-zh="已验证正向任务回放">Verified positive task replays</p></div></div>
+    <section id="videos"><div class="intro"><div><p class="eyebrow" data-en="SOURCE NOMINAL-0, SOFT CAMERA VIEW" data-zh="源案例 NOMINAL-0，柔和相机外观">SOURCE NOMINAL-0, SOFT CAMERA VIEW</p><h2 data-en="The same motion, replayed exactly." data-zh="同一动作，原样重放。">The same motion, replayed exactly.</h2></div><p class="muted" data-en="Pick → lift → carry → place → retreat" data-zh="抓取 → 抬起 → 搬运 → 放回 → 后退">Pick → lift → carry → place → retreat</p></div><div class="controls"><button class="choice" id="task" aria-pressed="true" data-en="Pickup & bin return" data-zh="捡球归桶">Pickup & bin return</button><button class="choice" id="design" aria-pressed="false" data-en="20-second soft design film" data-zh="20秒柔和外观展示">20-second soft design film</button><a id="downloadvideo" download data-asset="tennis-return.mp4" data-en="Download MP4" data-zh="下载MP4">Download MP4</a></div><div class="media"><div><video id="player" controls playsinline preload="metadata" data-asset="tennis-return.mp4" aria-label="WingPod simulation video"></video><p id="selection" class="muted">Soft camera view · source nominal-0 · 50.84 s</p></div><div><img class="detail" data-asset="camera-eyes-detail.png" width="960" height="720" alt="Soft cream WingPod camera face with sage gray lens rings and navy centers"><p class="notice" data-en="This primary video exactly replays source nominal-0 with the soft camera appearance. It is not new training, vision-guided control, or hardware validation; the simulated controller is unchanged." data-zh="主视频以柔和相机外观原样重放源案例 nominal-0。它不代表新训练、视觉闭环控制或硬件验证；仿真控制器未改变。">This primary video exactly replays source nominal-0 with the soft camera appearance. It is not new training, vision-guided control, or hardware validation; the simulated controller is unchanged.</p></div></div></section>
+    <section id="cases"><p class="eyebrow" data-en="HISTORICAL RECORDED EVIDENCE" data-zh="历史已录证据">HISTORICAL RECORDED EVIDENCE</p><h2 data-en="Original graphite 32-case catalog." data-zh="原版石墨灰 32 案例目录。">Original graphite 32-case catalog.</h2><p class="notice historynote" data-en="These 32 recordings keep the original graphite camera appearance. They document the same simulated controller and tennis-return matrix, not 32 fresh evaluations of the soft camera style." data-zh="这 32 段录像保留原版石墨灰相机外观。它们记录的是同一仿真控制器与捡球归桶矩阵，并非 32 次全新的柔和配色评估。">These 32 recordings keep the original graphite camera appearance. They document the same simulated controller and tennis-return matrix, not 32 fresh evaluations of the soft camera style.</p><p class="muted" data-en="Historical matrix: three ball-size variants × ten seeds, plus two expected-failure controls. This does not certify every standalone arm skill or real hardware." data-zh="历史矩阵：三种球尺寸 × 十个随机种子，以及两个预期失败对照。不代表所有独立机械臂技能或真实硬件均已通过。">Historical matrix: three ball-size variants × ten seeds, plus two expected-failure controls. This does not certify every standalone arm skill or real hardware.</p><div class="controls"><label for="filter" data-en="Show historical cases" data-zh="筛选历史案例">Show historical cases</label><select id="filter"><option value="all" data-en="All recordings" data-zh="全部录像">All recordings</option><option value="nominal" data-en="Nominal ball" data-zh="标准球">Nominal ball</option><option value="small" data-en="Small ball" data-zh="小球">Small ball</option><option value="large" data-en="Large ball" data-zh="大球">Large ball</option><option value="control" data-en="Negative controls" data-zh="反向对照">Negative controls</option></select></div><p id="status" role="status">Loading verified recordings…</p><div id="caselist" class="casegrid"></div></section>
+    <section id="bom"><p class="eyebrow" data-en="BUILT ON MICRODUCK" data-zh="基于MICRODUCK构建">BUILT ON MICRODUCK</p><h2 data-en="Parts with a paper trail." data-zh="物料清单，来源可查。">Parts with a paper trail.</h2><p class="muted" data-en="Reuse the existing base. Add the arm, wide jaws, removable shells, and camera-eye assembly. Candidate parts and alternative power architectures are not a released purchase order." data-zh="复用现有底座，增加机械臂、宽夹爪、可拆外壳和摄像头眼睛。候选物料及可选供电方案不是已放行采购单。">Reuse the existing base. Add the arm, wide jaws, removable shells, and camera-eye assembly. Candidate parts and alternative power architectures are not a released purchase order.</p><div class="downloads"><a data-asset="BOM.csv" download>BOM · CSV</a><a data-asset="BOM.json" download>BOM · JSON</a><a data-asset="PARTS.md" download data-en="Full parts list" data-zh="完整物料表">Full parts list</a><a data-asset="README.md" download data-en="Assembly & selection notes" data-zh="装配与选型说明">Assembly & selection notes</a><a data-asset="CAMERA-V2.md" download data-en="Camera design notes" data-zh="摄像头设计说明">Camera design notes</a><a data-asset="CAMERA-V2-SOFT.md" download data-en="Soft camera revision guide" data-zh="柔和相机改版指南">Soft camera revision guide</a><a data-asset="camera-spec.json" download data-en="Soft camera specification" data-zh="柔和相机规格">Soft camera specification</a><a data-asset="appearance-validation.json" download data-en="Appearance validation" data-zh="外观验证记录">Appearance validation</a><a data-asset="manifest.json" download data-en="Asset verification" data-zh="资源校验">Asset verification</a></div><div class="tablewrap" tabindex="0" aria-label="Candidate bill of materials"><table><thead><tr><th>ID</th><th data-en="Qty" data-zh="数量">Qty</th><th data-en="Part" data-zh="部件">Part</th><th data-en="Candidate / reference" data-zh="候选型号 / 参考">Candidate / reference</th><th data-en="Status" data-zh="状态">Status</th></tr></thead><tbody id="bomrows"></tbody></table></div><p id="bomstatus" role="status"></p></section>
+  </main><footer data-en="WingPod Camera v2 · Simulation evidence / candidate engineering design. No hardware, safety, payload or stereo-depth certification implied." data-zh="WingPod Camera v2 · 仿真证据 / 候选工程设计。不代表已通过硬件、安全、承重或双目深度认证。">WingPod Camera v2 · Simulation evidence / candidate engineering design. No hardware, safety, payload or stereo-depth certification implied.</footer>
+</div>
+<!-- WINGPOD_LOCAL_DATA -->
+<script>
+  const embeddedData = document.getElementById('wingpod-local-data');
+  const localData = embeddedData ? JSON.parse(embeddedData.textContent) : null;
+  const assetBase = new URL('../static/wingpod/', location.href);
+  const imageFiles = {
+    "hero.png": "hero-soft-2fe5dab4cf70.png",
+    "camera-eyes-detail.png": "camera-eyes-detail-soft-45582996692a.png",
+    "sequence-contact-sheet.jpg": "sequence-contact-sheet-soft-956664897334.jpg",
+  };
+  const asset = name => new URL(Object.hasOwn(imageFiles, name) ? imageFiles[name] : name, assetBase).href;
+  let language = 'en';
+  let catalog = null;
+  let loadError = false;
+  let selectedLabel = { en: 'Soft camera view · source nominal-0 · 50.84 s', zh: '柔和相机外观 · 源案例 nominal-0 · 50.84 秒' };
+  const text = (english, chinese) => language === 'zh' ? chinese : english;
+  try { language = localStorage.getItem('microduck.ui.language') === 'zh' ? 'zh' : 'en'; } catch {}
+  document.querySelectorAll('[data-asset]').forEach(element => {
+    if (element.tagName === 'A') element.href = asset(element.dataset.asset);
+    else element.src = asset(element.dataset.asset);
+  });
+  function switchVideo(filename, labelEn, labelZh, design) {
+    const player = document.getElementById('player');
+    player.pause(); player.src = asset(filename); player.load();
+    selectedLabel = { en: labelEn, zh: labelZh }; document.getElementById('selection').textContent = text(labelEn, labelZh);
+    document.getElementById('downloadvideo').href = asset(filename);
+    document.getElementById('design').setAttribute('aria-pressed', String(design));
+    document.getElementById('task').setAttribute('aria-pressed', String(!design));
+  }
+  function renderCases() {
+    const list = document.getElementById('caselist'); list.replaceChildren();
+    const status = document.getElementById('status');
+    if (!catalog) { status.textContent = loadError ? text('Recordings unavailable. No pass claim is made.', '录像不可用，不宣称通过。') : text('Loading verified recordings…', '正在加载已验证录像…'); return; }
+    const summary = catalog.summary;
+    document.getElementById('passcount').textContent = `${summary.positivePassed}/${summary.positiveTotal}`;
+    status.textContent = text(`${summary.controlsMatched}/${summary.controlsTotal} negative controls matched their expected failure.`, `${summary.controlsMatched}/${summary.controlsTotal} 反向对照符合预期失败结果。`);
+    const filter = document.getElementById('filter').value;
+    catalog.cases.filter(record => filter === 'all' || record.variant === filter).forEach(record => {
+      const card = document.createElement('article'); card.className = 'case'; card.dataset.caseId = record.id;
+      const button = document.createElement('button'); button.textContent = record.id;
+      button.onclick = () => { switchVideo(record.video, `Historical original-graphite case · ${record.id} · ${record.durationSeconds.toFixed(2)} s`, `历史原版石墨灰案例 · ${record.id} · ${record.durationSeconds.toFixed(2)} 秒`, false); document.getElementById('videos').scrollIntoView(); };
+      const outcome = document.createElement('p'); outcome.className = record.taskSuccess ? 'pass' : 'control';
+      outcome.textContent = record.kind === 'negative_control' ? text('Negative control · expected failure', '反向对照 · 预期失败') : record.taskSuccess ? text('Simulation task PASS', '仿真任务通过') : text('Task did not pass', '任务未通过');
+      const info = document.createElement('p'); info.textContent = `${record.durationSeconds.toFixed(2)} s · ${record.frames} ${text('frames', '帧')}`;
+      const receipt = document.createElement('a'); receipt.href = asset(record.receipt); receipt.textContent = text('Verification receipt', '验证记录'); receipt.download = '';
+      card.append(button, outcome, info, receipt); list.append(card);
+    });
+  }
+  function translate() {
+    document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
+    document.querySelectorAll('[data-en]').forEach(element => { element.textContent = element.dataset[language]; });
+    document.getElementById('english').setAttribute('aria-pressed', String(language === 'en'));
+    document.getElementById('chinese').setAttribute('aria-pressed', String(language === 'zh'));
+    document.getElementById('selection').textContent = text(selectedLabel.en, selectedLabel.zh);
+    renderCases();
+  }
+  function setLanguage(value) { language = value; try { localStorage.setItem('microduck.ui.language', value); } catch {} translate(); }
+  document.getElementById('english').onclick = () => setLanguage('en');
+  document.getElementById('chinese').onclick = () => setLanguage('zh');
+  document.getElementById('filter').onchange = renderCases;
+  document.getElementById('design').onclick = () => switchVideo('wingpod-camera-eyes.mp4', 'Soft camera appearance revision · 20 s', '柔和相机外观改版 · 20 秒', true);
+  document.getElementById('task').onclick = () => switchVideo('tennis-return.mp4', 'Soft camera view · source nominal-0 · 50.84 s', '柔和相机外观 · 源案例 nominal-0 · 50.84 秒', false);
+  window.addEventListener('storage', event => { if (event.key === 'microduck.ui.language') { language = event.newValue === 'zh' ? 'zh' : 'en'; translate(); } });
+  translate();
+  const loadJson = filename => localData?.[filename] ? Promise.resolve(localData[filename]) : fetch(asset(filename)).then(response => { if (!response.ok) throw new Error('Data unavailable'); return response.json(); });
+  loadJson('cases.json').then(value => { if (!Array.isArray(value.cases) || !value.summary) throw new Error('Invalid catalog'); catalog = value; renderCases(); }).catch(() => { loadError = true; renderCases(); });
+  loadJson('BOM.json').then(value => {
+    const body = document.getElementById('bomrows');
+    value.parts.forEach(part => { const row = document.createElement('tr'); [part.id, `${part.quantity} ${part.unit}`, part.item, part.candidate_or_reference, part.status].forEach(value => { const cell = document.createElement('td'); cell.textContent = value; row.append(cell); }); body.append(row); });
+  }).catch(() => { document.getElementById('bomstatus').textContent = text('BOM unavailable; please use the source engineering documentation.', '物料表不可用，请查阅源工程文档。'); });
+</script>
+</body>
+</html>
