@@ -540,19 +540,37 @@ test("saved Drawing runs restore brush only from recipe or exact contract metada
     completeAssessment = true,
     conditionCount = 10,
     sourcePackMismatch = false,
+    pipelineOnlyDrift = false,
+    otherSourceDrift = false,
   } = {}) {
     const f = fixture();
     f.add(runName, "checkpoint", "drawing");
     f.add(runName, "onnx", "drawing");
     const checkpoint = f.artifact(runName, "checkpoint", "drawing");
     const onnx = f.artifact(runName, "onnx", "drawing");
-    const sourceHashes = {
-      pipeline_sha256: "1".repeat(64),
-      environment_sha256: "2".repeat(64),
-      reference_sha256: "3".repeat(64),
-      actor_sha256: "4".repeat(64),
-      base_environment_sha256: "5".repeat(64),
-      base_reference_sha256: "6".repeat(64),
+    const archivedSources = {
+      pipeline_sha256: ["ppo_microduck_brush.py", "training pipeline"],
+      environment_sha256: ["brush.py", "brush environment"],
+      reference_sha256: ["brush_reference.py", "brush reference"],
+      actor_sha256: ["drawing_feedback.py", "drawing actor"],
+      base_environment_sha256: ["drawing.py", "base drawing environment"],
+      base_reference_sha256: ["drawing_reference.py", "base drawing reference"],
+    };
+    const sourceHashes = Object.fromEntries(
+      Object.entries(archivedSources).map(([key, [, bytes]]) => [
+        key,
+        createHash("sha256").update(bytes).digest("hex"),
+      ])
+    );
+    for (const [, [filename, bytes]] of Object.entries(archivedSources)) {
+      f.files.set(path.join(path.dirname(checkpoint), "sources", filename), bytes);
+    }
+    const reportSourceHashes = {
+      ...sourceHashes,
+      ...(pipelineOnlyDrift
+        ? { pipeline_sha256: createHash("sha256").update("current evaluator").digest("hex") }
+        : {}),
+      ...(otherSourceDrift ? { actor_sha256: "7".repeat(64) } : {}),
     };
     f.files.set(f.artifact(runName, "metadata", "drawing"), JSON.stringify({
       contract_version: metadataContract,
@@ -573,7 +591,11 @@ test("saved Drawing runs restore brush only from recipe or exact contract metada
       minimum_seeds_per_condition: 4,
       environment_source_match: true,
       provenance_errors: [],
-      source_hashes: sourceHashes,
+      source_hashes: reportSourceHashes,
+      ...(pipelineOnlyDrift ? {
+        training_pipeline_source_match: false,
+        training_source_hashes: sourceHashes,
+      } : {}),
       evaluation: {
         mode: "skill",
         seed: 7,
@@ -659,6 +681,81 @@ test("saved Drawing runs restore brush only from recipe or exact contract metada
   const rejectedSourcePack = await changedSourcePack.api.snapshot("drawing", "source-pack-mismatch");
   assert.equal(rejectedSourcePack.evaluation, null);
   assert.equal(rejectedSourcePack.savedRecipe, null);
+
+  const pipelineDrift = savedBrushFixture("pipeline-only-drift", {
+    pipelineOnlyDrift: true,
+  });
+  const acceptedPipelineDrift = await pipelineDrift.api.snapshot("drawing", "pipeline-only-drift");
+  assert.equal(acceptedPipelineDrift.evaluation.passed, true);
+  assert.equal(evaluationVerdict(acceptedPipelineDrift.evaluation, "drawing").taskPassed, true);
+
+  const standalone = savedBrushFixture("standalone-brush", { pipelineOnlyDrift: true });
+  const standalonePath = standalone.artifact("standalone-brush", "evaluation", "drawing");
+  const standaloneReport = JSON.parse(standalone.files.get(standalonePath));
+  delete standaloneReport.evaluation_request;
+  standaloneReport.evaluation_settings_match = true;
+  standaloneReport.evaluation.seed = 10001;
+  standalone.files.set(standalonePath, JSON.stringify(standaloneReport));
+  standalone.setReadRenderEvidence((_receipt, expected) => {
+    assert.equal(expected.recipeKey, JSON.stringify({ contract: "microduck-brush-v2", operation: "render", seed: 10001, maxEpisodeS: 120 }));
+    assert.equal(expected.source, standalone.artifact("standalone-brush", "onnx", "drawing"));
+    assert.equal(expected.sourceFiles.length, 3);
+    return { video: { sha256: "verified-video" } };
+  });
+  const standaloneState = await standalone.api.snapshot("drawing", "standalone-brush");
+  assert.equal(standaloneState.renderVerified, true);
+  assert.equal(standaloneState.savedRecipe, null);
+  standaloneReport.evaluation.seed = undefined;
+  standalone.files.set(standalonePath, JSON.stringify(standaloneReport));
+  assert.equal((await standalone.api.snapshot("drawing", "standalone-brush")).renderVerified, false);
+
+  for (const [runName, mutateReport] of [
+    ["missing-pipeline-mismatch-flag", (report) => {
+      delete report.training_pipeline_source_match;
+    }],
+    ["training-source-hash-mismatch", (report) => {
+      report.training_source_hashes = {
+        ...report.training_source_hashes,
+        pipeline_sha256: "8".repeat(64),
+      };
+    }],
+    ["reported-provenance-error", (report) => {
+      report.provenance_errors = ["training source archive mismatch"];
+    }],
+  ]) {
+    const invalidReport = savedBrushFixture(runName, { pipelineOnlyDrift: true });
+    const evaluationPath = invalidReport.artifact(runName, "evaluation", "drawing");
+    const report = JSON.parse(invalidReport.files.get(evaluationPath));
+    mutateReport(report);
+    invalidReport.files.set(evaluationPath, JSON.stringify(report));
+    assert.equal((await invalidReport.api.snapshot("drawing", runName)).evaluation, null);
+  }
+
+  const otherDrift = savedBrushFixture("other-source-drift", {
+    pipelineOnlyDrift: true,
+    otherSourceDrift: true,
+  });
+  assert.equal((await otherDrift.api.snapshot("drawing", "other-source-drift")).evaluation, null);
+
+  for (const [runName, mutateArchive] of [
+    ["missing-source-archive", (f, checkpointPath) => {
+      f.files.delete(path.join(path.dirname(checkpointPath), "sources", "ppo_microduck_brush.py"));
+    }],
+    ["wrong-source-archive", (f, checkpointPath) => {
+      f.files.set(path.join(path.dirname(checkpointPath), "sources", "brush.py"), "tampered archive");
+    }],
+  ]) {
+    const archiveMismatch = savedBrushFixture(runName, { pipelineOnlyDrift: true });
+    mutateArchive(archiveMismatch, archiveMismatch.artifact(runName, "checkpoint", "drawing"));
+    assert.equal((await archiveMismatch.api.snapshot("drawing", runName)).evaluation, null);
+  }
+
+  for (const kind of ["checkpoint", "onnx"]) {
+    const runName = `tampered-${kind}`;
+    const tampered = savedBrushFixture(runName, { pipelineOnlyDrift: true });
+    tampered.files.set(tampered.artifact(runName, kind, "drawing"), `tampered ${kind}`);
+    assert.equal((await tampered.api.snapshot("drawing", runName)).evaluation, null);
+  }
 });
 
 test("Basketball fails before spawn when local reference inputs are incomplete", () => {

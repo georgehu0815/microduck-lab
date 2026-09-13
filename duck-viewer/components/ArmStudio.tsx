@@ -24,6 +24,7 @@ import { armCaseTitle } from "@/lib/arm-labels";
 import { IS_STATIC_EXPORT } from "@/lib/static-assets";
 import styles from "./ArmStudio.module.css";
 import ArmVideoLibrary from "./ArmVideoLibrary";
+import ContactDialog from "./ContactDialog";
 import { LanguageToggle, useLanguage } from "./LanguageProvider";
 
 const DEFAULT_CASE: ArmCaseId = "arm-reach-v1";
@@ -383,6 +384,7 @@ export default function ArmStudio() {
   const [error, setError] = useState<string | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [showRunHistory, setShowRunHistory] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const commandLock = useRef(false);
 
   useEffect(() => {
@@ -580,15 +582,17 @@ export default function ArmStudio() {
         </div>
         <div className={styles.headerActions}>
           <LanguageToggle />
-          <a
+          <button
+            type="button"
             className={styles.contactButton}
-            href="mailto:bochuxt7@gmail.com"
-            title={t("Email bochuxt7@gmail.com", "发送邮件至 bochuxt7@gmail.com")}
-            aria-label={t("Email bochuxt7@gmail.com", "发送邮件至 bochuxt7@gmail.com")}
+            style={{ font: "inherit", letterSpacing: 0, cursor: "pointer" }}
+            onClick={() => setContactOpen(true)}
+            title={t("Open contact options", "打开联系选项")}
+            aria-label={t("Open contact options", "打开联系选项")}
           >
             <Icon>✉</Icon>
             <span>{t("Contact", "联系")}</span>
-          </a>
+          </button>
           <span className={styles.lockBadge}>
             <Icon>▣</Icon>
             {t("HARDWARE LOCKED · NO UNIX TRANSPORT", "硬件已锁定 · 无 UNIX 传输")}
@@ -1029,6 +1033,7 @@ export default function ArmStudio() {
         </section>
         </>}
       </main>
+      <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
 }

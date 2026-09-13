@@ -28,6 +28,7 @@ import { IS_STATIC_EXPORT, publicAssetUrl, staticStudioArtifactUrl } from "@/lib
 import type { RlxRecipe } from "@/lib/rlx-job";
 import type { RlxTrainingHistory } from "@/lib/rlx-history";
 import { AnimPanel } from "./AnimPanel";
+import ContactDialog from "./ContactDialog";
 import { LanguageToggle, useLanguage } from "./LanguageProvider";
 import { PolicyPanel } from "./PolicyPanel";
 import { TeachPanel } from "./TeachPanel";
@@ -541,6 +542,7 @@ export default function Studio() {
   const [now, setNow] = useState(Date.now());
   const [labRewardHistory, setLabRewardHistory] = useState<RewardPoint[]>([]);
   const [viewerExpanded, setViewerExpanded] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [rewardHistoryOpen, setRewardHistoryOpen] = useState(false);
   const [rewardHistoryCopied, setRewardHistoryCopied] = useState(false);
   const [guidanceExperimentId, setGuidanceExperimentId] =
@@ -948,7 +950,7 @@ export default function Studio() {
     setBusy(true);
     try {
       const href = IS_STATIC_EXPORT
-        ? staticStudioArtifactUrl(experimentId, runName, "evaluation")
+        ? staticStudioArtifactUrl(experimentId, runName, "evaluation", savedRuns.find((run) => run.experimentId === experimentId && run.runName === runName)?.renderEvidenceId)
         : `/api/rlx?experiment=${experimentId}&run=${encodeURIComponent(runName)}`;
       const response = await fetch(href, { cache: "no-store" });
       if (!response.ok) throw new Error(t("Cannot load saved run.", "无法加载已保存的运行。"));
@@ -982,18 +984,19 @@ export default function Studio() {
       });
       return;
     }
-    const previewRun = latestVerifiedRun(savedRuns, selectedExperimentId);
+    const previewRun = latestVerifiedRun(savedRuns, selectedExperimentId)
+      ?? latestDiagnosticRun(savedRuns, selectedExperimentId);
     if (previewRun) {
       window.open(
         IS_STATIC_EXPORT
-          ? staticStudioArtifactUrl(selectedExperimentId, previewRun.runName, "video")
+          ? staticStudioArtifactUrl(selectedExperimentId, previewRun.runName, "video", previewRun.renderEvidenceId)
           : `/api/rlx/artifact?experiment=${selectedExperimentId}&run=${encodeURIComponent(previewRun.runName)}&kind=video&inline=1`,
         "_blank",
         "noopener,noreferrer"
       );
       return;
     }
-    if (selectedExperiment.video) {
+    if (!IS_STATIC_EXPORT && selectedExperiment.video) {
       window.open(publicAssetUrl(selectedExperiment.video), "_blank", "noopener,noreferrer");
       return;
     }
@@ -1200,7 +1203,7 @@ export default function Studio() {
 
   function artifactHref(kind: "checkpoint" | "metadata" | "onnx" | "sheet" | "video") {
     if (IS_STATIC_EXPORT && (kind === "sheet" || kind === "video")) {
-      return staticStudioArtifactUrl(recipe.experimentId, recipe.runName, kind);
+      return staticStudioArtifactUrl(recipe.experimentId, recipe.runName, kind, job.renderEvidenceId);
     }
     return `/api/rlx/artifact?experiment=${recipe.experimentId}&run=${encodeURIComponent(recipe.runName)}&kind=${kind}`;
   }
@@ -1250,17 +1253,27 @@ export default function Studio() {
           <a className={styles.navItem} href="#deployment" aria-label={t("Robot fleet", "机器人群组")}><Icon>⌾</Icon><span>{t("Robot fleet", "机器人群组")}</span></a>
           <a className={styles.navItem} href="#deployment" aria-label={t("Deployments", "部署")}><Icon>♢</Icon><span>{t("Deployments", "部署")}</span></a>
           <a className={styles.navItem} href="#system" aria-label={t("Settings", "设置")}><Icon>⚙</Icon><span>{t("Settings", "设置")}</span></a>
-          <a className={styles.navItem} href="mailto:bochuxt7@gmail.com" aria-label={t("Email bochuxt7@gmail.com", "发送邮件至 bochuxt7@gmail.com")}><Icon>✉</Icon><span>{t("Contact", "联系")}</span></a>
+          <button
+            type="button"
+            className={styles.navItem}
+            style={{ border: 0, background: "transparent", font: "inherit", letterSpacing: 0, textAlign: "left", cursor: "pointer" }}
+            onClick={() => setContactOpen(true)}
+            aria-label={t("Open contact options", "打开联系选项")}
+          >
+            <Icon>✉</Icon><span>{t("Contact", "联系")}</span>
+          </button>
         </nav>
         <div className={styles.sidebarBottom}>
-          <a
+          <button
+            type="button"
             className={styles.contactLink}
-            href="mailto:bochuxt7@gmail.com"
-            aria-label={t("Email bochuxt7@gmail.com", "发送邮件至 bochuxt7@gmail.com")}
+            style={{ width: "100%", font: "inherit", letterSpacing: 0, textAlign: "left", cursor: "pointer" }}
+            onClick={() => setContactOpen(true)}
+            aria-label={t("Open contact options", "打开联系选项")}
           >
             <Icon>✉</Icon>
             <span>{t("Contact", "联系")}<small>bochuxt7@gmail.com</small></span>
-          </a>
+          </button>
           <div className={styles.localStatus}>
             <strong><i className={connected ? styles.onlineDot : styles.offlineDot} />{IS_STATIC_EXPORT ? t("Static evidence mode", "静态证据模式") : connected ? t("Duck Lab connected", "Duck Lab 已连接") : t("Local studio ready", "本地 Studio 已就绪")}</strong>
             <p>{IS_STATIC_EXPORT ? t("Saved videos and evaluations", "已保存的视频与评估") : connected ? t("Live frames on :8788", "实时帧来自 :8788") : t("RLX jobs run on this Mac", "RLX 作业在本机运行")}</p>
@@ -1287,15 +1300,17 @@ export default function Studio() {
                 <Icon>▷</Icon>
                 <span>{t("Arm videos", "机械臂视频")}</span>
               </Link>
-              <a
+              <button
+                type="button"
                 className={styles.mobileContact}
-                href="mailto:bochuxt7@gmail.com"
-                title={t("Email bochuxt7@gmail.com", "发送邮件至 bochuxt7@gmail.com")}
-                aria-label={t("Email bochuxt7@gmail.com", "发送邮件至 bochuxt7@gmail.com")}
+                style={{ background: "transparent", font: "inherit", letterSpacing: 0, cursor: "pointer" }}
+                onClick={() => setContactOpen(true)}
+                title={t("Open contact options", "打开联系选项")}
+                aria-label={t("Open contact options", "打开联系选项")}
               >
                 <Icon>✉</Icon>
                 <span>{t("Contact", "联系")}</span>
-              </a>
+              </button>
               <div className={styles.mobileLanguageToggle}>
                 <LanguageToggle />
               </div>
@@ -1370,17 +1385,17 @@ export default function Studio() {
               const runQuery = previewRun ? new URLSearchParams({ experiment: experiment.id, run: previewRun.runName }).toString() : null;
               const videoHref = previewRun
                 ? IS_STATIC_EXPORT
-                  ? staticStudioArtifactUrl(experiment.id, previewRun.runName, "video")
+                  ? staticStudioArtifactUrl(experiment.id, previewRun.runName, "video", previewRun.renderEvidenceId)
                   : `/api/rlx/artifact?${runQuery}&kind=video&inline=1&v=${encodeURIComponent(previewRun.renderEvidenceId!)}`
                 : null;
               const sheetHref = previewRun
                 ? IS_STATIC_EXPORT
-                  ? staticStudioArtifactUrl(experiment.id, previewRun.runName, "sheet")
+                  ? staticStudioArtifactUrl(experiment.id, previewRun.runName, "sheet", previewRun.renderEvidenceId)
                   : `/api/rlx/artifact?${runQuery}&kind=sheet&v=${encodeURIComponent(previewRun.renderEvidenceId!)}`
                 : null;
               const evaluationHref = previewRun
                 ? IS_STATIC_EXPORT
-                  ? staticStudioArtifactUrl(experiment.id, previewRun.runName, "evaluation")
+                  ? staticStudioArtifactUrl(experiment.id, previewRun.runName, "evaluation", previewRun.renderEvidenceId)
                   : `/api/rlx?${runQuery}`
                 : null;
               return (
@@ -1454,6 +1469,7 @@ export default function Studio() {
                           : t("Latest successful trained policy", "最新成功训练策略")
                       : experimentText.readiness}</strong>
                     {previewRun && <small className={styles.previewRunName}>{previewRun.runName}</small>}
+                    {previewRun?.trainedAt && <small>{t("Trained", "训练时间")}: {new Date(previewRun.trainedAt).toISOString().replace("T", " ").slice(0, 16)} UTC</small>}
                     <small>{previewRun
                       ? balanceOnlyPreview
                         ? t("Matched balance evidence and rollout · steering remains failed", "平衡证据与回放匹配 · 转向仍未通过")
@@ -1558,7 +1574,7 @@ export default function Studio() {
             </div>
             <div className={styles.coachActions}>
               <button className={styles.button} onClick={previewSelectedExperiment}>
-                <Icon>▶</Icon> {t("Preview reference", "预览参考")}
+                <Icon>▶</Icon> {IS_STATIC_EXPORT ? t("Latest saved video", "最新已保存视频") : t("Preview reference", "预览参考")}
               </button>
               {IS_STATIC_EXPORT ? (
                 <a className={`${styles.button} ${styles.primary}`} href="#evaluation">
@@ -2640,6 +2656,7 @@ export default function Studio() {
           </div>
         )}
       </dialog>
+      <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
   );
 }

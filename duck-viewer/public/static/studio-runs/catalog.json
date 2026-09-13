@@ -1,5 +1,29 @@
 {
+  "generatedAt": "2026-09-13T16:55:44.233Z",
   "runs": [
+    {
+      "experimentId": "drawing",
+      "drawingTool": "brush",
+      "runName": "brush-color-v2-03",
+      "modifiedAt": "2026-09-11T22:20:38.583Z",
+      "trainedAt": "2026-09-11T20:38:20.373Z",
+      "policyModifiedAt": "2026-09-11T20:38:20.428Z",
+      "onnx": true,
+      "swingMinSpanDeg": null,
+      "scope": "skill",
+      "pipelinePassed": true,
+      "skillAssessed": true,
+      "balanceOnly": false,
+      "basketballBalancePassed": false,
+      "basketballSteeringPassed": false,
+      "bridgeUnassisted": false,
+      "drawingUnassisted": true,
+      "taskPassed": true,
+      "video": true,
+      "checkpoint": true,
+      "renderVerified": true,
+      "renderEvidenceId": "f27400ba6b7d266cf1792c684c439ec27ffbaaf949ecb2a6c66ac9f891ea308a"
+    },
     {
       "experimentId": "drawing",
       "drawingTool": "pencil",

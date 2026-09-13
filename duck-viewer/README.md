@@ -33,6 +33,24 @@ alone does not republish the site. To refresh the recorded-media snapshot from a
 running local viewer, use `npm run export:static-media` before building and review
 the resulting media changes before committing.
 
+Arm videos default to the newest source-verified successful episode for each
+case; **All recordings (history)** retains historical and failed evidence.
+Studio likewise prefers the newest verified success, not a newer failed run.
+The colored brush run `brush-color-v2-03` includes its accepted evaluation and
+matching video. Basketball remains balance-only; Bridge has diagnostic evidence,
+not a successful crossing. These limitations are not upgraded by publishing.
+
+Media export validates video hashes and render provenance before replacing the
+snapshot, retains a backup, and writes `public/static/manifest.json`. Arm video
+filenames are content-addressed; Studio preview URLs include evidence revisions
+to prevent stale video caches.
+
+**Contact** opens an English/Chinese dialog on both routes, including mobile.
+It exposes the email address, Copy address, Write email, and Open Gmail. Unlike
+the previous mailto-only button, it remains useful without a configured mail
+client. If clipboard access is unavailable, the address is selected for manual
+copying. No message is sent by the site.
+
 For browser verification, point `PLAYWRIGHT_PACKAGE` at a `package.json` whose
 installed dependencies include Playwright (no runtime dependency is added here):
 
@@ -42,8 +60,9 @@ PLAYWRIGHT_PACKAGE=/path/to/browser-tools/package.json node scripts/verify-pages
 ```
 
 With no URL, the verifier serves `out/` under the exact Pages prefix without an
-API or SPA fallback. It checks media availability, saved-video playback, eight
-scenario selectors, language switching, navigation, mobile overflow, and absence
+API or SPA fallback. It checks manifest hashes, latest-success selection,
+saved-video playback, Contact interactions, eight scenario selectors,
+language switching, navigation, mobile overflow, and absence
 of backend requests. Screenshots and its report stay in ignored
 `.omx/artifacts/github-pages/`.
 

@@ -13,9 +13,11 @@ export function staticStudioArtifactUrl(
   experimentId: string,
   runName: string,
   kind: "video" | "sheet" | "evaluation",
+  revision?: string | null,
 ): string {
   const extension = kind === "video" ? "mp4" : kind === "sheet" ? "png" : "json";
-  return publicAssetUrl(
+  const asset = publicAssetUrl(
     `/static/studio-runs/${encodeURIComponent(experimentId)}/${encodeURIComponent(runName)}/${kind}.${extension}`,
   );
+  return revision ? `${asset}?v=${encodeURIComponent(revision)}` : asset;
 }

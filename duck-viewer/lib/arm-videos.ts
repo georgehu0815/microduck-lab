@@ -15,6 +15,9 @@ export interface ArmVideo {
   durationSeconds: number | null;
   failedGates: string[];
   selectionReasons: string[];
+  videoHash: string;
+  evidenceRecordedAt: string | null;
+  receiptRecordedAt: string | null;
   videoUrl: string;
   evidenceUrl: string | null;
 }

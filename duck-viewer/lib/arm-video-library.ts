@@ -55,6 +55,8 @@ interface Candidate {
   durationSeconds: number | null;
   failedGates: string[];
   selectionReasons: string[];
+  evidenceRecordedAt: string | null;
+  receiptRecordedAt: string | null;
   evidencePath: string | null;
   verified: boolean;
   source: "manifest" | "receipt" | "chapters" | "none";
@@ -70,8 +72,9 @@ interface EvidenceEntry {
   failedGates: string[];
   selectionReasons: string[];
   videoHash: string;
-  receiptHash: string | null;
+  receiptHash: string;
   receiptPath: string;
+  evidenceRecordedAt: string | null;
 }
 
 interface ReceiptEvidence {
@@ -82,6 +85,7 @@ interface ReceiptEvidence {
   passed: boolean;
   failedGates: string[];
   provenance: ArmVideo["provenance"];
+  receiptRecordedAt: string | null;
 }
 
 interface ChapterEvidence {
@@ -119,6 +123,17 @@ function stringArray(value: unknown): string[] | null {
     return null;
   }
   return [...new Set(value)];
+}
+
+function recordedAt(value: unknown): string | null {
+  if (
+    typeof value !== "string" ||
+    !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(value) ||
+    !Number.isFinite(Date.parse(value))
+  ) {
+    return null;
+  }
+  return value.endsWith("+00:00") ? `${value.slice(0, -6)}Z` : value;
 }
 
 function slashPath(value: string): string {
@@ -281,7 +296,11 @@ function failedGatesFrom(value: unknown): string[] | null {
     .sort();
 }
 
-function parseEvidenceEntry(value: unknown, batchDir: string): EvidenceEntry | null {
+function parseEvidenceEntry(
+  value: unknown,
+  batchDir: string,
+  evidenceRecordedAt: string | null
+): EvidenceEntry | null {
   if (!isRecord(value)) return null;
   const failedGates = stringArray(value.failed_gates);
   const selectionReasons = stringArray(value.selection_reasons);
@@ -299,6 +318,8 @@ function parseEvidenceEntry(value: unknown, batchDir: string): EvidenceEntry | n
     !selectionReasons ||
     typeof value.video_sha256 !== "string" ||
     !SHA256.test(value.video_sha256) ||
+    typeof value.receipt_sha256 !== "string" ||
+    !SHA256.test(value.receipt_sha256) ||
     typeof value.receipt !== "string"
   ) {
     return null;
@@ -316,11 +337,9 @@ function parseEvidenceEntry(value: unknown, batchDir: string): EvidenceEntry | n
     failedGates,
     selectionReasons,
     videoHash: value.video_sha256,
-    receiptHash:
-      typeof value.receipt_sha256 === "string" && SHA256.test(value.receipt_sha256)
-        ? value.receipt_sha256
-        : null,
+    receiptHash: value.receipt_sha256,
     receiptPath,
+    evidenceRecordedAt,
   };
 }
 
@@ -328,18 +347,34 @@ async function evidenceEntries(
   jsonFiles: string[],
   artifactRoot: string,
   warnings: string[]
-): Promise<Map<string, EvidenceEntry>> {
+): Promise<{
+  entries: Map<string, EvidenceEntry>;
+  batchRecordedAt: Map<string, string>;
+}> {
   const entries = new Map<string, EvidenceEntry>();
+  const batchRecordedAt = new Map<string, string>();
   for (const filePath of jsonFiles.filter((item) => path.basename(item) === "video-evidence.json")) {
     const relative = slashPath(path.relative(artifactRoot, filePath));
     try {
       const raw = await readJson(filePath);
-      if (!isRecord(raw) || !Array.isArray(raw.videos)) {
+      if (
+        !isRecord(raw) ||
+        raw.evidence_verification_passed !== true ||
+        !Array.isArray(raw.videos)
+      ) {
         warnings.push(`Malformed video evidence: ${relative}`);
         continue;
       }
+      const manifestRecordedAt = recordedAt(raw.created_at);
+      if (manifestRecordedAt) {
+        batchRecordedAt.set(path.dirname(filePath), manifestRecordedAt);
+      }
       for (const item of raw.videos) {
-        const parsed = parseEvidenceEntry(item, path.dirname(filePath));
+        const parsed = parseEvidenceEntry(
+          item,
+          path.dirname(filePath),
+          manifestRecordedAt
+        );
         if (!parsed) {
           warnings.push(`Malformed video evidence entry: ${relative}`);
           continue;
@@ -356,7 +391,7 @@ async function evidenceEntries(
       warnings.push(`Malformed video evidence: ${relative}`);
     }
   }
-  return entries;
+  return { entries, batchRecordedAt };
 }
 
 function parseReceipt(
@@ -411,6 +446,7 @@ function parseReceipt(
     passed: metrics.passed,
     failedGates: gates,
     provenance: provenanceFor(declaredHashes, currentHashes),
+    receiptRecordedAt: recordedAt(raw.created_at),
   };
 }
 
@@ -485,6 +521,8 @@ function baseCandidate(file: FileRecord): Candidate {
     durationSeconds: null,
     failedGates: [],
     selectionReasons: [],
+    evidenceRecordedAt: null,
+    receiptRecordedAt: null,
     evidencePath: null,
     verified: false,
     source: "none",
@@ -510,7 +548,7 @@ async function episodeCandidate(
     }
     const entryValid =
       entry.videoHash === file.hash &&
-      (!entry.receiptHash || entry.receiptHash === receipt.hash) &&
+      entry.receiptHash === receipt.hash &&
       entryReceiptPath === receipt.path &&
       entry.caseId === receipt.evidence.caseId &&
       entry.evaluationSeed === receipt.evidence.evaluationSeed &&
@@ -538,6 +576,8 @@ async function episodeCandidate(
         durationSeconds: entry.durationSeconds,
         failedGates: entry.failedGates,
         selectionReasons: entry.selectionReasons,
+        evidenceRecordedAt: entry.evidenceRecordedAt,
+        receiptRecordedAt: receipt.evidence.receiptRecordedAt,
         evidencePath: receiptRelative,
         verified: receipt.evidence.provenance !== "unverified",
         source: "manifest",
@@ -570,6 +610,7 @@ async function episodeCandidate(
       evaluationSeed: evidence.evaluationSeed,
       durationSeconds: evidence.durationSeconds,
       failedGates: evidence.failedGates,
+      receiptRecordedAt: evidence.receiptRecordedAt,
       evidencePath: slashPath(path.relative(artifactRoot, receipt.path)),
       verified: evidence.provenance !== "unverified",
       source: "receipt",
@@ -617,6 +658,7 @@ async function compilationCandidate(
   file: FileRecord,
   artifactRoot: string,
   candidatesByHash: Map<string, Candidate[]>,
+  evidenceRecordedAt: string | null,
   currentHashes: ArmVideoLibraryOptions["currentHashes"],
   warnings: string[]
 ): Promise<Candidate> {
@@ -674,6 +716,8 @@ async function compilationCandidate(
       durationSeconds: parsed.durationSeconds,
       failedGates: [...new Set(verified.flatMap((item) => item.failedGates))].sort(),
       selectionReasons: [],
+      evidenceRecordedAt,
+      receiptRecordedAt: null,
       evidencePath: slashPath(path.relative(artifactRoot, chaptersPath)),
       verified: provenance !== "unverified",
       source: "chapters",
@@ -767,6 +811,9 @@ function mergeGroup(group: Candidate[]): ArmVideo {
     durationSeconds: primary.durationSeconds,
     failedGates: primary.failedGates,
     selectionReasons: primary.selectionReasons,
+    videoHash: primary.file.hash,
+    evidenceRecordedAt: primary.evidenceRecordedAt,
+    receiptRecordedAt: primary.receiptRecordedAt,
     videoUrl: videoUrl(primary.file.relativePath),
     evidenceUrl: primary.evidencePath ? videoUrl(primary.evidencePath) : null,
   };
@@ -796,19 +843,32 @@ export async function listArmVideoLibrary(
   if (!hashes) warnings.push("Current Arm environment or pipeline hashes are unavailable.");
 
   const catalogRoot = files.resolvedRoot;
-  const entries = await evidenceEntries(files.jsonFiles, catalogRoot, warnings);
+  const evidence = await evidenceEntries(files.jsonFiles, catalogRoot, warnings);
   const compilationFlags = await Promise.all(files.videos.map(hasCompilationReceipt));
   const episodeFiles = files.videos.filter((_, index) => !compilationFlags[index]);
   const episodeCandidates = await Promise.all(
     episodeFiles.map((file) =>
-      episodeCandidate(file, catalogRoot, entries.get(file.relativePath), hashes, warnings)
+      episodeCandidate(
+        file,
+        catalogRoot,
+        evidence.entries.get(file.relativePath),
+        hashes,
+        warnings
+      )
     )
   );
   const candidatesByHash = Map.groupBy(episodeCandidates, (item) => item.file.hash);
   const compilationFiles = files.videos.filter((_, index) => compilationFlags[index]);
   const compilationCandidates = await Promise.all(
     compilationFiles.map((file) =>
-      compilationCandidate(file, catalogRoot, candidatesByHash, hashes, warnings)
+      compilationCandidate(
+        file,
+        catalogRoot,
+        candidatesByHash,
+        evidence.batchRecordedAt.get(path.dirname(file.absolutePath)) ?? null,
+        hashes,
+        warnings
+      )
     )
   );
   const allCandidates = [...episodeCandidates, ...compilationCandidates];

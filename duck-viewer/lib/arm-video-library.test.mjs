@@ -52,7 +52,14 @@ function load(filename) {
 }
 
 const { listArmVideoLibrary, serveArmMedia } = load("arm-video-library.ts");
+const {
+  compareArmVideosNewestFirst,
+  missingCurrentSuccessCaseIds,
+  selectLatestCurrentSuccesses,
+} = load("arm-video-selection.ts");
 const plain = (value) => JSON.parse(JSON.stringify(value));
+const MANIFEST_CREATED_AT = "2026-09-12T23:45:49.413674+00:00";
+const RECEIPT_CREATED_AT = "2026-09-12T23:43:58.280618+00:00";
 const CURRENT = {
   environment: "a".repeat(64),
   pipeline: "b".repeat(64),
@@ -97,6 +104,8 @@ function fixture(t) {
     failedGates = [],
     sourceHashes = CURRENT,
     manifest = true,
+    manifestCreatedAt = MANIFEST_CREATED_AT,
+    receiptCreatedAt = RECEIPT_CREATED_AT,
     receiptOverrides = {},
   }) {
     const videoRelative = `${batch}/videos/${id}/rollout.mp4`;
@@ -126,6 +135,7 @@ function fixture(t) {
         metrics: { passed, gates },
       },
       source_hashes: sourceHashes,
+      created_at: receiptCreatedAt,
       video_sha256: videoHash,
       media_hashes: { "rollout.mp4": videoHash },
       ...receiptOverrides,
@@ -133,7 +143,11 @@ function fixture(t) {
     const receiptPath = write(receiptRelative, receipt);
     if (manifest) {
       const manifestPath = path.join(artifactRoot, batch, "video-evidence.json");
-      let evidence = { videos: [] };
+      let evidence = {
+        created_at: manifestCreatedAt,
+        evidence_verification_passed: true,
+        videos: [],
+      };
       if (fs.existsSync(manifestPath)) {
         evidence = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
       }
@@ -224,9 +238,157 @@ test("discovers, verifies, and deduplicates episode videos with aliases", async 
     durationSeconds: 4.25,
     failedGates: [],
     selectionReasons: ["first-new-seed"],
+    videoHash: episode.videoHash,
+    evidenceRecordedAt: "2026-09-12T23:45:49.413674Z",
+    receiptRecordedAt: "2026-09-12T23:43:58.280618Z",
     videoUrl: `/api/arm/media?path=${encodeURIComponent(episode.videoRelative)}`,
     evidenceUrl: `/api/arm/media?path=${encodeURIComponent(episode.receiptRelative)}`,
   });
+});
+
+test("uses verified timestamps and actual bytes instead of filesystem mtime", async (t) => {
+  const f = fixture(t);
+  const episode = f.addEpisode({
+    batch: "trusted-time",
+    id: "arm-carry-v1-train101-eval80000",
+  });
+  const future = new Date("2040-01-01T00:00:00Z");
+  fs.utimesSync(episode.videoPath, future, future);
+
+  const library = await listArmVideoLibrary({
+    workspaceRoot: f.workspaceRoot,
+    currentHashes: CURRENT,
+  });
+  const video = library.videos.find((item) => item.path === episode.videoRelative);
+
+  assert.equal(video.videoHash, hash(episode.bytes));
+  assert.equal(video.evidenceRecordedAt, "2026-09-12T23:45:49.413674Z");
+  assert.equal(video.receiptRecordedAt, "2026-09-12T23:43:58.280618Z");
+});
+
+test("does not trust manifest time when the receipt hash gate fails", async (t) => {
+  const f = fixture(t);
+  const episode = f.addEpisode({
+    batch: "bad-receipt-hash",
+    id: "arm-carry-v1-train101-eval80000",
+  });
+  const manifestPath = path.join(
+    f.artifactRoot,
+    "bad-receipt-hash",
+    "video-evidence.json"
+  );
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  manifest.videos[0].receipt_sha256 = "f".repeat(64);
+  f.write("bad-receipt-hash/video-evidence.json", manifest);
+
+  const library = await listArmVideoLibrary({
+    workspaceRoot: f.workspaceRoot,
+    currentHashes: CURRENT,
+  });
+  const video = library.videos.find((item) => item.path === episode.videoRelative);
+
+  assert.equal(video.evidenceRecordedAt, null);
+  assert.equal(video.receiptRecordedAt, "2026-09-12T23:43:58.280618Z");
+  assert.ok(
+    library.warnings.some((warning) =>
+      warning.includes("Evidence hash or receipt mismatch")
+    )
+  );
+});
+
+test("selects the newest verified current success for each case", async (t) => {
+  const f = fixture(t);
+  const cases = [
+    "arm-reach-v1",
+    "arm-pick-place-v1",
+    "arm-relocate-v1",
+    "arm-carry-v1",
+    "arms-handover-v1",
+    "arms-co-carry-v1",
+  ];
+  for (const [index, caseId] of cases.entries()) {
+    f.addEpisode({
+      batch: `latest-${caseId}`,
+      id: `${caseId}-train101-eval${110000 + index}`,
+      caseId,
+      receiptCreatedAt: `2026-09-12T23:4${index}:00Z`,
+    });
+  }
+  const older = f.addEpisode({
+    batch: "carry-older-success",
+    id: "arm-carry-v1-train101-eval90000",
+    receiptCreatedAt: "2026-09-12T22:00:00Z",
+  });
+  const latest = f.addEpisode({
+    batch: "carry-latest-success",
+    id: "arm-carry-v1-train101-eval120000",
+    receiptCreatedAt: "2026-09-12T23:55:00Z",
+  });
+  f.addEpisode({
+    batch: "carry-newer-failure",
+    id: "arm-carry-v1-train101-eval130000",
+    passed: false,
+    failedGates: ["no_drop"],
+    receiptCreatedAt: "2026-09-12T23:59:00Z",
+  });
+  f.addEpisode({
+    batch: "carry-newer-history",
+    id: "arm-carry-v1-train101-eval140000",
+    sourceHashes: HISTORICAL,
+    receiptCreatedAt: "2026-09-12T23:58:00Z",
+  });
+  f.addEpisode({
+    batch: "carry-newer-unverified",
+    id: "arm-carry-v1-train101-eval150000",
+    sourceHashes: null,
+    receiptCreatedAt: "2026-09-12T23:57:00Z",
+  });
+  for (const batch of ["undated-z", "undated-a"]) {
+    f.addEpisode({
+      batch,
+      id: `arm-carry-v1-train101-eval-${batch}`,
+      manifestCreatedAt: "not-a-date",
+      receiptCreatedAt: "not-a-date",
+    });
+  }
+  fs.utimesSync(older.videoPath, new Date("2040-01-01T00:00:00Z"), new Date("2040-01-01T00:00:00Z"));
+  fs.utimesSync(latest.videoPath, new Date("2000-01-01T00:00:00Z"), new Date("2000-01-01T00:00:00Z"));
+
+  const library = await listArmVideoLibrary({
+    workspaceRoot: f.workspaceRoot,
+    currentHashes: CURRENT,
+  });
+  const selected = selectLatestCurrentSuccesses(library.videos);
+
+  assert.equal(selected.length, 6);
+  assert.equal(
+    selected.find((video) => video.caseIds.includes("arm-carry-v1")).id,
+    "arm-carry-v1-train101-eval120000"
+  );
+  assert.deepEqual(plain(missingCurrentSuccessCaseIds(library.videos)), []);
+  assert.deepEqual(
+    plain(missingCurrentSuccessCaseIds(
+      library.videos.filter((video) => !video.caseIds.includes("arm-reach-v1"))
+    )),
+    ["arm-reach-v1"]
+  );
+  assert.ok(selected.every((video) =>
+    video.kind === "episode" &&
+    video.provenance === "current" &&
+    video.outcome === "passed" &&
+    video.receiptRecordedAt
+  ));
+  const undated = library.videos
+    .filter((video) => video.batch.startsWith("undated-"))
+    .sort(compareArmVideosNewestFirst);
+  assert.deepEqual(plain(undated.map((video) => video.batch)), ["undated-a", "undated-z"]);
+  assert.ok(undated.every((video) =>
+    video.provenance === "current" &&
+    video.outcome === "passed" &&
+    video.evidenceRecordedAt === null &&
+    video.receiptRecordedAt === null &&
+    !selected.some((selectedVideo) => selectedVideo.id === video.id)
+  ));
 });
 
 test("keeps historical failures separate from provenance and builds conservative compilations", async (t) => {
@@ -315,6 +477,7 @@ test("fails closed for bad hashes and malformed metadata without dropping MP4 fi
   assert.equal(library.totalFiles, 2);
   assert.equal(invalid.provenance, "unverified");
   assert.equal(invalid.outcome, "unverified");
+  assert.equal(invalid.videoHash, badHash.videoHash);
   assert.equal(invalid.evidenceUrl, null);
   assert.equal(malformed.provenance, "unverified");
   assert.deepEqual(plain(malformed.caseIds), []);
@@ -446,10 +609,27 @@ test("real repository inventory includes every regular MP4 and expected evidence
   );
 
   const library = await listArmVideoLibrary({ workspaceRoot });
+  const latest = selectLatestCurrentSuccesses(library.videos);
 
   assert.equal(library.totalFiles, physical.length);
   assert.equal(library.uniqueVideos, uniqueHashes.size);
   assert.equal(new Set(library.videos.map((video) => video.id)).size, library.videos.length);
+  assert.equal(latest.length, 6);
+  assert.deepEqual(
+    plain(latest.flatMap((video) => video.caseIds).sort()),
+    [
+      "arm-carry-v1",
+      "arm-pick-place-v1",
+      "arm-reach-v1",
+      "arm-relocate-v1",
+      "arms-co-carry-v1",
+      "arms-handover-v1",
+    ]
+  );
+  assert.ok(latest.every((video) =>
+    video.batch === "strict-heldout-20260912-v3" &&
+    video.evidenceRecordedAt === "2026-09-12T23:45:49.413674Z"
+  ));
   assert.ok(
     library.videos.some(
       (video) =>

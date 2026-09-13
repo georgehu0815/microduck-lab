@@ -64,6 +64,13 @@ test("previews choose the newest successful training, not the newest evaluation"
   assert.equal(runs[0], earlier);
 });
 
+test("review cards and video previews choose the same newest verified success", () => {
+  const earlier = previewRun("earlier", "2026-09-07T00:00:00Z", { modifiedAt: "2026-09-13T00:00:00Z" });
+  const latest = previewRun("latest", "2026-09-12T00:00:00Z");
+  const stale = previewRun("stale-render", "2026-09-13T00:00:00Z", { renderVerified: false });
+  assert.equal(latestReviewRun([earlier, stale, latest], "dance").runName, "latest");
+});
+
 test("previews exclude failed, stale, missing and unmatched artifacts", () => {
   const accepted = previewRun("accepted", "2026-09-07T00:00:00Z");
   for (const invalid of [{ taskPassed: false }, { checkpoint: false }, { video: false },

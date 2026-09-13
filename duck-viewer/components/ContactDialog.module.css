@@ -1,0 +1,164 @@
+.dialog {
+  width: min(460px, calc(100vw - 32px));
+  max-width: none;
+  padding: 0;
+  border: 1px solid #b9c8bd;
+  border-radius: 8px;
+  background: #f7faf8;
+  color: #1e3326;
+  box-shadow: 0 24px 70px rgb(8 22 14 / 35%);
+}
+
+.dialog::backdrop {
+  background: rgb(7 16 12 / 68%);
+}
+
+.panel {
+  padding: 22px;
+}
+
+.heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.heading h2 {
+  margin: 3px 0 0;
+  font: 800 24px/1.2 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #397251;
+  font: 800 10px/1.4 Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+.closeButton {
+  width: 36px;
+  height: 36px;
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #c7d2ca;
+  border-radius: 6px;
+  background: #fff;
+  color: #31483a;
+  font: 700 22px/1 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.description {
+  margin: 16px 0;
+  color: #52665a;
+  font: 400 14px/1.55 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+.emailField {
+  display: grid;
+  gap: 6px;
+}
+
+.emailField span {
+  color: #43584b;
+  font: 700 12px/1.4 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+.emailField input {
+  width: 100%;
+  min-height: 42px;
+  box-sizing: border-box;
+  padding: 9px 11px;
+  border: 1px solid #aebeb3;
+  border-radius: 6px;
+  background: #fff;
+  color: #172d20;
+  font: 600 14px/1.4 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.actions button,
+.actions a {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #9daf9f;
+  border-radius: 6px;
+  font: 700 12px/1.35 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.copyButton {
+  background: #fff;
+  color: #28543a;
+}
+
+.writeButton {
+  background: #2f6746;
+  color: #fff;
+}
+
+.gmailButton {
+  background: #edf3ef;
+  color: #28543a;
+}
+
+.closeButton:hover,
+.actions button:hover,
+.actions a:hover {
+  border-color: #397251;
+}
+
+.closeButton:focus-visible,
+.emailField input:focus-visible,
+.actions button:focus-visible,
+.actions a:focus-visible {
+  outline: 3px solid #72a884;
+  outline-offset: 2px;
+}
+
+.copyStatus,
+.copyError {
+  min-height: 20px;
+  margin: 10px 0 0;
+  font: 600 12px/1.5 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+.copyStatus {
+  color: #316647;
+}
+
+.copyError {
+  color: #8b3f2d;
+}
+
+@media (max-width: 520px) {
+  .panel {
+    padding: 18px;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}

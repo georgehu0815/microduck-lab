@@ -1183,6 +1183,15 @@ const BRUSH_SOURCE_HASH_KEYS = [
   "base_reference_sha256",
 ] as const;
 
+const BRUSH_ARCHIVED_SOURCE_FILES = {
+  pipeline_sha256: "ppo_microduck_brush.py",
+  environment_sha256: "brush.py",
+  reference_sha256: "brush_reference.py",
+  actor_sha256: "drawing_feedback.py",
+  base_environment_sha256: "drawing.py",
+  base_reference_sha256: "drawing_reference.py",
+} as const;
+
 function brushSourceHashes(
   value: unknown
 ): Record<(typeof BRUSH_SOURCE_HASH_KEYS)[number], string> | null {
@@ -1199,6 +1208,33 @@ function brushSourceHashes(
     return null;
   }
   return hashes as Record<(typeof BRUSH_SOURCE_HASH_KEYS)[number], string>;
+}
+
+function brushSourceHashesMatch(
+  left: Record<(typeof BRUSH_SOURCE_HASH_KEYS)[number], string>,
+  right: Record<(typeof BRUSH_SOURCE_HASH_KEYS)[number], string>,
+  keys: readonly (typeof BRUSH_SOURCE_HASH_KEYS)[number][] = BRUSH_SOURCE_HASH_KEYS
+): boolean {
+  return keys.every((key) => left[key] === right[key]);
+}
+
+async function archivedBrushSourcesMatch(
+  runDirectory: string,
+  expected: Record<(typeof BRUSH_SOURCE_HASH_KEYS)[number], string>
+): Promise<boolean> {
+  for (const key of BRUSH_SOURCE_HASH_KEYS) {
+    try {
+      const archived = await readFile(
+        path.join(runDirectory, "sources", BRUSH_ARCHIVED_SOURCE_FILES[key])
+      );
+      if (createHash("sha256").update(archived).digest("hex") !== expected[key]) {
+        return false;
+      }
+    } catch {
+      return false;
+    }
+  }
+  return true;
 }
 
 function validDrawingReportShape(
@@ -1374,14 +1410,27 @@ async function boundEvaluation(
       if (drawingTool === "brush") {
         const reportHashes = brushSourceHashes(report.source_hashes);
         const metadataHashes = brushSourceHashes(metadata.source_hashes);
-        if (
-          !reportHashes ||
-          !metadataHashes ||
-          BRUSH_SOURCE_HASH_KEYS.some(
-            (key) => reportHashes[key] !== metadataHashes[key]
-          )
-        ) {
+        if (!reportHashes || !metadataHashes) {
           return null;
+        }
+        if (!brushSourceHashesMatch(reportHashes, metadataHashes)) {
+          const trainingHashes = brushSourceHashes(report.training_source_hashes);
+          const nonPipelineKeys = BRUSH_SOURCE_HASH_KEYS.filter(
+            (key) => key !== "pipeline_sha256"
+          );
+          if (
+            reportHashes.pipeline_sha256 === metadataHashes.pipeline_sha256 ||
+            report.training_pipeline_source_match !== false ||
+            report.environment_source_match !== true ||
+            !Array.isArray(report.provenance_errors) ||
+            report.provenance_errors.length !== 0 ||
+            !trainingHashes ||
+            !brushSourceHashesMatch(trainingHashes, metadataHashes) ||
+            !brushSourceHashesMatch(reportHashes, metadataHashes, nonPipelineKeys) ||
+            !(await archivedBrushSourcesMatch(paths.runDirectory, metadataHashes))
+          ) {
+            return null;
+          }
         }
       }
       const checkpointHash = createHash("sha256")
@@ -1523,16 +1572,29 @@ export async function snapshot(
     }
   }
   const paths = pathsFor(experimentId, runName);
+  let renderRecipe = savedRecipe;
+  if (!renderRecipe && restoredDrawingTool && evaluation?.evaluation_request === undefined && evaluation?.evaluation_settings_match === true) {
+    const settings = evaluation.evaluation as { seed?: unknown; environment?: { max_episode_s?: unknown } } | undefined;
+    const seed = settings?.seed;
+    const seconds = settings?.environment?.max_episode_s;
+    if (typeof seed === "number" && Number.isInteger(seed) && seed > 0 && typeof seconds === "number" && Number.isFinite(seconds) && seconds > 0) {
+      try {
+        renderRecipe = normalizeRecipe({ experimentId, runName, drawingTool: restoredDrawingTool, profile: "full", seed, renderSeconds: seconds });
+      } catch {
+        renderRecipe = null;
+      }
+    }
+  }
   const evaluatedBackflipRecipeOptions = experimentId === "backflip"
     ? backflipRecipeOptions(evaluation)
     : null;
   const renderSource = experimentId === "drawing"
     ? paths.onnx
     : evaluation?.source_type === "policy" ? paths.onnx : paths.checkpoint;
-  const renderEvidence = savedRecipe && evaluation?.source_sha256
+  const renderEvidence = renderRecipe && evaluation?.source_sha256
     ? readRenderEvidence(path.join(paths.renderDirectory, "evidence.json"), {
-        ...renderEvidenceInputs(savedRecipe, renderSource, String(evaluation.source_type)),
-        recipeKey: evaluationEnvironmentKey(savedRecipe, "render"),
+        ...renderEvidenceInputs(renderRecipe, renderSource, String(evaluation.source_type)),
+        recipeKey: evaluationEnvironmentKey(renderRecipe, "render"),
         ...(evaluatedBackflipRecipeOptions
           ? { recipeOptions: evaluatedBackflipRecipeOptions }
           : {}),

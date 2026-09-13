@@ -68,6 +68,10 @@ export function latestDiagnosticRun(runs: readonly SavedRun[], experimentId: Exp
 }
 
 export function latestReviewRun(runs: readonly SavedRun[], experimentId: ExperimentId): SavedRun | undefined {
+  const verified = latestVerifiedRun(runs, experimentId);
+  if (verified) return verified;
+  const diagnostic = latestDiagnosticRun(runs, experimentId);
+  if (diagnostic) return diagnostic;
   const matching = runs.filter((run) => run.experimentId === experimentId);
   return matching.find((run) => run.taskPassed)
     ?? matching.find((run) => experimentId === "basketball" && run.balanceOnly === true)
