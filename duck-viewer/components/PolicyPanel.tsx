@@ -27,6 +27,12 @@ import {
 import { assignDrag, clearAssignDrag, isCanvasAt, nearestDuck } from "@/lib/assign";
 import { loadJSON, saveJSON } from "@/lib/persist";
 import { modalIsOpen, setPolicyOpen, useTeachHeight } from "@/lib/ui";
+import {
+  ROBOT_CATEGORIES,
+  newestPoliciesPerSkill,
+  policySupportsCategory,
+  type RobotCategory,
+} from "@/lib/robot-category";
 import { Tip } from "./TeachPanel";
 import { pushToast } from "./Toasts";
 import { fetchSavedRuns, type SavedRun } from "@/lib/studio-run";
@@ -485,6 +491,8 @@ export function PolicyPanel({
   clientRef,
   variant = "overlay",
   active = true,
+  robotCategory = "microduck",
+  onRobotCategoryChange,
   onPoliciesChange,
   onStudioRunsChange,
   onReviewRun,
@@ -493,6 +501,8 @@ export function PolicyPanel({
   clientRef: React.MutableRefObject<LabClient | null>;
   variant?: "overlay" | "embedded";
   active?: boolean;
+  robotCategory?: RobotCategory;
+  onRobotCategoryChange?: (category: RobotCategory) => void;
   onPoliciesChange?: (policies: Policy[]) => void;
   onStudioRunsChange?: (runs: SavedRun[]) => void;
   onReviewRun?: (experimentId: SavedRun["experimentId"], runName: string) => Promise<void>;
@@ -912,9 +922,17 @@ export function PolicyPanel({
   // memo needed). Groups that filter down to nothing render nothing, so the
   // headings disappear along with their chips.
   const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
-  const shown = terms.length ? policies.filter((p) => matchesQuery(p, terms)) : policies;
-  const shownStudio = studioRuns.filter((run) => terms.every((term) =>
-    `${run.experimentId} ${run.runName}`.toLowerCase().includes(term)));
+  const latestPolicies = newestPoliciesPerSkill(policies);
+  const compatiblePolicies = latestPolicies.filter((policy) => policySupportsCategory(policy, robotCategory));
+  const shown = terms.length
+    ? compatiblePolicies.filter((policy) => matchesQuery(policy, terms))
+    : compatiblePolicies;
+  const shownStudio = compatiblePolicies
+    .filter((policy) => policy.group === "studio")
+    .flatMap((policy) => studioRuns.filter((run) =>
+      policy.id === `studio:${run.experimentId}/${run.runName}`
+      && terms.every((term) => `${run.experimentId} ${run.runName}`.toLowerCase().includes(term))
+    ));
 
   const ghost = (
     <div
@@ -1076,6 +1094,26 @@ export function PolicyPanel({
           )}
         </div>
 
+        {onRobotCategoryChange && (
+          <div
+            role="group"
+            aria-label={t("Robot category", "机器人类别")}
+            style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 4, padding: "6px 10px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+          >
+            {ROBOT_CATEGORIES.map((category) => (
+              <button
+                key={category}
+                type="button"
+                aria-pressed={robotCategory === category}
+                onClick={() => onRobotCategoryChange(category)}
+                style={{ minWidth: 0, minHeight: 32, border: `1px solid ${robotCategory === category ? "#7db8d8" : "rgba(255,255,255,0.1)"}`, borderRadius: 5, background: robotCategory === category ? "rgba(125,184,216,0.16)" : "transparent", color: robotCategory === category ? "#cfe4f5" : "#8b93a3", fontFamily: mono, fontSize: 9, cursor: "pointer", overflow: "hidden", textOverflow: "ellipsis" }}
+              >
+                {category === "microduck" ? t("Microduck", "Microduck") : category === "wingpod" ? "WingPod" : t("Humanoid", "人形机器人")}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Filter box. Sits between the header and the scrolling list so it
             stays put while the chips scroll under it. */}
         <div
@@ -1156,8 +1194,8 @@ export function PolicyPanel({
                 )
               : refreshedAt
                 ? t(
-                    `${policies.length} live policies${includeStudio ? ` · ${studioRuns.length} Studio runs` : ""} · scanned ${refreshedAt.toLocaleTimeString()} · newest runs first`,
-                    `${policies.length} 个实时策略${includeStudio ? ` · ${studioRuns.length} 个 Studio 运行` : ""} · 扫描于 ${refreshedAt.toLocaleTimeString()} · 最新运行优先`
+                    `${compatiblePolicies.length} latest compatible · ${policies.length - latestPolicies.length} older hidden · scanned ${refreshedAt.toLocaleTimeString()}`,
+                    `${compatiblePolicies.length} 个最新兼容策略 · 已隐藏 ${policies.length - latestPolicies.length} 个旧版本 · 扫描于 ${refreshedAt.toLocaleTimeString()}`
                   )
                 : t("Refresh to discover available policies.", "刷新以查找可用策略。")}
         </div>

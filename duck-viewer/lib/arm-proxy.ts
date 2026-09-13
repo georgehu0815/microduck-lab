@@ -7,14 +7,18 @@ import {
   validateStepBody,
   validateTeacherBody,
 } from "@/lib/arm-contract";
+import {
+  parseWingPodLiveState,
+  validateWingPodMutation,
+} from "@/lib/wingpod-live";
 
 const ARM_BACKEND = "http://127.0.0.1:8812";
 const JSON_LIMIT = 2 * 1024 * 1024;
 const REQUEST_LIMIT = 32 * 1024;
 const TIMEOUT_MS = 4_000;
 
-export const ARM_GET_PATHS = new Set(["health", "state", "runs", "artifact"]);
-export const ARM_POST_PATHS = new Set(["reset", "step", "teacher"]);
+export const ARM_GET_PATHS = new Set(["health", "state", "runs", "artifact", "wingpod-state"]);
+export const ARM_POST_PATHS = new Set(["reset", "step", "teacher", "wingpod-reset", "wingpod-teacher"]);
 
 function jsonError(
   error: string,
@@ -44,6 +48,7 @@ async function readJsonBody(request: Request): Promise<unknown> {
 }
 
 function validateMutation(path: string, value: unknown) {
+  if (path.startsWith("wingpod-")) return validateWingPodMutation(path, value);
   if (path === "reset") return validateResetBody(value);
   if (path === "step") return validateStepBody(value);
   if (path === "teacher") return validateTeacherBody(value);
@@ -87,6 +92,9 @@ async function proxyJson(path: string, init?: RequestInit) {
   if (response.ok && path === "state" && !parseArmState(payload)) {
     return jsonError("Arm backend returned an invalid state contract.", 502);
   }
+  if (response.ok && path === "wingpod-state" && !parseWingPodLiveState(payload)) {
+    return jsonError("Arm backend returned an invalid WingPod state contract.", 502);
+  }
   if (response.ok && path === "runs" && !parseArmRuns(payload)) {
     return jsonError("Arm backend returned an invalid runs contract.", 502);
   }
@@ -96,6 +104,13 @@ async function proxyJson(path: string, init?: RequestInit) {
     !parseArmState(payload)
   ) {
     return jsonError("Arm backend returned an invalid state contract.", 502);
+  }
+  if (
+    response.ok
+    && (path === "wingpod-reset" || path === "wingpod-teacher")
+    && !parseWingPodLiveState(payload)
+  ) {
+    return jsonError("Arm backend returned an invalid WingPod state contract.", 502);
   }
   return new Response(JSON.stringify(payload), {
     status: response.status,

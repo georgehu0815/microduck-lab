@@ -22,6 +22,14 @@
 - Key contexts of use: desktop development on Apple Silicon, responsive monitoring on a smaller screen, and local operation alongside `duck-lab`.
 
 ## Information architecture
+
+- Classroom extension: `/classroom/` is a first-class **Classroom PPT / 课堂课件**
+  navigation destination in Studio, Arm Lab and WingPod. Eight lesson cards expose
+  the existing English/Chinese editions. One click opens an inline slide player
+  with navigation, language switching, source downloads and separate lesson videos.
+  Reuse the Studio's dark neutral/mint palette and shared language preference;
+  maintain readable slide aspect ratios and keyboard-accessible controls at 390 px.
+  Render PDF-derived slide images, explicitly not live PowerPoint animations.
 - Primary navigation: Overview, Projects, Experiments, Policies, Evaluations, Robot fleet, Deployments, Settings.
 - Core routes/screens: `/` is the complete Studio. Legacy `/viewer` requests return to `/` rather than opening a second application.
 - Content hierarchy: compact experiment catalog with inline reference previews, selected-experiment workflow stage, integrated live simulation workspace and training status, policy/teach/animation/record tools, evaluation evidence, artifacts and deployment gates, then supporting system details.

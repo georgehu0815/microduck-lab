@@ -6,6 +6,77 @@ Website: https://georgehu0815.github.io/microduck-lab/
 
 Arm video library: https://georgehu0815.github.io/microduck-lab/arm/
 
+## Classroom presentations
+
+Open **Classroom PPT / 课堂课件** from Studio (desktop or mobile), Arm Lab,
+or WingPod. `/classroom/` lists all eight existing student lessons, with English
+and Chinese editions: 16 PPTX files and their 16 PDF exports, 644 slide previews.
+Click a lesson to view its slides inside the app, move between slides, switch
+language, download the original PPTX/PDF, or play the accompanying lesson videos.
+
+The in-page player uses PDF-derived images, not a live PowerPoint engine:
+animations and embedded PPT media are not played inside the slide image. Saved
+rollout videos are provided separately. Original lessons and their evidence
+claims remain unchanged; displaying a deck does not imply new training success.
+
+From the workspace root, refresh the self-contained static assets with:
+
+```sh
+rlx/.venv-microduck/bin/python scripts/publish_classroom.py
+```
+
+Requires the existing Pillow environment plus `pdfinfo` and `pdftoppm` (Poppler).
+The publisher checks PPTX/PDF/manifest slide counts and inventory completeness,
+renders each slide once, and records hashes. Files live in
+`public/classroom-assets/`, outside the lab media export's replacement directory,
+so refreshing Studio videos does not remove teaching materials. No cloud upload,
+Office account, PowerPoint installation, or running lab backend is needed to view.
+Preview images and deck paths include source hashes to avoid stale caches.
+
+## WingPod Camera v2 Soft
+
+Open `/wingpod/` from Studio or Arm Lab for the camera-eye robot, appearance
+video, full tennis-return replay, all recorded tennis size/seed cases, and BOM
+downloads. `/wingpod-v2/index.html` is the standalone English/Chinese gallery.
+Both use `/static/wingpod/` and support the GitHub Pages `/microduck-lab` prefix.
+English is the default; the existing persisted language preference is shared.
+
+Primary images and the two featured MP4s use the soft revision: cream face,
+sage-gray lens rims, peach cheeks and honey beak. The 32-case library retains
+the original graphite-camera footage and is labeled historical. The soft task
+video is one exact nominal-0 replay, not 32 new soft-style evaluations.
+Hero, detail and sequence images use content-hashed soft-revision URLs to avoid
+reusing cached image-optimizer/browser responses from the graphite revision.
+When rerendering, publish with `--soft` and update `WINGPOD_IMAGES` and the
+standalone `imageFiles` map; regression tests verify filenames against bytes.
+
+The case library distinguishes positive task passes from expected-failure
+controls. It covers the tennis-return matrix, not every standalone arm skill.
+Camera-eye geometry is visual-only: videos do not prove camera-driven control,
+real-shell clearance, installed camera mass, or hardware readiness. The BOM
+explicitly identifies reuse items, alternatives and unselected camera hardware.
+
+From the workspace root, generate/verify the case videos and publish assets:
+
+```sh
+PYTHONPATH=.:microduck_local/src OMP_NUM_THREADS=1 \
+  rlx/.venv-microduck/bin/python scripts/render_wingpod_camera_cases.py
+PYTHONPATH=.:microduck_local/src OMP_NUM_THREADS=1 \
+  rlx/.venv-microduck/bin/python scripts/build_wingpod_camera_soft.py
+rlx/.venv-microduck/bin/python scripts/publish_wingpod_camera.py --soft
+```
+
+The publisher requires all case receipts and verifies video/source hashes.
+Rendering uses macOS graphics and takes time; completed, provenance-matched
+episodes are reusable. Do not modify renderer sources midway through a run.
+Run render jobs serially. The soft task renderer requires a fresh task output
+directory and will not overwrite an existing task receipt. See
+`../docs/microduck-arm-v1c/appearance/CAMERA-V2-SOFT.md` for revision boundaries.
+The artifact gallery is also saved to
+`artifacts/microduck-arm-v1c/appearance/wingpod-v2/index.html`; this artifact embeds
+the catalog/BOM data so it can also be opened locally with its relative media
+files present. The viewer's public page is served over HTTP.
+
 The static app uses the checked-in `public/static` media catalogs, saved videos,
 evaluation JSON, and guides. It needs no Next.js or Python server at runtime.
 Live simulation, training/evaluation jobs, policy exports, teaching, and backend

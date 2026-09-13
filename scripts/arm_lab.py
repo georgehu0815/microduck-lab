@@ -10,13 +10,59 @@ import re
 import threading
 from urllib.parse import parse_qs, urlparse
 
+import mujoco
 import numpy as np
 
+from microduck_arm_design.wingpod_camera import WingPodCameraEnv
 from rlx.environments.arm import ArmEnv, CASES, model_hash
 
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNS = ROOT / "rlx/runs/arm"
+WINGPOD_CASE = "wingpod-tennis-v1"
+
+
+def scene_geometries(environment):
+    robot = environment.robot
+    scene = mujoco.MjvScene(robot.model, maxgeom=2048)
+    option = mujoco.MjvOption()
+    perturb = mujoco.MjvPerturb()
+    camera = mujoco.MjvCamera()
+    mujoco.mjv_defaultFreeCamera(robot.model, camera)
+    mujoco.mjv_updateScene(
+        robot.model,
+        robot.data,
+        option,
+        perturb,
+        camera,
+        mujoco.mjtCatBit.mjCAT_ALL,
+        scene,
+    )
+    environment.overlay.update(scene, robot.data)
+    names = {
+        mujoco.mjtGeom.mjGEOM_BOX: "box",
+        mujoco.mjtGeom.mjGEOM_SPHERE: "sphere",
+        mujoco.mjtGeom.mjGEOM_ELLIPSOID: "ellipsoid",
+        mujoco.mjtGeom.mjGEOM_CAPSULE: "capsule",
+        mujoco.mjtGeom.mjGEOM_CYLINDER: "cylinder",
+    }
+    geoms = []
+    for index in range(scene.ngeom):
+        geom = scene.geoms[index]
+        geom_type = names.get(geom.type)
+        if geom_type is None or geom.rgba[3] <= 0:
+            continue
+        quaternion = np.zeros(4)
+        mujoco.mju_mat2Quat(quaternion, np.asarray(geom.mat, dtype=np.float64).ravel())
+        geoms.append({
+            "name": f"wingpod_scene_{index}",
+            "type": geom_type,
+            "size": geom.size.tolist(),
+            "pos": geom.pos.tolist(),
+            "quat": quaternion.tolist(),
+            "rgba": geom.rgba.tolist(),
+        })
+    return geoms
 
 
 def file_hash(path):
@@ -86,6 +132,81 @@ class ArmLab:
             return self.state()
 
 
+class WingPodLab:
+    def __init__(self):
+        self.lock = threading.RLock()
+        self.environment = WingPodCameraEnv(
+            variant="nominal",
+            gripper="wide_candidate",
+            release_mode="supported",
+            max_steps=3000,
+        )
+        self.seed = 0
+        self.environment.reset(seed=self.seed)
+
+    def state(self):
+        with self.lock:
+            environment = self.environment
+            robot = environment.robot
+            sample = environment.sample()
+            return {
+                "case_id": WINGPOD_CASE,
+                "seed": self.seed,
+                "step": environment.steps,
+                "time": float(robot.data.time),
+                "contract": "wingpod-tennis-live-v1",
+                "observation_dim": int(robot._observation().shape[0]),
+                "action_dim": int(robot.model.nu),
+                "controller": "authored_ik_fsm_teacher_not_ppo",
+                "stage": environment.monitor.phase,
+                "terminated": bool(environment.done),
+                "truncated": bool(
+                    environment.done
+                    and not environment.monitor.success
+                    and not environment.monitor.failure
+                ),
+                "hardware_enabled": False,
+                "joints": robot.data.qpos[robot.qpos_indices].tolist(),
+                "geoms": scene_geometries(environment),
+                "metrics": {
+                    "simulation_only": True,
+                    "trained_policy": False,
+                    "vision_control": False,
+                    "task_success": bool(environment.monitor.success),
+                    "failure_reason": environment.monitor.failure,
+                    "controller_stage": environment.controller.stage,
+                    "ball_position_m": sample["ball_position_m"],
+                    "ball_inside_bin": sample["ball_inside_bin"],
+                    "tcp_ball_distance_m": sample["tcp_ball_distance_m"],
+                    "carry_distance_m": sample["carry_distance_m"],
+                },
+            }
+
+    def command(self, operation, payload):
+        if not isinstance(payload, dict):
+            raise ValueError("Request must be a JSON object")
+        with self.lock:
+            if operation == "wingpod-reset":
+                if set(payload) - {"seed"}:
+                    raise ValueError("Unexpected WingPod reset fields")
+                seed = payload.get("seed", 0)
+                if isinstance(seed, bool) or not isinstance(seed, int) or not 0 <= seed < 2**31:
+                    raise ValueError("Invalid WingPod seed")
+                self.seed = seed
+                self.environment.reset(seed=seed)
+            elif operation == "wingpod-teacher":
+                ticks = payload.get("ticks", 1)
+                if set(payload) - {"ticks"} or isinstance(ticks, bool) or not isinstance(ticks, int) or not 1 <= ticks <= 10:
+                    raise ValueError("WingPod teacher ticks must be integer 1..10")
+                for _ in range(ticks):
+                    if self.environment.done:
+                        break
+                    self.environment.step(self.environment.teacher_action())
+            else:
+                raise ValueError("Unsupported WingPod operation")
+            return self.state()
+
+
 def run_catalog():
     items = []
     environment_source = ROOT / "rlx/rlx/environments/arm.py"
@@ -141,6 +262,15 @@ def run_catalog():
 
 class Handler(BaseHTTPRequestHandler):
     lab: ArmLab
+    wingpod_lab: WingPodLab | None = None
+    wingpod_lock = threading.Lock()
+
+    @classmethod
+    def wingpod(cls):
+        with cls.wingpod_lock:
+            if cls.wingpod_lab is None:
+                cls.wingpod_lab = WingPodLab()
+            return cls.wingpod_lab
 
     def json_response(self, status, payload):
         body = json.dumps(payload, allow_nan=False).encode()
@@ -155,7 +285,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
         if parsed.path == "/health":
-            self.json_response(200, {"ok": True, "service": "microduck-arm-simulation", "hardware_enabled": False, "cases": list(CASES)})
+            self.json_response(200, {"ok": True, "service": "microduck-arm-simulation", "hardware_enabled": False, "cases": [*CASES, WINGPOD_CASE]})
+        elif parsed.path == "/wingpod-state":
+            self.json_response(200, self.wingpod().state())
         elif parsed.path == "/state":
             self.json_response(200, self.lab.state())
         elif parsed.path == "/runs":
@@ -211,7 +343,8 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < length <= 16384:
                 raise ValueError("Body limit is 16384 bytes")
             payload = json.loads(self.rfile.read(length), parse_constant=lambda value: (_ for _ in ()).throw(ValueError("Non-finite JSON")))
-            result = self.lab.command(urlparse(self.path).path.lstrip("/"), payload)
+            operation = urlparse(self.path).path.lstrip("/")
+            result = self.wingpod().command(operation, payload) if operation.startswith("wingpod-") else self.lab.command(operation, payload)
         except (ValueError, TypeError, RuntimeError) as error:
             self.json_response(400, {"error": str(error), "hardware_enabled": False})
             return
@@ -230,6 +363,8 @@ def main():
     finally:
         server.server_close()
         Handler.lab.environment.close()
+        if Handler.wingpod_lab is not None:
+            Handler.wingpod_lab.environment.close()
 
 
 if __name__ == "__main__":

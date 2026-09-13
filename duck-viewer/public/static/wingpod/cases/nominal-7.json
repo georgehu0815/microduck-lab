@@ -1,0 +1,94 @@
+{
+  "case": {
+    "id": "nominal-7",
+    "variant": "nominal",
+    "seed": 7,
+    "kind": "positive",
+    "taskSuccess": true,
+    "expectedOutcomeMatched": true,
+    "video": "cases/nominal-7.mp4",
+    "receipt": "cases/nominal-7.json",
+    "durationSeconds": 55.52,
+    "frames": 1388,
+    "zeroError": true
+  },
+  "appearance_sources": {
+    "microduck_arm_design/wingpod.py": "be39e1d8417d7b6b32269f5355d3d12d0327fdac85b5c7adb53295e2c0c83964",
+    "microduck_arm_design/wingpod_camera.py": "31d4df6abe1b76bfc48832166b8336a24755661ac279a694956467d3cd60d66c",
+    "scripts/replay_tennis_evidence.py": "000e472ee1be4ee1cbbf0aaf2085bd6b6d8314d9f6a1bd45fc67d8d054362a00",
+    "scripts/render_wingpod_camera_cases.py": "fd6705c2397a0f4c034766c4ca982c298c886f1adce5cf71509d104f37a594b7"
+  },
+  "replay": {
+    "complete": true,
+    "claimed_video_pass": true,
+    "generation_method": "action_replay",
+    "simulation_only": true,
+    "hardware_release": false,
+    "ppo": false,
+    "trained_policy": false,
+    "physics_tolerance": 1e-09,
+    "time_tolerance_s": 1e-09,
+    "action_tolerance": 1e-07,
+    "steps_expected": 2776,
+    "steps_replayed": 2776,
+    "frames_written": 1388,
+    "substep_monitoring": "ReturnMonitor.advance observed on every env.step physics substep",
+    "substep_monitor_calls": 27757,
+    "source_evaluation_sha256": "f7af5b19c1262689ecd1ef7c6333baae8a15421bfb8b956cf19838de3588bed2",
+    "source_result_sha256": "e7e84705d808b1e9a0c073d6b452318545934886ebfa9e857e6a30ec5e41844e",
+    "source_telemetry_sha256": "e41cdb6d169bc9585c0e567d772315e314b45579ef04cd179c7f5f69167aa154",
+    "source_snapshot_hashes": {
+      "__init__.py": "d1e0a4a94e8f1327e2d0869aa7a2b7355fe5d4e438c74b77208ca1e2dfa0741d",
+      "tennis-return.json": "3f7aa76bc2bb891e99d4fa7c3114e95ec14a6b22d9f364acc48235f507f217fa",
+      "tennis_controller.py": "bd3bc645ebc523e4d46cfa3fe8429a24ad53a93dd572b02318738ce3db87616d",
+      "tennis_navigation.py": "6f24093a5f1b21546a77d2a99ae4f52b794af079b50b8a97d2dad21518a2eaa0",
+      "tennis_release.py": "7b79df70978ff2ec5a75b545d0197f50a2e251563b284baa3f2768c24aa7a257",
+      "tennis_return.py": "af8715a76d22388c1de94eb8e31e5246a6aff08f3d1a19b257147c9fdf1147c2"
+    },
+    "max_time_error_s": 0.0,
+    "max_ball_position_error_m": 0.0,
+    "max_joint_position_error_rad": 0.0,
+    "max_action_roundtrip_error": 0.0,
+    "zero_error": true,
+    "video_sha256": "36348c9bb396bdaf21b4c0fcc26e26ab129f0eb839bfc867346a4112f31146ef",
+    "telemetry_sha256": "e41cdb6d169bc9585c0e567d772315e314b45579ef04cd179c7f5f69167aa154"
+  },
+  "failure_reason": null,
+  "phase_events": [
+    {
+      "time_s": 0.0,
+      "phase": "approach"
+    },
+    {
+      "time_s": 7.509999999999395,
+      "phase": "grasp"
+    },
+    {
+      "time_s": 7.927999999999349,
+      "phase": "lift"
+    },
+    {
+      "time_s": 13.032000000001021,
+      "phase": "carry"
+    },
+    {
+      "time_s": 29.87799999999432,
+      "phase": "lower"
+    },
+    {
+      "time_s": 48.28000000001304,
+      "phase": "release"
+    },
+    {
+      "time_s": 50.102000000015266,
+      "phase": "retreat"
+    },
+    {
+      "time_s": 55.51400000002188,
+      "phase": "success"
+    }
+  ],
+  "hardware_release": false,
+  "vision_control": false,
+  "new_training": false
+}

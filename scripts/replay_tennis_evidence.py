@@ -519,18 +519,118 @@ def _verify_original_source(preflight: dict) -> None:
         _safe_file_hashes(directory, episode["result"])
 
 
-def replay_bundle(source: Path, output: Path, workers: int = 1) -> dict:
+def _verify_publication_paths(output: Path, names: list[str]) -> None:
+    for directory in [output, *(output / name for name in names)]:
+        if directory.is_symlink():
+            raise ReplayError(f"Symlinked replay directory is not allowed: {directory}")
+    paths = [output / "evaluation.json"]
+    for name in names:
+        paths.extend(output / name / filename for filename in (
+            "result.json", "telemetry.jsonl", "rollout.mp4", "replay-validation.json",
+        ))
+    for path in paths:
+        if path.is_symlink() or (path.exists() and path.stat().st_nlink > 1):
+            raise ReplayError(f"Aliased replay file is not allowed: {path}")
+
+
+def _completed_replay(job: dict, *, env_factory: Callable[..., Any] = TennisReturnEnv) -> dict | None:
+    directory = Path(job["output"]) / job["directory_name"]
+    validation_path = directory / "replay-validation.json"
+    video_path = directory / "rollout.mp4"
+    if (directory / ".rollout.action-replay.tmp.mp4").exists():
+        raise ReplayError(f"Partial video requires separate recovery: {directory}")
+    if not validation_path.exists():
+        if video_path.exists():
+            raise ReplayError(f"Video has no completed replay validation: {directory}")
+        return None
+    validation = _read_json(validation_path)
+    context = job["source_context"]
+    expected = {
+        "complete": True,
+        "claimed_video_pass": True,
+        "generation_method": "action_replay",
+        "simulation_only": True,
+        "hardware_release": False,
+        "ppo": False,
+        "trained_policy": False,
+        "steps_expected": len(job["telemetry"]),
+        "steps_replayed": len(job["telemetry"]),
+        "frames_written": sum(row["step"] % 2 == 0 or row["done"] for row in job["telemetry"]),
+        "source_evaluation_sha256": context["evaluation_sha256"],
+        "source_result_sha256": context["result_sha256"],
+        "source_telemetry_sha256": context["telemetry_sha256"],
+        "source_snapshot_hashes": context["snapshot_hashes"],
+        "telemetry_sha256": context["telemetry_sha256"],
+        "physics_tolerance": PHYSICS_TOLERANCE,
+        "time_tolerance_s": TIME_TOLERANCE_S,
+        "action_tolerance": ACTION_TOLERANCE,
+    }
+    if any(type(validation.get(key)) is not type(value) or validation[key] != value
+           for key, value in expected.items()):
+        raise ReplayError(f"Completed replay does not match source: {directory}")
+    result = job["result"]
+    environment = env_factory(
+        variant=result["variant"], candidate=result["candidate"],
+        max_steps=result["max_steps"], gripper=result["gripper"],
+        release_mode=result["release_mode"],
+    )
+    try:
+        timestep = float(environment.robot.model.opt.timestep)
+        substeps = environment.robot.substeps
+    finally:
+        environment.close()
+    terminal_time = job["telemetry"][-1]["time_s"]
+    if not isinstance(terminal_time, (int, float)) or isinstance(terminal_time, bool) or not math.isfinite(terminal_time):
+        raise ReplayError(f"Invalid completed replay terminal time: {directory}")
+    expected_calls = round(terminal_time / timestep)
+    full_steps = len(job["telemetry"]) * substeps
+    if not math.isclose(terminal_time, expected_calls * timestep, abs_tol=TIME_TOLERANCE_S, rel_tol=0) or not full_steps - substeps < expected_calls <= full_steps:
+        raise ReplayError(f"Replay time does not match physics substeps: {directory}")
+    monitor_calls = validation.get("substep_monitor_calls")
+    if type(monitor_calls) is not int or monitor_calls != expected_calls:
+        raise ReplayError(f"Missing replay substep monitoring: {directory}")
+    for key, limit in (
+        ("max_time_error_s", TIME_TOLERANCE_S),
+        ("max_ball_position_error_m", PHYSICS_TOLERANCE),
+        ("max_joint_position_error_rad", PHYSICS_TOLERANCE),
+        ("max_action_roundtrip_error", ACTION_TOLERANCE),
+    ):
+        error = validation.get(key)
+        if not isinstance(error, (int, float)) or isinstance(error, bool) or not math.isfinite(error) or not 0 <= error <= limit:
+            raise ReplayError(f"Invalid completed replay error: {directory} / {key}")
+    zero_error = all(validation[key] == 0 for key in (
+        "max_time_error_s", "max_ball_position_error_m", "max_joint_position_error_rad"
+    ))
+    if validation.get("zero_error") is not zero_error or validation.get("incomplete") or validation.get("error"):
+        raise ReplayError(f"Inconsistent completed replay: {directory}")
+    if not video_path.is_file() or sha256(video_path) != validation.get("video_sha256"):
+        raise ReplayError(f"Completed video hash mismatch: {directory}")
+    return validation
+
+
+def replay_bundle(source: Path, output: Path, workers: int = 1, *, resume: bool = False) -> dict:
     if workers < 1:
         raise ReplayError("workers must be positive")
     output = Path(output)
     if output.resolve().is_relative_to(Path(source).resolve()):
         raise ReplayError("Output must be outside the immutable source bundle")
-    if output.exists():
+    if output.exists() and not resume:
         raise ReplayError(f"Output already exists: {output}")
+    if resume and not output.is_dir():
+        raise ReplayError(f"Resume output does not exist: {output}")
     preflight = preflight_source(source)
     source = preflight["source"]
-    shutil.copytree(source, output)
+    _verify_publication_paths(output, preflight["ordered_directories"])
+    if resume:
+        if _read_json(output / "evaluation.json") != preflight["evaluation"]:
+            raise ReplayError("Resume requires the original, incomplete metrics-only evaluation")
+        if _verify_snapshots(output, preflight["evaluation"]) != preflight["snapshot_hashes"]:
+            raise ReplayError("Resume source snapshot mismatch")
+    else:
+        shutil.copytree(source, output)
     for name, episode in preflight["episodes"].items():
+        if sha256(output / name / "result.json") != episode["result_sha256"]:
+            raise ReplayError(f"Copied result changed: {name}")
         copied = output / name / "telemetry.jsonl"
         if sha256(copied) != episode["telemetry_sha256"]:
             raise ReplayError(f"Copied telemetry changed: {copied}")
@@ -558,6 +658,21 @@ def replay_bundle(source: Path, output: Path, workers: int = 1) -> dict:
         )
 
     validations = {}
+    resumed_hashes = {}
+    if resume:
+        pending = []
+        for job in jobs:
+            completed = _completed_replay(job)
+            if completed is None:
+                pending.append(job)
+                continue
+            name = job["directory_name"]
+            validations[name] = completed
+            for filename in ("result.json", "telemetry.jsonl", "rollout.mp4", "replay-validation.json"):
+                path = output / name / filename
+                resumed_hashes[path] = sha256(path)
+        jobs = pending
+        print(json.dumps({"resumed_episodes": len(validations), "pending_episodes": len(jobs)}), flush=True)
     executor = ProcessPoolExecutor(max_workers=workers) if workers > 1 else None
     try:
         replayed = executor.map(_replay_job, jobs) if executor else map(_replay_job, jobs)
@@ -578,6 +693,10 @@ def replay_bundle(source: Path, output: Path, workers: int = 1) -> dict:
         if executor is not None:
             executor.shutdown(wait=True, cancel_futures=True)
 
+    for path, expected_hash in resumed_hashes.items():
+        if sha256(path) != expected_hash:
+            raise ReplayError(f"Resumed evidence changed before publication: {path}")
+    _verify_publication_paths(output, preflight["ordered_directories"])
     after_source = source_provenance()
     after_experiment = experiment_provenance(
         preflight["evaluation"]["release_mode"]
@@ -664,9 +783,10 @@ def main() -> int:
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--resume", action="store_true", help="Verify and reuse complete episodes from an interrupted replay")
     args = parser.parse_args()
     try:
-        report = replay_bundle(args.source, args.out, args.workers)
+        report = replay_bundle(args.source, args.out, args.workers, resume=args.resume)
     except ReplayError as error:
         parser.exit(1, f"replay failed: {error}\n")
     print(

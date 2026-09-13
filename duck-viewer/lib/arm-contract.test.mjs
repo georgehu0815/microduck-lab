@@ -11,6 +11,7 @@ const { outputText } = ts.transpileModule(source, {
 const exports = {};
 vm.runInNewContext(outputText, { exports, Set, Object, Array, Number });
 const {
+  armPolicyFamilies,
   isSafeArtifactPath,
   parseArmRuns,
   parseArmState,
@@ -86,6 +87,29 @@ test("validates run evidence without inventing verdicts", () => {
     hardware_enabled: false,
     runs: [{ case_id: "arm-reach-v1", passed: "yes" }],
   }), null);
+});
+
+test("groups every arm case and controller into policy families", () => {
+  const runs = [
+    { case_id: "arm-pick-place-v1", run_id: "seed-2:ppo", path: "b", controller: "ppo_residual", passed: false, metrics: {} },
+    { case_id: "arm-reach-v1", run_id: "seed-1:bc", path: "c", controller: "bc", passed: true, metrics: {} },
+    { case_id: "arm-reach-v1", run_id: "seed-1:teacher", path: "a", controller: "teacher", passed: true, metrics: { sources_match: true, model_match: true, checkpoint_match: true, context_match: true } },
+    { case_id: "arm-reach-v1", run_id: "seed-2:teacher", path: "d", controller: "teacher", passed: false, metrics: {} },
+  ];
+  const families = plain(armPolicyFamilies(runs));
+  assert.equal(families.length, 18);
+  assert.deepEqual(families.slice(0, 3), [
+    { caseId: "arm-reach-v1", controller: "teacher", runs: [runs[2], runs[3]], currentRuns: 1, passedRuns: 1 },
+    { caseId: "arm-reach-v1", controller: "bc", runs: [runs[1]], currentRuns: 0, passedRuns: 1 },
+    { caseId: "arm-reach-v1", controller: "ppo_residual", runs: [], currentRuns: 0, passedRuns: 0 },
+  ]);
+  assert.deepEqual(families[5], {
+    caseId: "arm-pick-place-v1",
+    controller: "ppo_residual",
+    runs: [runs[0]],
+    currentRuns: 0,
+    passedRuns: 0,
+  });
 });
 
 test("artifact paths are relative and traversal-free", () => {

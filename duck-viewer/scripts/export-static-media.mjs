@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdir, mkdtemp, rename, writeFile } from "node:fs/promises";
+import { constants } from "node:fs";
+import { lstat, mkdir, mkdtemp, open, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
@@ -12,6 +13,71 @@ const backups = path.resolve(root, "../.omx/artifacts/media-export-backups");
 await mkdir(backups, { recursive: true });
 const staging = await mkdtemp(path.join(backups, "pending-"));
 const media = [];
+
+async function preserveWingPod() {
+  const sourceRoot = path.join(publicRoot, "wingpod");
+  let rootStat;
+  try {
+    rootStat = await lstat(sourceRoot);
+  } catch (error) {
+    if (error.code === "ENOENT") return;
+    throw error;
+  }
+  assert.ok(rootStat.isDirectory(), "WingPod must be a regular directory, not a symlink");
+
+  async function readRegularFile(filename) {
+    const segments = filename.split("/");
+    let parent = sourceRoot;
+    for (const segment of segments.slice(0, -1)) {
+      parent = path.join(parent, segment);
+      assert.ok((await lstat(parent)).isDirectory(), `WingPod parent is not a regular directory: ${filename}`);
+    }
+    const source = path.join(sourceRoot, filename);
+    assert.ok((await lstat(source)).isFile(), `WingPod asset is not a regular file: ${filename}`);
+    const handle = await open(source, constants.O_RDONLY | constants.O_NOFOLLOW);
+    try {
+      assert.ok((await handle.stat()).isFile(), `WingPod asset is not a regular file: ${filename}`);
+      return await handle.readFile();
+    } finally {
+      await handle.close();
+    }
+  }
+
+  async function stageFile(filename, bytes) {
+    const destination = path.join(staging, "wingpod", filename);
+    await mkdir(path.dirname(destination), { recursive: true });
+    await writeFile(destination, bytes);
+    media.push({
+      path: `/static/wingpod/${filename}`,
+      bytes: bytes.length,
+      sha256: createHash("sha256").update(bytes).digest("hex"),
+    });
+  }
+
+  const manifestBytes = await readRegularFile("manifest.json");
+  const manifest = JSON.parse(manifestBytes.toString("utf8"));
+  assert.ok(manifest && typeof manifest === "object" && !Array.isArray(manifest), "Invalid WingPod manifest");
+  assert.ok(manifest.files && typeof manifest.files === "object" && !Array.isArray(manifest.files), "Invalid WingPod manifest files");
+  for (const [filename, entry] of Object.entries(manifest.files)) {
+    assert.ok(
+      /^[a-zA-Z0-9._/-]+$/.test(filename)
+        && filename.split("/").every((segment) => segment && segment !== "." && segment !== "..")
+        && filename !== "manifest.json",
+      `Unsafe WingPod asset path: ${filename}`,
+    );
+    assert.ok(entry && typeof entry === "object" && !Array.isArray(entry), `Invalid WingPod asset entry: ${filename}`);
+    assert.match(entry.sha256, /^[a-f0-9]{64}$/, `Invalid WingPod hash: ${filename}`);
+    assert.ok(Number.isSafeInteger(entry.bytes) && entry.bytes >= 0, `Invalid WingPod byte count: ${filename}`);
+    assert.ok(typeof entry.source === "string" && entry.source.length > 0, `Invalid WingPod source: ${filename}`);
+    const bytes = await readRegularFile(filename);
+    assert.equal(bytes.length, entry.bytes, `Changed WingPod byte count: ${filename}`);
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), entry.sha256, `Changed WingPod hash: ${filename}`);
+    await stageFile(filename, bytes);
+  }
+  await stageFile("manifest.json", manifestBytes);
+}
+
+await preserveWingPod();
 
 async function getJson(url) {
   const response = await fetch(url);

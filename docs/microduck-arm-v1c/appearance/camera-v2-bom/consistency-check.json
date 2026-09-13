@@ -1,0 +1,17 @@
+{
+  "part_rows": 110,
+  "groups": {
+    "arm": 52,
+    "microduck_base": 21,
+    "microduck_electronics": 9,
+    "appearance": 10,
+    "camera_eyes": 12,
+    "support_and_validation": 6
+  },
+  "leg_actuators": 10,
+  "arm_actuators": 5,
+  "total_actuators": 15,
+  "target_camera_modules": 2,
+  "unique_ids": true,
+  "hardware_released": false
+}

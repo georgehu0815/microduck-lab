@@ -98,6 +98,48 @@ class ArmLabStateTests(unittest.TestCase):
                     self.lab.command(operation, payload)
 
 
+class WingPodLabStateTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.lab = arm_lab.WingPodLab()
+
+    def tearDown(self) -> None:
+        self.lab.environment.close()
+
+    def test_live_state_contains_finalized_wingpod_scene(self) -> None:
+        state = self.lab.state()
+
+        self.assertEqual(state["case_id"], "wingpod-tennis-v1")
+        self.assertEqual(state["contract"], "wingpod-tennis-live-v1")
+        self.assertEqual(state["action_dim"], 15)
+        self.assertGreater(len(state["geoms"]), 100)
+        self.assertIn("ellipsoid", {geom["type"] for geom in state["geoms"]})
+        self.assertFalse(state["metrics"]["trained_policy"])
+        self.assertFalse(state["metrics"]["vision_control"])
+        json.dumps(state, allow_nan=False)
+
+    def test_live_teacher_steps_real_mujoco_state(self) -> None:
+        before = self.lab.state()
+        after = self.lab.command("wingpod-teacher", {"ticks": 2})
+
+        self.assertEqual(after["step"], before["step"] + 2)
+        self.assertGreater(after["time"], before["time"])
+        self.assertNotEqual(after["joints"], before["joints"])
+
+    def test_live_reset_and_command_bounds(self) -> None:
+        state = self.lab.command("wingpod-reset", {"seed": 7})
+        self.assertEqual(state["seed"], 7)
+        self.assertEqual(state["step"], 0)
+        for operation, payload in (
+            ("wingpod-reset", {"seed": True}),
+            ("wingpod-teacher", {"ticks": 0}),
+            ("wingpod-teacher", {"ticks": 11}),
+            ("wingpod-teacher", {"ticks": 1, "extra": 1}),
+        ):
+            with self.subTest(operation=operation, payload=payload):
+                with self.assertRaises(ValueError):
+                    self.lab.command(operation, payload)
+
+
 class HttpArmLabTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:

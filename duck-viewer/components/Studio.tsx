@@ -22,6 +22,12 @@ import {
 import { evaluationVerdict } from "@/lib/evaluation";
 import { experimentGuidanceDisplay, rewardTermDisplay } from "@/lib/experiment-labels";
 import { liveContractLabels } from "@/lib/live-contract";
+import {
+  ROBOT_CATEGORIES,
+  newestPoliciesPerSkill,
+  policySupportsCategory,
+  type RobotCategory,
+} from "@/lib/robot-category";
 import { evidenceLabel, rolloutMetricRanges, skillEvidence } from "@/lib/studio-evidence";
 import { availableProfileRunName, fetchSavedRuns, latestDiagnosticRun, latestReviewRun, latestVerifiedRun, type SavedRun } from "@/lib/studio-run";
 import { IS_STATIC_EXPORT, publicAssetUrl, staticStudioArtifactUrl } from "@/lib/static-assets";
@@ -529,6 +535,8 @@ export default function Studio() {
   const [connected, setConnected] = useState(false);
   const liveContract = liveContractLabels(connected ? frame?.ducks : []);
   const [policies, setPolicies] = useState<Policy[]>([]);
+  const [robotCategory, setRobotCategory] = useState<RobotCategory>("microduck");
+  const [selectedSimulationPolicyId, setSelectedSimulationPolicyId] = useState("");
   const [advanced, setAdvanced] = useState(false);
   const [logsOpen, setLogsOpen] = useState(false);
   const [reviewedEvidence, setReviewedEvidence] = useState<string | null>(null);
@@ -575,6 +583,11 @@ export default function Studio() {
     ? experimentGuidanceDisplay(guidanceExperiment, t)
     : null;
   const selectedDanceDuration = danceClips.find((clip) => recipe.danceClip === clip.path || recipe.danceClip?.endsWith(`/${clip.path}`))?.durationSeconds;
+  const simulationPolicies = newestPoliciesPerSkill(policies)
+    .filter((policy) => policySupportsCategory(policy, robotCategory));
+  const selectedSimulationPolicy = simulationPolicies.find((policy) => policy.id === selectedSimulationPolicyId)
+    ?? simulationPolicies[0]
+    ?? null;
 
   useEffect(() => {
     window.localStorage.setItem(
@@ -1245,6 +1258,8 @@ export default function Studio() {
           <a className={`${styles.navItem} ${styles.active}`} href="#experiments" aria-label={t("Experiments", "实验")}><Icon>♙</Icon><span>{t("Experiments", "实验")}</span><b>{EXPERIMENTS.length}</b></a>
           <Link className={styles.navItem} href="/arm" aria-label={t("Arm Lab", "机械臂实验室")}><Icon>⌁</Icon><span>{t("Arm Lab", "机械臂实验室")}</span><b>6</b></Link>
           <Link className={styles.navItem} href="/arm#videos" aria-label={t("Arm videos", "机械臂视频")}><Icon>▷</Icon><span>{t("Arm videos", "机械臂视频")}</span></Link>
+          <Link className={styles.navItem} href="/wingpod" aria-label={t("WingPod Camera v2", "WingPod Camera v2")}><Icon>◉</Icon><span>WingPod Camera v2</span></Link>
+          <Link className={styles.navItem} href="/classroom" aria-label={t("Classroom PPT", "课堂课件")}><Icon>▤</Icon><span>{t("Classroom PPT", "课堂课件")}</span></Link>
           <a className={styles.navItem} href="#artifacts" aria-label={t("Policies", "策略")}><Icon>▱</Icon><span>{t("Policies", "策略")}</span><b>{activePolicies}</b></a>
           <a className={styles.navItem} href="#evaluation" aria-label={t("Evaluations", "评估")}><Icon>⌁</Icon><span>{t("Evaluations", "评估")}</span></a>
         </nav>
@@ -1292,6 +1307,9 @@ export default function Studio() {
           </div>
           <div className={styles.topActions}>
             <div className={styles.mobileTopActions}>
+              <Link className={styles.mobileArmVideos} href="/classroom" aria-label={t("Classroom PPT", "课堂课件")}>
+                <Icon>▤</Icon><span>{t("Classroom PPT", "课堂课件")}</span>
+              </Link>
               <Link
                 className={styles.mobileArmVideos}
                 href="/arm#videos"
@@ -1299,6 +1317,14 @@ export default function Studio() {
               >
                 <Icon>▷</Icon>
                 <span>{t("Arm videos", "机械臂视频")}</span>
+              </Link>
+              <Link
+                className={styles.mobileArmVideos}
+                href="/wingpod"
+                aria-label={t("WingPod Camera v2", "WingPod Camera v2")}
+              >
+                <Icon>◉</Icon>
+                <span>WingPod</span>
               </Link>
               <button
                 type="button"
@@ -1669,6 +1695,66 @@ export default function Studio() {
                 </button>
               </div>
             </div>
+            <div className={styles.simulationPicker}>
+              <label>
+                <span>{t("Robot category", "机器人类别")}</span>
+                <select
+                  value={robotCategory}
+                  onChange={(event) => {
+                    setRobotCategory(event.target.value as RobotCategory);
+                    setSelectedSimulationPolicyId("");
+                  }}
+                >
+                  {ROBOT_CATEGORIES.map((category) => (
+                    <option key={category} value={category}>
+                      {category === "microduck" ? t("Original Microduck", "原版 Microduck") : category === "wingpod" ? "WingPod" : t("Humanoid", "人形机器人")}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span>{t("Trained policy", "已训练策略")}</span>
+                <select
+                  value={selectedSimulationPolicy?.id ?? ""}
+                  disabled={!simulationPolicies.length}
+                  onChange={(event) => setSelectedSimulationPolicyId(event.target.value)}
+                >
+                  {!simulationPolicies.length && <option value="">{t("No compatible policy", "没有兼容策略")}</option>}
+                  {simulationPolicies.map((policy) => <option key={policy.id} value={policy.id}>{policy.label}</option>)}
+                </select>
+              </label>
+              <button
+                type="button"
+                disabled={!connected || !selectedSimulationPolicy}
+                onClick={() => selectedSimulationPolicy && clientRef.current?.sendSpawnDuck(selectedSimulationPolicy.id)}
+              >
+                <Icon>＋</Icon>{t("Add to simulation", "添加到仿真")}
+              </button>
+              <small>
+                {robotCategory === "wingpod"
+                  ? t("WingPod uses the Microduck dynamics contract with the camera appearance sidecar.", "WingPod 使用 Microduck 动力学契约并叠加相机外观。")
+                  : robotCategory === "humanoid"
+                    ? t("Humanoid policies appear after a compatible Lab scene adapter is installed.", "安装兼容的 Lab 场景适配器后将显示人形机器人策略。")
+                    : t(`${simulationPolicies.length} compatible policies available`, `有 ${simulationPolicies.length} 个兼容策略`)}
+              </small>
+            </div>
+            {robotCategory === "wingpod" && (
+              <div className={styles.wingPodUseCase}>
+                <div>
+                  <span>{t("WINGPOD USE CASE", "WINGPOD 使用案例")}</span>
+                  <strong>{t("Tennis ball pick to bin", "网球捡取归桶")}</strong>
+                  <small>
+                    {t(
+                      "Approach, grasp, lift, carry, lower, and release into a low supported bin placement. Exact 50.84-second recorded action replay; not a trained policy.",
+                      "完成接近、抓取、抬升、搬运、下降并释放到低位承托式桶中。50.84 秒精确动作回放；不是已训练策略。",
+                    )}
+                  </small>
+                </div>
+                <Link href="/wingpod#videos">
+                  <Icon>▶</Icon>{t("View replay", "查看回放")}
+                </Link>
+              </div>
+            )}
             <div className={styles.viewer}>
               <Viewer
                 offline={IS_STATIC_EXPORT}
@@ -1902,6 +1988,11 @@ export default function Studio() {
                 clientRef={clientRef}
                 variant="embedded"
                 active={sessionTab === "policies"}
+                robotCategory={robotCategory}
+                onRobotCategoryChange={(category) => {
+                  setRobotCategory(category);
+                  setSelectedSimulationPolicyId("");
+                }}
                 onPoliciesChange={setPolicies}
                 onStudioRunsChange={setSavedRuns}
                 onReviewRun={loadSavedRun}

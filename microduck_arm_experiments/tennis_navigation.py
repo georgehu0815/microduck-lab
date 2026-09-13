@@ -11,6 +11,7 @@ from .tennis_release import FORECAST_PROVENANCE, _clone_environment, _terminal_i
 NAVIGATION_PROFILES = (
     NavigationProfile(),
     NavigationProfile(warmup_s=1.5),
+    NavigationProfile(warmup_s=3.25),
     NavigationProfile(warmup_s=2.5),
     NavigationProfile(cruise_m_s=.20, slow_m_s=.178),
     NavigationProfile(gain_scale=1.08),

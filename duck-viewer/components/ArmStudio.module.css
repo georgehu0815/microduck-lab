@@ -803,9 +803,73 @@
   font-size: 10px;
 }
 
+.policySection,
 .runsSection {
   padding: 28px 0 0;
   border-top: 1px solid var(--line-strong);
+}
+
+.policyCount {
+  flex: 0 0 auto;
+  padding: 8px 11px;
+  border: 1px solid var(--line-strong);
+  color: var(--green-dark);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.policyGrid {
+  margin: 18px 0 28px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.policyCard,
+.policySelected {
+  min-width: 0;
+  min-height: 122px;
+  padding: 13px;
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.policySelected {
+  border-color: var(--green-dark);
+  box-shadow: inset 3px 0 0 var(--green-dark);
+}
+
+.policyCard > span,
+.policySelected > span {
+  color: var(--green-dark);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.policyCard strong,
+.policySelected strong {
+  font-size: 13px;
+}
+
+.policyCard code,
+.policySelected code,
+.policyCard small,
+.policySelected small {
+  color: var(--muted);
+  font-size: 9px;
+  overflow-wrap: anywhere;
+}
+
+.policyCard small,
+.policySelected small {
+  margin-top: 5px;
+  line-height: 1.45;
 }
 
 .sectionHeading {
@@ -1051,6 +1115,10 @@
   .infoGrid article:last-child {
     grid-column: 1 / -1;
   }
+
+  .policyGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 860px) {
@@ -1072,6 +1140,10 @@
   .runFilters {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .policyGrid {
+    grid-template-columns: 1fr;
   }
 
   .workspace {

@@ -20,11 +20,100 @@
 不移动自由基座或球，不施加外力。**这是使用仿真真值的离线教师，不是实时 MPC，
 也不是新一轮全身 PPO 训练。**
 
-三种球型、种子 1 和 4 的 `half-height-planned-v11-screen` 已通过 **6/6**，
-两个负对照均按预期失败。完整 30 组的 `half-height-planned-v12` 正在验证，
-不能把 6/6 写成 30/30。相关回归测试通过 395 项。
-独立的记录动作物理重放精确复现了标称球种子 4 的 2,675 步及成功结果，
-球和关节轨迹最大差异为零；新版全部视频证据仍未完成。
+### 当前统一结果：v13，30/30 仿真入桶通过
+
+完整 `half-height-planned-v13` 矩阵已通过 **30/30**，覆盖三种球型、每种种子 0–9。
+两个负对照均按预期超时，未误判成功。v11 小矩阵仍是 6/6，历史 v12 仍是 29/30；
+本轮结果来自统一版本的完整重跑，没有把单独诊断拼成 30/30。
+
+| 项目 | 统一 v13 结果 |
+|---|---:|
+| 标称 / 小球 / 大球 | 10/10 / 10/10 / 10/10 |
+| 地面拾取并完整放回 | 30/30 |
+| 开爪 / 保持负对照 | 2 个预期失败，0 个误成功 |
+| 仿真任务时长：最短 / 中位数 / 最长 | 46.208 / 55.299 / 79.998 秒 |
+| 导航候选预测次数，包含被拒绝的预测 | 107 |
+| 已核验的完整视频 | 32 段：30 个入桶任务 + 2 个负对照 |
+| 对比的控制步数 / 监测的物理子步数 | 94,765 / 947,532 |
+| 相关全套回归 | 465 项通过，10 个警告 |
+| 新增 PPO 训练步数 | 0 |
+| 真机放行 | 否 |
+
+v12 最后失败的小球种子 5，本轮用 2,575 步完成。修复是把 3.25 秒步行预备时序
+加入**通用的 15 组候选集**，不是按种子选择动作。拾取完成后，每个候选均依据后续
+搬运、停靠、松爪、撤离全过程的仿真结果筛选；被拒绝的预测也保留在每个回合的
+`navigation_prediction` 中。预测不能覆盖实际运行回合的成功判定。
+种子 0–9 是开发中使用过的回归案例，不是独立留出的泛化测试集。
+
+**释放高度边界：**实测授权松爪时球心世界高度为 36.493–38.290 mm，低于允许上限
+54 mm。全部 30 回合记录的**松爪后无支撑自由落体时长均为零**。因此证据证明的是
+“半桶高度或更低位置释放”规则下完整放回桶内，**不是从半桶高度丢下的能力**。
+新规则明确允许更低位置、包括桶底支撑后释放。
+
+控制器协同使用 **15 个执行器：10 个腿、4 个机械臂姿态、1 个夹爪**，没有腰电机。
+本轮组合了既有腿部 ONNX 策略、机械臂 IK、反馈和仿真真值轨迹筛选；没有新增
+BC/DAgger/PPO 训练或 ONNX 导出，因此不存在本轮 reward/loss 训练曲线。
+
+继承的评估器允许超出标称关节范围 0.08 rad；本轮实测最大超出量为 0.013041 rad，
+不能据此宣称严格标称限位合格。
+80 秒回合期限不证明原 15 秒性能目标。网球载荷仍超过原设计的 20–30 g 目标。
+电气、热、结构、实时运行和真实机器人验证仍未完成。
+
+### 复现与证据
+
+从工作区根目录运行，使用 MuJoCo 3.10.0 与现有环境：
+
+```sh
+export PYTHONPATH=.:microduck_local/src
+export OMP_NUM_THREADS=1
+PY=rlx/.venv-microduck/bin/python
+BASE=artifacts/microduck-arm-v1c/tennis-return
+$PY -m microduck_arm_experiments.tennis_return \
+  --gripper wide_candidate --release-mode half_height \
+  --plan-navigation --max-steps 4000 --workers 12 \
+  --out "$BASE/half-height-planned-v13-reproduction"
+```
+
+复现时使用新目录，不覆盖历史证据。规划是离线过程，实际计算可能明显慢于仿真时间。
+完整实测矩阵为 `BASE` 下的 `half-height-planned-v13/evaluation.json`，同级保留 32 个
+回合目录和源码快照。最终回归记录为 `repair-development/half-height-v13-release-regression.log`。
+
+**32 段视频均已生成并核验**，位于 `BASE` 下的 `half-height-v13-videos/`。
+打开其中的 `videos.html` 可查看中英文视频集，逐段播放；`README.md` 提供逐案例 MP4
+索引。每个回合还保留原始遥测、结果和 `replay-validation.json`。
+
+视频是**记录动作的物理重放**，不是直接摆放姿态的动画，也不是第二次独立策略评估。
+每条记录指令都在重新初始化的 MuJoCo 环境中执行，原始遥测逐字节保留。
+32 回合共对比 94,765 个控制步、监测 947,532 个物理子步；记录时刻、球位置、关节
+位置和动作往返转换的最大误差均为**零**。
+
+独立视频核验器另外检查 50 Hz 采样的验收条件，包括释放、容纳、安全、自由落体限制
+和最后两秒稳定保持，并完整解码所有 MP4。视频为 640 × 480、25 fps，明确标注仿真与
+动作重放。采样验收检查和重放中的物理子步监测是两种不同证据，不互相冒充。
+
+视频目录中的主要文件：
+
+- `evaluation.json`：绑定视频文件的完整评估报告。
+- `evidence-summary.json`：实测汇总与报告哈希。
+- `video-verification/manifest.json`：32/32 段完整解码与一致性检查。
+- `video-verification/contact-sheet.jpg`：每个回合五张采样图。
+- `video-verification/terminal-contact-sheet.jpg`：全部 32 回合的真实最后一帧。
+
+从新生成的指标目录复现视频：
+
+```sh
+$PY scripts/replay_tennis_evidence.py \
+  --source "$BASE/half-height-planned-v13-reproduction" \
+  --out "$BASE/half-height-v13-videos-reproduction" --workers 1
+$PY scripts/verify_tennis_videos.py \
+  --root "$BASE/half-height-v13-videos-reproduction"
+```
+
+本机四进程渲染在完成 31 段后，有一个进程卡在 Metal/OpenGL 缓存文件锁。保留并校验
+已完成视频的哈希、原始来源绑定、步数和误差后，通过单进程 `--resume` 恢复缺失回合。
+中断日志与堆栈保留在 `repair-development/half-height-v13-render-recovery.md` 及配套文件中。
+最终核验包含恢复的视频，没有省略缺失案例。恢复检查还拒绝输出文件别名，并按
+来源模型验证精确物理子步数，包含提前结束的最后一个控制步。
 
 ## 历史桶底释放 v9 结果
 

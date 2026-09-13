@@ -26,13 +26,118 @@ selecting a walking warm-up, speed and gain profile. It uses no seed lookup,
 root teleportation or external-force injection. **This is an offline teacher,
 not real-time MPC or new whole-body PPO training.**
 
-The six-case `half-height-planned-v11-screen` (three sizes, seeds 1 and 4) passed
-**6/6**, with both negative controls failing as intended. The full 30-case
-`half-height-planned-v12` matrix is in progress; 6/6 is not a 30/30 claim.
-The related regression run passed 395 tests. A separate recorded-action physics
-replay reproduced nominal seed 4 exactly over 2,675 steps, including success,
-with zero measured ball/joint trajectory discrepancy. New full video evidence
-is not yet complete.
+### Current unified result: v13, 30/30 simulated returns
+
+The complete `half-height-planned-v13` matrix passed **30/30**, with three ball
+sizes and seeds 0–9 per size. Both negative controls correctly timed out without
+success. The six-case v11 screen remains 6/6 and historical v12 remains 29/30;
+neither was combined with diagnostics to obtain this result.
+
+| Check | Unified v13 result |
+|---|---:|
+| Nominal / small / large ball | 10/10 / 10/10 / 10/10 |
+| Ground pickup and complete return | 30/30 |
+| Open-jaw / hold negative controls | 2 expected failures; 0 false successes |
+| Simulated task time: minimum / median / maximum | 46.208 / 55.299 / 79.998 s |
+| Navigation candidate trials, including rejected forecasts | 107 |
+| Verified complete videos | 32: 30 returns + 2 negative controls |
+| Recorded control steps compared / physics substeps monitored | 94,765 / 947,532 |
+| Related full regression | 465 passed, 10 warnings |
+| New PPO training steps | 0 |
+| Hardware release | No |
+
+The last v12 failure, small-ball seed 5, now completes in 2,575 steps. The repair
+adds a 3.25-second walking warm-up to the **common 15-profile candidate list**,
+not a seed-specific choice. After pickup, each candidate is evaluated through
+the remaining carry/docking/release/retreat sequence before selection. Rejected
+forecasts remain in each episode's `navigation_prediction` evidence. A candidate
+prediction cannot overwrite the live episode's success. Seeds 0–9 are regression
+cases used during development, not an independent held-out generalization set.
+
+**Release-height limitation:** measured authorization heights range from
+36.493 to 38.290 mm above world zero, below the 54 mm allowed maximum. All 30
+episodes record **zero post-release unsupported free-fall duration**. This proves
+successful bin returns under the lower-or-half-height contract; it does **not**
+demonstrate dropping the ball from half-height. Lower/bottom-supported release
+was explicitly retained as a valid outcome.
+
+The controller coordinates **15 actuators: 10 leg, 4 arm-pose, and 1 gripper**;
+there is no waist actuator. It combines the existing leg ONNX policy, arm IK,
+feedback and simulator-truth trajectory screening. No BC/DAgger/PPO training or
+new ONNX export occurred. Reward/loss curves are therefore not applicable.
+
+The inherited evaluator allows a 0.08 rad excursion beyond nominal joint limits;
+the maximum observed excursion in v13 is 0.013041 rad. Passing this evaluator
+is not strict nominal-limit qualification. The 80 s horizon does not
+prove the original 15 s performance target. The tennis payload class remains
+above the original 20–30 g design target. Electrical, thermal, structural,
+real-time execution and physical robot validation remain open.
+
+### Reproduction and evidence
+
+Run from the workspace root with MuJoCo 3.10.0 and the existing environment:
+
+```sh
+export PYTHONPATH=.:microduck_local/src
+export OMP_NUM_THREADS=1
+PY=rlx/.venv-microduck/bin/python
+BASE=artifacts/microduck-arm-v1c/tennis-return
+$PY -m microduck_arm_experiments.tennis_return \
+  --gripper wide_candidate --release-mode half_height \
+  --plan-navigation --max-steps 4000 --workers 12 \
+  --out "$BASE/half-height-planned-v13-reproduction"
+```
+
+Use a new output directory; do not overwrite historical evidence. Full planning
+is offline and may be much slower than simulated time. The complete measured
+matrix is `half-height-planned-v13/evaluation.json` beneath `BASE`, alongside all
+32 episode directories and the source snapshot. Final regression output is
+`repair-development/half-height-v13-release-regression.log`.
+
+**All 32 videos are complete and verified** in `half-height-v13-videos/` beneath
+`BASE`. Open its `videos.html` for a bilingual, individually playable video
+gallery, or `README.md` for the per-case MP4 index. Each episode also contains
+its raw telemetry, result, and `replay-validation.json`.
+
+The videos are **recorded-action physics replays**, not rendered pose animation
+or a second independent policy evaluation. Every recorded command is applied to
+a freshly reset MuJoCo environment; the original telemetry is preserved
+byte-for-byte. Over all 32 episodes, replay compared 94,765 control steps and
+monitored 947,532 physics substeps. Maximum recorded-time, ball-position,
+joint-position and action-round-trip differences were all **zero**.
+
+The separate video verifier checked the sampled 50 Hz acceptance envelope,
+including release, containment, safety, free-fall limits and final two-second
+settling, then fully decoded every MP4. Videos are 640 × 480 at 25 fps, with
+simulation/replay labels. This sampled verification and the replay's substep
+monitoring are distinct evidence, not interchangeable claims.
+
+Key files under the video bundle:
+
+- `evaluation.json`: video-bound aggregate report.
+- `evidence-summary.json`: measured summary and report hashes.
+- `video-verification/manifest.json`: 32/32 decode and integrity checks.
+- `video-verification/contact-sheet.jpg`: five sampled frames per episode.
+- `video-verification/terminal-contact-sheet.jpg`: the actual final frame of all 32 episodes.
+
+To reproduce videos from the new metrics directory:
+
+```sh
+$PY scripts/replay_tennis_evidence.py \
+  --source "$BASE/half-height-planned-v13-reproduction" \
+  --out "$BASE/half-height-v13-videos-reproduction" --workers 1
+$PY scripts/verify_tennis_videos.py \
+  --root "$BASE/half-height-v13-videos-reproduction"
+```
+
+On this Mac, one four-worker renderer stalled in a Metal/OpenGL cache file lock
+after 31 videos completed. The missing episode was recovered serially, using
+`--resume` only after verifying retained video hashes, original source bindings,
+step counts and errors. Interrupted logs and the process stack are retained in
+`repair-development/half-height-v13-render-recovery.md` and its companion files.
+The final verifier includes the recovered video; no missing episode was omitted.
+The resume checker also rejects aliased output files and requires the exact
+source-model physics-substep count, including a shortened terminal control step.
 
 ## Historical supported-release v9 result
 

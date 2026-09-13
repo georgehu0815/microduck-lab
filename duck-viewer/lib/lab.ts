@@ -225,6 +225,9 @@ export interface Policy {
   id: string; // e.g. "pollen:alpha_stand"
   label: string; // e.g. "alpha_stand"
   group: "pollen" | "runs" | "checkpoints" | "studio";
+  /** Robot family expected by this policy. Older labs omit it; the viewer
+   *  derives Microduck compatibility from the policy identity in that case. */
+  category?: "microduck" | "wingpod" | "humanoid";
   path: string;
   artifact?: string;
   recipe?: string;

@@ -6,6 +6,7 @@ export const ARM_CASE_IDS = [
   "arms-handover-v1",
   "arms-co-carry-v1",
 ] as const;
+export const ARM_CONTROLLER_IDS = ["teacher", "bc", "ppo_residual"] as const;
 
 export type ArmCaseId = (typeof ARM_CASE_IDS)[number];
 export type ArmGeomType = "box" | "sphere" | "capsule" | "cylinder";
@@ -61,6 +62,14 @@ export interface ArmRunsResponse {
   hardware_enabled: false;
 }
 
+export interface ArmPolicyFamily {
+  caseId: ArmCaseId;
+  controller: string;
+  runs: ArmRun[];
+  currentRuns: number;
+  passedRuns: number;
+}
+
 export const ARM_CASES: ArmCaseDefinition[] = [
   {
     id: "arm-reach-v1",
@@ -111,6 +120,51 @@ export const ARM_CASES: ArmCaseDefinition[] = [
     group: "双臂",
   },
 ];
+
+export function armPolicyFamilies(runs: readonly ArmRun[]): ArmPolicyFamily[] {
+  const families = new Map<string, ArmPolicyFamily>();
+  for (const caseId of ARM_CASE_IDS) {
+    for (const controller of ARM_CONTROLLER_IDS) {
+      families.set(`${caseId}:${controller}`, {
+        caseId,
+        controller,
+        runs: [],
+        currentRuns: 0,
+        passedRuns: 0,
+      });
+    }
+  }
+  for (const run of runs) {
+    const key = `${run.case_id}:${run.controller}`;
+    const family = families.get(key) ?? {
+      caseId: run.case_id,
+      controller: run.controller,
+      runs: [],
+      currentRuns: 0,
+      passedRuns: 0,
+    };
+    family.runs.push(run);
+    if (
+      run.metrics.sources_match === true &&
+      run.metrics.model_match === true &&
+      run.metrics.checkpoint_match === true &&
+      run.metrics.context_match === true
+    ) family.currentRuns += 1;
+    if (run.passed === true) family.passedRuns += 1;
+    families.set(key, family);
+  }
+  const caseOrder = new Map(ARM_CASE_IDS.map((caseId, index) => [caseId, index]));
+  const controllerOrder = new Map<string, number>(
+    ARM_CONTROLLER_IDS.map((controller, index) => [controller, index])
+  );
+  return [...families.values()].sort((left, right) =>
+    (caseOrder.get(left.caseId) ?? ARM_CASE_IDS.length) -
+      (caseOrder.get(right.caseId) ?? ARM_CASE_IDS.length) ||
+    (controllerOrder.get(left.controller) ?? controllerOrder.size) -
+      (controllerOrder.get(right.controller) ?? controllerOrder.size) ||
+    left.controller.localeCompare(right.controller)
+  );
+}
 
 const CASE_SET = new Set<string>(ARM_CASE_IDS);
 const GEOM_TYPES = new Set<string>(["box", "sphere", "capsule", "cylinder"]);

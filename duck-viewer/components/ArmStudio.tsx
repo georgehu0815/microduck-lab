@@ -13,6 +13,7 @@ import {
 
 import {
   ARM_CASES,
+  armPolicyFamilies,
   parseArmRuns,
   parseArmState,
   type ArmCaseId,
@@ -384,6 +385,7 @@ export default function ArmStudio() {
   const [error, setError] = useState<string | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [showRunHistory, setShowRunHistory] = useState(false);
+  const [policyFilter, setPolicyFilter] = useState<string | null>(null);
   const [contactOpen, setContactOpen] = useState(false);
   const commandLock = useRef(false);
 
@@ -526,13 +528,16 @@ export default function ArmStudio() {
   const visibleAction = action.length === currentActionDim
     ? action
     : new Array(currentActionDim).fill(0);
+  const policyFamilies = useMemo(() => armPolicyFamilies(runs), [runs]);
   const visibleRuns = useMemo(
-    () => showRunHistory
+    () => policyFilter
+      ? runs.filter((run) => `${run.case_id}:${run.controller}` === policyFilter)
+      : showRunHistory
       ? runs
       : runs.filter((run) =>
         run.case_id === selectedCase && hasCurrentProvenance(run.metrics)
       ),
-    [runs, selectedCase, showRunHistory]
+    [policyFilter, runs, selectedCase, showRunHistory]
   );
 
   async function reset() {
@@ -559,6 +564,7 @@ export default function ArmStudio() {
     setSelectedCase(caseId);
     setVideoCase(caseId);
     setPlaying(false);
+    setPolicyFilter(null);
     setAction(new Array(definition?.actionDim ?? 6).fill(0));
   }
 
@@ -582,6 +588,17 @@ export default function ArmStudio() {
         </div>
         <div className={styles.headerActions}>
           <LanguageToggle />
+          <Link className={styles.contactButton} href="/classroom" aria-label={t("Classroom PPT", "课堂课件")}>
+            <Icon>▤</Icon><span>{t("Classroom PPT", "课堂课件")}</span>
+          </Link>
+          <Link
+            className={styles.contactButton}
+            href="/wingpod"
+            aria-label={t("Open WingPod Camera v2", "打开 WingPod Camera v2")}
+          >
+            <Icon>◉</Icon>
+            <span>WingPod</span>
+          </Link>
           <button
             type="button"
             className={styles.contactButton}
@@ -892,6 +909,52 @@ export default function ArmStudio() {
           </article>
         </section>
 
+        <section className={styles.policySection} aria-labelledby="arm-policies-title">
+          <div className={styles.sectionHeading}>
+            <div>
+              <p className={styles.eyebrow}>{t("ALL ARM POLICIES", "全部机械臂策略")}</p>
+              <h2 id="arm-policies-title">{t("Six cases, three controller families", "六个案例，三类控制器")}</h2>
+              <p>
+                {t(
+                  "Every arm case includes Teacher, behavior cloning, and PPO residual entries. Counts below come only from validated backend records.",
+                  "每个机械臂案例均列出 Teacher、行为克隆和 PPO residual。下方数量仅来自已验证的后端记录。"
+                )}
+              </p>
+            </div>
+            <span className={styles.policyCount}>{policyFamilies.length} {t("families", "类策略")}</span>
+          </div>
+          <div className={styles.policyGrid}>
+            {policyFamilies.map((family) => {
+              const filterKey = `${family.caseId}:${family.controller}`;
+              return (
+                <button
+                  type="button"
+                  key={filterKey}
+                  className={policyFilter === filterKey ? styles.policySelected : styles.policyCard}
+                  onClick={() => {
+                    setSelectedCase(family.caseId);
+                    setVideoCase(family.caseId);
+                    setPolicyFilter(filterKey);
+                    setShowRunHistory(true);
+                  }}
+                >
+                  <span>{armCaseTitle(family.caseId, language)}</span>
+                  <strong>{controllerLabel(family.controller, t)}</strong>
+                  <code>{family.caseId}</code>
+                  <small>
+                    {family.runs.length
+                      ? t(
+                          `${family.runs.length} evaluations · ${family.currentRuns} current · ${family.passedRuns} passed`,
+                          `${family.runs.length} 次评估 · ${family.currentRuns} 次当前匹配 · ${family.passedRuns} 次通过`
+                        )
+                      : t("No local evidence loaded", "未加载本地证据")}
+                  </small>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
         <section className={styles.runsSection} id="evidence">
           <div className={styles.sectionHeading}>
             <div>
@@ -909,7 +972,10 @@ export default function ArmStudio() {
                 <input
                   type="checkbox"
                   checked={showRunHistory}
-                  onChange={(event) => setShowRunHistory(event.target.checked)}
+                  onChange={(event) => {
+                    setShowRunHistory(event.target.checked);
+                    setPolicyFilter(null);
+                  }}
                 />
                 <span>{t("Show history and other cases", "显示历史/其他案例")}</span>
               </label>
