@@ -59,6 +59,7 @@ import {
 } from "@/lib/rig";
 import { pushToast } from "./Toasts";
 import { useLanguage } from "./LanguageProvider";
+import { IS_STATIC_EXPORT } from "@/lib/static-assets";
 
 const mono = "ui-monospace, SFMono-Regular, Menlo, monospace";
 const GROUPS = ["left leg", "head + neck", "right leg"] as const;
@@ -202,7 +203,7 @@ export function AnimPanel({
 
   // --- joint metadata (limits, defaults, body map) -------------------------
   useEffect(() => {
-    if (!open || meta) return;
+    if (IS_STATIC_EXPORT || !open || meta) return;
     let stale = false;
     fetchJoints()
       .then((m) => {

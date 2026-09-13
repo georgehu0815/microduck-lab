@@ -541,6 +541,7 @@ function AssignTargets({ client }: { client: LabClient }) {
 }
 
 export interface ViewerProps {
+  offline?: boolean;
   layout?: "fullscreen" | "studio";
   showAnimationTools?: boolean;
   showPolicyTools?: boolean;
@@ -551,6 +552,7 @@ export interface ViewerProps {
 }
 
 export default function Viewer({
+  offline = false,
   layout = "fullscreen",
   showAnimationTools = true,
   showPolicyTools = true,
@@ -582,6 +584,7 @@ export default function Viewer({
   }, [onClientReady, onConnectionChange, onFrame]);
 
   useEffect(() => {
+    if (offline) return;
     let disposed = false;
     let retryTimer: number | null = null;
     const client = new LabClient((nextConnected) => {
@@ -796,7 +799,7 @@ export default function Viewer({
       onClientReadyRef.current?.(null);
       client.close();
     };
-  }, [layout]);
+  }, [layout, offline]);
 
   // Clicking the stage re-grabs focus for the wrapper; clicks on real
   // interactive elements (pad buttons, future chat input) keep their focus.

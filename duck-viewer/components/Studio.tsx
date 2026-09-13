@@ -582,6 +582,7 @@ export default function Studio() {
   }, [selectedExperimentId]);
 
   useEffect(() => {
+    if (IS_STATIC_EXPORT) return;
     fetchPolicies().then(setPolicies).catch(() => setPolicies([]));
   }, []);
 
@@ -1240,6 +1241,7 @@ export default function Studio() {
           <a className={styles.navItem} href="#deployment" aria-label={t("Robot fleet", "机器人群组")}><Icon>⌾</Icon><span>{t("Robot fleet", "机器人群组")}</span></a>
           <a className={styles.navItem} href="#deployment" aria-label={t("Deployments", "部署")}><Icon>♢</Icon><span>{t("Deployments", "部署")}</span></a>
           <a className={styles.navItem} href="#system" aria-label={t("Settings", "设置")}><Icon>⚙</Icon><span>{t("Settings", "设置")}</span></a>
+          <a className={styles.navItem} href="mailto:bochuxt7@gmail.com" aria-label={t("Email bochuxt7@gmail.com", "发送邮件至 bochuxt7@gmail.com")}><Icon>✉</Icon><span>{t("Contact", "联系")}</span></a>
         </nav>
         <div className={styles.sidebarBottom}>
           <a
@@ -1276,6 +1278,15 @@ export default function Studio() {
                 <Icon>▷</Icon>
                 <span>{t("Arm videos", "机械臂视频")}</span>
               </Link>
+              <a
+                className={styles.mobileContact}
+                href="mailto:bochuxt7@gmail.com"
+                title={t("Email bochuxt7@gmail.com", "发送邮件至 bochuxt7@gmail.com")}
+                aria-label={t("Email bochuxt7@gmail.com", "发送邮件至 bochuxt7@gmail.com")}
+              >
+                <Icon>✉</Icon>
+                <span>{t("Contact", "联系")}</span>
+              </a>
               <div className={styles.mobileLanguageToggle}>
                 <LanguageToggle />
               </div>
@@ -1613,7 +1624,11 @@ export default function Studio() {
               </div>
               <div className={styles.panelTools}>
                 <StatusPill tone={connected ? "live" : "muted"}>
-                  {connected ? t("LIVE MUJOCO", "MUJOCO 在线") : t("WAITING FOR LAB", "等待实验室")}
+                  {IS_STATIC_EXPORT
+                    ? t("STATIC EVIDENCE", "静态证据")
+                    : connected
+                      ? t("LIVE MUJOCO", "MUJOCO 在线")
+                      : t("WAITING FOR LAB", "等待实验室")}
                 </StatusPill>
                 <button
                   className={styles.iconButton}
@@ -1627,6 +1642,7 @@ export default function Studio() {
             </div>
             <div className={styles.viewer}>
               <Viewer
+                offline={IS_STATIC_EXPORT}
                 layout="studio"
                 showAnimationTools={false}
                 showPolicyTools={false}

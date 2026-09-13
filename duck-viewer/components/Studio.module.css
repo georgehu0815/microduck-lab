@@ -2714,7 +2714,8 @@
     gap: 6px;
   }
 
-  .mobileArmVideos {
+  .mobileArmVideos,
+  .mobileContact {
     min-height: 34px;
     display: inline-flex;
     align-items: center;
@@ -2726,6 +2727,10 @@
     font-size: 10px;
     font-weight: 600;
     white-space: nowrap;
+  }
+
+  .mobileContact {
+    padding-inline: 6px;
   }
 
   .mobileLanguageToggle > div {
