@@ -22,8 +22,11 @@
       "durationSeconds": 103.39999999999999,
       "failedGates": [],
       "selectionReasons": [],
-      "videoUrl": "/static/arm-videos/media/001.mp4",
-      "evidenceUrl": "/static/arm-videos/media/001.json"
+      "videoHash": "5c42fc4ffd31a1552f7aa776d4170437ee3df2ef1b781895da39eb5cfc8632b1",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": null,
+      "videoUrl": "/static/arm-videos/media/5c42fc4ffd31a1552f7aa776d4170437ee3df2ef1b781895da39eb5cfc8632b1.mp4",
+      "evidenceUrl": "/static/arm-videos/media/9ab27607fb4e7c52fe0b928298e5aed43d22a41d52c9fee64c43dfe33a27c11b.json"
     },
     {
       "id": "recheck-20260912-v2-all-failures",
@@ -45,8 +48,11 @@
         "no_drop"
       ],
       "selectionReasons": [],
-      "videoUrl": "/static/arm-videos/media/002.mp4",
-      "evidenceUrl": "/static/arm-videos/media/002.json"
+      "videoHash": "3faff158c24bb475220994afe9f4aec9e74fc91a0fa9e66eee5e915fa517231c",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": null,
+      "videoUrl": "/static/arm-videos/media/3faff158c24bb475220994afe9f4aec9e74fc91a0fa9e66eee5e915fa517231c.mp4",
+      "evidenceUrl": "/static/arm-videos/media/036d22e9763e34eb85b3e429e146e1d2c44655619a04268551e1b6cc77f37e6d.json"
     },
     {
       "id": "recheck-20260912-v2:arms-co-carry-v1-train101-eval50705:1d98de5e",
@@ -69,8 +75,11 @@
       "selectionReasons": [
         "historical-failure-replay"
       ],
-      "videoUrl": "/static/arm-videos/media/003.mp4",
-      "evidenceUrl": "/static/arm-videos/media/003.json"
+      "videoHash": "ee5d5091af167503a215f9b54ec8c0455ca5bb7dc867346e0cafb6801db1d8cc",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:18:48.801647Z",
+      "videoUrl": "/static/arm-videos/media/ee5d5091af167503a215f9b54ec8c0455ca5bb7dc867346e0cafb6801db1d8cc.mp4",
+      "evidenceUrl": "/static/arm-videos/media/ae6ee789d3146ed688c21a5384c92ce7d04e5a20de61425756cf513e415a7ce9.json"
     },
     {
       "id": "arms-co-carry-v1-train101-eval80000",
@@ -91,8 +100,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/004.mp4",
-      "evidenceUrl": "/static/arm-videos/media/004.json"
+      "videoHash": "beb8c8cfe3ddec8da111423f732ecbebdddc310cadac55e0da1007a509ffde93",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:18:31.716197Z",
+      "videoUrl": "/static/arm-videos/media/beb8c8cfe3ddec8da111423f732ecbebdddc310cadac55e0da1007a509ffde93.mp4",
+      "evidenceUrl": "/static/arm-videos/media/d0dd70641a11e75f69f6dc3e2f84a4308cf29c7da302d8f303673157b4f49b3f.json"
     },
     {
       "id": "recheck-20260912-v2:arms-co-carry-v1-train202-eval50007:18e419f0",
@@ -116,8 +128,11 @@
       "selectionReasons": [
         "historical-failure-replay"
       ],
-      "videoUrl": "/static/arm-videos/media/005.mp4",
-      "evidenceUrl": "/static/arm-videos/media/005.json"
+      "videoHash": "e476559a0757634fd45521fc6898cde753da9ef1c48a0aa25c53644fe6e1012b",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:19:05.947958Z",
+      "videoUrl": "/static/arm-videos/media/e476559a0757634fd45521fc6898cde753da9ef1c48a0aa25c53644fe6e1012b.mp4",
+      "evidenceUrl": "/static/arm-videos/media/658d02dd919ec09892da2779851e89d7734396e969bdde072f2b37cd8f1a0738.json"
     },
     {
       "id": "recheck-20260912-v2:arms-co-carry-v1-train202-eval50606:53630dda",
@@ -140,8 +155,11 @@
       "selectionReasons": [
         "historical-failure-replay"
       ],
-      "videoUrl": "/static/arm-videos/media/006.mp4",
-      "evidenceUrl": "/static/arm-videos/media/006.json"
+      "videoHash": "05db9d95f50887dc533806971440b640a1a0052e3943598d7570749d11cff6de",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:19:23.071835Z",
+      "videoUrl": "/static/arm-videos/media/05db9d95f50887dc533806971440b640a1a0052e3943598d7570749d11cff6de.mp4",
+      "evidenceUrl": "/static/arm-videos/media/9eba3db855a70db54284ad4e3faf08e881777c1065ee11a1b153bf16388f4d1e.json"
     },
     {
       "id": "recheck-20260912-v2:arms-co-carry-v1-train202-eval80307:67791ab4",
@@ -165,8 +183,11 @@
       "selectionReasons": [
         "new-failure"
       ],
-      "videoUrl": "/static/arm-videos/media/007.mp4",
-      "evidenceUrl": "/static/arm-videos/media/007.json"
+      "videoHash": "0d509ce1d7132fbf082a00afd955492e3d127b1af6804733aff77b77efbcd4cf",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:19:40.015559Z",
+      "videoUrl": "/static/arm-videos/media/0d509ce1d7132fbf082a00afd955492e3d127b1af6804733aff77b77efbcd4cf.mp4",
+      "evidenceUrl": "/static/arm-videos/media/71b5396c61f52ea69a8726a108eb17750a2ba2b1b5fc4c749c2867c1e1cc315f.json"
     },
     {
       "id": "recheck-20260912-v2:arms-co-carry-v1-train202-eval80609:82dae17c",
@@ -189,8 +210,11 @@
       "selectionReasons": [
         "new-failure"
       ],
-      "videoUrl": "/static/arm-videos/media/008.mp4",
-      "evidenceUrl": "/static/arm-videos/media/008.json"
+      "videoHash": "0165a7996d2ca86431924d28e4b2886ef052d0091f0d4a69d5cb65dab3e5f934",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:19:57.232763Z",
+      "videoUrl": "/static/arm-videos/media/0165a7996d2ca86431924d28e4b2886ef052d0091f0d4a69d5cb65dab3e5f934.mp4",
+      "evidenceUrl": "/static/arm-videos/media/54108313b767d05b1a3c57a4dd38bed5b5509f515b9813844ae3f1354f934134.json"
     },
     {
       "id": "recheck-20260912-v2:arms-co-carry-v1-train303-eval50704:f3913dc0",
@@ -213,8 +237,11 @@
       "selectionReasons": [
         "historical-failure-replay"
       ],
-      "videoUrl": "/static/arm-videos/media/009.mp4",
-      "evidenceUrl": "/static/arm-videos/media/009.json"
+      "videoHash": "dd3ccc1e400b6aba39d2fa1b9bd21259c459785eb2ae8416a2c88a26b8a9e3a5",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:20:14.478273Z",
+      "videoUrl": "/static/arm-videos/media/dd3ccc1e400b6aba39d2fa1b9bd21259c459785eb2ae8416a2c88a26b8a9e3a5.mp4",
+      "evidenceUrl": "/static/arm-videos/media/092cda23c57f1d7c1c2239bc1ed6747f0101787664d6e010d7aab89480b4e9d6.json"
     },
     {
       "id": "recheck-20260912-v2:arms-co-carry-v1-train303-eval50807:0cc965ea",
@@ -237,8 +264,11 @@
       "selectionReasons": [
         "historical-failure-replay"
       ],
-      "videoUrl": "/static/arm-videos/media/010.mp4",
-      "evidenceUrl": "/static/arm-videos/media/010.json"
+      "videoHash": "bd658908927386eed5a5cc16da12b31f6b9f0c4df7daa37786713da362acde7b",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:20:32.402487Z",
+      "videoUrl": "/static/arm-videos/media/bd658908927386eed5a5cc16da12b31f6b9f0c4df7daa37786713da362acde7b.mp4",
+      "evidenceUrl": "/static/arm-videos/media/228fdbf47fe938e3a726c20136d4ede009d24bd2493f25b3f3db0a41307c1643.json"
     },
     {
       "id": "arms-handover-v1-train101-eval80000",
@@ -259,8 +289,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/011.mp4",
-      "evidenceUrl": "/static/arm-videos/media/011.json"
+      "videoHash": "f37c8fdba96e8c0708f6664cd4de0950b07b37f765af9581872723666ee1030d",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:18:19.588809Z",
+      "videoUrl": "/static/arm-videos/media/f37c8fdba96e8c0708f6664cd4de0950b07b37f765af9581872723666ee1030d.mp4",
+      "evidenceUrl": "/static/arm-videos/media/9034e513107bff6355d5527f6049ba0cd246315de90b0164376a51403cb1c50d.json"
     },
     {
       "id": "arm-carry-v1-train101-eval80000",
@@ -281,8 +314,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/012.mp4",
-      "evidenceUrl": "/static/arm-videos/media/012.json"
+      "videoHash": "0b27958b49615ffce5e809cf5df88f7ba3d63944dc93d84fd8a13e603872d94b",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:18:06.988726Z",
+      "videoUrl": "/static/arm-videos/media/0b27958b49615ffce5e809cf5df88f7ba3d63944dc93d84fd8a13e603872d94b.mp4",
+      "evidenceUrl": "/static/arm-videos/media/7568ea905fbea484ac379fbe6e1986d87867e7061febfe0215dfdc64f06d9f48.json"
     },
     {
       "id": "arm-pick-place-v1-train101-eval80000",
@@ -303,8 +339,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/013.mp4",
-      "evidenceUrl": "/static/arm-videos/media/013.json"
+      "videoHash": "c698546a3880ce592c63648ba3061fa4309a5e8fd452b471708340b4a72e1764",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:17:46.392542Z",
+      "videoUrl": "/static/arm-videos/media/c698546a3880ce592c63648ba3061fa4309a5e8fd452b471708340b4a72e1764.mp4",
+      "evidenceUrl": "/static/arm-videos/media/7c860d9f565236745d109388e3496176e78fbd7487dd757bc1c83dad3ce0b696.json"
     },
     {
       "id": "arm-reach-v1-train101-eval80000",
@@ -325,8 +364,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/014.mp4",
-      "evidenceUrl": "/static/arm-videos/media/014.json"
+      "videoHash": "fbc37cde306fdd9d43a5ece7470432cc21c5b1973cffcbb2b0b08fba00ee2611",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:16:56.621464Z",
+      "videoUrl": "/static/arm-videos/media/fbc37cde306fdd9d43a5ece7470432cc21c5b1973cffcbb2b0b08fba00ee2611.mp4",
+      "evidenceUrl": "/static/arm-videos/media/8a99d6f3de5950b6012ba6a6a53d5f589f8512288865727c853d23d8e7e1b7bc.json"
     },
     {
       "id": "arm-relocate-v1-train101-eval80000",
@@ -347,8 +389,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/015.mp4",
-      "evidenceUrl": "/static/arm-videos/media/015.json"
+      "videoHash": "68e337d7de4bc79860b41e51a397c8b2e62b1cdaf82c1daa8bf0d6e76a22f711",
+      "evidenceRecordedAt": "2026-09-12T23:20:33.389221Z",
+      "receiptRecordedAt": "2026-09-12T23:17:56.036346Z",
+      "videoUrl": "/static/arm-videos/media/68e337d7de4bc79860b41e51a397c8b2e62b1cdaf82c1daa8bf0d6e76a22f711.mp4",
+      "evidenceUrl": "/static/arm-videos/media/b497eb699d67b436780a241d8a4a4a5899ef144d54f4a435ca86eb5ebc379524.json"
     },
     {
       "id": "strict-heldout-20260912-v3-six-cases-overview",
@@ -372,8 +417,11 @@
       "durationSeconds": 103.36,
       "failedGates": [],
       "selectionReasons": [],
-      "videoUrl": "/static/arm-videos/media/016.mp4",
-      "evidenceUrl": "/static/arm-videos/media/016.json"
+      "videoHash": "a952252f18b827af11a7e9f35381f99dbc497e47db1f1ecc4108ec2b0eb89e2a",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": null,
+      "videoUrl": "/static/arm-videos/media/a952252f18b827af11a7e9f35381f99dbc497e47db1f1ecc4108ec2b0eb89e2a.mp4",
+      "evidenceUrl": "/static/arm-videos/media/a79429488969a8da547afd598f990c1c2d8e219832862375638d9e674188defd.json"
     },
     {
       "id": "arms-co-carry-v1-train101-eval110000",
@@ -396,8 +444,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/017.mp4",
-      "evidenceUrl": "/static/arm-videos/media/017.json"
+      "videoHash": "afa4fd0012e0c5865c68e1b69962a3d26be7fa2c7519b93a98d5468cdeb0dc36",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:44:23.335766Z",
+      "videoUrl": "/static/arm-videos/media/afa4fd0012e0c5865c68e1b69962a3d26be7fa2c7519b93a98d5468cdeb0dc36.mp4",
+      "evidenceUrl": "/static/arm-videos/media/921010ecde34f623cb755a91015e09bb635152c25a27d2b69e2afc70fbc07145.json"
     },
     {
       "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train101-eval50705:ff91f71b",
@@ -418,8 +469,11 @@
       "selectionReasons": [
         "repaired-known-failure"
       ],
-      "videoUrl": "/static/arm-videos/media/018.mp4",
-      "evidenceUrl": "/static/arm-videos/media/018.json"
+      "videoHash": "e5a883bb015224509cc03f2037564d069b4fd594549d5bc413f5a910142a8a1d",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:44:35.245020Z",
+      "videoUrl": "/static/arm-videos/media/e5a883bb015224509cc03f2037564d069b4fd594549d5bc413f5a910142a8a1d.mp4",
+      "evidenceUrl": "/static/arm-videos/media/7e75c743d4b3da46e197ea058c2216598695b8846835d354051856df18fbc78f.json"
     },
     {
       "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train202-eval50007:463fde9d",
@@ -440,8 +494,11 @@
       "selectionReasons": [
         "repaired-known-failure"
       ],
-      "videoUrl": "/static/arm-videos/media/019.mp4",
-      "evidenceUrl": "/static/arm-videos/media/019.json"
+      "videoHash": "10c7c7ebd7bd640f52039d5d5f072312f5e32d1045c8385d691b9324dbd76400",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:45:11.833437Z",
+      "videoUrl": "/static/arm-videos/media/10c7c7ebd7bd640f52039d5d5f072312f5e32d1045c8385d691b9324dbd76400.mp4",
+      "evidenceUrl": "/static/arm-videos/media/ff1e89ec03dc51df3a0e0ed27aa7a4a348a105031a0959368fbcce9b4f10da6b.json"
     },
     {
       "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train202-eval50606:b698a7ab",
@@ -462,8 +519,11 @@
       "selectionReasons": [
         "repaired-known-failure"
       ],
-      "videoUrl": "/static/arm-videos/media/020.mp4",
-      "evidenceUrl": "/static/arm-videos/media/020.json"
+      "videoHash": "32a914bd095a13ce8a5165b987dfff434c5cd57ee0e534b6e1eb349336be3442",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:45:23.899283Z",
+      "videoUrl": "/static/arm-videos/media/32a914bd095a13ce8a5165b987dfff434c5cd57ee0e534b6e1eb349336be3442.mp4",
+      "evidenceUrl": "/static/arm-videos/media/095cf210d51588616fc0e40860a03b25d2fa2bc0f6aebf9b240b109b09310787.json"
     },
     {
       "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train202-eval80307:a03ccead",
@@ -484,8 +544,11 @@
       "selectionReasons": [
         "repaired-known-failure"
       ],
-      "videoUrl": "/static/arm-videos/media/021.mp4",
-      "evidenceUrl": "/static/arm-videos/media/021.json"
+      "videoHash": "7572baf52fbf805bad3f3f5fc2976b10e4fccf836338d709b578ad690a389156",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:44:47.588263Z",
+      "videoUrl": "/static/arm-videos/media/7572baf52fbf805bad3f3f5fc2976b10e4fccf836338d709b578ad690a389156.mp4",
+      "evidenceUrl": "/static/arm-videos/media/2c9b9a9ff98b71ed362f0a6fe6e17d20558b2aa2ea64a2b496af336e5edd99ab.json"
     },
     {
       "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train202-eval80609:c917e37d",
@@ -506,8 +569,11 @@
       "selectionReasons": [
         "repaired-known-failure"
       ],
-      "videoUrl": "/static/arm-videos/media/022.mp4",
-      "evidenceUrl": "/static/arm-videos/media/022.json"
+      "videoHash": "87705e7afde7a6b2156d259c9a40326d956e0e5c043ae4ef90f1238ae7bba70f",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:44:59.826929Z",
+      "videoUrl": "/static/arm-videos/media/87705e7afde7a6b2156d259c9a40326d956e0e5c043ae4ef90f1238ae7bba70f.mp4",
+      "evidenceUrl": "/static/arm-videos/media/976a30a2ae9bb60f83a76d2cc875bb47bc2d895fb74f2b87ba3fca50b286623e.json"
     },
     {
       "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train303-eval50704:a18e19ba",
@@ -528,8 +594,11 @@
       "selectionReasons": [
         "repaired-known-failure"
       ],
-      "videoUrl": "/static/arm-videos/media/023.mp4",
-      "evidenceUrl": "/static/arm-videos/media/023.json"
+      "videoHash": "ab3f296b2d10e76548eac1706bdd4519dfdd46f20a2fe4ed784985c8972681a0",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:45:36.657633Z",
+      "videoUrl": "/static/arm-videos/media/ab3f296b2d10e76548eac1706bdd4519dfdd46f20a2fe4ed784985c8972681a0.mp4",
+      "evidenceUrl": "/static/arm-videos/media/a8cb22442304c1244a15e569ec0bdb612bcc56d0c8991385c29ffb5ea92ae8e0.json"
     },
     {
       "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train303-eval50807:2f281e67",
@@ -550,8 +619,11 @@
       "selectionReasons": [
         "repaired-known-failure"
       ],
-      "videoUrl": "/static/arm-videos/media/024.mp4",
-      "evidenceUrl": "/static/arm-videos/media/024.json"
+      "videoHash": "82d551d3979ae7800ca42091ed64fd592c32a03b9085c319d51f62704a63ef84",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:45:48.644665Z",
+      "videoUrl": "/static/arm-videos/media/82d551d3979ae7800ca42091ed64fd592c32a03b9085c319d51f62704a63ef84.mp4",
+      "evidenceUrl": "/static/arm-videos/media/28a18738b0d02c7dca869499fd1a44ebae93e8518f8ba5c0f39190ad4a85d5f2.json"
     },
     {
       "id": "arms-handover-v1-train101-eval110000",
@@ -574,8 +646,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/025.mp4",
-      "evidenceUrl": "/static/arm-videos/media/025.json"
+      "videoHash": "191554605e1bb86f824024bf939b5cd7669c467384a9aab9b2beecd0f5b42e80",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:44:11.103573Z",
+      "videoUrl": "/static/arm-videos/media/191554605e1bb86f824024bf939b5cd7669c467384a9aab9b2beecd0f5b42e80.mp4",
+      "evidenceUrl": "/static/arm-videos/media/b7a3d6c34bd8800559d87a5b41a9c859022c7e30bb5d3cccf005e979959646c5.json"
     },
     {
       "id": "arm-carry-v1-train101-eval110000",
@@ -598,8 +673,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/026.mp4",
-      "evidenceUrl": "/static/arm-videos/media/026.json"
+      "videoHash": "6bf7e90bd76b3ab0e66cfdb5f4265908ced60d0faf064b44314066ebe6ecdf85",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:43:58.280618Z",
+      "videoUrl": "/static/arm-videos/media/6bf7e90bd76b3ab0e66cfdb5f4265908ced60d0faf064b44314066ebe6ecdf85.mp4",
+      "evidenceUrl": "/static/arm-videos/media/3930a99295cf45924222b9cdd0689065d9a8639b10846020c0b726f3b3bc45c7.json"
     },
     {
       "id": "arm-pick-place-v1-train101-eval110000",
@@ -622,8 +700,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/027.mp4",
-      "evidenceUrl": "/static/arm-videos/media/027.json"
+      "videoHash": "526e43638e3bccda0880ed83f4cb9f859097baa341363bd7a852a210bc1b9b8a",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:43:38.204016Z",
+      "videoUrl": "/static/arm-videos/media/526e43638e3bccda0880ed83f4cb9f859097baa341363bd7a852a210bc1b9b8a.mp4",
+      "evidenceUrl": "/static/arm-videos/media/f397fa7cbc170af22baed9bb79a7871a29b5528ba6784e3c00a2c85a5e920a3a.json"
     },
     {
       "id": "arm-reach-v1-train101-eval110000",
@@ -646,8 +727,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/028.mp4",
-      "evidenceUrl": "/static/arm-videos/media/028.json"
+      "videoHash": "c1c81b7a7d001f36ffd5eb9bb727a2e2a7f6d16d7e44df0b34a952bbfadad9f2",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:43:28.356942Z",
+      "videoUrl": "/static/arm-videos/media/c1c81b7a7d001f36ffd5eb9bb727a2e2a7f6d16d7e44df0b34a952bbfadad9f2.mp4",
+      "evidenceUrl": "/static/arm-videos/media/a2712b9cad1c11963a7161919993d2eeb667d89c6e3111094a4f076b831b1470.json"
     },
     {
       "id": "arm-relocate-v1-train101-eval110000",
@@ -670,8 +754,11 @@
       "selectionReasons": [
         "first-new-seed"
       ],
-      "videoUrl": "/static/arm-videos/media/029.mp4",
-      "evidenceUrl": "/static/arm-videos/media/029.json"
+      "videoHash": "eca8e9cccf5684d726b42ff4c1b1dae67d3299b9ce8d33dec5c2285b6f0caa35",
+      "evidenceRecordedAt": "2026-09-12T23:45:49.413674Z",
+      "receiptRecordedAt": "2026-09-12T23:43:47.448587Z",
+      "videoUrl": "/static/arm-videos/media/eca8e9cccf5684d726b42ff4c1b1dae67d3299b9ce8d33dec5c2285b6f0caa35.mp4",
+      "evidenceUrl": "/static/arm-videos/media/f6d1266de60135b0802ca86fa10ea6e8ded5b96049d4103b00bc749e181ad47d.json"
     },
     {
       "id": "video-897d8a2fdc3d2a8d",
@@ -690,8 +777,11 @@
       "durationSeconds": 20.84,
       "failedGates": [],
       "selectionReasons": [],
-      "videoUrl": "/static/arm-videos/media/030.mp4",
-      "evidenceUrl": "/static/arm-videos/media/030.json"
+      "videoHash": "897d8a2fdc3d2a8dd2f9605c4bbf1863e29ca1de88108264866d8389bb246d69",
+      "evidenceRecordedAt": null,
+      "receiptRecordedAt": "2026-09-12T22:39:53.014303Z",
+      "videoUrl": "/static/arm-videos/media/897d8a2fdc3d2a8dd2f9605c4bbf1863e29ca1de88108264866d8389bb246d69.mp4",
+      "evidenceUrl": "/static/arm-videos/media/53be41f188d998dfa7b895dc8699e7693a4292e7899384517a81792bcc241dcb.json"
     },
     {
       "id": "video-e5046bf28babd883",
@@ -710,8 +800,11 @@
       "durationSeconds": 24.86,
       "failedGates": [],
       "selectionReasons": [],
-      "videoUrl": "/static/arm-videos/media/031.mp4",
-      "evidenceUrl": "/static/arm-videos/media/031.json"
+      "videoHash": "e5046bf28babd883e7b5f44cf337c4e5f8769c35cd5f6f4383ab2e4f668c2207",
+      "evidenceRecordedAt": null,
+      "receiptRecordedAt": "2026-09-12T22:39:53.341671Z",
+      "videoUrl": "/static/arm-videos/media/e5046bf28babd883e7b5f44cf337c4e5f8769c35cd5f6f4383ab2e4f668c2207.mp4",
+      "evidenceUrl": "/static/arm-videos/media/4181dba68cf483771da43d39ab10deef4a708d64e87f4c2afc1b8b53e33ddd0d.json"
     },
     {
       "id": "video-1465bca2cd8330f0",
@@ -730,8 +823,11 @@
       "durationSeconds": 21.54,
       "failedGates": [],
       "selectionReasons": [],
-      "videoUrl": "/static/arm-videos/media/032.mp4",
-      "evidenceUrl": "/static/arm-videos/media/032.json"
+      "videoHash": "1465bca2cd8330f066cc3c5622099b64aced895680d05a619b4084f530b563a5",
+      "evidenceRecordedAt": null,
+      "receiptRecordedAt": "2026-09-12T22:39:32.301763Z",
+      "videoUrl": "/static/arm-videos/media/1465bca2cd8330f066cc3c5622099b64aced895680d05a619b4084f530b563a5.mp4",
+      "evidenceUrl": "/static/arm-videos/media/8eee55044ffadda3bfb11f9367425a2d04791a94421a7d15b1cb0ca09a3c5b3f.json"
     },
     {
       "id": "video-f18c7e5729a439b4",
@@ -750,8 +846,11 @@
       "durationSeconds": 17.04,
       "failedGates": [],
       "selectionReasons": [],
-      "videoUrl": "/static/arm-videos/media/033.mp4",
-      "evidenceUrl": "/static/arm-videos/media/033.json"
+      "videoHash": "f18c7e5729a439b40b6cb9c41590d8958d49480a685021ab09c4780ab118919f",
+      "evidenceRecordedAt": null,
+      "receiptRecordedAt": "2026-09-12T22:39:10.640308Z",
+      "videoUrl": "/static/arm-videos/media/f18c7e5729a439b40b6cb9c41590d8958d49480a685021ab09c4780ab118919f.mp4",
+      "evidenceUrl": "/static/arm-videos/media/a9148f223df74c4e763ea33ca1b573bd6ccea882374798c549f63edff7d11909.json"
     },
     {
       "id": "video-d7e2be85d8d61982",
@@ -770,8 +869,11 @@
       "durationSeconds": 2.02,
       "failedGates": [],
       "selectionReasons": [],
-      "videoUrl": "/static/arm-videos/media/034.mp4",
-      "evidenceUrl": "/static/arm-videos/media/034.json"
+      "videoHash": "d7e2be85d8d61982f00b18358efb575370bb40d17dbb0198ef9174a222725319",
+      "evidenceRecordedAt": null,
+      "receiptRecordedAt": "2026-09-12T22:39:05.201302Z",
+      "videoUrl": "/static/arm-videos/media/d7e2be85d8d61982f00b18358efb575370bb40d17dbb0198ef9174a222725319.mp4",
+      "evidenceUrl": "/static/arm-videos/media/ddd9a2a711a78c87a707ac59b07140b2f22b970d7986e45603a368d396142e7e.json"
     },
     {
       "id": "video-147b2aa7c73b2f5e",
@@ -790,12 +892,16 @@
       "durationSeconds": 17.04,
       "failedGates": [],
       "selectionReasons": [],
-      "videoUrl": "/static/arm-videos/media/035.mp4",
-      "evidenceUrl": "/static/arm-videos/media/035.json"
+      "videoHash": "147b2aa7c73b2f5e43881aa2b39ac57b298844cf5f9d76877e2e2fff847e6c50",
+      "evidenceRecordedAt": null,
+      "receiptRecordedAt": "2026-09-12T22:39:30.984511Z",
+      "videoUrl": "/static/arm-videos/media/147b2aa7c73b2f5e43881aa2b39ac57b298844cf5f9d76877e2e2fff847e6c50.mp4",
+      "evidenceUrl": "/static/arm-videos/media/3605b62767a0d79d59f62f1e8ac0457a6f7446e5b974d8c133ee80ea249777c7.json"
     }
   ],
   "totalFiles": 41,
   "uniqueVideos": 35,
   "hardwareEnabled": false,
-  "warnings": []
+  "warnings": [],
+  "generatedAt": "2026-09-13T16:55:44.233Z"
 }
