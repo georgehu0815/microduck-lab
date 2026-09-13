@@ -1,0 +1,36 @@
+{
+  "action_abs_max": 0.406086266040802,
+  "action_abs_mean": 0.11153429746627808,
+  "command": "eval",
+  "episode_length": {
+    "max": null,
+    "mean": null,
+    "min": null
+  },
+  "episode_return": {
+    "max": null,
+    "mean": null,
+    "min": null,
+    "std": null
+  },
+  "episodes": 0,
+  "failures": [],
+  "finite": true,
+  "mean_return": 46.30493378639221,
+  "num_envs": 2,
+  "passed": true,
+  "reward_per_transition": 11.576233446598053,
+  "rollout_return": {
+    "max": 46.46537256240845,
+    "mean": 46.30493378639221,
+    "min": 46.14449501037598,
+    "std": 0.16043877601623535
+  },
+  "source": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/studio/dance-studio/dance.onnx",
+  "source_type": "policy",
+  "steps": 4,
+  "terminated": 0,
+  "termination_rate": 0,
+  "transitions": 8,
+  "truncated": 0
+}

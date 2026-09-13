@@ -1,0 +1,185 @@
+{
+  "case_id": "arms-co-carry-v1",
+  "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-co-carry-v1/seed-101/ppo-residual.zip",
+  "checkpoint_metadata": {
+    "case_id": "arms-co-carry-v1",
+    "checkpoint_sha256": "18616ded31896b23e2a7dd879cb5ac4ec51dec13f9d2a2c60f99445a637f35bf",
+    "model_sha256": "5a0132af6d9d23bea2f3f80abc720381b21a65e4e23a4dbda1cb28aa05fbe1a5",
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-co-carry-v1/seed-101/training.json",
+    "sha256": "fcb63a8e7bb3727929ce99102a00fe0455ce99cf805afe242579f2ce2e527be3",
+    "source_hashes": {
+      "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+      "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+    }
+  },
+  "checkpoint_sha256": "18616ded31896b23e2a7dd879cb5ac4ec51dec13f9d2a2c60f99445a637f35bf",
+  "contract": "md-dualarm-table-v1",
+  "controller": "ppo_residual",
+  "controller_description": "composite authored IK/FSM + PPO residual",
+  "created_at": "2026-09-12T22:39:53.014303+00:00",
+  "episode": {
+    "action_dim": 12,
+    "case_id": "arms-co-carry-v1",
+    "contract": "md-dualarm-table-v1",
+    "elapsed_seconds": 20.84,
+    "fps": 25.0,
+    "frames": 521,
+    "metrics": {
+      "arm_collisions": 0,
+      "assembly_mass_kg": 0.017,
+      "authored_action_calls": 1042,
+      "contact_flags": [
+        [
+          false,
+          false
+        ],
+        [
+          false,
+          false
+        ]
+      ],
+      "drop_count": 0,
+      "dual_grasp_fraction": 0.9900249376558603,
+      "evaluator_events": [
+        {
+          "stage": "grasped",
+          "time_s": 5.2799999999996405
+        },
+        {
+          "stage": "lifted",
+          "time_s": 7.679999999999376
+        },
+        {
+          "stage": "released",
+          "time_s": 17.020000000001446
+        }
+      ],
+      "evaluator_stage": "released",
+      "gates": {
+        "both_arms_support_load": true,
+        "controlled_release": true,
+        "internal_force_bounded": true,
+        "lift_with_contact_1s": true,
+        "net_support_consistent": true,
+        "no_arm_collision": true,
+        "no_drop": true,
+        "no_illegal_contact": true,
+        "no_self_collision": true,
+        "ordered_completion": true,
+        "payload_slip_below_5mm": true,
+        "released_and_settled_2s": true,
+        "shared_grasp_fraction": true,
+        "tilt_below_5deg": true,
+        "translated_50mm": true
+      },
+      "goal": [
+        -0.007562634355789126,
+        -0.0009472073977024555,
+        0.0031
+      ],
+      "grasp_hold_s": 7.36,
+      "invalid_contacts": 0,
+      "load_share": [
+        0.5001960666644929,
+        0.49573883331624624
+      ],
+      "load_share_samples": 271,
+      "net_support_mean": 0.9959348999807394,
+      "object_mass_kg": 0.012,
+      "object_path_m": 0.10624493517651491,
+      "object_position": [
+        -0.007647750276855906,
+        -0.0011205173297239516,
+        0.0029932089497618315
+      ],
+      "passed": true,
+      "payload_slip_m": 0.0010784561308911607,
+      "peak_contact_force_n": 0.32774868616466996,
+      "peak_internal_force_n": 0.6525363187079423,
+      "peak_lift_m": 0.025963568912999776,
+      "physical_hardware_verified": false,
+      "physics_assistance_count": 0,
+      "position_error_m": 0.00022064763984079453,
+      "receiver_hold_s": 0.0,
+      "reset_options": {
+        "friction_scale": 1.0,
+        "mass_scale": 1.0,
+        "position_noise": 0.001
+      },
+      "reward_components": {
+        "action_change": -1.7821010422013333e-13,
+        "collision": -0.0,
+        "drop": -0.0,
+        "effort": -7.503468998594658e-05,
+        "grasp": 0.0,
+        "lift": 0.0,
+        "progress": -2.172741153660951e-15,
+        "success": 5.0
+      },
+      "self_collisions": 0,
+      "settled_s": 2.0,
+      "simulation_only": true,
+      "support_valid_fraction": 0.996309963099631,
+      "tip_error_m": 0.05038345545689584,
+      "transport_tilt_deg": 0.5836215596407897,
+      "waypoints_reached": 0
+    },
+    "observation_dim": 116,
+    "reset_options": {
+      "friction_scale": 1.0,
+      "mass_scale": 1.0,
+      "position_noise": 0.001
+    },
+    "return": 11.8479444346242,
+    "seed": 50000,
+    "steps": 1042
+  },
+  "episode_sha256": "65000ec8e4f91cfeac176f28acb7f9902c5858bdc3310f98852950a3c80c0349",
+  "export": {
+    "action_clamp": [
+      -1.0,
+      1.0
+    ],
+    "action_dim": 12,
+    "action_semantics": "residual",
+    "case_id": "arms-co-carry-v1",
+    "contract": "md-dualarm-table-v1-ppo-residual-v1",
+    "controller": "composite authored IK/FSM + PPO residual",
+    "native_onnx_float32_parity": {
+      "max_abs_error": 4.6566128730773926e-09,
+      "passed": true
+    },
+    "observation_dim": 116,
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-co-carry-v1/seed-101/residual-actor.onnx",
+    "residual_scale": 0.02,
+    "sha256": "8dff4d63564aa2dc15bcf1c04c250612221961e1e6c5d6986416f96bde8be337",
+    "simulation_only": true,
+    "source_hashes": {
+      "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+      "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+    },
+    "stock_deployment_compatible": false
+  },
+  "hardware_verified": false,
+  "media_hashes": {
+    "contact-sheet.png": "a41b27d4de20feb956ea8eb2d3a447d8a0fdbdbd1c866ff85480868031fb6aed",
+    "rollout.mp4": "897d8a2fdc3d2a8dd2f9605c4bbf1863e29ca1de88108264866d8389bb246d69"
+  },
+  "model_sha256": "5a0132af6d9d23bea2f3f80abc720381b21a65e4e23a4dbda1cb28aa05fbe1a5",
+  "outputs": {
+    "contact_sheet": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-co-carry-v1/seed-101/contact-sheet.png",
+    "video": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-co-carry-v1/seed-101/rollout.mp4"
+  },
+  "reset_options": {
+    "friction_scale": 1.0,
+    "mass_scale": 1.0,
+    "position_noise": 0.001
+  },
+  "seed": 50000,
+  "simulation_only": true,
+  "source_hashes": {
+    "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+    "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+  },
+  "video_sha256": "897d8a2fdc3d2a8dd2f9605c4bbf1863e29ca1de88108264866d8389bb246d69"
+}

@@ -1,0 +1,180 @@
+{
+  "case_id": "arms-handover-v1",
+  "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-handover-v1/seed-101/ppo-residual.zip",
+  "checkpoint_metadata": {
+    "case_id": "arms-handover-v1",
+    "checkpoint_sha256": "d0e01122240941dc0b2b407e1da2e2682d218d97be4e43ff54bebea217912e1c",
+    "model_sha256": "50e8369e263bb3759b672c91efb3c8f49d987b72964103e9a5daac08682c2cec",
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-handover-v1/seed-101/training.json",
+    "sha256": "9e2b7b5cbaa643d7d2bf4df35b5470574f1fe3661718cbc37497d65a894d24ee",
+    "source_hashes": {
+      "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+      "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+    }
+  },
+  "checkpoint_sha256": "d0e01122240941dc0b2b407e1da2e2682d218d97be4e43ff54bebea217912e1c",
+  "contract": "md-dualarm-table-v1",
+  "controller": "ppo_residual",
+  "controller_description": "composite authored IK/FSM + PPO residual",
+  "created_at": "2026-09-12T22:39:53.341671+00:00",
+  "episode": {
+    "action_dim": 12,
+    "case_id": "arms-handover-v1",
+    "contract": "md-dualarm-table-v1",
+    "elapsed_seconds": 24.86,
+    "fps": 25.0,
+    "frames": 621,
+    "metrics": {
+      "arm_collisions": 0,
+      "assembly_mass_kg": 0.005,
+      "authored_action_calls": 1243,
+      "contact_flags": [
+        [
+          false,
+          false
+        ],
+        [
+          false,
+          false
+        ]
+      ],
+      "drop_count": 0,
+      "dual_grasp_fraction": 0.12424242424242424,
+      "evaluator_events": [
+        {
+          "stage": "grasped",
+          "time_s": 4.119999999999768
+        },
+        {
+          "stage": "lifted",
+          "time_s": 6.179999999999541
+        },
+        {
+          "stage": "released",
+          "time_s": 20.019999999999783
+        }
+      ],
+      "evaluator_stage": "released",
+      "gates": {
+        "controlled_release": true,
+        "handover_overlap_500ms": true,
+        "lift_with_contact_1s": true,
+        "no_arm_collision": true,
+        "no_drop": true,
+        "no_illegal_contact": true,
+        "no_self_collision": true,
+        "ordered_completion": true,
+        "receiver_only_hold_1s": true,
+        "released_and_settled_2s": true
+      },
+      "goal": [
+        0.07443736564421087,
+        0.029052792602297543,
+        0.0081
+      ],
+      "grasp_hold_s": 12.64,
+      "invalid_contacts": 0,
+      "load_share": [
+        0.518723556985639,
+        0.48138495857661534
+      ],
+      "load_share_samples": 82,
+      "net_support_mean": 1.0001085155622544,
+      "object_mass_kg": 0.005,
+      "object_path_m": 0.11291869797362522,
+      "object_position": [
+        0.07383745469452968,
+        0.028878971564041032,
+        0.007995206121204329
+      ],
+      "passed": true,
+      "payload_slip_m": 0.0,
+      "peak_contact_force_n": 0.6308215308675272,
+      "peak_internal_force_n": 0.398976723655968,
+      "peak_lift_m": 0.031248079453470596,
+      "physical_hardware_verified": false,
+      "physics_assistance_count": 0,
+      "position_error_m": 0.0006333156068825401,
+      "receiver_hold_s": 4.9,
+      "reset_options": {
+        "friction_scale": 1.0,
+        "mass_scale": 1.0,
+        "position_noise": 0.001
+      },
+      "reward_components": {
+        "action_change": -3.22400103299028e-12,
+        "collision": -0.0,
+        "drop": -0.0,
+        "effort": -3.2240038444276427e-12,
+        "grasp": 0.0,
+        "lift": 0.0,
+        "progress": 0.0,
+        "success": 5.0
+      },
+      "self_collisions": 0,
+      "settled_s": 2.0,
+      "simulation_only": true,
+      "support_valid_fraction": 1.0,
+      "tip_error_m": 0.07583370549711954,
+      "transport_tilt_deg": 13.308921241083274,
+      "waypoints_reached": 0
+    },
+    "observation_dim": 116,
+    "reset_options": {
+      "friction_scale": 1.0,
+      "mass_scale": 1.0,
+      "position_noise": 0.001
+    },
+    "return": 15.050887178058998,
+    "seed": 50000,
+    "steps": 1243
+  },
+  "episode_sha256": "5d7bdd24915bb1ad12371eed4beba3f92bc93f7871c939e1e4fffd523a3d5c56",
+  "export": {
+    "action_clamp": [
+      -1.0,
+      1.0
+    ],
+    "action_dim": 12,
+    "action_semantics": "residual",
+    "case_id": "arms-handover-v1",
+    "contract": "md-dualarm-table-v1-ppo-residual-v1",
+    "controller": "composite authored IK/FSM + PPO residual",
+    "native_onnx_float32_parity": {
+      "max_abs_error": 3.259629011154175e-09,
+      "passed": true
+    },
+    "observation_dim": 116,
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-handover-v1/seed-101/residual-actor.onnx",
+    "residual_scale": 0.02,
+    "sha256": "296d68bb3d37172cd0685890d52b7842abc28c9baf666eb411fb5753375475d9",
+    "simulation_only": true,
+    "source_hashes": {
+      "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+      "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+    },
+    "stock_deployment_compatible": false
+  },
+  "hardware_verified": false,
+  "media_hashes": {
+    "contact-sheet.png": "5c8453aa51da851979c69d3e718f6b5acd170020c7de36a8226750ed31461ac9",
+    "rollout.mp4": "e5046bf28babd883e7b5f44cf337c4e5f8769c35cd5f6f4383ab2e4f668c2207"
+  },
+  "model_sha256": "50e8369e263bb3759b672c91efb3c8f49d987b72964103e9a5daac08682c2cec",
+  "outputs": {
+    "contact_sheet": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-handover-v1/seed-101/contact-sheet.png",
+    "video": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arms-handover-v1/seed-101/rollout.mp4"
+  },
+  "reset_options": {
+    "friction_scale": 1.0,
+    "mass_scale": 1.0,
+    "position_noise": 0.001
+  },
+  "seed": 50000,
+  "simulation_only": true,
+  "source_hashes": {
+    "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+    "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+  },
+  "video_sha256": "e5046bf28babd883e7b5f44cf337c4e5f8769c35cd5f6f4383ab2e4f668c2207"
+}
