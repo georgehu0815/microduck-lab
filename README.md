@@ -8,40 +8,86 @@ Please give all the credit to the baseline project.
 
 This project also use RL PPO algorithem native supported by  [rlx](https://github.com/noahfarr/rlx).
 
-## Watch all five scenarios
+## Eight Studio scenarios
 
-Looping previews from saved MuJoCo simulation rollouts. Click **Watch MP4**
-for the full-resolution video. These are local simulation demonstrations,
-not physical-robot deployment or robustness guarantees.
+Studio now includes **Dance, Swing, Running, Stilts, Backflip, Basketball,
+Suspended bridge, and Swimming-duck drawing**. The original seven have compact previews below, sourced from
+their actual saved Studio render videos. Basketball has verified local
+sustained balance, **not verified steering**; the bridge preview is a failed
+crossing diagnostic, **not a successful or mastered crossing**. Drawing adds a
+simulated fifteenth mouth actuator, physical pencil contacts, and a complete
+teacher → BC/DAgger → PPO experiment. **Eight scenarios does not mean eight
+accepted learned policies.**
+
+- [Basketball balance results and videos](docs/basketball-showcase/RESULTS.md)
+- [Suspended bridge design and curriculum](docs/bridge-showcase/README.md)
+- [Pencil drawing: complete Chinese / English workflow](docs/drawing-case/README.md)
+- [Drawing training results, teacher evidence, and limitations](docs/drawing-case/RESULTS.md)
+- [Successful color-brush upgrade: Chinese / English pipeline](docs/drawing-case/brush/README.md)
+
+The original seven looping previews are four-second, 6 fps excerpts from saved MuJoCo simulation
+rollouts. These are local simulation evidence, not physical-robot deployment or
+robustness guarantees.
 
 | Dance imitation | Swing | Running |
 |---|---|---|
-| ![Dance imitation simulation](docs/media/scenarios/dance.gif) | ![Swing simulation](docs/media/scenarios/swing.gif) | ![Running simulation](docs/media/scenarios/running.gif) |
-| [Watch MP4](docs/media/scenarios/dance.mp4) | [Watch MP4](docs/media/scenarios/swing.mp4) | [Watch MP4](docs/media/scenarios/running.mp4) |
+| ![Dance imitation saved rollout](docs/seven-cases-verification/media/dance.gif) | ![Swing saved rollout](docs/seven-cases-verification/media/swing.gif) | ![Running saved rollout](docs/seven-cases-verification/media/running.gif) |
 
-| Stilt walking | Backflip — assisted showcase |
+| Stilt walking | Backflip: assisted launch → PPO landing → stand handoff |
 |---|---|
-| ![Stilt walking simulation](docs/media/scenarios/stilts.gif) | ![Backflip with assisted launch, learned landing, and stand handoff](docs/media/scenarios/backflip.gif) |
-| [Watch MP4](docs/media/scenarios/stilts.mp4) | [Watch MP4](docs/media/scenarios/backflip.mp4) |
+| ![Stilt walking saved rollout](docs/seven-cases-verification/media/stilts.gif) | ![Backflip assisted launch, PPO landing, and pretrained stand handoff](docs/seven-cases-verification/media/backflip.gif) |
 
-**Backflip uses a spotter-assisted launch, a learned landing policy, and a
-pretrained standing-policy handoff—not an unassisted whole-flip policy.**
-The Dance preview follows an eight-second choreography excerpt, not the full
-source dance.
+| Basketball: balance only, rolling unmastered | Bridge: failed crossing diagnostic |
+|---|---|
+| ![Basketball balance-only rollout; steering and rolling are not mastered](docs/seven-cases-verification/media/basketball.gif) | ![Bridge failed crossing diagnostic; this is not a successful crossing](docs/seven-cases-verification/media/bridge.gif) |
+
+**Backflip is a spotter-assisted launch followed by PPO landing and a
+pretrained standing-policy handoff, not an unassisted whole-flip policy.**
+**Basketball shows balance only; rolling and steering remain unmastered.**
+**Bridge shows a failed crossing attempt retained for diagnosis, not success.**
+
+| Eighth case: learned-policy diagnostic | Feasibility reference: Jacobian teacher, NOT PPO |
+|---|---|
+| ![Drawing learned-policy diagnostic, not accepted skill](docs/drawing-case/media/drawing.gif) | ![Contact-only teacher drawing; not learned PPO](docs/drawing-case/media/teacher.gif) |
+
+The two drawing GIFs show recorded rollouts at **4× playback speed**; they are
+not real-time motion. Full-speed videos and source-bound results are in the drawing report.
+
+Drawing uses the separate simulation-only `microduck-drawing-v1` **83-observation /
+15-action** interface. Its pencil is preloaded; the extra mouth mechanism and
+strong XML servos are prototype assumptions. This ONNX is **not compatible with
+the stock robot**. The teacher's successful drawing is not evidence of PPO mastery.
+
+### Eighth-case color-brush upgrade
+
+The historical pencil PPO result above remains failed. A separate
+`microduck-brush-v2` 93-observation/15-action upgrade subsequently passed all
+40 required episodes across ten unique configurations through the actual
+Studio API. Its matching BC policy also passed 40/40, so the supported claim is
+that conservative PPO preserved the accepted BC behavior, not that PPO improved
+it. The fixed stroke/color/dip plan remains authored; the learned feedback actor
+executes motor actions and has no learned visual planning or missed-dip recovery.
+This is still the drawing case, so the Studio total remains **eight**, not nine.
+
+![Actual-contact color painting from the brush upgrade](docs/drawing-case/brush/media/painting.png)
+
+[Brush pipeline, acceptance evidence, and limitations](docs/drawing-case/brush/README.md) ·
+[Final color-brush animation](docs/drawing-case/brush/media/brush.gif)
 
 <details>
-<summary>Saved runs used for these previews</summary>
+<summary>Saved-run and video provenance</summary>
 
-- **Dance:** `dance-e2e-20260907-low-noise`
-- **Swing:** `swing-e2e-20260907-v3`
-- **Running:** `running-e2e-20260907-v4`
-- **Stilt walking:** `stilts-e2e-20260907-v3`
-- **Backflip:** `backflip-e2e-20260908-v5`
+- **Dance:** `dance/dance-e2e-20260907-low-noise/render/ep0.mp4`
+- **Swing:** `swing/swing-e2e-20260907-v3/render/ep0.mp4`
+- **Running:** `running/running-e2e-20260907-v4/render/ep0.mp4`
+- **Stilt walking:** `stilts/stilts-e2e-20260907-v3/render/ep0.mp4`
+- **Backflip:** `backflip/backflip-e2e-20260908-v5/render/ep0.mp4`
+- **Basketball:** `basketball/basketball-balance-01/render/rollout.mp4`
+- **Bridge:** `bridge/bridge-studio-02/render/ep0.mp4`
 
-The MP4 files are copies of each run's saved `render/ep0.mp4`; GIFs show the
-same complete rollout at reduced resolution and frame rate. Copies live in
-`docs/media/scenarios/` so the gallery does not depend on ignored local
-training directories.
+Each path is relative to `rlx/runs/studio/`. The tracked GIF excerpts live in
+`docs/seven-cases-verification/media/`; regenerate them from the saved videos
+with `bash docs/seven-cases-verification/media/generate-gifs.sh`.
 
 </details>
 
@@ -60,7 +106,9 @@ laptop you already have. It's a prototyping loop for reward design, curricula,
 and new tricks, built on the same MJCF robot model, the same 61-obs /
 14-action deployment contract, and the same 50 Hz timing. A behavior you invent
 here ports straight to the official stack for the final sim2real run, and the
-ONNX you export is drop-in compatible with the official tooling.
+ONNX you export for the original walking contract is drop-in compatible with
+the official tooling. The eighth drawing case deliberately uses an incompatible,
+versioned simulation interface and must not be deployed through that tooling.
 
 **Not affiliated with Pollen Robotics.** Two of their repos are used as
 side-by-side checkouts (see setup).
@@ -103,6 +151,27 @@ side-by-side checkouts (see setup).
 ![Teaching a trick from the browser](docs/media/teach.png)
 
 ## Quick start
+
+### Train one scenario end to end
+
+Each script runs independently, without the web server: input/runtime checks →
+scenario initialization → PPO training → ONNX export and verification →
+deterministic evaluation → MP4 and contact sheet.
+
+```bash
+./scripts/train-dance.sh
+./scripts/train-swing.sh
+./scripts/train-running.sh
+./scripts/train-stilts.sh
+./scripts/train-backflip.sh
+```
+
+These default to **Full** training. Add `--profile smoke` for a short pipeline
+check or `--dry-run` to inspect commands without training. Smoke does not prove
+the skill. Each run gets a fresh output directory; failed skill evaluations
+still produce video evidence and exit unsuccessfully.
+
+See [scenario pipeline inputs, options, stages, and outputs](scripts/scenarios/README.md).
 
 ### Restart the complete local Studio
 
@@ -339,6 +408,23 @@ domain randomization, so don't ship its policies to a real robot. Once a
 behavior works here, port the env design to an mjlab cfg in `microduck_rl` and
 retrain on GPU (that repo's `AGENTS.md` is the sim2real recipe). Everything
 here keeps the deployment contract so that port is mechanical.
+
+## Tabletop arm classroom extension
+
+The six-case MD-Arm-T1 extension is available in the same viewer at `/arm`.
+Start its separate simulation backend from the workspace root with
+`rlx/.venv-microduck/bin/python scripts/arm_lab.py --port 8812`.
+It does not replace the existing duck-lab server or the original body policy.
+
+- [Chinese implementation and reproduction guide](docs/robot-arm-design/IMPLEMENTATION.md)
+- [Measured training/evaluation results and videos](docs/robot-arm-design/RESULTS.md)
+- [Chinese classroom PDF](docs/robot-arm-design/CLASSROOM.zh-CN.pdf)
+- [BOM, circuit and conceptual CAD boundaries](docs/robot-arm-design/HARDWARE.md)
+
+These are actual tabletop MuJoCo experiments using authored IK/FSM plus bounded
+PPO residuals, not end-to-end learned planning. Hardware execution is
+unconditionally locked; fabrication, power protection and physical validation
+remain separate work.
 
 ## License
 

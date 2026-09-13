@@ -1,0 +1,58 @@
+{
+  "path": "all-failures.mp4",
+  "sha256": "3faff158c24bb475220994afe9f4aec9e74fc91a0fa9e66eee5e915fa517231c",
+  "duration_s": 245.0,
+  "full_decode_passed": true,
+  "chapters": [
+    {
+      "start_s": 0.0,
+      "end_s": 35.0,
+      "id": "arms-co-carry-v1-train101-eval50705",
+      "passed": false,
+      "source_sha256": "ee5d5091af167503a215f9b54ec8c0455ca5bb7dc867346e0cafb6801db1d8cc"
+    },
+    {
+      "start_s": 35.0,
+      "end_s": 70.0,
+      "id": "arms-co-carry-v1-train202-eval50007",
+      "passed": false,
+      "source_sha256": "e476559a0757634fd45521fc6898cde753da9ef1c48a0aa25c53644fe6e1012b"
+    },
+    {
+      "start_s": 70.0,
+      "end_s": 105.0,
+      "id": "arms-co-carry-v1-train202-eval50606",
+      "passed": false,
+      "source_sha256": "05db9d95f50887dc533806971440b640a1a0052e3943598d7570749d11cff6de"
+    },
+    {
+      "start_s": 105.0,
+      "end_s": 140.0,
+      "id": "arms-co-carry-v1-train202-eval80307",
+      "passed": false,
+      "source_sha256": "0d509ce1d7132fbf082a00afd955492e3d127b1af6804733aff77b77efbcd4cf"
+    },
+    {
+      "start_s": 140.0,
+      "end_s": 175.0,
+      "id": "arms-co-carry-v1-train202-eval80609",
+      "passed": false,
+      "source_sha256": "0165a7996d2ca86431924d28e4b2886ef052d0091f0d4a69d5cb65dab3e5f934"
+    },
+    {
+      "start_s": 175.0,
+      "end_s": 210.0,
+      "id": "arms-co-carry-v1-train303-eval50704",
+      "passed": false,
+      "source_sha256": "dd3ccc1e400b6aba39d2fa1b9bd21259c459785eb2ae8416a2c88a26b8a9e3a5"
+    },
+    {
+      "start_s": 210.0,
+      "end_s": 245.0,
+      "id": "arms-co-carry-v1-train303-eval50807",
+      "passed": false,
+      "source_sha256": "bd658908927386eed5a5cc16da12b31f6b9f0c4df7daa37786713da362acde7b"
+    }
+  ],
+  "description": "Concatenated evidence videos; no interpolation, speed changes, or success-only selection"
+}

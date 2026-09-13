@@ -26,15 +26,36 @@ export interface SceneGeom {
    *  per-body palette. */
   rgba?: [number, number, number, number];
 }
+export interface ScenePrimitive {
+  type: "capsule" | "box" | "sphere" | "cylinder" | "ellipsoid";
+  body: number;
+  pos: number[];
+  quat: number[];
+  size: number[];
+  rgba: number[];
+  mat: string;
+}
+export interface SceneTendonSite {
+  body: number;
+  pos: number[];
+}
+export interface SceneTendon {
+  sites: SceneTendonSite[];
+  rgba: number[];
+  width: number;
+}
 export interface Scene {
   bodies: string[];
   meshes: SceneMesh[];
   geoms: SceneGeom[];
+  primitives?: ScenePrimitive[];
+  tendons?: SceneTendon[];
 }
 
 export interface DuckFrame {
   id: string; // stable identity ("d0".."dN", "trainee", "helper1"…) — survives renames
   name: string; // mutable display label (tracks the assigned policy)
+  sceneKey?: string;
   /** Brain provenance — the palette id this duck runs ("run:<name>",
    *  "ckpt:<name>@Nk", "pollen:<name>") or null (a zero-infer trainee before
    *  its first snapshot, or a server predating the field). Lets selection
@@ -67,8 +88,29 @@ export interface DuckFrame {
    *  `handoff` names the brain taking it. */
   handed?: boolean;
   handoff?: string | null;
+  drawing?: DrawingPayload | null;
   bodies: number[][]; // per body: [x, y, z, qw, qx, qy, qz]
 }
+
+export interface PencilDrawingPayload {
+  points: [number, number, number, number][];
+  contract: "microduck-drawing-v1";
+  assistance: 0;
+}
+export interface BrushDrawingPayload {
+  points: [number, number, number, number][];
+  colors: number[];
+  palette: [
+    [number, number, number],
+    [number, number, number],
+    [number, number, number],
+    [number, number, number],
+  ];
+  brush_radius: number;
+  contract: "microduck-brush-v2";
+  assistance: 0;
+}
+export type DrawingPayload = PencilDrawingPayload | BrushDrawingPayload;
 
 /** ~1 Hz psutil sample the server folds into every frame. */
 export interface ProcStats {
@@ -182,8 +224,10 @@ export interface Frame {
 export interface Policy {
   id: string; // e.g. "pollen:alpha_stand"
   label: string; // e.g. "alpha_stand"
-  group: "pollen" | "runs" | "checkpoints";
+  group: "pollen" | "runs" | "checkpoints" | "studio";
   path: string;
+  artifact?: string;
+  recipe?: string;
   /** Newest-artifact timestamp, epoch SECONDS (run policies only) — the
    *  server sorts the "runs" group newest-first by it; the panel renders it
    *  as a relative "2h ago" label. */
@@ -282,8 +326,18 @@ export function formatBytes(n: number): string {
   return `${n} B`;
 }
 
-export async function fetchScene(): Promise<Scene> {
-  const res = await fetch(`${LAB_HTTP}/scene`);
+export async function fetchScene(
+  duckId?: string,
+  sceneKey?: string,
+  signal?: AbortSignal
+): Promise<Scene> {
+  const query =
+    duckId == null
+      ? ""
+      : `?duck=${encodeURIComponent(duckId)}${
+          sceneKey == null ? "" : `&version=${encodeURIComponent(sceneKey)}`
+        }`;
+  const res = await fetch(`${LAB_HTTP}/scene${query}`, signal ? { signal } : undefined);
   if (!res.ok) throw new Error(`scene fetch failed: ${res.status}`);
   return res.json();
 }
@@ -314,8 +368,8 @@ export async function loadTeachRun(
   return res.json();
 }
 
-export async function fetchPolicies(): Promise<Policy[]> {
-  const res = await fetch(`${LAB_HTTP}/policies`);
+export async function fetchPolicies(signal?: AbortSignal): Promise<Policy[]> {
+  const res = await fetch(`${LAB_HTTP}/policies`, { cache: "no-store", signal });
   if (!res.ok) throw new Error(`policies fetch failed: ${res.status}`);
   const data: { policies: Policy[] } = await res.json();
   // Keep the first of each id: the server can emit duplicates (two checkpoints

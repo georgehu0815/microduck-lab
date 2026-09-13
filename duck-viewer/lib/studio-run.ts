@@ -1,23 +1,77 @@
-import type { ExperimentId } from "./experiments";
+import type { DrawingTool, ExperimentId } from "./experiments";
+import { IS_STATIC_EXPORT, publicAssetUrl } from "./static-assets";
 
 export interface SavedRun {
   experimentId: ExperimentId;
+  drawingTool?: DrawingTool;
   runName: string;
   taskPassed: boolean;
   skillAssessed: boolean;
   video: boolean;
   checkpoint?: boolean;
+  onnx?: boolean;
+  policyModifiedAt?: string | null;
   modifiedAt?: string;
   trainedAt?: string | null;
   renderVerified?: boolean;
   renderEvidenceId?: string | null;
+  balanceOnly?: boolean;
+}
+
+export async function fetchSavedRuns(signal?: AbortSignal): Promise<SavedRun[]> {
+  const catalogUrl = IS_STATIC_EXPORT
+    ? publicAssetUrl("/static/studio-runs/catalog.json")
+    : "/api/rlx/runs";
+  const response = await fetch(catalogUrl, { cache: "no-store", signal });
+  if (!response.ok) throw new Error("Saved run catalog unavailable.");
+  const data = await response.json() as { runs: SavedRun[] };
+  const artifactTime = (run: SavedRun) => Math.max(
+    Date.parse(run.trainedAt ?? "") || 0,
+    Date.parse(run.policyModifiedAt ?? "") || 0,
+  ) || Date.parse(run.modifiedAt ?? "") || 0;
+  return data.runs.sort((left, right) => artifactTime(right) - artifactTime(left)
+    || left.runName.localeCompare(right.runName));
 }
 
 export function latestVerifiedRun(runs: readonly SavedRun[], experimentId: ExperimentId): SavedRun | undefined {
-  const trainedTime = (run: SavedRun) => Date.parse(run.trainedAt ?? run.modifiedAt ?? "");
-  return runs.filter((run) => run.experimentId === experimentId && run.taskPassed &&
-    run.checkpoint && run.video && run.renderVerified && run.renderEvidenceId && Number.isFinite(trainedTime(run)))
-    .sort((left, right) => trainedTime(right) - trainedTime(left) || left.runName.localeCompare(right.runName))[0];
+  const trainedTime = (run: SavedRun) => Date.parse(
+    run.trainedAt ?? run.policyModifiedAt ?? run.modifiedAt ?? ""
+  );
+  return runs.filter((run) => {
+    const previewAccepted = run.taskPassed ||
+      (experimentId === "basketball" && run.balanceOnly === true);
+    const sourceAvailable = run.checkpoint ||
+      (experimentId === "basketball" && run.onnx);
+    return run.experimentId === experimentId && previewAccepted &&
+      sourceAvailable && run.video && run.renderVerified &&
+      run.renderEvidenceId && Number.isFinite(trainedTime(run));
+  }).sort((left, right) => trainedTime(right) - trainedTime(left) ||
+    left.runName.localeCompare(right.runName))[0];
+}
+
+export function latestDiagnosticRun(runs: readonly SavedRun[], experimentId: ExperimentId): SavedRun | undefined {
+  if (experimentId !== "bridge" && experimentId !== "drawing") return undefined;
+  const trainedTime = (run: SavedRun) => Date.parse(
+    run.trainedAt ?? run.policyModifiedAt ?? run.modifiedAt ?? ""
+  );
+  return runs.filter((run) =>
+    run.experimentId === experimentId &&
+    !run.taskPassed &&
+    run.skillAssessed &&
+    Boolean(run.checkpoint || run.onnx) &&
+    run.video &&
+    run.renderVerified &&
+    Boolean(run.renderEvidenceId) &&
+    Number.isFinite(trainedTime(run))
+  ).sort((left, right) => trainedTime(right) - trainedTime(left) ||
+    left.runName.localeCompare(right.runName))[0];
+}
+
+export function latestReviewRun(runs: readonly SavedRun[], experimentId: ExperimentId): SavedRun | undefined {
+  const matching = runs.filter((run) => run.experimentId === experimentId);
+  return matching.find((run) => run.taskPassed)
+    ?? matching.find((run) => experimentId === "basketball" && run.balanceOnly === true)
+    ?? matching[0];
 }
 
 export function availableProfileRunName(

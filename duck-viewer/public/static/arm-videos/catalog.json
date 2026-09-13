@@ -1,0 +1,801 @@
+{
+  "videos": [
+    {
+      "id": "recheck-20260912-v2-six-cases-overview",
+      "title": "Six Cases Overview",
+      "caseIds": [
+        "arm-reach-v1",
+        "arm-pick-place-v1",
+        "arm-relocate-v1",
+        "arm-carry-v1",
+        "arms-handover-v1",
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/six-cases-overview.mp4",
+      "aliases": [],
+      "kind": "compilation",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": null,
+      "evaluationSeed": null,
+      "durationSeconds": 103.39999999999999,
+      "failedGates": [],
+      "selectionReasons": [],
+      "videoUrl": "/static/arm-videos/media/001.mp4",
+      "evidenceUrl": "/static/arm-videos/media/001.json"
+    },
+    {
+      "id": "recheck-20260912-v2-all-failures",
+      "title": "协作搬托盘",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/all-failures.mp4",
+      "aliases": [],
+      "kind": "compilation",
+      "provenance": "historical",
+      "outcome": "failed",
+      "trainingSeed": null,
+      "evaluationSeed": null,
+      "durationSeconds": 245,
+      "failedGates": [
+        "internal_force_bounded",
+        "no_drop"
+      ],
+      "selectionReasons": [],
+      "videoUrl": "/static/arm-videos/media/002.mp4",
+      "evidenceUrl": "/static/arm-videos/media/002.json"
+    },
+    {
+      "id": "recheck-20260912-v2:arms-co-carry-v1-train101-eval50705:1d98de5e",
+      "title": "协作搬托盘 · train 101 / eval 50705",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arms-co-carry-v1-train101-eval50705/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "failed",
+      "trainingSeed": 101,
+      "evaluationSeed": 50705,
+      "durationSeconds": 35,
+      "failedGates": [
+        "no_drop"
+      ],
+      "selectionReasons": [
+        "historical-failure-replay"
+      ],
+      "videoUrl": "/static/arm-videos/media/003.mp4",
+      "evidenceUrl": "/static/arm-videos/media/003.json"
+    },
+    {
+      "id": "arms-co-carry-v1-train101-eval80000",
+      "title": "协作搬托盘 · train 101 / eval 80000",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arms-co-carry-v1-train101-eval80000/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 80000,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/004.mp4",
+      "evidenceUrl": "/static/arm-videos/media/004.json"
+    },
+    {
+      "id": "recheck-20260912-v2:arms-co-carry-v1-train202-eval50007:18e419f0",
+      "title": "协作搬托盘 · train 202 / eval 50007",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arms-co-carry-v1-train202-eval50007/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "failed",
+      "trainingSeed": 202,
+      "evaluationSeed": 50007,
+      "durationSeconds": 35,
+      "failedGates": [
+        "internal_force_bounded",
+        "no_drop"
+      ],
+      "selectionReasons": [
+        "historical-failure-replay"
+      ],
+      "videoUrl": "/static/arm-videos/media/005.mp4",
+      "evidenceUrl": "/static/arm-videos/media/005.json"
+    },
+    {
+      "id": "recheck-20260912-v2:arms-co-carry-v1-train202-eval50606:53630dda",
+      "title": "协作搬托盘 · train 202 / eval 50606",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arms-co-carry-v1-train202-eval50606/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "failed",
+      "trainingSeed": 202,
+      "evaluationSeed": 50606,
+      "durationSeconds": 35,
+      "failedGates": [
+        "no_drop"
+      ],
+      "selectionReasons": [
+        "historical-failure-replay"
+      ],
+      "videoUrl": "/static/arm-videos/media/006.mp4",
+      "evidenceUrl": "/static/arm-videos/media/006.json"
+    },
+    {
+      "id": "recheck-20260912-v2:arms-co-carry-v1-train202-eval80307:67791ab4",
+      "title": "协作搬托盘 · train 202 / eval 80307",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arms-co-carry-v1-train202-eval80307/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "failed",
+      "trainingSeed": 202,
+      "evaluationSeed": 80307,
+      "durationSeconds": 35,
+      "failedGates": [
+        "internal_force_bounded",
+        "no_drop"
+      ],
+      "selectionReasons": [
+        "new-failure"
+      ],
+      "videoUrl": "/static/arm-videos/media/007.mp4",
+      "evidenceUrl": "/static/arm-videos/media/007.json"
+    },
+    {
+      "id": "recheck-20260912-v2:arms-co-carry-v1-train202-eval80609:82dae17c",
+      "title": "协作搬托盘 · train 202 / eval 80609",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arms-co-carry-v1-train202-eval80609/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "failed",
+      "trainingSeed": 202,
+      "evaluationSeed": 80609,
+      "durationSeconds": 35,
+      "failedGates": [
+        "no_drop"
+      ],
+      "selectionReasons": [
+        "new-failure"
+      ],
+      "videoUrl": "/static/arm-videos/media/008.mp4",
+      "evidenceUrl": "/static/arm-videos/media/008.json"
+    },
+    {
+      "id": "recheck-20260912-v2:arms-co-carry-v1-train303-eval50704:f3913dc0",
+      "title": "协作搬托盘 · train 303 / eval 50704",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arms-co-carry-v1-train303-eval50704/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "failed",
+      "trainingSeed": 303,
+      "evaluationSeed": 50704,
+      "durationSeconds": 35,
+      "failedGates": [
+        "no_drop"
+      ],
+      "selectionReasons": [
+        "historical-failure-replay"
+      ],
+      "videoUrl": "/static/arm-videos/media/009.mp4",
+      "evidenceUrl": "/static/arm-videos/media/009.json"
+    },
+    {
+      "id": "recheck-20260912-v2:arms-co-carry-v1-train303-eval50807:0cc965ea",
+      "title": "协作搬托盘 · train 303 / eval 50807",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arms-co-carry-v1-train303-eval50807/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "failed",
+      "trainingSeed": 303,
+      "evaluationSeed": 50807,
+      "durationSeconds": 35,
+      "failedGates": [
+        "no_drop"
+      ],
+      "selectionReasons": [
+        "historical-failure-replay"
+      ],
+      "videoUrl": "/static/arm-videos/media/010.mp4",
+      "evidenceUrl": "/static/arm-videos/media/010.json"
+    },
+    {
+      "id": "arms-handover-v1-train101-eval80000",
+      "title": "双臂交接 · train 101 / eval 80000",
+      "caseIds": [
+        "arms-handover-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arms-handover-v1-train101-eval80000/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 80000,
+      "durationSeconds": 24.88,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/011.mp4",
+      "evidenceUrl": "/static/arm-videos/media/011.json"
+    },
+    {
+      "id": "arm-carry-v1-train101-eval80000",
+      "title": "定点搬运 · train 101 / eval 80000",
+      "caseIds": [
+        "arm-carry-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arm-carry-v1-train101-eval80000/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 80000,
+      "durationSeconds": 21.56,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/012.mp4",
+      "evidenceUrl": "/static/arm-videos/media/012.json"
+    },
+    {
+      "id": "arm-pick-place-v1-train101-eval80000",
+      "title": "抓取与放置 · train 101 / eval 80000",
+      "caseIds": [
+        "arm-pick-place-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arm-pick-place-v1-train101-eval80000/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 80000,
+      "durationSeconds": 17.04,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/013.mp4",
+      "evidenceUrl": "/static/arm-videos/media/013.json"
+    },
+    {
+      "id": "arm-reach-v1-train101-eval80000",
+      "title": "末端触达 · train 101 / eval 80000",
+      "caseIds": [
+        "arm-reach-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arm-reach-v1-train101-eval80000/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 80000,
+      "durationSeconds": 2.04,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/014.mp4",
+      "evidenceUrl": "/static/arm-videos/media/014.json"
+    },
+    {
+      "id": "arm-relocate-v1-train101-eval80000",
+      "title": "绕障移物 · train 101 / eval 80000",
+      "caseIds": [
+        "arm-relocate-v1"
+      ],
+      "batch": "recheck-20260912-v2",
+      "path": "recheck-20260912-v2/videos/arm-relocate-v1-train101-eval80000/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 80000,
+      "durationSeconds": 17.04,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/015.mp4",
+      "evidenceUrl": "/static/arm-videos/media/015.json"
+    },
+    {
+      "id": "strict-heldout-20260912-v3-six-cases-overview",
+      "title": "Six Cases Overview",
+      "caseIds": [
+        "arm-reach-v1",
+        "arm-pick-place-v1",
+        "arm-relocate-v1",
+        "arm-carry-v1",
+        "arms-handover-v1",
+        "arms-co-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/six-cases-overview.mp4",
+      "aliases": [],
+      "kind": "compilation",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": null,
+      "evaluationSeed": null,
+      "durationSeconds": 103.36,
+      "failedGates": [],
+      "selectionReasons": [],
+      "videoUrl": "/static/arm-videos/media/016.mp4",
+      "evidenceUrl": "/static/arm-videos/media/016.json"
+    },
+    {
+      "id": "arms-co-carry-v1-train101-eval110000",
+      "title": "协作搬托盘 · train 101 / eval 110000",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arms-co-carry-v1-train101-eval110000/rollout.mp4",
+      "aliases": [
+        "strict-repair-20260912-v3/arms-co-carry-v1/seed-101/rollout.mp4"
+      ],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 110000,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/017.mp4",
+      "evidenceUrl": "/static/arm-videos/media/017.json"
+    },
+    {
+      "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train101-eval50705:ff91f71b",
+      "title": "协作搬托盘 · train 101 / eval 50705",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arms-co-carry-v1-train101-eval50705/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 50705,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [
+        "repaired-known-failure"
+      ],
+      "videoUrl": "/static/arm-videos/media/018.mp4",
+      "evidenceUrl": "/static/arm-videos/media/018.json"
+    },
+    {
+      "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train202-eval50007:463fde9d",
+      "title": "协作搬托盘 · train 202 / eval 50007",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arms-co-carry-v1-train202-eval50007/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 202,
+      "evaluationSeed": 50007,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [
+        "repaired-known-failure"
+      ],
+      "videoUrl": "/static/arm-videos/media/019.mp4",
+      "evidenceUrl": "/static/arm-videos/media/019.json"
+    },
+    {
+      "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train202-eval50606:b698a7ab",
+      "title": "协作搬托盘 · train 202 / eval 50606",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arms-co-carry-v1-train202-eval50606/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 202,
+      "evaluationSeed": 50606,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [
+        "repaired-known-failure"
+      ],
+      "videoUrl": "/static/arm-videos/media/020.mp4",
+      "evidenceUrl": "/static/arm-videos/media/020.json"
+    },
+    {
+      "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train202-eval80307:a03ccead",
+      "title": "协作搬托盘 · train 202 / eval 80307",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arms-co-carry-v1-train202-eval80307/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 202,
+      "evaluationSeed": 80307,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [
+        "repaired-known-failure"
+      ],
+      "videoUrl": "/static/arm-videos/media/021.mp4",
+      "evidenceUrl": "/static/arm-videos/media/021.json"
+    },
+    {
+      "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train202-eval80609:c917e37d",
+      "title": "协作搬托盘 · train 202 / eval 80609",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arms-co-carry-v1-train202-eval80609/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 202,
+      "evaluationSeed": 80609,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [
+        "repaired-known-failure"
+      ],
+      "videoUrl": "/static/arm-videos/media/022.mp4",
+      "evidenceUrl": "/static/arm-videos/media/022.json"
+    },
+    {
+      "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train303-eval50704:a18e19ba",
+      "title": "协作搬托盘 · train 303 / eval 50704",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arms-co-carry-v1-train303-eval50704/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 303,
+      "evaluationSeed": 50704,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [
+        "repaired-known-failure"
+      ],
+      "videoUrl": "/static/arm-videos/media/023.mp4",
+      "evidenceUrl": "/static/arm-videos/media/023.json"
+    },
+    {
+      "id": "strict-heldout-20260912-v3:arms-co-carry-v1-train303-eval50807:2f281e67",
+      "title": "协作搬托盘 · train 303 / eval 50807",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arms-co-carry-v1-train303-eval50807/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 303,
+      "evaluationSeed": 50807,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [
+        "repaired-known-failure"
+      ],
+      "videoUrl": "/static/arm-videos/media/024.mp4",
+      "evidenceUrl": "/static/arm-videos/media/024.json"
+    },
+    {
+      "id": "arms-handover-v1-train101-eval110000",
+      "title": "双臂交接 · train 101 / eval 110000",
+      "caseIds": [
+        "arms-handover-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arms-handover-v1-train101-eval110000/rollout.mp4",
+      "aliases": [
+        "strict-repair-20260912-v3/arms-handover-v1/seed-101/rollout.mp4"
+      ],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 110000,
+      "durationSeconds": 24.88,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/025.mp4",
+      "evidenceUrl": "/static/arm-videos/media/025.json"
+    },
+    {
+      "id": "arm-carry-v1-train101-eval110000",
+      "title": "定点搬运 · train 101 / eval 110000",
+      "caseIds": [
+        "arm-carry-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arm-carry-v1-train101-eval110000/rollout.mp4",
+      "aliases": [
+        "strict-repair-20260912-v3/arm-carry-v1/seed-101/rollout.mp4"
+      ],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 110000,
+      "durationSeconds": 21.56,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/026.mp4",
+      "evidenceUrl": "/static/arm-videos/media/026.json"
+    },
+    {
+      "id": "arm-pick-place-v1-train101-eval110000",
+      "title": "抓取与放置 · train 101 / eval 110000",
+      "caseIds": [
+        "arm-pick-place-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arm-pick-place-v1-train101-eval110000/rollout.mp4",
+      "aliases": [
+        "strict-repair-20260912-v3/arm-pick-place-v1/seed-101/rollout.mp4"
+      ],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 110000,
+      "durationSeconds": 17.04,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/027.mp4",
+      "evidenceUrl": "/static/arm-videos/media/027.json"
+    },
+    {
+      "id": "arm-reach-v1-train101-eval110000",
+      "title": "末端触达 · train 101 / eval 110000",
+      "caseIds": [
+        "arm-reach-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arm-reach-v1-train101-eval110000/rollout.mp4",
+      "aliases": [
+        "strict-repair-20260912-v3/arm-reach-v1/seed-101/rollout.mp4"
+      ],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 110000,
+      "durationSeconds": 2,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/028.mp4",
+      "evidenceUrl": "/static/arm-videos/media/028.json"
+    },
+    {
+      "id": "arm-relocate-v1-train101-eval110000",
+      "title": "绕障移物 · train 101 / eval 110000",
+      "caseIds": [
+        "arm-relocate-v1"
+      ],
+      "batch": "strict-heldout-20260912-v3",
+      "path": "strict-heldout-20260912-v3/videos/arm-relocate-v1-train101-eval110000/rollout.mp4",
+      "aliases": [
+        "strict-repair-20260912-v3/arm-relocate-v1/seed-101/rollout.mp4"
+      ],
+      "kind": "episode",
+      "provenance": "current",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 110000,
+      "durationSeconds": 17.04,
+      "failedGates": [],
+      "selectionReasons": [
+        "first-new-seed"
+      ],
+      "videoUrl": "/static/arm-videos/media/029.mp4",
+      "evidenceUrl": "/static/arm-videos/media/029.json"
+    },
+    {
+      "id": "video-897d8a2fdc3d2a8d",
+      "title": "协作搬托盘 · train 101 / eval 50000",
+      "caseIds": [
+        "arms-co-carry-v1"
+      ],
+      "batch": "validated-20260912-v2",
+      "path": "validated-20260912-v2/arms-co-carry-v1/seed-101/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 50000,
+      "durationSeconds": 20.84,
+      "failedGates": [],
+      "selectionReasons": [],
+      "videoUrl": "/static/arm-videos/media/030.mp4",
+      "evidenceUrl": "/static/arm-videos/media/030.json"
+    },
+    {
+      "id": "video-e5046bf28babd883",
+      "title": "双臂交接 · train 101 / eval 50000",
+      "caseIds": [
+        "arms-handover-v1"
+      ],
+      "batch": "validated-20260912-v2",
+      "path": "validated-20260912-v2/arms-handover-v1/seed-101/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 50000,
+      "durationSeconds": 24.86,
+      "failedGates": [],
+      "selectionReasons": [],
+      "videoUrl": "/static/arm-videos/media/031.mp4",
+      "evidenceUrl": "/static/arm-videos/media/031.json"
+    },
+    {
+      "id": "video-1465bca2cd8330f0",
+      "title": "定点搬运 · train 101 / eval 50000",
+      "caseIds": [
+        "arm-carry-v1"
+      ],
+      "batch": "validated-20260912-v2",
+      "path": "validated-20260912-v2/arm-carry-v1/seed-101/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 50000,
+      "durationSeconds": 21.54,
+      "failedGates": [],
+      "selectionReasons": [],
+      "videoUrl": "/static/arm-videos/media/032.mp4",
+      "evidenceUrl": "/static/arm-videos/media/032.json"
+    },
+    {
+      "id": "video-f18c7e5729a439b4",
+      "title": "抓取与放置 · train 101 / eval 50000",
+      "caseIds": [
+        "arm-pick-place-v1"
+      ],
+      "batch": "validated-20260912-v2",
+      "path": "validated-20260912-v2/arm-pick-place-v1/seed-101/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 50000,
+      "durationSeconds": 17.04,
+      "failedGates": [],
+      "selectionReasons": [],
+      "videoUrl": "/static/arm-videos/media/033.mp4",
+      "evidenceUrl": "/static/arm-videos/media/033.json"
+    },
+    {
+      "id": "video-d7e2be85d8d61982",
+      "title": "末端触达 · train 101 / eval 50000",
+      "caseIds": [
+        "arm-reach-v1"
+      ],
+      "batch": "validated-20260912-v2",
+      "path": "validated-20260912-v2/arm-reach-v1/seed-101/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 50000,
+      "durationSeconds": 2.02,
+      "failedGates": [],
+      "selectionReasons": [],
+      "videoUrl": "/static/arm-videos/media/034.mp4",
+      "evidenceUrl": "/static/arm-videos/media/034.json"
+    },
+    {
+      "id": "video-147b2aa7c73b2f5e",
+      "title": "绕障移物 · train 101 / eval 50000",
+      "caseIds": [
+        "arm-relocate-v1"
+      ],
+      "batch": "validated-20260912-v2",
+      "path": "validated-20260912-v2/arm-relocate-v1/seed-101/rollout.mp4",
+      "aliases": [],
+      "kind": "episode",
+      "provenance": "historical",
+      "outcome": "passed",
+      "trainingSeed": 101,
+      "evaluationSeed": 50000,
+      "durationSeconds": 17.04,
+      "failedGates": [],
+      "selectionReasons": [],
+      "videoUrl": "/static/arm-videos/media/035.mp4",
+      "evidenceUrl": "/static/arm-videos/media/035.json"
+    }
+  ],
+  "totalFiles": 41,
+  "uniqueVideos": 35,
+  "hardwareEnabled": false,
+  "warnings": []
+}

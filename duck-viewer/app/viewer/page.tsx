@@ -1,11 +1,14 @@
-import { redirect } from "next/navigation";
+"use client";
 
-export default async function ViewerPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ lab?: string | string[] }>;
-}) {
-  const params = await searchParams;
-  const lab = Array.isArray(params.lab) ? params.lab[0] : params.lab;
-  redirect(lab ? `/?lab=${encodeURIComponent(lab)}` : "/");
+import { useEffect } from "react";
+
+export default function ViewerPage() {
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const basePath = url.pathname.replace(/\/viewer\/?$/, "");
+    const destination = `${basePath || ""}/${url.search}`;
+    window.location.replace(destination);
+  }, []);
+
+  return null;
 }

@@ -1,0 +1,42 @@
+flowchart TB
+  subgraph Clients[控制与使用端]
+    Pad[游戏手柄]
+    Phone[手机 BLE]
+    CLI[robotctl / 本机 SDK]
+    Peer[浏览器 / 远程 Peer]
+    Release[GitHub Release]
+  end
+  subgraph Board[RK3566 / systemd]
+    Padd[padd\n手柄转意图]
+    Btd[btd\nBLE 适配器]
+    Mediad[mediad\n相机 音频 WebRTC]
+    Robotd[robotd\n50 Hz 控制与安全]
+    Configd[configd\nWi-Fi 身份 配对]
+    Updater[updaterd\n验证 交换 回滚]
+    Tofd[tofd\n8x8 深度发布]
+    IPC[Unix sockets\nJSON-RPC 2.0 + NDJSON]
+  end
+  subgraph Hardware[硬件与持久状态]
+    Bus[1 Mbps Dynamixel 总线\n15 舵机 + IMU ID 200]
+    DBus[BlueZ / NetworkManager]
+    Camera[相机 / 麦克风]
+    ToF[VL53L5CX / VL53L8CX]
+    Current["/opt/robot/daemon/current"]
+  end
+  Pad --> Padd
+  Phone --> Btd
+  CLI --> IPC
+  Peer --> Mediad
+  Release --> Updater
+  Padd --> IPC
+  Btd --> IPC
+  Mediad --> IPC
+  IPC --> Robotd
+  IPC --> Configd
+  IPC --> Updater
+  Robotd --> Bus
+  Configd --> DBus
+  Mediad --> Camera
+  Tofd --> ToF
+  Tofd --> IPC
+  Updater --> Current

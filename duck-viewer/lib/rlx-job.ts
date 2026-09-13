@@ -1,15 +1,23 @@
 import { spawn, type ChildProcess } from "node:child_process";
-import { existsSync, realpathSync, statSync } from "node:fs";
+import { existsSync, readFileSync, realpathSync, statSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { prepareRenderEvidence, finalizeRenderEvidence, readRenderEvidence } from "@/lib/rlx-render-evidence";
+import {
+  prepareRenderEvidence,
+  finalizeRenderEvidence,
+  readRenderEvidence,
+  type RenderRecipeOptions,
+} from "@/lib/rlx-render-evidence";
 
 import {
   defaultRewardWeights,
+  drawingToolFromContract,
   getExperiment,
+  getDrawingTool,
   isExperimentId,
+  type DrawingTool,
   type ExperimentId,
 } from "@/lib/experiments";
 import {
@@ -21,6 +29,7 @@ import {
 } from "@/lib/rlx-history";
 
 export type RlxOperation = "train" | "eval" | "render" | "export";
+const BACKFLIP_PROTOCOL_VERSION = "spotter-launch-landing-stand-v2";
 export type RlxJobPhase =
   | "idle"
   | "running"
@@ -30,6 +39,7 @@ export type RlxJobPhase =
 
 export interface RlxRecipe {
   experimentId: ExperimentId;
+  drawingTool?: DrawingTool;
   runName: string;
   profile: "smoke" | "full";
   totalTimesteps: number;
@@ -38,6 +48,7 @@ export interface RlxRecipe {
   numMinibatches: number;
   maxEpisodeS: number;
   evalSteps: number;
+  evalEpisodes: number;
   renderSeconds: number;
   danceClip: string | null;
   dancePoseSigma: number | null;
@@ -57,6 +68,7 @@ export interface RlxRecipe {
   obsNoise: boolean;
   actionDelay: boolean;
   randomYaw: boolean;
+  bridgeCurriculum: boolean;
   stiltHeightCm: number;
   stiltBlend: number;
   stiltMassKg: number;
@@ -97,6 +109,7 @@ export interface RlxJobSnapshot {
     startedAt: string | null;
   } | null;
   experimentId: ExperimentId;
+  drawingTool?: DrawingTool;
   runName: string;
   startedAt: string | null;
   finishedAt: string | null;
@@ -203,19 +216,31 @@ function pathsFor(experimentId: ExperimentId, runName: string) {
   const root = rlxRoot();
   const experiment = getExperiment(experimentId);
   const runDirectory = path.join(root, "runs", "studio", experimentId, runName);
+  const files = experiment.artifactFiles ?? {
+    checkpoint: `${experiment.artifactStem}.safetensors`,
+    metadata: `${experiment.artifactStem}.safetensors.json`,
+    onnx: `${experiment.artifactStem}.onnx`,
+    evaluation: "evaluation.json",
+  };
   return {
     root,
     runDirectory,
-    checkpoint: path.join(runDirectory, `${experiment.artifactStem}.safetensors`),
-    metadata: path.join(
-      runDirectory,
-      `${experiment.artifactStem}.safetensors.json`
-    ),
-    onnx: path.join(runDirectory, `${experiment.artifactStem}.onnx`),
+    checkpoint: path.join(runDirectory, files.checkpoint),
+    metadata: path.join(runDirectory, files.metadata),
+    onnx: path.join(runDirectory, files.onnx),
     renderDirectory: path.join(runDirectory, "render"),
-    renderSheet: path.join(runDirectory, "render", "ep0_sheet.png"),
-    renderVideo: path.join(runDirectory, "render", "ep0.mp4"),
-    evaluation: path.join(runDirectory, "evaluation.json"),
+    renderSheet: path.join(
+      runDirectory,
+      "render",
+      files.renderSheet ?? "ep0_sheet.png"
+    ),
+    renderVideo: path.join(
+      runDirectory,
+      "render",
+      files.renderVideo ?? "ep0.mp4"
+    ),
+    evaluation: path.join(runDirectory, files.evaluation),
+    evaluationFallback: path.join(runDirectory, "evaluation.json"),
     trainingMetrics: path.join(runDirectory, "training-metrics.jsonl"),
   };
 }
@@ -223,18 +248,27 @@ function pathsFor(experimentId: ExperimentId, runName: string) {
 export function artifactPath(
   experimentIdValue: unknown,
   runNameValue: unknown,
-  kind: "checkpoint" | "metadata" | "onnx" | "sheet" | "video"
+  kind: "checkpoint" | "metadata" | "onnx" | "sheet" | "video" | "evaluation"
 ): string {
   const experimentId = normalizeExperimentId(experimentIdValue);
   const runName = sanitizeRunName(runNameValue);
   const paths = pathsFor(experimentId, runName);
-  return {
+  const selected = {
     checkpoint: paths.checkpoint,
     metadata: paths.metadata,
     onnx: paths.onnx,
     sheet: paths.renderSheet,
     video: paths.renderVideo,
+    evaluation: paths.evaluation,
   }[kind];
+  if (
+    kind === "evaluation" &&
+    !existsSync(selected) &&
+    existsSync(paths.evaluationFallback)
+  ) {
+    return paths.evaluationFallback;
+  }
+  return selected;
 }
 
 async function artifactState(
@@ -248,7 +282,8 @@ async function artifactState(
     onnx: existsSync(paths.onnx),
     renderSheet: existsSync(paths.renderSheet),
     renderVideo: existsSync(paths.renderVideo),
-    evaluation: existsSync(paths.evaluation),
+    evaluation:
+      existsSync(paths.evaluation) || existsSync(paths.evaluationFallback),
     checkpointPath: path.relative(paths.root, paths.checkpoint),
     onnxPath: path.relative(paths.root, paths.onnx),
     renderDirectory: path.relative(paths.root, paths.renderDirectory),
@@ -505,35 +540,52 @@ function normalizeRewardWeights(
   );
 }
 
+function normalizeDrawingTool(
+  experimentId: ExperimentId,
+  value: unknown
+): DrawingTool | undefined {
+  if (experimentId !== "drawing") return undefined;
+  if (value === undefined || value === null || value === "") return "brush";
+  if (value === "pencil" || value === "brush") return value;
+  throw new Error(`Unknown drawing tool: ${String(value)}`);
+}
+
 export function normalizeRecipe(input: Partial<RlxRecipe>): RlxRecipe {
   const experimentId = normalizeExperimentId(input.experimentId);
-  const freezeObservationNormalization = explicitBoolean(
-    input.freezeObservationNormalization,
-    false,
-    "Freeze observation normalization"
-  );
-  if (freezeObservationNormalization && input.resumeFromCheckpoint !== true) {
-    throw new Error("Freeze observation normalization requires resumeFromCheckpoint to be true.");
-  }
   const experiment = getExperiment(experimentId);
+  const drawingTool = normalizeDrawingTool(experimentId, input.drawingTool);
+  const drawingDefinition = drawingTool ? getDrawingTool(drawingTool) : null;
   const profile = input.profile === "full" ? "full" : "smoke";
   const smoke = profile === "smoke";
-  const numEnvs = positiveInt(
-    input.numEnvs,
-    smoke ? 2 : experiment.fullEnvs,
-    64
+  const drawing = experimentId === "drawing";
+  const requestedFreezeObservationNormalization = explicitBoolean(
+    input.freezeObservationNormalization,
+    (experimentId === "backflip" || experimentId === "bridge") && !smoke,
+    "Freeze observation normalization"
   );
-  const numSteps = explicitPositiveInt(
-    input.numSteps,
-    smoke ? 2 : experimentId === "swing" ? 64 : 24,
-    100_000,
-    "Rollout steps"
+  const freezeObservationNormalization = experimentId === "basketball"
+    ? true
+    : smoke
+      ? false
+    : requestedFreezeObservationNormalization;
+  if (
+    freezeObservationNormalization &&
+    !drawing &&
+    input.resumeFromCheckpoint !== true &&
+    !(experimentId === "backflip" && profile === "full") &&
+    !(experimentId === "bridge" && profile === "full") &&
+    experimentId !== "basketball"
+  ) {
+    throw new Error("Freeze observation normalization requires resumeFromCheckpoint to be true.");
+  }
+  const numEnvs = drawing ? experiment.fullEnvs : positiveInt(
+    input.numEnvs, smoke ? 2 : experiment.fullEnvs, 64
   );
-  const numMinibatches = explicitPositiveInt(
-    input.numMinibatches,
-    smoke ? 1 : 4,
-    100_000,
-    "Minibatches"
+  const numSteps = drawing ? drawingDefinition!.fullNumSteps : explicitPositiveInt(
+    input.numSteps, smoke ? 2 : experiment.fullNumSteps, 100_000, "Rollout steps"
+  );
+  const numMinibatches = drawing ? drawingDefinition!.fullNumMinibatches : explicitPositiveInt(
+    input.numMinibatches, smoke ? 1 : experiment.fullNumMinibatches, 100_000, "Minibatches"
   );
   const batch = numEnvs * numSteps;
   if (numMinibatches > batch || batch % numMinibatches !== 0) {
@@ -541,20 +593,43 @@ export function normalizeRecipe(input: Partial<RlxRecipe>): RlxRecipe {
       "Minibatches must divide numEnvs * numSteps and cannot exceed that batch."
     );
   }
-  const maxEpisodeS = explicitPositiveFloat(
-    input.maxEpisodeS,
-    smoke ? 1 : experiment.maxEpisodeSeconds,
-    3_600,
-    "Maximum episode seconds"
-  );
+  const maxEpisodeS = drawing
+    ? drawingDefinition!.maxEpisodeSeconds
+    : explicitPositiveFloat(
+        input.maxEpisodeS,
+        smoke ? 1 : experiment.maxEpisodeSeconds,
+        3_600,
+        "Maximum episode seconds"
+      );
   const evalSteps = explicitPositiveInt(
     input.evalSteps,
-    smoke ? 4 : Math.max(experimentId === "running" ? 600 : 500, Math.ceil(maxEpisodeS * 50)),
+    smoke ? 4 : Math.max(
+      experimentId === "running" ? 600 : experimentId === "bridge" ? 1_000 : 500,
+      Math.ceil(maxEpisodeS * 50)
+    ),
     10_000_000,
     "Evaluation steps"
   );
+  const evalEpisodes = explicitPositiveInt(
+    input.evalEpisodes,
+    smoke
+      ? drawingTool === "brush" ? drawingDefinition!.evalEpisodes : 1
+      : drawing ? drawingDefinition!.evalEpisodes : 1,
+    10_000,
+    "Evaluation episodes"
+  );
   if (!smoke && experimentId === "running" && (maxEpisodeS < 12 || evalSteps < 600)) {
     throw new Error("Full Running evaluation requires at least 12 episode seconds and 600 evaluation steps.");
+  }
+  if (!smoke && experimentId === "bridge" && (maxEpisodeS < 20 || evalSteps < 1_000)) {
+    throw new Error("Full Bridge evaluation requires 20 episode seconds and at least 1,000 evaluation steps.");
+  }
+  if (
+    !smoke &&
+    experimentId === "bridge" &&
+    evalSteps % Math.round(maxEpisodeS * 50) !== 0
+  ) {
+    throw new Error("Full Bridge evaluation steps must cover a whole number of complete episode horizons.");
   }
   const renderSeconds = explicitPositiveFloat(
     input.renderSeconds,
@@ -564,12 +639,14 @@ export function normalizeRecipe(input: Partial<RlxRecipe>): RlxRecipe {
   );
   let totalTimesteps = positiveInt(
     input.totalTimesteps,
-    smoke ? 4 : experiment.fullTimesteps,
+    smoke ? drawing ? drawingDefinition!.smokeTimesteps : 4 : drawing ? drawingDefinition!.fullTimesteps : experiment.fullTimesteps,
     40_000_000
   );
+  if (drawing) totalTimesteps = Math.max(totalTimesteps, drawingDefinition!.smokeTimesteps);
   totalTimesteps = Math.max(batch, Math.ceil(totalTimesteps / batch) * batch);
   return {
     experimentId,
+    drawingTool,
     runName: sanitizeRunName(input.runName ?? experiment.defaultRunName),
     profile,
     totalTimesteps,
@@ -578,6 +655,7 @@ export function normalizeRecipe(input: Partial<RlxRecipe>): RlxRecipe {
     numMinibatches,
     maxEpisodeS,
     evalSteps,
+    evalEpisodes,
     renderSeconds,
     danceClip: normalizeDanceClip(experimentId, input.danceClip),
     dancePoseSigma: normalizeDancePoseSigma(
@@ -588,59 +666,51 @@ export function normalizeRecipe(input: Partial<RlxRecipe>): RlxRecipe {
       experimentId,
       input.locomotionForwardCommand
     ),
-    initialStd: explicitPositiveFloat(
-      input.initialStd,
-      experimentId === "swing" ? 0.1 : Math.exp(-0.5),
-      10,
-      "Initial policy standard deviation"
+    initialStd: drawing
+      ? drawingDefinition!.initialStd
+      : explicitPositiveFloat(
+          input.initialStd,
+          experiment.initialStd,
+          10,
+          "Initial policy standard deviation"
+        ),
+    normalizeRewards: drawing ? experiment.normalizeRewards : explicitBoolean(
+      input.normalizeRewards, experiment.normalizeRewards, "Reward normalization"
     ),
-    normalizeRewards: explicitBoolean(
-      input.normalizeRewards,
-      experimentId === "swing",
-      "Reward normalization"
+    freezeObservationNormalization: drawing ? false : freezeObservationNormalization,
+    checkpointInterval: drawing ? 0 : explicitNonNegativeInt(
+      input.checkpointInterval, 100_000, 40_000_000, "Checkpoint interval"
     ),
-    freezeObservationNormalization,
-    checkpointInterval: explicitNonNegativeInt(
-      input.checkpointInterval,
-      100_000,
-      40_000_000,
-      "Checkpoint interval"
+    seed: positiveInt(input.seed, experiment.seed, 2_147_483_647),
+    learningRate: drawing ? drawingDefinition!.ppo.learningRate : boundedFloat(
+      input.learningRate, experiment.ppo.learningRate, 0.000001, 0.1
     ),
-    seed: positiveInt(input.seed, 1, 2_147_483_647),
-    learningRate: boundedFloat(
-      input.learningRate,
-      experiment.ppo.learningRate,
-      0.000001,
-      0.1
+    gamma: drawing ? drawingDefinition!.ppo.gamma : boundedFloat(input.gamma, experiment.ppo.gamma, 0.8, 1),
+    clipCoefficient: drawing ? drawingDefinition!.ppo.clipCoefficient : boundedFloat(
+      input.clipCoefficient, experiment.ppo.clipCoefficient, 0.01, 1
     ),
-    gamma: boundedFloat(input.gamma, experiment.ppo.gamma, 0.8, 1),
-    clipCoefficient: boundedFloat(
-      input.clipCoefficient,
-      experiment.ppo.clipCoefficient,
-      0.01,
-      1
+    updateEpochs: drawing ? drawingDefinition!.ppo.updateEpochs : positiveInt(
+      input.updateEpochs, experiment.ppo.updateEpochs, 20
     ),
-    updateEpochs: positiveInt(
-      input.updateEpochs,
-      experiment.ppo.updateEpochs,
-      20
+    entropyCoefficient: drawing ? drawingDefinition!.ppo.entropyCoefficient : boundedFloat(
+      input.entropyCoefficient, experiment.ppo.entropyCoefficient, 0, 1
     ),
-    entropyCoefficient: boundedFloat(
-      input.entropyCoefficient,
-      experiment.ppo.entropyCoefficient,
-      0,
-      1
+    maxGradNorm: drawing ? drawingDefinition!.ppo.maxGradNorm : boundedFloat(
+      input.maxGradNorm, experiment.ppo.maxGradNorm, 0.01, 10
     ),
-    maxGradNorm: boundedFloat(
-      input.maxGradNorm,
-      experiment.ppo.maxGradNorm,
-      0.01,
-      10
-    ),
-    domainRand: smoke ? false : input.domainRand !== false,
-    obsNoise: smoke ? false : input.obsNoise !== false,
-    actionDelay: smoke ? false : input.actionDelay !== false,
-    randomYaw: smoke ? false : input.randomYaw !== false,
+    domainRand: drawing ? false : smoke ? false : input.domainRand === undefined
+      ? experiment.fullEnvironment.domainRand
+      : input.domainRand !== false,
+    obsNoise: drawing ? false : smoke ? false : input.obsNoise === undefined
+      ? experiment.fullEnvironment.obsNoise
+      : input.obsNoise !== false,
+    actionDelay: drawing ? false : smoke ? false : input.actionDelay === undefined
+      ? experiment.fullEnvironment.actionDelay
+      : input.actionDelay !== false,
+    randomYaw: drawing ? false : smoke ? false : input.randomYaw === undefined
+      ? experiment.fullEnvironment.randomYaw
+      : input.randomYaw !== false,
+    bridgeCurriculum: experimentId === "bridge" && profile === "full",
     stiltHeightCm: boundedFloat(
       input.stiltHeightCm,
       experiment.controls?.stiltHeightCm ?? 10,
@@ -674,7 +744,7 @@ export function normalizeRecipe(input: Partial<RlxRecipe>): RlxRecipe {
     swingPlanarActions:
       experimentId === "swing" && input.swingPlanarActions !== false,
     swingMinSpanDeg: boundedFloat(input.swingMinSpanDeg ?? 150, 150, 1, 180),
-    resumeFromCheckpoint: input.resumeFromCheckpoint === true,
+    resumeFromCheckpoint: drawing ? false : input.resumeFromCheckpoint === true,
     rewardWeights: normalizeRewardWeights(experimentId, input.rewardWeights),
   };
 }
@@ -753,6 +823,16 @@ function commonArgs(recipe: RlxRecipe): string[] {
 }
 
 function evaluationEnvironmentKey(recipe: RlxRecipe, operation: RlxOperation = "eval"): string {
+  if (recipe.experimentId === "drawing") {
+    const drawing = getDrawingTool(recipe.drawingTool ?? "brush");
+    return JSON.stringify({
+      contract: drawing.contractVersion,
+      operation,
+      seed: recipe.seed,
+      maxEpisodeS: operation === "render" ? recipe.renderSeconds : recipe.maxEpisodeS,
+      evalEpisodes: operation === "eval" ? recipe.evalEpisodes : undefined,
+    });
+  }
   return JSON.stringify(commonArgs({
     ...recipe,
     ...(operation === "render" ? {
@@ -770,6 +850,9 @@ function evaluationSettings(recipe: RlxRecipe) {
   return {
     evaluation_mode: recipe.profile === "smoke" ? "pipeline" : "skill",
     eval_steps: recipe.evalSteps,
+    ...(recipe.experimentId === "drawing"
+      ? { eval_episodes: recipe.evalEpisodes }
+      : {}),
     ...(recipe.locomotionForwardCommand !== null
       ? { locomotion_forward_command: recipe.locomotionForwardCommand }
       : {}),
@@ -780,26 +863,174 @@ function evaluationSettings(recipe: RlxRecipe) {
   };
 }
 
+function backflipRecipeOptions(
+  result: Record<string, unknown> | null
+): RenderRecipeOptions | null {
+  const evaluatedOptions = (
+    result?.evaluation as {
+      environment?: { recipe_options?: Record<string, unknown> };
+    } | undefined
+  )?.environment?.recipe_options;
+  const renderedOptions = (
+    result?.environment as {
+      recipe_options?: Record<string, unknown>;
+    } | undefined
+  )?.recipe_options;
+  const options = evaluatedOptions ?? renderedOptions;
+  if (
+    options?.backflip_protocol_version !== BACKFLIP_PROTOCOL_VERSION ||
+    typeof options.stand_policy_sha256 !== "string"
+  ) {
+    return null;
+  }
+  return {
+    backflip_protocol_version: options.backflip_protocol_version,
+    stand_policy_sha256: options.stand_policy_sha256,
+  };
+}
+
 function renderEvidenceInputs(recipe: RlxRecipe, source: string, sourceType: string) {
   const paths = pathsFor(recipe.experimentId, recipe.runName);
+  const standPolicy = path.resolve(paths.root, "../microduck/policies/alpha_stand.onnx");
+  const drawing = recipe.experimentId === "drawing";
   return {
     source,
-    sourceFiles: sourceType === "checkpoint" ? [source, paths.metadata] : [source],
+    sourceFiles: drawing
+      ? [paths.checkpoint, paths.metadata, paths.onnx]
+      : sourceType === "checkpoint" ? [source, paths.metadata] : [source],
     recipeKey: evaluationEnvironmentKey(recipe),
     clipPath: recipe.experimentId === "dance" ? recipe.danceClip ?? path.join(paths.root, "assets/clips/dance-120bpm.json") : null,
+    externalFiles: recipe.experimentId === "backflip" ? [standPolicy] : [],
   };
 }
 
 function commandFor(operation: RlxOperation, recipe: RlxRecipe): string[] {
   const paths = pathsFor(recipe.experimentId, recipe.runName);
+  const adapter = getExperiment(recipe.experimentId).commandAdapter;
+  const drawingTool = recipe.experimentId === "drawing"
+    ? recipe.drawingTool ?? "brush"
+    : null;
+  const script = adapter === "basketball"
+    ? "examples/ppo_microduck_balance.py"
+    : adapter === "drawing"
+      ? drawingTool === "brush"
+        ? "examples/ppo_microduck_brush.py"
+        : "examples/ppo_microduck_drawing.py"
+      : "examples/ppo_microduck_studio.py";
   const base = [
     ...pythonArgs(),
-    "examples/ppo_microduck_studio.py",
+    script,
     operation,
   ];
-  if (operation === "train") {
+  if (adapter === "drawing") {
+    if (drawingTool === "brush") {
+      if (operation === "train") {
+        return [
+          ...base,
+          "--out",
+          paths.runDirectory,
+          "--seed",
+          String(recipe.seed),
+          "--steps",
+          String(recipe.totalTimesteps),
+          "--dagger",
+          "2",
+          "--learning-rate",
+          "1e-7",
+          "--anchor-limit",
+          "0.00025",
+        ];
+      }
+      if (operation === "eval") {
+        return [
+          ...base,
+          "--onnx",
+          paths.onnx,
+          "--out",
+          paths.evaluation,
+          "--seed",
+          String(recipe.seed),
+          "--episodes",
+          String(recipe.evalEpisodes),
+        ];
+      }
+      if (operation === "render") {
+        return [
+          ...base,
+          "--onnx",
+          paths.onnx,
+          "--out",
+          paths.renderDirectory,
+          "--seed",
+          String(recipe.seed),
+          "--seconds",
+          String(recipe.renderSeconds),
+        ];
+      }
+      return [
+        ...base,
+        "--checkpoint",
+        paths.checkpoint,
+        "--onnx-output",
+        paths.onnx,
+      ];
+    }
+    if (operation === "train") {
+      return [
+        ...base,
+        "--output",
+        paths.runDirectory,
+        "--total-timesteps",
+        String(recipe.totalTimesteps),
+        "--seed",
+        String(recipe.seed),
+        "--max-episode-s",
+        String(recipe.maxEpisodeS),
+      ];
+    }
+    if (operation === "eval") {
+      return [
+        ...base,
+        "--checkpoint",
+        paths.checkpoint,
+        "--eval-output",
+        paths.evaluation,
+        "--eval-episodes",
+        String(recipe.evalEpisodes),
+        "--seed",
+        String(recipe.seed),
+        "--max-episode-s",
+        String(recipe.maxEpisodeS),
+      ];
+    }
+    if (operation === "render") {
+      return [
+        ...base,
+        "--checkpoint",
+        paths.checkpoint,
+        "--render-output",
+        paths.renderDirectory,
+        "--render-seconds",
+        String(recipe.renderSeconds),
+        "--seed",
+        String(recipe.seed),
+        "--max-episode-s",
+        String(recipe.maxEpisodeS),
+      ];
+    }
     return [
       ...base,
+      "--checkpoint",
+      paths.checkpoint,
+      "--onnx-output",
+      paths.onnx,
+    ];
+  }
+  if (operation === "train") {
+    const basketball = recipe.experimentId === "basketball";
+    return [
+      ...base,
+      ...(basketball ? ["--output-dir", paths.runDirectory] : []),
       "--checkpoint",
       paths.checkpoint,
       ...(recipe.resumeFromCheckpoint && existsSync(paths.checkpoint)
@@ -810,21 +1041,27 @@ function commandFor(operation: RlxOperation, recipe: RlxRecipe): string[] {
         : []),
       "--onnx-output",
       paths.onnx,
+      ...(recipe.experimentId === "backflip"
+        ? ["--backend", "dummy"]
+        : []),
+      ...(recipe.bridgeCurriculum ? ["--bridge-curriculum"] : []),
       "--total-timesteps",
       String(recipe.totalTimesteps),
       "--num-steps",
       String(recipe.numSteps),
       "--num-minibatches",
-      String(recipe.numMinibatches),
+      String(basketball ? 1 : recipe.numMinibatches),
       "--checkpoint-interval",
       String(recipe.checkpointInterval),
       "--initial-std",
       String(recipe.initialStd),
-      recipe.normalizeRewards
+      basketball
+        ? "--no-normalize-rewards"
+        : recipe.normalizeRewards
         ? "--normalize-rewards"
         : "--no-normalize-rewards",
       "--update-epochs",
-      recipe.profile === "smoke" ? "1" : String(recipe.updateEpochs),
+      basketball ? "5" : recipe.profile === "smoke" ? "1" : String(recipe.updateEpochs),
       "--learning-rate",
       String(recipe.learningRate),
       "--gamma",
@@ -834,9 +1071,9 @@ function commandFor(operation: RlxOperation, recipe: RlxRecipe): string[] {
       "--clip-coefficient",
       String(recipe.clipCoefficient),
       "--entropy-coefficient",
-      String(recipe.entropyCoefficient),
+      String(basketball ? 0.01 : recipe.entropyCoefficient),
       "--max-grad-norm",
-      String(recipe.maxGradNorm),
+      String(basketball ? 1 : recipe.maxGradNorm),
       ...(recipe.experimentId === "swing"
         ? [
             "--swing-initial-angle-deg",
@@ -852,11 +1089,14 @@ function commandFor(operation: RlxOperation, recipe: RlxRecipe): string[] {
     const settings = evaluationSettings(recipe);
     return [
       ...base,
+      ...(recipe.experimentId === "basketball"
+        ? ["--output-dir", paths.runDirectory]
+        : []),
       ...(existsSync(paths.onnx)
         ? ["--policy", paths.onnx]
         : ["--checkpoint", paths.checkpoint]),
       "--backend",
-      "dummy",
+      recipe.experimentId === "basketball" ? "standalone" : "dummy",
       "--evaluation-mode",
       settings.evaluation_mode,
       "--eval-steps",
@@ -868,6 +1108,9 @@ function commandFor(operation: RlxOperation, recipe: RlxRecipe): string[] {
     ];
   }
   if (operation === "export") {
+    if (recipe.experimentId === "basketball") {
+      throw new Error("Basketball training emits its recurrent policy.onnx directly; standalone export is unavailable.");
+    }
     return [
       ...base,
       "--recipe",
@@ -880,6 +1123,9 @@ function commandFor(operation: RlxOperation, recipe: RlxRecipe): string[] {
   }
   return [
     ...base,
+    ...(recipe.experimentId === "basketball"
+      ? ["--output-dir", paths.runDirectory]
+      : []),
     ...(existsSync(paths.onnx)
       ? ["--policy", paths.onnx]
       : ["--checkpoint", paths.checkpoint]),
@@ -899,14 +1145,197 @@ function commandFor(operation: RlxOperation, recipe: RlxRecipe): string[] {
   ];
 }
 
+function metadataContractVersion(metadata: Record<string, unknown> | null): unknown {
+  const nested = metadata?.metadata;
+  return metadata?.contract_version ?? (
+    typeof nested === "object" && nested !== null && !Array.isArray(nested)
+      ? (nested as Record<string, unknown>).contract_version
+      : undefined
+  );
+}
+
+function drawingEvidenceTool(
+  report: Record<string, unknown>,
+  metadata: Record<string, unknown> | null
+): DrawingTool | null {
+  const reportTool = drawingToolFromContract(report.contract_version);
+  const metadataTool = drawingToolFromContract(metadataContractVersion(metadata));
+  if (!reportTool || !metadataTool || reportTool !== metadataTool) return null;
+  const request = report.evaluation_request;
+  const recipe = typeof request === "object" && request !== null && !Array.isArray(request)
+    ? (request as { recipe?: Partial<RlxRecipe> }).recipe
+    : null;
+  if (
+    recipe?.drawingTool !== undefined &&
+    recipe.drawingTool !== reportTool
+  ) {
+    return null;
+  }
+  return reportTool;
+}
+
+const BRUSH_SOURCE_HASH_KEYS = [
+  "pipeline_sha256",
+  "environment_sha256",
+  "reference_sha256",
+  "actor_sha256",
+  "base_environment_sha256",
+  "base_reference_sha256",
+] as const;
+
+function brushSourceHashes(
+  value: unknown
+): Record<(typeof BRUSH_SOURCE_HASH_KEYS)[number], string> | null {
+  if (typeof value !== "object" || value === null || Array.isArray(value)) {
+    return null;
+  }
+  const hashes = value as Record<string, unknown>;
+  if (
+    Object.keys(hashes).length !== BRUSH_SOURCE_HASH_KEYS.length ||
+    !BRUSH_SOURCE_HASH_KEYS.every(
+      (key) => typeof hashes[key] === "string" && /^[a-f0-9]{64}$/.test(hashes[key])
+    )
+  ) {
+    return null;
+  }
+  return hashes as Record<(typeof BRUSH_SOURCE_HASH_KEYS)[number], string>;
+}
+
+function validDrawingReportShape(
+  report: Record<string, unknown>,
+  drawingTool: DrawingTool
+): boolean {
+  const drawing = getDrawingTool(drawingTool);
+  const evaluation = report.evaluation;
+  const environment = typeof evaluation === "object" && evaluation !== null && !Array.isArray(evaluation)
+    ? (evaluation as Record<string, unknown>).environment
+    : null;
+  const settings = typeof evaluation === "object" && evaluation !== null && !Array.isArray(evaluation)
+    ? evaluation as Record<string, unknown>
+    : null;
+  const environmentRecord = typeof environment === "object" && environment !== null && !Array.isArray(environment)
+    ? environment as Record<string, unknown>
+    : null;
+  const recipeOptions = environmentRecord?.recipe_options;
+  const rewardWeights = environmentRecord?.reward_weights;
+  const assessment = report.drawing_assessment;
+  const assessmentRecord = typeof assessment === "object" && assessment !== null && !Array.isArray(assessment)
+    ? assessment as Record<string, unknown>
+    : null;
+  const request = report.evaluation_request;
+  const requestedRecipe = typeof request === "object" && request !== null && !Array.isArray(request)
+    ? (request as { recipe?: Partial<RlxRecipe> }).recipe
+    : null;
+  let expectedRecipe: RlxRecipe | null = null;
+  if (requestedRecipe) {
+    try {
+      expectedRecipe = normalizeRecipe({
+        ...requestedRecipe,
+        drawingTool,
+      });
+    } catch {
+      return false;
+    }
+  }
+  if (
+    report.recipe !== "drawing" ||
+    (report.evaluation_mode !== "skill" && report.evaluation_mode !== "pipeline") ||
+    typeof report.finite !== "boolean" ||
+    typeof report.pipeline_passed !== "boolean" ||
+    typeof report.passed !== "boolean" ||
+    (report.skill_status !== "passed" && report.skill_status !== "failed") ||
+    settings?.mode !== report.evaluation_mode ||
+    !Number.isInteger(settings.eval_episodes) ||
+    Number(settings.eval_episodes) < 1 ||
+    (expectedRecipe !== null && settings.eval_episodes !== expectedRecipe.evalEpisodes) ||
+    (expectedRecipe !== null && settings.seed !== expectedRecipe.seed) ||
+    environmentRecord?.recipe !== "drawing" ||
+    environmentRecord?.actuator !== "xml" ||
+    environmentRecord?.max_episode_s !== drawing.maxEpisodeSeconds ||
+    (expectedRecipe !== null && environmentRecord.max_episode_s !== expectedRecipe.maxEpisodeS) ||
+    environmentRecord?.assistance !== 0 ||
+    typeof recipeOptions !== "object" ||
+    recipeOptions === null ||
+    Array.isArray(recipeOptions) ||
+    Object.keys(recipeOptions as Record<string, unknown>).length !== 0 ||
+    typeof rewardWeights !== "object" ||
+    rewardWeights === null ||
+    Array.isArray(rewardWeights) ||
+    !assessmentRecord ||
+    typeof assessmentRecord.passed !== "boolean" ||
+    typeof assessmentRecord.unassisted !== "boolean" ||
+    !Array.isArray(assessmentRecord.episodes) ||
+    !assessmentRecord.episodes.every(
+      (episode) => typeof episode === "object" && episode !== null && !Array.isArray(episode)
+    )
+  ) {
+    return false;
+  }
+  if (drawingTool === "brush") {
+    const episodes = assessmentRecord.episodes as Record<string, unknown>[];
+    const conditionCounts = new Map<string, number>();
+    for (const episode of episodes) {
+      if (typeof episode.case !== "string") return false;
+      conditionCounts.set(
+        episode.case,
+        (conditionCounts.get(episode.case) ?? 0) + 1
+      );
+    }
+    return (
+      report.unique_conditions === drawing.evaluationConfigs &&
+      report.minimum_seeds_per_condition === drawing.evalEpisodes &&
+      report.environment_source_match === true &&
+      Array.isArray(report.provenance_errors) &&
+      brushSourceHashes(report.source_hashes) !== null &&
+      episodes.length === drawing.evaluationConfigs * drawing.evalEpisodes &&
+      conditionCounts.size === drawing.evaluationConfigs &&
+      [...conditionCounts.values()].every(
+        (count) => count === drawing.evalEpisodes
+      ) &&
+      typeof assessmentRecord.mean_coverage === "number" &&
+      Number.isFinite(assessmentRecord.mean_coverage) &&
+      typeof assessmentRecord.mean_precision === "number" &&
+      Number.isFinite(assessmentRecord.mean_precision) &&
+      Number.isInteger(assessmentRecord.accepted_episodes) &&
+      Number(assessmentRecord.accepted_episodes) >= 0 &&
+      Number(assessmentRecord.accepted_episodes) <= episodes.length &&
+      assessmentRecord.required_episodes === episodes.length &&
+      (assessmentRecord.passed !== true ||
+        assessmentRecord.accepted_episodes === episodes.length)
+    );
+  }
+  return true;
+}
+
+async function readDrawingMetadata(
+  experimentId: ExperimentId,
+  runName: string
+): Promise<Record<string, unknown> | null> {
+  if (experimentId !== "drawing") return null;
+  try {
+    const metadata = JSON.parse(
+      await readFile(pathsFor(experimentId, runName).metadata, "utf8")
+    );
+    return typeof metadata === "object" && metadata !== null && !Array.isArray(metadata)
+      ? metadata as Record<string, unknown>
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 /** Only current owned artifact bytes can supply an authoritative evaluation verdict. */
 async function boundEvaluation(
   report: Record<string, unknown> | null,
   experimentId: ExperimentId,
   runName: string,
-  environmentKey: string | undefined
+  environmentKey: string | undefined,
+  drawingMetadata: Record<string, unknown> | null = null
 ): Promise<Record<string, unknown> | null> {
   if (!report) return null;
+  if (report.passed === undefined && typeof report.success === "boolean") {
+    report = { ...report, passed: report.success };
+  }
   if (report.source_sha256 == null) {
     return { ...report, passed: false, skill_status: "not_assessed" };
   }
@@ -918,7 +1347,9 @@ async function boundEvaluation(
   const files = report.source_files_sha256;
   if (typeof files !== "object" || files === null || Array.isArray(files)) return null;
   const hashes = files as Record<string, unknown>;
-  const ownedSources = report.source_type === "checkpoint" ? [source, paths.metadata] : [source];
+  const ownedSources = experimentId === "drawing" && report.source_type === "policy"
+    ? [source, paths.metadata]
+    : report.source_type === "checkpoint" ? [source, paths.metadata] : [source];
   for (const file of ownedSources) {
     if (typeof hashes[file] !== "string") return null;
     let bytes: Buffer;
@@ -930,6 +1361,42 @@ async function boundEvaluation(
     }
     const hash = createHash("sha256").update(bytes).digest("hex");
     if (hash !== hashes[file] || (file === source && hash !== report.source_sha256)) return null;
+  }
+  if (experimentId === "drawing") {
+    try {
+      const metadata = drawingMetadata ?? JSON.parse(
+        await readFile(paths.metadata, "utf8")
+      ) as Record<string, unknown>;
+      const drawingTool = drawingEvidenceTool(report, metadata);
+      if (!drawingTool || !validDrawingReportShape(report, drawingTool)) {
+        return null;
+      }
+      if (drawingTool === "brush") {
+        const reportHashes = brushSourceHashes(report.source_hashes);
+        const metadataHashes = brushSourceHashes(metadata.source_hashes);
+        if (
+          !reportHashes ||
+          !metadataHashes ||
+          BRUSH_SOURCE_HASH_KEYS.some(
+            (key) => reportHashes[key] !== metadataHashes[key]
+          )
+        ) {
+          return null;
+        }
+      }
+      const checkpointHash = createHash("sha256")
+        .update(await readFile(paths.checkpoint))
+        .digest("hex");
+      const onnx = metadata.onnx as Record<string, unknown> | undefined;
+      if (
+        metadata.checkpoint_sha256 !== checkpointHash ||
+        onnx?.sha256 !== report.source_sha256
+      ) {
+        return null;
+      }
+    } catch {
+      return null;
+    }
   }
   if (experimentId === "dance") {
     const options = (report.evaluation as { environment?: { recipe_options?: Record<string, unknown> } } | undefined)?.environment?.recipe_options;
@@ -944,12 +1411,42 @@ async function boundEvaluation(
       }
     }
   }
+  if (experimentId === "backflip") {
+    const options = (report.evaluation as { environment?: { recipe_options?: Record<string, unknown> } } | undefined)?.environment?.recipe_options;
+    const protocolVersion = options?.backflip_protocol_version;
+    const expectedStandHash = options?.stand_policy_sha256;
+    const standPolicy = path.resolve(paths.root, "../microduck/policies/alpha_stand.onnx");
+    if (
+      protocolVersion !== BACKFLIP_PROTOCOL_VERSION ||
+      typeof expectedStandHash !== "string"
+    ) {
+      return { ...report, passed: false, skill_status: "not_assessed", evaluation_settings_match: false };
+    }
+    try {
+      const currentStandHash = createHash("sha256")
+        .update(await readFile(standPolicy))
+        .digest("hex");
+      if (currentStandHash !== expectedStandHash) {
+        return { ...report, passed: false, skill_status: "not_assessed", evaluation_settings_match: false };
+      }
+    } catch {
+      return { ...report, passed: false, skill_status: "not_assessed", evaluation_settings_match: false };
+    }
+  }
   if (environmentKey !== undefined) {
     const request = report.evaluation_request as { recipe?: Partial<RlxRecipe> } | undefined;
     let matches = false;
     try {
+      const inferredDrawingTool = experimentId === "drawing"
+        ? drawingEvidenceTool(report, drawingMetadata)
+        : null;
       matches = request?.recipe != null &&
-        evaluationEnvironmentKey(normalizeRecipe(request.recipe)) === environmentKey;
+        evaluationEnvironmentKey(normalizeRecipe({
+          ...request.recipe,
+          ...(inferredDrawingTool && request.recipe.drawingTool === undefined
+            ? { drawingTool: inferredDrawingTool }
+            : {}),
+        })) === environmentKey;
     } catch {
       matches = false;
     }
@@ -975,21 +1472,35 @@ export async function snapshot(
     runName === state.runName && experimentId === state.experimentId;
   const environmentKey = state.environmentKeys[`${experimentId}/${runName}`];
   let savedEvaluation: Record<string, unknown> | null = null;
-  try {
-    savedEvaluation = JSON.parse(
-      await readFile(pathsFor(experimentId, runName).evaluation, "utf8")
-    ) as Record<string, unknown>;
-  } catch {
-    savedEvaluation = null;
+  const evaluationPaths = pathsFor(experimentId, runName);
+  for (const candidate of [
+    evaluationPaths.evaluation,
+    evaluationPaths.evaluationFallback,
+  ]) {
+    try {
+      savedEvaluation = JSON.parse(
+        await readFile(candidate, "utf8")
+      ) as Record<string, unknown>;
+      break;
+    } catch {
+      savedEvaluation = null;
+    }
   }
+  const drawingMetadata = await readDrawingMetadata(experimentId, runName);
   const evaluation = await boundEvaluation(
     sameRun && state.operation === "train"
       ? state.evaluation
       : (sameRun ? state.evaluation : null) ?? savedEvaluation,
     experimentId,
     runName,
-    environmentKey
+    environmentKey,
+    drawingMetadata
   );
+  const restoredDrawingTool = experimentId === "drawing"
+    ? evaluation
+      ? drawingEvidenceTool(evaluation, drawingMetadata)
+      : drawingToolFromContract(metadataContractVersion(drawingMetadata))
+    : null;
   let savedRecipe: RlxRecipe | null = null;
   if (evaluation?.evaluation_settings_match !== false) {
     const request = evaluation?.evaluation_request;
@@ -999,7 +1510,12 @@ export async function snapshot(
         : null;
     if (recipe) {
       try {
-        savedRecipe = normalizeRecipe(recipe);
+        savedRecipe = normalizeRecipe({
+          ...recipe,
+          ...(restoredDrawingTool && recipe.drawingTool === undefined
+            ? { drawingTool: restoredDrawingTool }
+            : {}),
+        });
         if (savedRecipe.experimentId !== experimentId || savedRecipe.runName !== runName) savedRecipe = null;
       } catch {
         savedRecipe = null;
@@ -1007,17 +1523,31 @@ export async function snapshot(
     }
   }
   const paths = pathsFor(experimentId, runName);
-  const renderSource = evaluation?.source_type === "policy" ? paths.onnx : paths.checkpoint;
+  const evaluatedBackflipRecipeOptions = experimentId === "backflip"
+    ? backflipRecipeOptions(evaluation)
+    : null;
+  const renderSource = experimentId === "drawing"
+    ? paths.onnx
+    : evaluation?.source_type === "policy" ? paths.onnx : paths.checkpoint;
   const renderEvidence = savedRecipe && evaluation?.source_sha256
     ? readRenderEvidence(path.join(paths.renderDirectory, "evidence.json"), {
         ...renderEvidenceInputs(savedRecipe, renderSource, String(evaluation.source_type)),
         recipeKey: evaluationEnvironmentKey(savedRecipe, "render"),
+        ...(evaluatedBackflipRecipeOptions
+          ? { recipeOptions: evaluatedBackflipRecipeOptions }
+          : {}),
         video: paths.renderVideo,
         sheet: paths.renderSheet,
       }) : null;
   const evaluatedClipHash = (evaluation?.evaluation as { environment?: { recipe_options?: Record<string, unknown> } } | undefined)?.environment?.recipe_options?.dance_clip_sha256;
+  const standPolicy = path.resolve(paths.root, "../microduck/policies/alpha_stand.onnx");
   const renderVerified = renderEvidence !== null && (experimentId !== "dance" ||
-    (typeof evaluatedClipHash === "string" && renderEvidence.clipSha256 === evaluatedClipHash));
+    (typeof evaluatedClipHash === "string" && renderEvidence.clipSha256 === evaluatedClipHash)) &&
+    (experimentId !== "backflip" ||
+      (evaluatedBackflipRecipeOptions !== null &&
+        renderEvidence.recipeOptions?.backflip_protocol_version === evaluatedBackflipRecipeOptions.backflip_protocol_version &&
+        renderEvidence.recipeOptions?.stand_policy_sha256 === evaluatedBackflipRecipeOptions.stand_policy_sha256 &&
+        renderEvidence.externalFilesSha256?.[standPolicy] === evaluatedBackflipRecipeOptions.stand_policy_sha256));
   const trainingHistory = collectTrainingHistory(
     paths.root,
     paths.runDirectory,
@@ -1051,6 +1581,7 @@ export async function snapshot(
           }
         : null,
     experimentId,
+    drawingTool: restoredDrawingTool ?? undefined,
     runName,
     startedAt: sameRun ? state.startedAt : null,
     finishedAt: sameRun ? state.finishedAt : null,
@@ -1089,8 +1620,52 @@ export function startJob(
   }
   const recipe = normalizeRecipe(recipeInput);
   const paths = pathsFor(recipe.experimentId, recipe.runName);
+  if (recipe.experimentId === "basketball" && operation !== "export") {
+    const workspace = path.resolve(paths.root, "..");
+    const referenceDirectory = path.join(
+      workspace,
+      "microduck-playground/src/mjlab_microduck/robot/assets/basketball"
+    );
+    const required = [
+      path.join(referenceDirectory, "basketball.obj"),
+      path.join(referenceDirectory, "basketball.png"),
+    ];
+    if (operation === "train") {
+      const sourceDirectory = recipe.resumeFromCheckpoint
+        ? paths.runDirectory
+        : path.join(workspace, "microduck-playground/artifacts/basketball");
+      required.push(
+        path.join(sourceDirectory, "checkpoint.pt"),
+        path.join(sourceDirectory, "policy.onnx")
+      );
+    } else {
+      required.push(paths.onnx);
+    }
+    const missing = required.filter((file) => !existsSync(file));
+    if (missing.length) {
+      throw new Error(
+        `Basketball local reference setup is incomplete. Missing: ${missing.join(", ")}. ` +
+        "Install the supplied checkpoint/policy and basketball mesh/texture at these exact paths; Studio does not download reference assets."
+      );
+    }
+  }
   if (operation === "export" && !existsSync(paths.checkpoint)) {
     throw new Error("Export requires a checkpoint; an ONNX policy cannot be re-exported.");
+  }
+  if (
+    recipe.experimentId === "drawing" &&
+    operation !== "train" &&
+    (
+      !existsSync(paths.checkpoint) ||
+      !existsSync(paths.metadata) ||
+      (operation !== "export" && !existsSync(paths.onnx))
+    )
+  ) {
+    throw new Error(
+      operation === "export"
+        ? "Drawing export requires policy.zip and policy.zip.json."
+        : "Drawing evaluation and rendering require policy.zip, policy.zip.json, and policy.onnx from the same run."
+    );
   }
   if (
     operation !== "train" &&
@@ -1127,7 +1702,9 @@ export function startJob(
         )
       : 0;
 
-  const renderSource = existsSync(paths.onnx) ? paths.onnx : paths.checkpoint;
+  const renderSource = recipe.experimentId === "drawing"
+    ? paths.onnx
+    : existsSync(paths.onnx) ? paths.onnx : paths.checkpoint;
   const renderContext = operation === "render" ? prepareRenderEvidence({
     ...renderEvidenceInputs(recipe, renderSource, existsSync(paths.onnx) ? "policy" : "checkpoint"),
     recipeKey: evaluationEnvironmentKey(recipe, "render"),
@@ -1206,14 +1783,6 @@ export function startJob(
     job.finishedAt = new Date().toISOString();
     job.child = null;
     job.phase = code === 0 ? "succeeded" : "failed";
-    if (code === 0 && renderContext) {
-      const receipt = finalizeRenderEvidence(renderContext, {
-        video: paths.renderVideo,
-        sheet: paths.renderSheet,
-        receipt: path.join(paths.renderDirectory, "evidence.json"),
-      });
-      if (!receipt) appendLine("[studio] Render completed but source/media provenance could not be verified; visual review remains gated.");
-    }
     if (operation === "train" && job.trainingHistoryContext) {
       job.trainingHistoryContext = {
         ...job.trainingHistoryContext,
@@ -1224,9 +1793,16 @@ export function startJob(
     const jsonLine = [...job.logs]
       .reverse()
       .find((line) => line.startsWith("{") && line.endsWith("}"));
-    if (jsonLine) {
+    const resultText = jsonLine ?? (
+      operation === "eval" &&
+      recipe.experimentId === "drawing" &&
+      existsSync(paths.evaluation)
+        ? readFileSync(paths.evaluation, "utf8")
+        : null
+    );
+    if (resultText) {
       try {
-        job.result = JSON.parse(jsonLine) as Record<string, unknown>;
+        job.result = JSON.parse(resultText) as Record<string, unknown>;
         if (operation === "eval") {
           job.result = {
             ...job.result,
@@ -1248,6 +1824,19 @@ export function startJob(
       } catch {
         job.result = null;
       }
+    }
+    if (code === 0 && renderContext) {
+      const recipeOptions = recipe.experimentId === "backflip"
+        ? backflipRecipeOptions(job.result)
+        : undefined;
+      const receipt = recipe.experimentId === "backflip" && !recipeOptions
+        ? null
+        : finalizeRenderEvidence(renderContext, {
+            video: paths.renderVideo,
+            sheet: paths.renderSheet,
+            receipt: path.join(paths.renderDirectory, "evidence.json"),
+          }, recipeOptions ?? undefined);
+      if (!receipt) appendLine("[studio] Render completed but source/media provenance could not be verified; visual review remains gated.");
     }
   });
   return recipe;

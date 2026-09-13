@@ -1,0 +1,173 @@
+{
+  "case_id": "arm-relocate-v1",
+  "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arm-relocate-v1/seed-101/ppo-residual.zip",
+  "checkpoint_metadata": {
+    "case_id": "arm-relocate-v1",
+    "checkpoint_sha256": "d7730a40fc98cf21cec083890ac7921082690887bf538d623be407a94fd91b42",
+    "model_sha256": "8ab83dd952e7e133bfb6d3bcf3328141ac89f5b2d3bab1ff96e9c9af9b7669c1",
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arm-relocate-v1/seed-101/training.json",
+    "sha256": "92342183976786cfc2142ba813befaf0bb291aed838dbc9a68ff7571ac67c7e1",
+    "source_hashes": {
+      "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+      "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+    }
+  },
+  "checkpoint_sha256": "d7730a40fc98cf21cec083890ac7921082690887bf538d623be407a94fd91b42",
+  "contract": "md-arm-table-v1",
+  "controller": "ppo_residual",
+  "controller_description": "composite authored IK/FSM + PPO residual",
+  "created_at": "2026-09-12T22:39:30.984511+00:00",
+  "episode": {
+    "action_dim": 6,
+    "case_id": "arm-relocate-v1",
+    "contract": "md-arm-table-v1",
+    "elapsed_seconds": 17.04,
+    "fps": 25.0,
+    "frames": 426,
+    "metrics": {
+      "arm_collisions": 0,
+      "assembly_mass_kg": 0.02,
+      "authored_action_calls": 852,
+      "contact_flags": [
+        [
+          false,
+          false
+        ]
+      ],
+      "drop_count": 0,
+      "dual_grasp_fraction": 1.0,
+      "evaluator_events": [
+        {
+          "stage": "grasped",
+          "time_s": 3.819999999999801
+        },
+        {
+          "stage": "lifted",
+          "time_s": 6.179999999999541
+        },
+        {
+          "stage": "released",
+          "time_s": 12.020000000000683
+        }
+      ],
+      "evaluator_stage": "released",
+      "gates": {
+        "controlled_release": true,
+        "lift_with_contact_1s": true,
+        "no_arm_collision": true,
+        "no_drop": true,
+        "no_illegal_contact": true,
+        "no_self_collision": true,
+        "ordered_completion": true,
+        "released_and_settled_2s": true
+      },
+      "goal": [
+        0.08443736564421088,
+        0.03305279260229755,
+        0.0091
+      ],
+      "grasp_hold_s": 4.9,
+      "invalid_contacts": 0,
+      "load_share": [
+        0.0
+      ],
+      "load_share_samples": 0,
+      "net_support_mean": 0.0,
+      "object_mass_kg": 0.02,
+      "object_path_m": 0.1293093029673926,
+      "object_position": [
+        0.08456467965760919,
+        0.03266875194909496,
+        0.008995206121204318
+      ],
+      "passed": true,
+      "payload_slip_m": 0.0,
+      "peak_contact_force_n": 0.5540101059836146,
+      "peak_internal_force_n": 0.0,
+      "peak_lift_m": 0.030992719561394422,
+      "physical_hardware_verified": false,
+      "physics_assistance_count": 0,
+      "position_error_m": 0.00041794477907123483,
+      "receiver_hold_s": 0.0,
+      "reset_options": {
+        "friction_scale": 1.0,
+        "mass_scale": 1.0,
+        "position_noise": 0.001
+      },
+      "reward_components": {
+        "action_change": -3.345651154266545e-24,
+        "collision": -0.0,
+        "drop": -0.0,
+        "effort": -1.4424598609002181e-18,
+        "grasp": 0.0,
+        "lift": 0.0,
+        "progress": 0.0,
+        "success": 5.0
+      },
+      "self_collisions": 0,
+      "settled_s": 2.0,
+      "simulation_only": true,
+      "support_valid_fraction": 0.0,
+      "tip_error_m": 0.030999559789334916,
+      "transport_tilt_deg": 2.111775155994143,
+      "waypoints_reached": 0
+    },
+    "observation_dim": 66,
+    "reset_options": {
+      "friction_scale": 1.0,
+      "mass_scale": 1.0,
+      "position_noise": 0.001
+    },
+    "return": 10.40362074669766,
+    "seed": 50000,
+    "steps": 852
+  },
+  "episode_sha256": "79125decb03e031b8c511ee143fae40e8b9baa985fa8074747ac0b646f4e75ea",
+  "export": {
+    "action_clamp": [
+      -1.0,
+      1.0
+    ],
+    "action_dim": 6,
+    "action_semantics": "residual",
+    "case_id": "arm-relocate-v1",
+    "contract": "md-arm-table-v1-ppo-residual-v1",
+    "controller": "composite authored IK/FSM + PPO residual",
+    "native_onnx_float32_parity": {
+      "max_abs_error": 1.3969838619232178e-09,
+      "passed": true
+    },
+    "observation_dim": 66,
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arm-relocate-v1/seed-101/residual-actor.onnx",
+    "residual_scale": 0.02,
+    "sha256": "fe83bb2d0abf475d270a3a209f94a5f73546f8c299ca655528e050d91069e53b",
+    "simulation_only": true,
+    "source_hashes": {
+      "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+      "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+    },
+    "stock_deployment_compatible": false
+  },
+  "hardware_verified": false,
+  "media_hashes": {
+    "contact-sheet.png": "9f7b0a742564113398963d58a5e816ffcc55ca60b29f197282bf9a41bc015fa0",
+    "rollout.mp4": "147b2aa7c73b2f5e43881aa2b39ac57b298844cf5f9d76877e2e2fff847e6c50"
+  },
+  "model_sha256": "8ab83dd952e7e133bfb6d3bcf3328141ac89f5b2d3bab1ff96e9c9af9b7669c1",
+  "outputs": {
+    "contact_sheet": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arm-relocate-v1/seed-101/contact-sheet.png",
+    "video": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arm-relocate-v1/seed-101/rollout.mp4"
+  },
+  "reset_options": {
+    "friction_scale": 1.0,
+    "mass_scale": 1.0,
+    "position_noise": 0.001
+  },
+  "seed": 50000,
+  "simulation_only": true,
+  "source_hashes": {
+    "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+    "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+  },
+  "video_sha256": "147b2aa7c73b2f5e43881aa2b39ac57b298844cf5f9d76877e2e2fff847e6c50"
+}

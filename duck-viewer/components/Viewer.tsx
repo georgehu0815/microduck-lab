@@ -29,6 +29,7 @@ import {
   truckImpulse,
 } from "@/lib/camera";
 import { loadJSON, saveJSON } from "@/lib/persist";
+import { gridOffsets } from "@/lib/scene-layout";
 import {
   getCapture,
   pumpCaptureFrame,
@@ -44,15 +45,107 @@ import { TeachPanel } from "./TeachPanel";
 import { pushToast, Toasts } from "./Toasts";
 import { AnimPanel } from "./AnimPanel";
 import { CameraNavigator } from "./CameraNavigator";
+import { useLanguage } from "./LanguageProvider";
 import { RecordPanel } from "./RecordPanel";
 import { PoseDuck } from "./PoseDuck";
 
-function gridOffsets(n: number, spacing = 0.65): [number, number][] {
-  const cols = Math.ceil(Math.sqrt(n));
-  return Array.from({ length: n }, (_, i) => [
-    (i % cols) * spacing - ((Math.min(n, cols) - 1) * spacing) / 2,
-    Math.floor(i / cols) * spacing,
-  ]);
+function disposeBodyGeometries(bodies: ReturnType<typeof buildBodyGeometries>) {
+  bodies.forEach((body) => body.geometry?.dispose());
+}
+
+function DuckSlot({
+  defaultBodies,
+  duckId,
+  frameRef,
+  label,
+  offset,
+  sceneKey,
+}: {
+  defaultBodies: ReturnType<typeof buildBodyGeometries>;
+  duckId: string;
+  frameRef: React.MutableRefObject<DuckFrame | null>;
+  label: string;
+  offset: [number, number];
+  sceneKey?: string;
+}) {
+  const { t } = useLanguage();
+  const tRef = useRef(t);
+  useEffect(() => {
+    tRef.current = t;
+  }, [t]);
+  const [customScene, setCustomScene] = useState<{
+    key: string;
+    bodies: ReturnType<typeof buildBodyGeometries>;
+    scene: Scene;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!sceneKey) {
+      let active = true;
+      queueMicrotask(() => {
+        if (active) setCustomScene(null);
+      });
+      return () => {
+        active = false;
+      };
+    }
+    const controller = new AbortController();
+    fetchScene(duckId, sceneKey, controller.signal)
+      .then((scene) => {
+        const bodies = buildBodyGeometries(scene);
+        if (controller.signal.aborted) {
+          disposeBodyGeometries(bodies);
+          return;
+        }
+        setCustomScene({ key: sceneKey, bodies, scene });
+      })
+      .catch((error: unknown) => {
+        if (!(error instanceof DOMException && error.name === "AbortError")) {
+          setCustomScene(null);
+          const detail =
+            error instanceof Error
+              ? error.message
+              : tRef.current("unknown error", "未知错误");
+          pushToast(
+            tRef.current(
+              `⚠ ${duckId}: custom scene unavailable (${detail})`,
+              `⚠ ${duckId}：自定义场景不可用（${detail}）`
+            )
+          );
+        }
+      });
+    return () => controller.abort();
+  }, [duckId, sceneKey]);
+
+  useEffect(
+    () => () => {
+      if (customScene) disposeBodyGeometries(customScene.bodies);
+    },
+    [customScene]
+  );
+
+  if (!sceneKey) {
+    return (
+      <Duck
+        duckId={duckId}
+        bodies={defaultBodies}
+        frameRef={frameRef}
+        offset={offset}
+        label={label}
+      />
+    );
+  }
+  if (!customScene || customScene.key !== sceneKey) return null;
+  return (
+    <Duck
+      duckId={duckId}
+      bodies={customScene.bodies}
+      tendons={customScene.scene.tendons}
+      frameRef={frameRef}
+      offset={offset}
+      label={label}
+    />
+  );
 }
 
 function Ducks({ scene, client }: { scene: Scene; client: LabClient }) {
@@ -61,7 +154,9 @@ function Ducks({ scene, client }: { scene: Scene; client: LabClient }) {
   // which must update its label without remounting (and re-lerping) it.
   // (`key` is the id dedup-qualified by duckRowKeys: a roster with duplicate
   // ids — seen with legacy lab-state restores — must not collide React keys.)
-  const [roster, setRoster] = useState<{ id: string; name: string; key: string }[]>([]);
+  const [roster, setRoster] = useState<
+    { id: string; name: string; key: string; sceneKey?: string }[]
+  >([]);
   const rosterSig = useRef("");
   const duckRefs = useRef(new Map<string, React.MutableRefObject<DuckFrame | null>>());
 
@@ -69,11 +164,20 @@ function Ducks({ scene, client }: { scene: Scene; client: LabClient }) {
   useFrame(() => {
     const f = client.frame;
     if (!f) return;
-    const sig = f.ducks.map((d) => `${d.id}\t${d.name}`).join("\n");
+    const sig = f.ducks
+      .map((duck) => `${duck.id}\t${duck.name}\t${duck.sceneKey ?? ""}`)
+      .join("\n");
     if (sig !== rosterSig.current) {
       rosterSig.current = sig;
       const keys = duckRowKeys(f.ducks);
-      setRoster(f.ducks.map((d, i) => ({ id: d.id, name: d.name, key: keys[i] })));
+      setRoster(
+        f.ducks.map((duck, index) => ({
+          id: duck.id,
+          name: duck.name,
+          key: keys[index],
+          sceneKey: duck.sceneKey,
+        }))
+      );
       // A removed duck must not stay "selected" — the Delete key would then
       // fire remove_duck at a ghost id forever.
       const sel = getSelectedDuck();
@@ -85,7 +189,7 @@ function Ducks({ scene, client }: { scene: Scene; client: LabClient }) {
     });
   });
 
-  const offsets = gridOffsets(roster.length);
+  const offsets = gridOffsets(roster);
   return (
     <>
       {roster.map((d, i) => {
@@ -95,13 +199,14 @@ function Ducks({ scene, client }: { scene: Scene; client: LabClient }) {
           duckRefs.current.set(d.id, ref);
         }
         return (
-          <Duck
+          <DuckSlot
             key={d.key}
             duckId={d.id}
-            bodies={bodies}
+            defaultBodies={bodies}
             frameRef={ref}
             offset={offsets[i]}
             label={d.name}
+            sceneKey={d.sceneKey}
           />
         );
       })}
@@ -320,7 +425,7 @@ function RecordCamera({ client }: { client: LabClient }) {
     const idx = f ? f.ducks.findIndex((d) => d.id === cap.duckId) : -1;
     const trunk = idx >= 0 ? f!.ducks[idx].bodies[1] : undefined;
     if (!f || !trunk) return; // duck vanished mid-take — hold the last shot
-    const off = gridOffsets(f.ducks.length)[idx];
+    const off = gridOffsets(f.ducks)[idx];
     // MuJoCo (x, y, z) → three world (x, z, -y), plus the duck's grid offset.
     aim.set(trunk[0] + off[0], trunk[2] + 0.02, -(trunk[1] + off[1]));
 
@@ -374,6 +479,7 @@ function RecordCamera({ client }: { client: LabClient }) {
  *  and restores. Objects tagged `userData.hideInCapture` (selection rings)
  *  are hidden for the capture render only. */
 function Snapshotter() {
+  const { t } = useLanguage();
   const camera = useThree((s) => s.camera);
   const gl = useThree((s) => s.gl);
   const scene3 = useThree((s) => s.scene);
@@ -393,10 +499,10 @@ function Snapshotter() {
       a.href = dataUrl;
       a.download = `${name}.png`;
       a.click();
-      pushToast(`📷 ${name}.png → downloads`);
+      pushToast(t(`📷 ${name}.png → downloads`, `📷 ${name}.png → 下载目录`));
     });
     return () => setSnapshotFn(null);
-  }, [camera, gl, scene3]);
+  }, [camera, gl, scene3, t]);
   return null;
 }
 
@@ -411,7 +517,7 @@ function AssignTargets({ client }: { client: LabClient }) {
       assignDrag.hoverDuck = null;
       return;
     }
-    const offsets = gridOffsets(f.ducks.length);
+    const offsets = gridOffsets(f.ducks);
     const rect = gl.domElement.getBoundingClientRect();
     const targets: AssignTarget[] = f.ducks.map((d, i) => {
       const t = d.bodies[1] ?? [0, 0, 0];
@@ -453,9 +559,14 @@ export default function Viewer({
   onConnectionChange,
   onFrame,
 }: ViewerProps) {
+  const { t } = useLanguage();
+  const tRef = useRef(t);
+  useEffect(() => {
+    tRef.current = t;
+  }, [t]);
   const [scene, setScene] = useState<Scene | null>(null);
   const [connected, setConnected] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [labUnavailable, setLabUnavailable] = useState(false);
   // Read once on mount (this component is ssr:false, so storage is available).
   const [savedCam] = useState(loadSavedCamera);
   const clientRef = useRef<LabClient | null>(null);
@@ -488,11 +599,11 @@ export default function Viewer({
         .then((s) => {
           if (disposed) return;
           setScene(s);
-          setError(null);
+          setLabUnavailable(false);
         })
         .catch(() => {
           if (disposed) return;
-          setError("duck-lab server not reachable on :8788 — start it with `uv run duck-lab …`");
+          setLabUnavailable(true);
           retryTimer = window.setTimeout(load, 2000);
         });
     load();
@@ -566,11 +677,21 @@ export default function Viewer({
         // Mirror the HUD-row rules: the server refuses these anyway, but a
         // keypress that silently does nothing reads as broken.
         if (sel === "trainee" && (training?.status === "training" || training?.restarting)) {
-          pushToast("🎓 the trainee can't be removed while training");
+          pushToast(
+            tRef.current(
+              "🎓 the trainee can't be removed while training",
+              "🎓 训练期间无法移除受训小鸭"
+            )
+          );
           return;
         }
         if (sel.startsWith("helper") && training?.restarting) {
-          pushToast("⏳ trainer restarting — try removing the helper again in a moment");
+          pushToast(
+            tRef.current(
+              "⏳ trainer restarting — try removing the helper again in a moment",
+              "⏳ 训练器正在重启，请稍后再移除辅助小鸭"
+            )
+          );
           return;
         }
         clientRef.current?.sendRemoveDuck(sel);
@@ -587,7 +708,12 @@ export default function Viewer({
         clientRef.current?.sendReset();
         // The server resets silently (no `events` line back), so the only
         // confirmation the user gets is this local toast.
-        pushToast("↺ sim restarted — every duck from zero");
+        pushToast(
+          tRef.current(
+            "↺ sim restarted — every duck from zero",
+            "↺ 仿真已重启，所有小鸭从零开始"
+          )
+        );
         return;
       }
       if (cameraKeyDown(e.key, e.shiftKey)) e.preventDefault(); // no scroll/find-as-you-type
@@ -766,7 +892,18 @@ export default function Viewer({
         <CameraKeys />
         <Snapshotter />
       </Canvas>
-      <Hud clientRef={clientRef} connected={connected} error={error} />
+      <Hud
+        clientRef={clientRef}
+        connected={connected}
+        error={
+          labUnavailable
+            ? t(
+                "duck-lab server not reachable on :8788 — start it with `uv run duck-lab …`",
+                "无法连接 :8788 上的 duck-lab 服务器，请运行 `uv run duck-lab …` 启动"
+              )
+            : null
+        }
+      />
       <RecordPanel clientRef={clientRef} />
       <CameraNavigator
         clientRef={clientRef}

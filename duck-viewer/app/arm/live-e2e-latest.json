@@ -1,0 +1,453 @@
+{
+  "passed": true,
+  "checked_at": "2026-09-12T22:54:34.420Z",
+  "backend": "http://127.0.0.1:8812",
+  "ui": "http://127.0.0.1:63318/arm",
+  "health": {
+    "ok": true,
+    "service": "microduck-arm-simulation",
+    "hardware_enabled": false,
+    "cases": [
+      "arm-reach-v1",
+      "arm-pick-place-v1",
+      "arm-relocate-v1",
+      "arm-carry-v1",
+      "arms-handover-v1",
+      "arms-co-carry-v1"
+    ]
+  },
+  "initial": {
+    "title": "Arm Lab 机械臂课堂",
+    "caseCount": 6,
+    "sliderCount": 6,
+    "hardwareLocked": true,
+    "unixTransportNotIntegrated": true,
+    "teacherNotPpo": true,
+    "unavailable": false,
+    "horizontalOverflow": false
+  },
+  "cases": [
+    {
+      "case_id": "arm-reach-v1",
+      "observation_dim": 66,
+      "action_dim": 6,
+      "geom_count": 11,
+      "reset": {
+        "step": 0,
+        "controller": "manual",
+        "stage": "0"
+      },
+      "manual": {
+        "step": 1,
+        "controller": "manual_simulation"
+      },
+      "teacher": {
+        "step": 2,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      },
+      "teacher_autoplay": {
+        "step": 3,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      }
+    },
+    {
+      "case_id": "arm-pick-place-v1",
+      "observation_dim": 66,
+      "action_dim": 6,
+      "geom_count": 11,
+      "reset": {
+        "step": 0,
+        "controller": "manual",
+        "stage": "0"
+      },
+      "manual": {
+        "step": 1,
+        "controller": "manual_simulation"
+      },
+      "teacher": {
+        "step": 2,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      },
+      "teacher_autoplay": {
+        "step": 3,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      }
+    },
+    {
+      "case_id": "arm-relocate-v1",
+      "observation_dim": 66,
+      "action_dim": 6,
+      "geom_count": 11,
+      "reset": {
+        "step": 0,
+        "controller": "manual",
+        "stage": "0"
+      },
+      "manual": {
+        "step": 1,
+        "controller": "manual_simulation"
+      },
+      "teacher": {
+        "step": 2,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      },
+      "teacher_autoplay": {
+        "step": 3,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      }
+    },
+    {
+      "case_id": "arm-carry-v1",
+      "observation_dim": 66,
+      "action_dim": 6,
+      "geom_count": 11,
+      "reset": {
+        "step": 0,
+        "controller": "manual",
+        "stage": "0"
+      },
+      "manual": {
+        "step": 1,
+        "controller": "manual_simulation"
+      },
+      "teacher": {
+        "step": 2,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      },
+      "teacher_autoplay": {
+        "step": 3,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      }
+    },
+    {
+      "case_id": "arms-handover-v1",
+      "observation_dim": 116,
+      "action_dim": 12,
+      "geom_count": 19,
+      "reset": {
+        "step": 0,
+        "controller": "manual",
+        "stage": "0"
+      },
+      "manual": {
+        "step": 1,
+        "controller": "manual_simulation"
+      },
+      "teacher": {
+        "step": 2,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      },
+      "teacher_autoplay": {
+        "step": 4,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      }
+    },
+    {
+      "case_id": "arms-co-carry-v1",
+      "observation_dim": 116,
+      "action_dim": 12,
+      "geom_count": 22,
+      "reset": {
+        "step": 0,
+        "controller": "manual",
+        "stage": "0"
+      },
+      "manual": {
+        "step": 1,
+        "controller": "manual_simulation"
+      },
+      "teacher": {
+        "step": 2,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      },
+      "teacher_autoplay": {
+        "step": 4,
+        "controller": "authored_ik_fsm_teacher_not_ppo"
+      }
+    }
+  ],
+  "run_catalog": {
+    "total": 32,
+    "strict_ppo_100_episode_count": 18,
+    "strict_ppo_by_case": {
+      "arm-reach-v1": [
+        {
+          "run_id": "seed-101:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-202:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-303:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        }
+      ],
+      "arm-pick-place-v1": [
+        {
+          "run_id": "seed-101:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-202:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-303:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        }
+      ],
+      "arm-relocate-v1": [
+        {
+          "run_id": "seed-101:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-202:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-303:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        }
+      ],
+      "arm-carry-v1": [
+        {
+          "run_id": "seed-101:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-202:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-303:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        }
+      ],
+      "arms-handover-v1": [
+        {
+          "run_id": "seed-101:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-202:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        },
+        {
+          "run_id": "seed-303:ppo_residual",
+          "passed": true,
+          "successes": 100,
+          "episodes": 100,
+          "success_rate": 1
+        }
+      ],
+      "arms-co-carry-v1": [
+        {
+          "run_id": "seed-101:ppo_residual",
+          "passed": true,
+          "successes": 99,
+          "episodes": 100,
+          "success_rate": 0.99
+        },
+        {
+          "run_id": "seed-202:ppo_residual",
+          "passed": true,
+          "successes": 98,
+          "episodes": 100,
+          "success_rate": 0.98
+        },
+        {
+          "run_id": "seed-303:ppo_residual",
+          "passed": true,
+          "successes": 98,
+          "episodes": 100,
+          "success_rate": 0.98
+        }
+      ]
+    },
+    "diagnostic_or_failed_count": 8,
+    "videos": 6
+  },
+  "videos": [
+    {
+      "case_id": "arm-carry-v1",
+      "run_id": "seed-101:ppo_residual",
+      "video_path": "validated-20260912-v2/arm-carry-v1/seed-101/rollout.mp4",
+      "range": {
+        "status": 206,
+        "content_type": "video/mp4",
+        "content_range": "bytes 0-1023/181664",
+        "bytes": 1024
+      },
+      "metadata": {
+        "currentTime": 0.29951,
+        "duration": 21.52,
+        "readyState": 4,
+        "videoWidth": 1280,
+        "videoHeight": 720,
+        "src": "http://127.0.0.1:63318/api/arm/artifact?path=validated-20260912-v2%2Farm-carry-v1%2Fseed-101%2Frollout.mp4"
+      }
+    },
+    {
+      "case_id": "arm-pick-place-v1",
+      "run_id": "seed-101:ppo_residual",
+      "video_path": "validated-20260912-v2/arm-pick-place-v1/seed-101/rollout.mp4",
+      "range": {
+        "status": 206,
+        "content_type": "video/mp4",
+        "content_range": "bytes 0-1023/143600",
+        "bytes": 1024
+      },
+      "metadata": {
+        "currentTime": 0.257077,
+        "duration": 17.04,
+        "readyState": 4,
+        "videoWidth": 1280,
+        "videoHeight": 720,
+        "src": "http://127.0.0.1:63318/api/arm/artifact?path=validated-20260912-v2%2Farm-pick-place-v1%2Fseed-101%2Frollout.mp4"
+      }
+    },
+    {
+      "case_id": "arm-reach-v1",
+      "run_id": "seed-101:ppo_residual",
+      "video_path": "validated-20260912-v2/arm-reach-v1/seed-101/rollout.mp4",
+      "range": {
+        "status": 206,
+        "content_type": "video/mp4",
+        "content_range": "bytes 0-1023/31739",
+        "bytes": 1024
+      },
+      "metadata": {
+        "currentTime": 0.27589,
+        "duration": 2,
+        "readyState": 4,
+        "videoWidth": 1280,
+        "videoHeight": 720,
+        "src": "http://127.0.0.1:63318/api/arm/artifact?path=validated-20260912-v2%2Farm-reach-v1%2Fseed-101%2Frollout.mp4"
+      }
+    },
+    {
+      "case_id": "arm-relocate-v1",
+      "run_id": "seed-101:ppo_residual",
+      "video_path": "validated-20260912-v2/arm-relocate-v1/seed-101/rollout.mp4",
+      "range": {
+        "status": 206,
+        "content_type": "video/mp4",
+        "content_range": "bytes 0-1023/147865",
+        "bytes": 1024
+      },
+      "metadata": {
+        "currentTime": 0.268773,
+        "duration": 17.04,
+        "readyState": 4,
+        "videoWidth": 1280,
+        "videoHeight": 720,
+        "src": "http://127.0.0.1:63318/api/arm/artifact?path=validated-20260912-v2%2Farm-relocate-v1%2Fseed-101%2Frollout.mp4"
+      }
+    },
+    {
+      "case_id": "arms-co-carry-v1",
+      "run_id": "seed-101:ppo_residual",
+      "video_path": "validated-20260912-v2/arms-co-carry-v1/seed-101/rollout.mp4",
+      "range": {
+        "status": 206,
+        "content_type": "video/mp4",
+        "content_range": "bytes 0-1023/305969",
+        "bytes": 1024
+      },
+      "metadata": {
+        "currentTime": 0.245665,
+        "duration": 20.84,
+        "readyState": 4,
+        "videoWidth": 1280,
+        "videoHeight": 720,
+        "src": "http://127.0.0.1:63318/api/arm/artifact?path=validated-20260912-v2%2Farms-co-carry-v1%2Fseed-101%2Frollout.mp4"
+      }
+    },
+    {
+      "case_id": "arms-handover-v1",
+      "run_id": "seed-101:ppo_residual",
+      "video_path": "validated-20260912-v2/arms-handover-v1/seed-101/rollout.mp4",
+      "range": {
+        "status": 206,
+        "content_type": "video/mp4",
+        "content_range": "bytes 0-1023/228989",
+        "bytes": 1024
+      },
+      "metadata": {
+        "currentTime": 0.279454,
+        "duration": 24.84,
+        "readyState": 4,
+        "videoWidth": 1280,
+        "videoHeight": 720,
+        "src": "http://127.0.0.1:63318/api/arm/artifact?path=validated-20260912-v2%2Farms-handover-v1%2Fseed-101%2Frollout.mp4"
+      }
+    }
+  ],
+  "mobile": {
+    "caseCount": 6,
+    "sliderCount": 6,
+    "hardwareLocked": true,
+    "horizontalOverflow": false
+  },
+  "offline": {
+    "unavailable": true,
+    "noTelemetry": true,
+    "noInventedRuns": true
+  },
+  "offline_browser_errors": [
+    "Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+  ],
+  "browser_errors": [],
+  "browser_warnings": [],
+  "screenshots": {
+    "desktop": "/Volumes/ExternalSSD/geoagent/microduck-lab/duck-viewer/app/arm/live-e2e-desktop.png",
+    "mobile": "/Volumes/ExternalSSD/geoagent/microduck-lab/duck-viewer/app/arm/live-e2e-mobile.png",
+    "evidence": "/Volumes/ExternalSSD/geoagent/microduck-lab/duck-viewer/app/arm/live-e2e-evidence.png"
+  },
+  "mocks": false
+}

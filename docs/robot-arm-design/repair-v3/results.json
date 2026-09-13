@@ -1,0 +1,1844 @@
+{
+  "generated_at": "2026-09-12T23:47:45.708103+00:00",
+  "success": true,
+  "failed_requirements": [],
+  "simulation_only": true,
+  "hardware_verified": false,
+  "control_method": "authored IK/timed FSM + 0.02 * PPO residual",
+  "pure_ppo": false,
+  "bc_retrained": false,
+  "ppo_improvement_over_teacher_claimed": false,
+  "dual_arm_20g_goal_claimed": false,
+  "payloads": {
+    "arms_co_carry_actual_assembly_mass_kg": 0.017,
+    "arms_handover_curriculum_mass_kg": 0.005
+  },
+  "training_batch": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3",
+  "validation_batch": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3",
+  "source_hashes": {
+    "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+    "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+  },
+  "actual_training_env_steps": 589824,
+  "checkpoint_count": 18,
+  "primary": {
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/strict-summary.json",
+    "sha256": "268d352f0685b7f3ed97bc3ac3dc8cef2debe6fcebe96276c9be739e63be8f55",
+    "episodes": 1800,
+    "successes": 1800,
+    "all_episodes_pass": true,
+    "all_checkpoints_meet_statistical_gate": true,
+    "seed_min": 80000,
+    "seed_max": 80909
+  },
+  "validation": {
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/summary.json",
+    "sha256": "eb72597fe38ff801db0b1bfca8879970116ead1b428bf7eef0f2fd728002a5e7",
+    "protocol_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/protocol.json",
+    "protocol_sha256": "16cab59c4f39f0a4991ead18f8420a80ec9290ec3abdd77c64795281b144bbfd",
+    "episodes": 1800,
+    "successes": 1800,
+    "all_episodes_pass": true,
+    "all_checkpoints_meet_statistical_gate": true,
+    "seed_min": 110000,
+    "seed_max": 110909
+  },
+  "known_failure_regressions": {
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/known-failure-regressions.json",
+    "sha256": "3bbcf74121e6b0f551b4d26cd99094ab1834e0f38c07f43b47d4a56a3c5a227f",
+    "episodes": 21,
+    "successes": 21,
+    "failures": 0,
+    "all_passed": true
+  },
+  "timestep_convergence": {
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/timestep-convergence.json",
+    "sha256": "605a76c321797ee4a255d8da2ecba4a664a6825725e0f8382e2e083c897a0fd5",
+    "outcomes": 12,
+    "successes": 12,
+    "all_passed": true,
+    "physics_timesteps_s": [
+      0.002,
+      0.001
+    ],
+    "controller": "authored_ik_fsm_teacher_not_ppo"
+  },
+  "negative_controls": {
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/summary.json",
+    "sha256": "9426bcf0337b7b63769b920df10437d9c12d475377f5fcec8319a313eaaf79dd",
+    "episodes": 130,
+    "unexpected_task_successes": 0,
+    "all_passed": true,
+    "seed_min": 140000,
+    "seed_max": 140900,
+    "interpretation": "The deliberately disabled controllers failed the tasks as expected; this is not task-success evidence.",
+    "results": [
+      {
+        "case_id": "arm-carry-v1",
+        "controller": "open_gripper",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arm-carry-v1-open_gripper.json",
+        "sha256": "2ece4ca268e8f4efee3434583e2ece99d072e818d0a2fe442556079a09c069b6"
+      },
+      {
+        "case_id": "arm-carry-v1",
+        "controller": "zero",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arm-carry-v1-zero.json",
+        "sha256": "2d86a86b8585edc8d6eb40b0c16bd5abe68ed17c9438fdf12d690cd878ee4e1e"
+      },
+      {
+        "case_id": "arm-pick-place-v1",
+        "controller": "open_gripper",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arm-pick-place-v1-open_gripper.json",
+        "sha256": "3a6b6b041fa3f0b6aeb25105402c0aeb43a0c977c38336dc5a7b2b54e89160d0"
+      },
+      {
+        "case_id": "arm-pick-place-v1",
+        "controller": "zero",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arm-pick-place-v1-zero.json",
+        "sha256": "4c1c5a4e2c1d2871b36141cc1051ef90b2f0e383cfbaee74ddba1a018d74e6f8"
+      },
+      {
+        "case_id": "arm-reach-v1",
+        "controller": "zero",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arm-reach-v1-zero.json",
+        "sha256": "cc1c4b60dc565372fc02a687a0a0e4638e557cc7d1af05667757c93af40fc249"
+      },
+      {
+        "case_id": "arm-relocate-v1",
+        "controller": "open_gripper",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arm-relocate-v1-open_gripper.json",
+        "sha256": "9817fbebb88af20ce8fac72245b6514b9a0f8012c5f716bb8433e5f41236c9b2"
+      },
+      {
+        "case_id": "arm-relocate-v1",
+        "controller": "zero",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arm-relocate-v1-zero.json",
+        "sha256": "9172d15537d56309ca0524c6187d1a5c5006e94844e6f15dba638bd5279e4f88"
+      },
+      {
+        "case_id": "arms-co-carry-v1",
+        "controller": "disable_right",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arms-co-carry-v1-disable_right.json",
+        "sha256": "7bdab9629b282c3010d2df6b4d86c9738249e9e44347a3adae4b189bf4d1a411"
+      },
+      {
+        "case_id": "arms-co-carry-v1",
+        "controller": "open_gripper",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arms-co-carry-v1-open_gripper.json",
+        "sha256": "561c7fec073018d162ec74dfdeef3da7c69094a17360fe35d821f280a6311a11"
+      },
+      {
+        "case_id": "arms-co-carry-v1",
+        "controller": "zero",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arms-co-carry-v1-zero.json",
+        "sha256": "7aeaf0238bb24b9ee925740d47ce1f7a582531fb3068d1410906c550ec339d2e"
+      },
+      {
+        "case_id": "arms-handover-v1",
+        "controller": "disable_right",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arms-handover-v1-disable_right.json",
+        "sha256": "030260daf714d1c7ad7d700e12df30365bbc522a42e2afafb7d9fec7c4550c35"
+      },
+      {
+        "case_id": "arms-handover-v1",
+        "controller": "open_gripper",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arms-handover-v1-open_gripper.json",
+        "sha256": "3d7a367df37f81fa65764621aee6ac24bf4d6edec3703a561c1eb86d6d482887"
+      },
+      {
+        "case_id": "arms-handover-v1",
+        "controller": "zero",
+        "episodes": 10,
+        "unexpected_successes": 0,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/negative-controls/arms-handover-v1-zero.json",
+        "sha256": "df0f1f1b5619bbda7819940152458b5b6e62f77bb1dd16b5788e769ed60214af"
+      }
+    ]
+  },
+  "verification": {
+    "all_passed": true,
+    "tests": 165,
+    "hardware_verified": false,
+    "note": "The hardware test log covers software tests for hardware support; it is not physical hardware verification.",
+    "results": {
+      "rlx": {
+        "tests": 95,
+        "passed": true,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/verification/rlx-arm-95-pytest.log",
+        "sha256": "f96ae67cce73b5fd61593ff8837fa1270c4db5611a94501465838a8c8dcea289"
+      },
+      "backend": {
+        "tests": 21,
+        "passed": true,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/verification/backend-arm-lab-unittest.log",
+        "sha256": "a8a1e87dc93dd10bd224f8f649f61398235a69e7cda60350214d8930f12b4c42"
+      },
+      "control": {
+        "tests": 35,
+        "passed": true,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/verification/arm-control-unittest.log",
+        "sha256": "9c4cb5df2b1a95e4228b7399344e9804c7cf3dcb0ac02988c7753f2fbe849aa9"
+      },
+      "hardware_software": {
+        "tests": 6,
+        "passed": true,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/verification/hardware-md-arm-t1-unittest.log",
+        "sha256": "9ae8fbe2785cd37c9c9907001ccd6472073dda18e446550717fb9e84e8be5b7a"
+      },
+      "video": {
+        "tests": 8,
+        "passed": true,
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/verification/arm-video-evidence-unittest.log",
+        "sha256": "9ef618c1cd19822bc241bf4ca9eb58f7fe6b28dacd76be597ed5a232e7b7541f"
+      }
+    }
+  },
+  "repair": {
+    "changed_functions": [
+      "teacher_targets"
+    ],
+    "task_gates_unchanged": true,
+    "step_reward_and_physics_unchanged": true,
+    "make_xml_unchanged": true,
+    "old_environment_sha256": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+    "new_environment_sha256": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/repair-source-audit.json",
+    "sha256": "f91af395b7ab9d8076552cddd4f1abcf4927e64373286ab98c421fbd22e0b32e",
+    "added_lines": 6,
+    "removed_lines": 0,
+    "lift_transport_descent_seconds": [
+      3.0,
+      6.0,
+      3.0
+    ],
+    "interpolation": "synchronized quintic Cartesian targets"
+  },
+  "historical": {
+    "summary_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/recheck-20260912-v2/summary.json",
+    "summary_sha256": "c9e1060e5910eac801c7960d305b3e0446c80da0183d8a8a7b82c21d55479256",
+    "index_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/recheck-20260912-v2/index.zh-CN.html",
+    "manifest_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/recheck-20260912-v2/video-evidence.json",
+    "manifest_sha256": "ff39f17db5ed9816e8b0203ab4eb3b9660e52d4ea71f2a79b8ce8ae7eddf6426",
+    "episodes": 1800,
+    "successes": 1798,
+    "failed_videos_retained": 7
+  },
+  "validation_videos": {
+    "generated": true,
+    "index_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/index.zh-CN.html",
+    "manifest_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/video-evidence.json",
+    "manifest_sha256": "54809d7b7ef0aae7f027940d725501583ee90c382928992a4f536a36ffe5ef42",
+    "video_count": 13,
+    "evidence_verification_passed": true
+  },
+  "checkpoints": [
+    {
+      "case_id": "arm-reach-v1",
+      "case_name_zh_CN": "末端触达",
+      "training_seed": 101,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-101",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-101/training.json",
+      "training_metadata_sha256": "7dc3ed2d71bf70471562ae5957744d75cb05b4e10e1a70f5f5c27ac507ad7e49",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-101/ppo-residual.zip",
+      "checkpoint_sha256": "478ed19048bd7ef82762bb999e1475e654a5c94671f24d9e64a44b8fdcb93c1f",
+      "model_sha256": "afe3946781f080e6d86085754a5aeb586dfd9778c11825166b054355e550c352",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-101/metrics.jsonl",
+      "metrics_sha256": "3802efb4ac1d15dafd388dbc5e3bfdbbdd4e6bc85364450337ed3604599ffb64",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-101/evaluation.json",
+        "sha256": "1e335b87444244a65c8ab3bce24037de17181a76fba9a21b4a662d3fae828698",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-reach-v1/seed-101/evaluation.json",
+        "sha256": "b07558fb16a73654092b2bff9d489008ec7c1c539846c3501b310d9b6588db64",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-reach-v1",
+      "case_name_zh_CN": "末端触达",
+      "training_seed": 202,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-202",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-202/training.json",
+      "training_metadata_sha256": "7e5f797948e86c397e70cf529e065df3dcffd1cff1626b9165ca6fde372ef047",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-202/ppo-residual.zip",
+      "checkpoint_sha256": "05bdd9afea20e71bc30f5fd31dc6b57bae2e45f6c48775f5e88dc41631dd2da3",
+      "model_sha256": "afe3946781f080e6d86085754a5aeb586dfd9778c11825166b054355e550c352",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-202/metrics.jsonl",
+      "metrics_sha256": "1ba52c88fcd922f774a4e84cf184f5b0400f2eed0031ba94988b3e3d0a505058",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-202/evaluation.json",
+        "sha256": "7e10464140e614e2fa80cda660c0638434348f5b1e9eca1568f9881ca39fa61f",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-reach-v1/seed-202/evaluation.json",
+        "sha256": "165152ae76e6adc561a6ace46e252fdc1d3fefc8fbbeb9d9f8f1eb8213c87067",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-reach-v1",
+      "case_name_zh_CN": "末端触达",
+      "training_seed": 303,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-303",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-303/training.json",
+      "training_metadata_sha256": "a94e5fae8fb0374baa1a1421a221fd964b793e5f75d6bc40b67fad2ac69664c0",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-303/ppo-residual.zip",
+      "checkpoint_sha256": "8c5acd118e4badea193567446160bd5cbd0ef474e7369461c609a603470663a4",
+      "model_sha256": "afe3946781f080e6d86085754a5aeb586dfd9778c11825166b054355e550c352",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-303/metrics.jsonl",
+      "metrics_sha256": "30679a7e3bc9bf9d194c5c60b636b2389da339a7012ba6f2a158fd147a5fc2e6",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-reach-v1/seed-303/evaluation.json",
+        "sha256": "81d70b8fae9e3d68fa6cd9de70130a26962396a8603c8cf077f0a56bf2b24829",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-reach-v1/seed-303/evaluation.json",
+        "sha256": "8602938c093c7370e5cc4ad40ee1edd3241a80aeb237293f419cd5542c635f29",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-pick-place-v1",
+      "case_name_zh_CN": "抓取放置",
+      "training_seed": 101,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-101",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-101/training.json",
+      "training_metadata_sha256": "f8f9313d8758e833364b676d59950db50df8a29d6b201f2cd3a9a80ac35b68a8",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-101/ppo-residual.zip",
+      "checkpoint_sha256": "58f4bcf66408ed019281c4d1eb68219cbbb6692c26bf3a5f31d88fd26b4c1be8",
+      "model_sha256": "bfbc6b1cc4d494a39ebffa9759857c7f65afba10ad6f026a56d9205f3a332937",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-101/metrics.jsonl",
+      "metrics_sha256": "7adeff9677784d695ddaea01ca325e98ae73f6017625abfb14675b4b3ad65020",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-101/evaluation.json",
+        "sha256": "ee9f1f11aa675fa6140e6ca4074d0495b3211168eeda9785395eff164960c08c",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-pick-place-v1/seed-101/evaluation.json",
+        "sha256": "57a25a644d50b447df2b58150d501af389317f5f1631f806bd98177f8311c403",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-pick-place-v1",
+      "case_name_zh_CN": "抓取放置",
+      "training_seed": 202,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-202",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-202/training.json",
+      "training_metadata_sha256": "3b339dd3646f637b7989a5d6f79c8f243c4022f4a89573eaab1a1d30f98b7751",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-202/ppo-residual.zip",
+      "checkpoint_sha256": "02ba4ce5f5940ad585cced7ce2c48a332c5359781a5fa412d4ab6d5263b8e018",
+      "model_sha256": "bfbc6b1cc4d494a39ebffa9759857c7f65afba10ad6f026a56d9205f3a332937",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-202/metrics.jsonl",
+      "metrics_sha256": "02cccbf152d11bef9e13aeffa98be140886ef9ec2ea541df2bf394aa8d84da1c",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-202/evaluation.json",
+        "sha256": "a5710a7c81bf59f9868b01594f25ff8d38141d22422cb89da352e30b5ef70efe",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-pick-place-v1/seed-202/evaluation.json",
+        "sha256": "3eb55c28b878b1f17d7c445b6f4099fb96c94dc18ee4a7ed09d0feda5567d3aa",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-pick-place-v1",
+      "case_name_zh_CN": "抓取放置",
+      "training_seed": 303,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-303",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-303/training.json",
+      "training_metadata_sha256": "eb9ea904473370e96f5cb16d307d6e6ec6592074dc6536e4b73eddd65130fcc8",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-303/ppo-residual.zip",
+      "checkpoint_sha256": "da927b01bb7ea883fdee84c591920057209d508182eb21406ca1fcaae860bce5",
+      "model_sha256": "bfbc6b1cc4d494a39ebffa9759857c7f65afba10ad6f026a56d9205f3a332937",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-303/metrics.jsonl",
+      "metrics_sha256": "33a1f4281bf2407bb858f7cfbf7a542783f621c5abcc0ecfbc8d24a57d9b34d8",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-pick-place-v1/seed-303/evaluation.json",
+        "sha256": "e59cabf9740a7815def1b79e364259ba68560ce1eab71a9c693bb3d8bc5ec70a",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-pick-place-v1/seed-303/evaluation.json",
+        "sha256": "630cbee04f39ca809c54d78669cdec50176f95b74803500faf9a3d4f54442556",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-relocate-v1",
+      "case_name_zh_CN": "绕障移物",
+      "training_seed": 101,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-101",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-101/training.json",
+      "training_metadata_sha256": "2a404ab015d0bda027601e6b2e4bf39ae31bc31b422d5e0d752683bb69c16f74",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-101/ppo-residual.zip",
+      "checkpoint_sha256": "c3435c9b258657c063641ba1744ecbcce21c8173648e41d3146672be8ba72ff5",
+      "model_sha256": "8ab83dd952e7e133bfb6d3bcf3328141ac89f5b2d3bab1ff96e9c9af9b7669c1",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-101/metrics.jsonl",
+      "metrics_sha256": "cfe094ec41d3f3d53a484404a0eddc89f0af7934dc0276535b8cbaf1dde32ae1",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-101/evaluation.json",
+        "sha256": "544d7fca8cde07fe4ee46db51bb45ec68082f5c486a8280596c09f397739384b",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-relocate-v1/seed-101/evaluation.json",
+        "sha256": "d318ef87301800249853f84cf349f01350a4c22acfdea19aaed775d3b67b8d2d",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-relocate-v1",
+      "case_name_zh_CN": "绕障移物",
+      "training_seed": 202,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-202",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-202/training.json",
+      "training_metadata_sha256": "f0e4b71618016987b219f62924f72f9514a0175d8fc9f92e471bc7089e172590",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-202/ppo-residual.zip",
+      "checkpoint_sha256": "f62517611841942fd292de8246c69947ae1eab76b6f76eb114d808c0a9fe04da",
+      "model_sha256": "8ab83dd952e7e133bfb6d3bcf3328141ac89f5b2d3bab1ff96e9c9af9b7669c1",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-202/metrics.jsonl",
+      "metrics_sha256": "7640b13f65940b2fb8a1410ca43d73b3755f3d965c89c1c4a7173a4105e250e1",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-202/evaluation.json",
+        "sha256": "666190a7810310dcc63dae6e70d3270b1a8363c17e9eb7732f498a77c784784c",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-relocate-v1/seed-202/evaluation.json",
+        "sha256": "50695dbe4186c8feb76329a58343800f9656817ad8d8cde2bb88af59f6d476e8",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-relocate-v1",
+      "case_name_zh_CN": "绕障移物",
+      "training_seed": 303,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-303",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-303/training.json",
+      "training_metadata_sha256": "7454f56fa11cd77e083348b22150cc5a2aed1c2d88cf6442cd1dc5cfc697decf",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-303/ppo-residual.zip",
+      "checkpoint_sha256": "37e7fc0b5636a8bc8b24cc8351b3cef916ada40eb619791624734a0cb83297eb",
+      "model_sha256": "8ab83dd952e7e133bfb6d3bcf3328141ac89f5b2d3bab1ff96e9c9af9b7669c1",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-303/metrics.jsonl",
+      "metrics_sha256": "81e9a08ff31a67a79f7344c5c7342da332d6559d0a322d5730f806e7e7597e45",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-relocate-v1/seed-303/evaluation.json",
+        "sha256": "58b5c0fac1a4c9a2e0b089bdb70a475c7efd995683545b8471c5f9c159b8ac4b",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-relocate-v1/seed-303/evaluation.json",
+        "sha256": "7c0fa13682083d7fda62e2e41fa2b066d5c786c70096cae1929318af557a74bf",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-carry-v1",
+      "case_name_zh_CN": "航点搬运",
+      "training_seed": 101,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-101",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-101/training.json",
+      "training_metadata_sha256": "047a5644a4c8e92d4018228ddbaaa2045a33a88232e93866d9c27d3e3a426696",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-101/ppo-residual.zip",
+      "checkpoint_sha256": "2bf6a900be41dd82bd8f86ba152885059ce0ab8fc3d559817bda881f8f2a2981",
+      "model_sha256": "bd96b6a5c84e9a8d80f5aa67fb7610310ebc113ebe012af1972c9920d346f880",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-101/metrics.jsonl",
+      "metrics_sha256": "a79f965a956d127e45ab3126bac30a82168ce50ba4e8e7f830865c285cd5338d",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-101/evaluation.json",
+        "sha256": "30fa21f64ab3a5f9d994c4337752bdb0b8b241a7e2e5b641a117be85b83d4774",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-carry-v1/seed-101/evaluation.json",
+        "sha256": "f43ae3a43af798d23c8352663979772721b22f87d1a300d957d0ede4364186ec",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-carry-v1",
+      "case_name_zh_CN": "航点搬运",
+      "training_seed": 202,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-202",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-202/training.json",
+      "training_metadata_sha256": "fa78e6f01eb0194b51ea08baf00aec0e77c1286449e5fe58b6b36b96a7835e61",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-202/ppo-residual.zip",
+      "checkpoint_sha256": "47392ebe059de42c69c43a48cbc68cd5f0bca85d9f2582f261a9ae9a5da3d998",
+      "model_sha256": "bd96b6a5c84e9a8d80f5aa67fb7610310ebc113ebe012af1972c9920d346f880",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-202/metrics.jsonl",
+      "metrics_sha256": "2b4be3bb21f7542e27c8b5623c78ceb92450dcc3171482920e857342aa944516",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-202/evaluation.json",
+        "sha256": "0ee6e0af0c568a98fba38b243cfb1d645003d400d7c3fe870bb3f762bbec5cf5",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-carry-v1/seed-202/evaluation.json",
+        "sha256": "4704704b0420d6d5abf7c127c7654ec773e6efe40593bcc5c0ac60bd40ed1b2b",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arm-carry-v1",
+      "case_name_zh_CN": "航点搬运",
+      "training_seed": 303,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-303",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-303/training.json",
+      "training_metadata_sha256": "0f5ee72f5b8a71e29c6004b4366c10772b9e9747a4760b053180631bef24533c",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-303/ppo-residual.zip",
+      "checkpoint_sha256": "fcabd37746095a460cf341c74970b192722ddf5787a6acc2dbe47fd9d87b0080",
+      "model_sha256": "bd96b6a5c84e9a8d80f5aa67fb7610310ebc113ebe012af1972c9920d346f880",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-303/metrics.jsonl",
+      "metrics_sha256": "f165c303a3b61f49bbbd8a51adf6e708ae6cec70e2a6df322f780b55a0c60d5d",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arm-carry-v1/seed-303/evaluation.json",
+        "sha256": "cfc01aec1c70b36e1732b098f0b36b5dfbfda3fea29d3db48b5aaeb7a4f0eb14",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arm-carry-v1/seed-303/evaluation.json",
+        "sha256": "ba2c553c771a36162c1ba60e1ed795977a195e6069db170adb77719643a2618b",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arms-handover-v1",
+      "case_name_zh_CN": "双臂交接（5 g 课程）",
+      "training_seed": 101,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-101",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-101/training.json",
+      "training_metadata_sha256": "3cf2b76f77612963b76a3f217b45ede563fb283332587192b3a9ae88cfccee12",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-101/ppo-residual.zip",
+      "checkpoint_sha256": "75e97683b9c1ff08d07d42f432974b0e7f3205fe64bf997ecff89fb6134d1a64",
+      "model_sha256": "50e8369e263bb3759b672c91efb3c8f49d987b72964103e9a5daac08682c2cec",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-101/metrics.jsonl",
+      "metrics_sha256": "ff2bed747e25e729201955217dc1d116e85d90cf0ddc0eae2b6763ab3f8e97b1",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-101/evaluation.json",
+        "sha256": "68aaa5f123aad923c424209d0b6351baa2e06e9981d56b8cf095f18c3a5c2062",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arms-handover-v1/seed-101/evaluation.json",
+        "sha256": "7952c7b08d7dca9c907ce339afd207b2ad54b0d799c2b2b23270ffc0fde91b1f",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arms-handover-v1",
+      "case_name_zh_CN": "双臂交接（5 g 课程）",
+      "training_seed": 202,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-202",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-202/training.json",
+      "training_metadata_sha256": "af50bc28f9dd8b23f5d613184b448d9e5db91f587168ad3854c572a9a3014c57",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-202/ppo-residual.zip",
+      "checkpoint_sha256": "049d2dd53f4713e08a3204d3f0fa27dbb6d380c6f4a361b36d9a07416ff681ab",
+      "model_sha256": "50e8369e263bb3759b672c91efb3c8f49d987b72964103e9a5daac08682c2cec",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-202/metrics.jsonl",
+      "metrics_sha256": "b32137b4ac9935de2a0b5042f1f038930d4204a8ba1e695f68e0b08a528ba837",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-202/evaluation.json",
+        "sha256": "3a1998a5175f2d95625667aeb18cdbd5b61c824594639c29737fffdeee0094b9",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arms-handover-v1/seed-202/evaluation.json",
+        "sha256": "c8cc86c6a3672b3a548912cdad7f2021e3242949cda7b6655b31c198b938c616",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arms-handover-v1",
+      "case_name_zh_CN": "双臂交接（5 g 课程）",
+      "training_seed": 303,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-303",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-303/training.json",
+      "training_metadata_sha256": "c3b2de5dbc567914d321c764ee89b815c2556ff253dbbd4caa05e6abcbf4afd1",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-303/ppo-residual.zip",
+      "checkpoint_sha256": "029d1834dcf29f7426b5b1e27cbe8d3d06607bc8e43232638e35e2150d1c266b",
+      "model_sha256": "50e8369e263bb3759b672c91efb3c8f49d987b72964103e9a5daac08682c2cec",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-303/metrics.jsonl",
+      "metrics_sha256": "a348a216b9ba361ca7d74b0f96192e4e9fe51ce60aa1c02b81111645e5b805f9",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-handover-v1/seed-303/evaluation.json",
+        "sha256": "51f8acc9b5b3d3c93a8dd1c820e99c66c634357e8387dd9836945920eaecde72",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arms-handover-v1/seed-303/evaluation.json",
+        "sha256": "e5dbd897e5ce9c02d735a4b6f9e55e074e0dc9340da3c5f051d4fbac84249508",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arms-co-carry-v1",
+      "case_name_zh_CN": "双臂共同搬运（17 g 总重）",
+      "training_seed": 101,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-101",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-101/training.json",
+      "training_metadata_sha256": "1305c88ccd155f7634b400916f058cb743720670b7d79b9f5da31e4e86527dbc",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-101/ppo-residual.zip",
+      "checkpoint_sha256": "8ace4bc8fb8b4383cce300379d577834a7d45ab8011bcf29cb079a60d37bd855",
+      "model_sha256": "5a0132af6d9d23bea2f3f80abc720381b21a65e4e23a4dbda1cb28aa05fbe1a5",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-101/metrics.jsonl",
+      "metrics_sha256": "e7a15f1c466647793c95ec077aa5e5955d9e84453a01ef340ceb467a3bacc27b",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-101/evaluation.json",
+        "sha256": "52a5cc262f411a0bbfc47eb6c49441a4f14e8873cecdd22b35d8887434dce322",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arms-co-carry-v1/seed-101/evaluation.json",
+        "sha256": "5c7be6e499d6afa45eb23913f9423e26dd0700bc941d939676de890335f07705",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arms-co-carry-v1",
+      "case_name_zh_CN": "双臂共同搬运（17 g 总重）",
+      "training_seed": 202,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-202",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-202/training.json",
+      "training_metadata_sha256": "1440c0b8da55404b4234fba70b492cf562d92dfa149b45b5a94cc0cb227215de",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-202/ppo-residual.zip",
+      "checkpoint_sha256": "ff454357ca934923e5b4788e001863bd98f27cd19c534ab48d1f94e935ca8b66",
+      "model_sha256": "5a0132af6d9d23bea2f3f80abc720381b21a65e4e23a4dbda1cb28aa05fbe1a5",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-202/metrics.jsonl",
+      "metrics_sha256": "dbb1fe810eb2a1ea9bf30b89cd741b45e21a8e3b7b46f0b22a486ce69f00ec8a",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-202/evaluation.json",
+        "sha256": "9560c19a9f08dba6a0d72587e4e9ca1df2aa5557600b2139fc72c7716606eceb",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arms-co-carry-v1/seed-202/evaluation.json",
+        "sha256": "142abfe8975344cb73fa01c56cfa2d6b9a37ea7278cdf34cd2a6ab7a3f54fdc7",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    },
+    {
+      "case_id": "arms-co-carry-v1",
+      "case_name_zh_CN": "双臂共同搬运（17 g 总重）",
+      "training_seed": 303,
+      "directory": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-303",
+      "training_metadata_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-303/training.json",
+      "training_metadata_sha256": "0848240f18d28d907e4c6912b1066c197127f5809ef8ac36281b96d62a5fcba5",
+      "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-303/ppo-residual.zip",
+      "checkpoint_sha256": "90600c13140736395290d5374fd2b1e1fe73149c3fd252072a0098d29c98d755",
+      "model_sha256": "5a0132af6d9d23bea2f3f80abc720381b21a65e4e23a4dbda1cb28aa05fbe1a5",
+      "source_hashes": {
+        "environment": "ec708791af2180656231d91c91defaa77c6cd39d39e7db714faf199e6adb5c92",
+        "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+      },
+      "actual_env_steps": 32768,
+      "metrics_path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-303/metrics.jsonl",
+      "metrics_sha256": "a4ae1c8c83d7dc299c074e1067a0e69bc305c72686eccc0b56a2a350b5776bd7",
+      "primary": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-repair-20260912-v3/arms-co-carry-v1/seed-303/evaluation.json",
+        "sha256": "f7bd1059050723123fa69df1fae2f1b9a269b17b2582ae58a19003d94730d339",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 80000,
+          "seed_min": 80000,
+          "seed_max": 80909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      },
+      "validation": {
+        "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/strict-heldout-20260912-v3/arms-co-carry-v1/seed-303/evaluation.json",
+        "sha256": "ad958eadcaacb1a49337b9fc9c36cc5978f2f81eaf3633e11bf3fdf2118057bb",
+        "episodes": 100,
+        "successes": 100,
+        "failures": 0,
+        "failed_gates": {},
+        "all_episodes_pass": true,
+        "statistical_gate_passed": true,
+        "per_config_success_rate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "wilson_95": [
+          0.9630051925239981,
+          0.9999999999999999
+        ],
+        "seed_manifest": {
+          "independent": true,
+          "minimum_allowed_seed": 50000,
+          "seed_base": 110000,
+          "seed_min": 110000,
+          "seed_max": 110909,
+          "seeds_per_config": 10,
+          "config_count": 10
+        }
+      }
+    }
+  ]
+}

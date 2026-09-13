@@ -45,6 +45,7 @@ function fixture(t, checkpoint = false) {
   );
   const sidecar = `${source}.json`;
   const clipPath = path.join(root, "dance.json");
+  const externalPolicy = path.join(root, "alpha_stand.onnx");
   const video = path.join(root, "render", "ep0.mp4");
   const sheet = path.join(root, "render", "ep0_sheet.png");
   const receipt = path.join(root, "render", "evidence.json");
@@ -52,6 +53,7 @@ function fixture(t, checkpoint = false) {
   fs.writeFileSync(source, "source bytes");
   if (checkpoint) fs.writeFileSync(sidecar, "sidecar bytes");
   fs.writeFileSync(clipPath, "clip bytes");
+  fs.writeFileSync(externalPolicy, "stand policy bytes");
   fs.writeFileSync(video, "video bytes");
   fs.writeFileSync(sheet, "sheet bytes");
   const sourceFiles = checkpoint ? [source, sidecar] : [source];
@@ -60,10 +62,11 @@ function fixture(t, checkpoint = false) {
     source,
     recipeKey: "dance/full/seed=42",
     clipPath,
+    externalFiles: [],
   };
   const output = { video, sheet, receipt };
   const validation = { ...preparation, video, sheet };
-  return { ...preparation, ...output, validation, sourceFiles, sidecar };
+  return { ...preparation, ...output, validation, sourceFiles, sidecar, externalPolicy };
 }
 
 function prepareAndFinalize(f) {
@@ -116,6 +119,40 @@ test("supports renders without a choreography clip", (t) => {
   assert.equal(receipt.clipPath, null);
   assert.equal(receipt.clipSha256, null);
   assert.ok(readRenderEvidence(f.receipt, f.validation));
+});
+
+test("binds Backflip render evidence to the external pretrained stand policy", (t) => {
+  const f = fixture(t);
+  f.externalFiles = [f.externalPolicy];
+  f.validation.externalFiles = [f.externalPolicy];
+  const recipeOptions = {
+    backflip_protocol_version: "spotter-launch-landing-stand-v2",
+    stand_policy_sha256: "stand-hash",
+  };
+  f.validation.recipeOptions = recipeOptions;
+  const context = prepareRenderEvidence(f);
+  const receipt = finalizeRenderEvidence(context, f, recipeOptions);
+  assert.ok(receipt);
+
+  assert.equal(receipt.externalFiles.length, 1);
+  assert.ok(receipt.externalFilesSha256[f.externalPolicy]);
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(receipt.recipeOptions)),
+    recipeOptions
+  );
+  assert.ok(readRenderEvidence(f.receipt, f.validation));
+  assert.equal(
+    readRenderEvidence(f.receipt, {
+      ...f.validation,
+      recipeOptions: {
+        ...recipeOptions,
+        backflip_protocol_version: "spotter-launch-landing-stand-v1",
+      },
+    }),
+    null
+  );
+  fs.writeFileSync(f.externalPolicy, "updated stand policy bytes");
+  assert.equal(readRenderEvidence(f.receipt, f.validation), null);
 });
 
 for (const [label, mutate] of [

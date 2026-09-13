@@ -32,8 +32,11 @@ function fixture() {
   const files = new Map();
   const children = [];
   const reads = [];
+  const renderFinalizations = [];
+  const renderEvidenceReads = [];
   let clock = 0;
   let writeImplementation;
+  let readRenderEvidenceImplementation = () => null;
   const fsDependency = {
     existsSync: (file) => file.endsWith("examples/ppo_microduck_dance.py") || files.has(file),
     realpathSync: (file) => file,
@@ -70,8 +73,14 @@ function fixture() {
     "@/lib/rlx-history": history,
     "@/lib/rlx-render-evidence": {
       prepareRenderEvidence: (input) => input,
-      finalizeRenderEvidence: () => null,
-      readRenderEvidence: () => null,
+      finalizeRenderEvidence: (context, output, recipeOptions) => {
+        renderFinalizations.push({ context, output, recipeOptions });
+        return {};
+      },
+      readRenderEvidence: (receiptPath, expected) => {
+        renderEvidenceReads.push({ receiptPath, expected });
+        return readRenderEvidenceImplementation(receiptPath, expected);
+      },
     },
     "node:fs": fsDependency,
     "node:fs/promises": {
@@ -105,15 +114,31 @@ function fixture() {
     location === "rlx-artifacts"
       ? path.resolve(process.cwd(), "../rlx/artifacts", name)
       : path.resolve(process.cwd(), "../dance-clip", name);
+  const standPolicy = path.resolve(process.cwd(), "../microduck/policies/alpha_stand.onnx");
+  const basketballBootstrap = path.resolve(process.cwd(), "../microduck-playground/artifacts/basketball");
+  const basketballAssets = path.resolve(process.cwd(), "../microduck-playground/src/mjlab_microduck/robot/assets/basketball");
   return {
-    api, files, children, artifact, clip, reads,
+    api, files, children, artifact, clip, standPolicy, reads,
+    renderFinalizations, renderEvidenceReads,
     add: (runName, kind = "checkpoint", experimentId = "swing") => files.set(artifact(runName, kind, experimentId), "artifact"),
     addClip: (name, location) => {
       const file = clip(name, location);
       files.set(file, "{}");
       return file;
     },
+    addStandPolicy: (bytes = "stand policy") => files.set(standPolicy, bytes),
+    addBasketballReferences: () => {
+      for (const file of [
+        path.join(basketballBootstrap, "checkpoint.pt"),
+        path.join(basketballBootstrap, "policy.onnx"),
+        path.join(basketballAssets, "basketball.obj"),
+        path.join(basketballAssets, "basketball.png"),
+      ]) files.set(file, "basketball reference");
+    },
     deferWrites: (implementation) => { writeImplementation = implementation; },
+    setReadRenderEvidence: (implementation) => {
+      readRenderEvidenceImplementation = implementation;
+    },
   };
 }
 const input = (runName = "test-a", extra = {}) => ({ experimentId: "swing", runName, ...extra });
@@ -121,12 +146,14 @@ const arg = (child, flag) => child.args[child.args.indexOf(flag) + 1];
 function sourceReport(f, runName = "test-a", sourceType = "policy", experimentId = "swing") {
   const source = f.artifact(runName, sourceType === "policy" ? "onnx" : "checkpoint", experimentId);
   const files = sourceType === "policy"
-    ? [source]
+    ? experimentId === "drawing"
+      ? [source, f.artifact(runName, "metadata", experimentId)]
+      : [source]
     : [source, f.artifact(runName, "metadata", experimentId)];
   const hashes = Object.fromEntries(files.map((file) => [file, createHash("sha256").update(f.files.get(file)).digest("hex")]));
   return {
     source_type: sourceType, source_sha256: hashes[source], source_files_sha256: hashes,
-    evaluation_mode: "skill", skill_status: "passed", passed: true, pipeline_passed: true,
+    evaluation_mode: "skill", skill_status: "passed", passed: true, pipeline_passed: true, finite: true,
   };
 }
 function finish(child, report, code = 0) {
@@ -151,7 +178,7 @@ test("restart drain lock rejects every launch without spawning or changing artif
   assert.equal(f.children.length, 1);
 });
 
-test("a preinstalled Python runtime bypasses uv for all four operation commands", () => {
+test("a preinstalled Python runtime bypasses uv for all four operation types", () => {
   const previous = process.env.MICRODUCK_STUDIO_PYTHON_DIRECT;
   process.env.MICRODUCK_STUDIO_PYTHON_DIRECT = "/installed/env/bin/python";
   try {
@@ -187,6 +214,562 @@ test("export includes the CLI-required recipe and checkpoint/output without envi
   assert.deepEqual(Array.from(child.args.slice(child.args.indexOf("export") + 1)), [
     "--recipe", "swing", "--checkpoint", f.artifact("test-a"), "--output", f.artifact("test-a", "onnx"),
   ]);
+});
+
+test("Basketball uses recurrent artifact names and the standalone shared-shaped adapter", () => {
+  const train = fixture();
+  train.addBasketballReferences();
+  const recipe = train.api.startJob("train", {
+    experimentId: "basketball",
+    runName: "basketball-balance-01",
+    profile: "full",
+  });
+  const child = train.children[0];
+  assert.equal(child.args[child.args.indexOf("examples/ppo_microduck_balance.py") + 1], "train");
+  assert.equal(arg(child, "--recipe"), "basketball");
+  assert.equal(arg(child, "--checkpoint"), train.artifact("basketball-balance-01", "checkpoint", "basketball"));
+  assert.equal(arg(child, "--onnx-output"), train.artifact("basketball-balance-01", "onnx", "basketball"));
+  assert.match(train.artifact("basketball-balance-01", "checkpoint", "basketball"), /checkpoint\.pt$/);
+  assert.match(train.artifact("basketball-balance-01", "metadata", "basketball"), /checkpoint\.pt\.json$/);
+  assert.match(train.artifact("basketball-balance-01", "onnx", "basketball"), /policy\.onnx$/);
+  assert.equal(recipe.maxEpisodeS, 60);
+  assert.equal(recipe.evalSteps, 3000);
+  assert.equal(recipe.bridgeCurriculum, false);
+  assert.deepEqual(JSON.parse(arg(child, "--weight-overrides")), {});
+  assert.equal(arg(child, "--output-dir"), path.dirname(train.artifact("basketball-balance-01", "checkpoint", "basketball")));
+  assert.equal(arg(child, "--num-minibatches"), "1");
+  assert.equal(arg(child, "--update-epochs"), "5");
+  assert.equal(arg(child, "--entropy-coefficient"), "0.01");
+  assert.equal(arg(child, "--max-grad-norm"), "1");
+  assert.equal(child.args.includes("--no-normalize-rewards"), true);
+
+  const evaluate = fixture();
+  evaluate.addBasketballReferences();
+  evaluate.add("basketball-balance-01", "onnx", "basketball");
+  evaluate.api.startJob("eval", {
+    experimentId: "basketball",
+    runName: "basketball-balance-01",
+    profile: "full",
+  });
+  assert.equal(evaluate.children[0].args.includes("examples/ppo_microduck_balance.py"), true);
+  assert.equal(arg(evaluate.children[0], "--policy"), evaluate.artifact("basketball-balance-01", "onnx", "basketball"));
+  assert.equal(arg(evaluate.children[0], "--backend"), "standalone");
+
+  const exportAttempt = fixture();
+  exportAttempt.add("basketball-balance-01", "checkpoint", "basketball");
+  assert.throws(() => exportAttempt.api.startJob("export", {
+    experimentId: "basketball",
+    runName: "basketball-balance-01",
+  }), /emits its recurrent policy\.onnx directly/);
+  assert.equal(exportAttempt.children.length, 0);
+});
+
+test("Drawing uses only the agreed independent CLI adapter flags and normal artifacts", () => {
+  const train = fixture();
+  const recipe = train.api.startJob("train", {
+    experimentId: "drawing",
+    drawingTool: "pencil",
+    runName: "drawing-pilot-01",
+    profile: "full",
+  });
+  const trainChild = train.children[0];
+  assert.equal(trainChild.args.includes("examples/ppo_microduck_drawing.py"), true);
+  assert.deepEqual(Array.from(trainChild.args.slice(trainChild.args.indexOf("train") + 1)), [
+    "--output", path.dirname(train.artifact("drawing-pilot-01", "checkpoint", "drawing")),
+    "--total-timesteps", "32768",
+    "--seed", "7",
+    "--max-episode-s", "32",
+  ]);
+  assert.equal(recipe.initialStd, 0.02);
+  const normalized = train.api.normalizeRecipe({
+    experimentId: "drawing",
+    drawingTool: "pencil",
+    profile: "smoke",
+    totalTimesteps: 4,
+    numEnvs: 64,
+    numSteps: 2,
+    numMinibatches: 8,
+    maxEpisodeS: 1,
+    initialStd: 0.9,
+    normalizeRewards: true,
+    freezeObservationNormalization: true,
+    checkpointInterval: 10,
+    learningRate: 0.2,
+    gamma: 0.8,
+    clipCoefficient: 0.9,
+    updateEpochs: 20,
+    entropyCoefficient: 1,
+    maxGradNorm: 10,
+    domainRand: true,
+    obsNoise: true,
+    actionDelay: true,
+    randomYaw: true,
+    resumeFromCheckpoint: true,
+  });
+  assert.deepEqual(plain({
+    totalTimesteps: normalized.totalTimesteps,
+    numEnvs: normalized.numEnvs,
+    numSteps: normalized.numSteps,
+    numMinibatches: normalized.numMinibatches,
+    maxEpisodeS: normalized.maxEpisodeS,
+    initialStd: normalized.initialStd,
+    normalizeRewards: normalized.normalizeRewards,
+    freezeObservationNormalization: normalized.freezeObservationNormalization,
+    checkpointInterval: normalized.checkpointInterval,
+    learningRate: normalized.learningRate,
+    gamma: normalized.gamma,
+    clipCoefficient: normalized.clipCoefficient,
+    updateEpochs: normalized.updateEpochs,
+    entropyCoefficient: normalized.entropyCoefficient,
+    maxGradNorm: normalized.maxGradNorm,
+    domainRand: normalized.domainRand,
+    obsNoise: normalized.obsNoise,
+    actionDelay: normalized.actionDelay,
+    randomYaw: normalized.randomYaw,
+    resumeFromCheckpoint: normalized.resumeFromCheckpoint,
+  }), {
+    totalTimesteps: 768,
+    numEnvs: 1,
+    numSteps: 256,
+    numMinibatches: 1,
+    maxEpisodeS: 32,
+    initialStd: 0.02,
+    normalizeRewards: false,
+    freezeObservationNormalization: false,
+    checkpointInterval: 0,
+    learningRate: 0.00003,
+    gamma: 0.995,
+    clipCoefficient: 0.1,
+    updateEpochs: 5,
+    entropyCoefficient: 0,
+    maxGradNorm: 0.5,
+    domainRand: false,
+    obsNoise: false,
+    actionDelay: false,
+    randomYaw: false,
+    resumeFromCheckpoint: false,
+  });
+  assert.equal(recipe.evalEpisodes, 8);
+  assert.deepEqual(plain(recipe.rewardWeights), {});
+  assert.match(train.artifact("drawing-pilot-01", "checkpoint", "drawing"), /policy\.zip$/);
+  assert.match(train.artifact("drawing-pilot-01", "metadata", "drawing"), /policy\.zip\.json$/);
+  assert.match(train.artifact("drawing-pilot-01", "onnx", "drawing"), /policy\.onnx$/);
+  assert.match(train.artifact("drawing-pilot-01", "evaluation", "drawing"), /eval\.json$/);
+  assert.match(train.artifact("drawing-pilot-01", "sheet", "drawing"), /render[/\\]frame_sheet\.png$/);
+  assert.match(train.artifact("drawing-pilot-01", "video", "drawing"), /render[/\\]rollout\.mp4$/);
+
+  for (const operation of ["eval", "render", "export"]) {
+    const f = fixture();
+    f.add("drawing-pilot-01", "checkpoint", "drawing");
+    f.add("drawing-pilot-01", "metadata", "drawing");
+    f.add("drawing-pilot-01", "onnx", "drawing");
+    f.api.startJob(operation, {
+      experimentId: "drawing",
+      drawingTool: "pencil",
+      runName: "drawing-pilot-01",
+      profile: "full",
+    });
+    const child = f.children[0];
+    const args = Array.from(child.args.slice(child.args.indexOf(operation) + 1));
+    assert.equal(args.includes("--recipe"), false);
+    assert.equal(args.includes("--backend"), false);
+    assert.equal(args.includes("--num-envs"), false);
+    assert.equal(args.includes("--initial-std"), false);
+    assert.equal(arg(child, "--checkpoint"), f.artifact("drawing-pilot-01", "checkpoint", "drawing"));
+    if (operation === "eval") {
+      assert.deepEqual(args, [
+        "--checkpoint", f.artifact("drawing-pilot-01", "checkpoint", "drawing"),
+        "--eval-output", f.artifact("drawing-pilot-01", "evaluation", "drawing"),
+        "--eval-episodes", "8",
+        "--seed", "7",
+        "--max-episode-s", "32",
+      ]);
+    } else if (operation === "render") {
+      assert.deepEqual(args, [
+        "--checkpoint", f.artifact("drawing-pilot-01", "checkpoint", "drawing"),
+        "--render-output", path.dirname(f.artifact("drawing-pilot-01", "sheet", "drawing")),
+        "--render-seconds", "32",
+        "--seed", "7",
+        "--max-episode-s", "32",
+      ]);
+    } else {
+      assert.deepEqual(args, [
+        "--checkpoint", f.artifact("drawing-pilot-01", "checkpoint", "drawing"),
+        "--onnx-output", f.artifact("drawing-pilot-01", "onnx", "drawing"),
+      ]);
+    }
+  }
+});
+
+test("Brush defaults and all commands use the bounded brush CLI contract", () => {
+  const train = fixture();
+  const recipe = train.api.startJob("train", {
+    experimentId: "drawing",
+    drawingTool: "brush",
+    runName: "drawing-pilot-01",
+    profile: "full",
+  });
+  const child = train.children[0];
+  assert.equal(child.args.includes("examples/ppo_microduck_brush.py"), true);
+  assert.deepEqual(Array.from(child.args.slice(child.args.indexOf("train") + 1)), [
+    "--out", path.dirname(train.artifact("drawing-pilot-01", "checkpoint", "drawing")),
+    "--seed", "7",
+    "--steps", "49152",
+    "--dagger", "2",
+    "--learning-rate", "1e-7",
+    "--anchor-limit", "0.00025",
+  ]);
+  assert.deepEqual(plain({
+    drawingTool: recipe.drawingTool,
+    totalTimesteps: recipe.totalTimesteps,
+    numEnvs: recipe.numEnvs,
+    numSteps: recipe.numSteps,
+    numMinibatches: recipe.numMinibatches,
+    maxEpisodeS: recipe.maxEpisodeS,
+    evalEpisodes: recipe.evalEpisodes,
+    renderSeconds: recipe.renderSeconds,
+    initialStd: recipe.initialStd,
+    learningRate: recipe.learningRate,
+    clipCoefficient: recipe.clipCoefficient,
+    updateEpochs: recipe.updateEpochs,
+    maxGradNorm: recipe.maxGradNorm,
+  }), {
+    drawingTool: "brush",
+    totalTimesteps: 49_152,
+    numEnvs: 1,
+    numSteps: 6_144,
+    numMinibatches: 12,
+    maxEpisodeS: 120,
+    evalEpisodes: 4,
+    renderSeconds: 120,
+    initialStd: 0.0003,
+    learningRate: 1e-7,
+    clipCoefficient: 0.05,
+    updateEpochs: 2,
+    maxGradNorm: 0.3,
+  });
+
+  for (const operation of ["eval", "render", "export"]) {
+    const f = fixture();
+    f.add("drawing-pilot-01", "checkpoint", "drawing");
+    f.add("drawing-pilot-01", "metadata", "drawing");
+    f.add("drawing-pilot-01", "onnx", "drawing");
+    f.api.startJob(operation, {
+      experimentId: "drawing",
+      drawingTool: "brush",
+      runName: "drawing-pilot-01",
+      profile: "full",
+    });
+    const operationChild = f.children[0];
+    assert.equal(operationChild.args.includes("examples/ppo_microduck_brush.py"), true);
+    const args = Array.from(operationChild.args.slice(operationChild.args.indexOf(operation) + 1));
+    if (operation === "eval") {
+      assert.deepEqual(args, [
+        "--onnx", f.artifact("drawing-pilot-01", "onnx", "drawing"),
+        "--out", f.artifact("drawing-pilot-01", "evaluation", "drawing"),
+        "--seed", "7",
+        "--episodes", "4",
+      ]);
+    } else if (operation === "render") {
+      assert.deepEqual(args, [
+        "--onnx", f.artifact("drawing-pilot-01", "onnx", "drawing"),
+        "--out", path.dirname(f.artifact("drawing-pilot-01", "sheet", "drawing")),
+        "--seed", "7",
+        "--seconds", "120",
+      ]);
+    } else {
+      assert.deepEqual(args, [
+        "--checkpoint", f.artifact("drawing-pilot-01", "checkpoint", "drawing"),
+        "--onnx-output", f.artifact("drawing-pilot-01", "onnx", "drawing"),
+      ]);
+    }
+  }
+});
+
+test("Drawing eval reads the requested eval.json when the CLI does not print JSON", async () => {
+  const f = fixture();
+  f.add("drawing-pilot-01", "checkpoint", "drawing");
+  f.add("drawing-pilot-01", "onnx", "drawing");
+  const checkpoint = f.artifact("drawing-pilot-01", "checkpoint", "drawing");
+  const onnx = f.artifact("drawing-pilot-01", "onnx", "drawing");
+  f.files.set(f.artifact("drawing-pilot-01", "metadata", "drawing"), JSON.stringify({
+    contract_version: "microduck-drawing-v1",
+    checkpoint_sha256: createHash("sha256").update(f.files.get(checkpoint)).digest("hex"),
+    onnx: {
+      sha256: createHash("sha256").update(f.files.get(onnx)).digest("hex"),
+    },
+  }));
+  const report = {
+    ...sourceReport(f, "drawing-pilot-01", "policy", "drawing"),
+    recipe: "drawing",
+    contract_version: "microduck-drawing-v1",
+    evaluation: {
+      mode: "skill",
+      seed: 7,
+      eval_episodes: 8,
+      environment: {
+        recipe: "drawing",
+        actuator: "xml",
+        max_episode_s: 32,
+        assistance: 0,
+        recipe_options: {},
+        reward_weights: {},
+      },
+    },
+    drawing_assessment: { passed: true, unassisted: true, episodes: [] },
+  };
+  f.api.startJob("eval", {
+    experimentId: "drawing",
+    drawingTool: "pencil",
+    runName: "drawing-pilot-01",
+    profile: "full",
+  });
+  f.files.set(f.artifact("drawing-pilot-01", "evaluation", "drawing"), JSON.stringify(report));
+  finish(f.children[0], null);
+  await new Promise((resolve) => setImmediate(resolve));
+  const state = await f.api.snapshot("drawing", "drawing-pilot-01");
+  assert.equal(state.evaluation.drawing_assessment.passed, true);
+  assert.equal(state.savedRecipe.evalEpisodes, 8);
+  assert.equal(evaluationVerdict(state.evaluation, "drawing").taskPassed, true);
+});
+
+test("saved Drawing runs restore brush only from recipe or exact contract metadata", async () => {
+  function savedBrushFixture(runName, {
+    metadataContract = "microduck-brush-v2",
+    reportContract = "microduck-brush-v2",
+    completeAssessment = true,
+    conditionCount = 10,
+    sourcePackMismatch = false,
+  } = {}) {
+    const f = fixture();
+    f.add(runName, "checkpoint", "drawing");
+    f.add(runName, "onnx", "drawing");
+    const checkpoint = f.artifact(runName, "checkpoint", "drawing");
+    const onnx = f.artifact(runName, "onnx", "drawing");
+    const sourceHashes = {
+      pipeline_sha256: "1".repeat(64),
+      environment_sha256: "2".repeat(64),
+      reference_sha256: "3".repeat(64),
+      actor_sha256: "4".repeat(64),
+      base_environment_sha256: "5".repeat(64),
+      base_reference_sha256: "6".repeat(64),
+    };
+    f.files.set(f.artifact(runName, "metadata", "drawing"), JSON.stringify({
+      contract_version: metadataContract,
+      source_hashes: sourcePackMismatch
+        ? { ...sourceHashes, actor_sha256: "7".repeat(64) }
+        : sourceHashes,
+      checkpoint_sha256: createHash("sha256").update(f.files.get(checkpoint)).digest("hex"),
+      onnx: {
+        sha256: createHash("sha256").update(f.files.get(onnx)).digest("hex"),
+      },
+    }));
+    const report = {
+      ...sourceReport(f, runName, "policy", "drawing"),
+      recipe: "drawing",
+      contract_version: reportContract,
+      success: true,
+      unique_conditions: conditionCount,
+      minimum_seeds_per_condition: 4,
+      environment_source_match: true,
+      provenance_errors: [],
+      source_hashes: sourceHashes,
+      evaluation: {
+        mode: "skill",
+        seed: 7,
+        eval_episodes: 4,
+        environment: {
+          recipe: "drawing",
+          actuator: "xml",
+          max_episode_s: 120,
+          assistance: 0,
+          recipe_options: {},
+          reward_weights: { coverage: 1 },
+        },
+      },
+      drawing_assessment: {
+        passed: true,
+        unassisted: true,
+        episodes: Array.from({ length: conditionCount }, (_, condition) =>
+          Array.from({ length: 4 }, (_, seed) => ({
+            case: `condition-${condition}`,
+            seed,
+            passed: true,
+          }))
+        ).flat(),
+        mean_coverage: 1,
+        ...(completeAssessment ? { mean_precision: 1 } : {}),
+        accepted_episodes: conditionCount * 4,
+        required_episodes: conditionCount * 4,
+      },
+      evaluation_request: {
+        recipe: {
+          experimentId: "drawing",
+          runName,
+          profile: "full",
+        },
+      },
+    };
+    delete report.passed;
+    f.files.set(f.artifact(runName, "evaluation", "drawing"), JSON.stringify(report));
+    return f;
+  }
+
+  const brush = savedBrushFixture("pencil-looking-name");
+  const restored = await brush.api.snapshot("drawing", "pencil-looking-name");
+  assert.equal(restored.drawingTool, "brush");
+  assert.equal(restored.savedRecipe.drawingTool, "brush");
+  assert.equal(restored.savedRecipe.evalEpisodes, 4);
+  assert.equal(restored.evaluation.passed, true);
+  assert.equal(evaluationVerdict(restored.evaluation, "drawing").taskPassed, true);
+
+  brush.files.delete(brush.artifact("pencil-looking-name", "evaluation", "drawing"));
+  const metadataOnly = await brush.api.snapshot("drawing", "pencil-looking-name");
+  assert.equal(metadataOnly.evaluation, null);
+  assert.equal(metadataOnly.savedRecipe, null);
+  assert.equal(metadataOnly.drawingTool, "brush");
+
+  const mismatched = savedBrushFixture("contract-mismatch", {
+    metadataContract: "microduck-drawing-v1",
+  });
+  const rejectedMismatch = await mismatched.api.snapshot("drawing", "contract-mismatch");
+  assert.equal(rejectedMismatch.evaluation, null);
+  assert.equal(rejectedMismatch.savedRecipe, null);
+  assert.equal(rejectedMismatch.drawingTool, "pencil");
+
+  const wrongShape = savedBrushFixture("wrong-shape", {
+    completeAssessment: false,
+  });
+  const rejectedShape = await wrongShape.api.snapshot("drawing", "wrong-shape");
+  assert.equal(rejectedShape.evaluation, null);
+  assert.equal(rejectedShape.savedRecipe, null);
+  assert.equal(rejectedShape.drawingTool, "brush");
+
+  const preliminary = savedBrushFixture("brush-color-v2-01", {
+    conditionCount: 5,
+  });
+  const rejectedPreliminary = await preliminary.api.snapshot("drawing", "brush-color-v2-01");
+  assert.equal(rejectedPreliminary.evaluation, null);
+  assert.equal(rejectedPreliminary.savedRecipe, null);
+  assert.equal(rejectedPreliminary.drawingTool, "brush");
+
+  const changedSourcePack = savedBrushFixture("source-pack-mismatch", {
+    sourcePackMismatch: true,
+  });
+  const rejectedSourcePack = await changedSourcePack.api.snapshot("drawing", "source-pack-mismatch");
+  assert.equal(rejectedSourcePack.evaluation, null);
+  assert.equal(rejectedSourcePack.savedRecipe, null);
+});
+
+test("Basketball fails before spawn when local reference inputs are incomplete", () => {
+  const fresh = fixture();
+  assert.throws(
+    () => fresh.api.startJob("train", {
+      experimentId: "basketball",
+      runName: "basketball-fresh",
+    }),
+    /Basketball local reference setup is incomplete.*checkpoint\.pt.*policy\.onnx.*does not download reference assets/
+  );
+  assert.equal(fresh.children.length, 0);
+
+  const resumed = fixture();
+  resumed.addBasketballReferences();
+  resumed.add("basketball-resume", "checkpoint", "basketball");
+  assert.throws(
+    () => resumed.api.startJob("train", {
+      experimentId: "basketball",
+      runName: "basketball-resume",
+      resumeFromCheckpoint: true,
+    }),
+    /basketball-resume[/\\]policy\.onnx/
+  );
+  assert.equal(resumed.children.length, 0);
+
+  const evaluate = fixture();
+  evaluate.addBasketballReferences();
+  evaluate.add("basketball-eval", "checkpoint", "basketball");
+  assert.throws(
+    () => evaluate.api.startJob("eval", {
+      experimentId: "basketball",
+      runName: "basketball-eval",
+    }),
+    /basketball-eval[/\\]policy\.onnx/
+  );
+  assert.equal(evaluate.children.length, 0);
+});
+
+test("Bridge Full enables curriculum only for training and enforces unassisted evaluation horizon", () => {
+  const train = fixture();
+  const recipe = train.api.startJob("train", {
+    experimentId: "bridge",
+    runName: "bridge-studio-01",
+    profile: "full",
+  });
+  assert.equal(recipe.bridgeCurriculum, true);
+  assert.equal(recipe.totalTimesteps, 32768);
+  assert.equal(recipe.numEnvs, 4);
+  assert.equal(recipe.numSteps, 128);
+  assert.equal(recipe.numMinibatches, 4);
+  assert.equal(recipe.maxEpisodeS, 20);
+  assert.equal(recipe.evalSteps, 1000);
+  assert.equal(recipe.seed, 7);
+  assert.equal(recipe.initialStd, 0.03);
+  assert.equal(recipe.learningRate, 0.00001);
+  assert.equal(recipe.gamma, 0.99);
+  assert.equal(recipe.clipCoefficient, 0.1);
+  assert.equal(recipe.updateEpochs, 2);
+  assert.equal(recipe.entropyCoefficient, 0);
+  assert.equal(recipe.maxGradNorm, 0.5);
+  assert.equal(recipe.freezeObservationNormalization, true);
+  assert.equal(recipe.domainRand, false);
+  assert.equal(recipe.obsNoise, false);
+  assert.equal(recipe.actionDelay, false);
+  assert.equal(recipe.randomYaw, false);
+  assert.equal(train.children[0].args.includes("--bridge-curriculum"), true);
+  assert.equal(train.children[0].args.includes("--freeze-observation-normalization"), true);
+  assert.equal(train.children[0].args.includes("--init-from"), false);
+  assert.deepEqual(JSON.parse(arg(train.children[0], "--weight-overrides")), {});
+
+  for (const operation of ["eval", "render"]) {
+    const f = fixture();
+    f.add("bridge-studio-01", "onnx", "bridge");
+    f.api.startJob(operation, {
+      experimentId: "bridge",
+      runName: "bridge-studio-01",
+      profile: "full",
+    });
+    const child = f.children[0];
+    assert.equal(child.args.includes("examples/ppo_microduck_studio.py"), true);
+    assert.equal(arg(child, "--recipe"), "bridge");
+    assert.equal(child.args.includes("--bridge-curriculum"), false);
+    assert.equal(arg(child, "--max-episode-s"), "20");
+    if (operation === "eval") assert.equal(arg(child, "--eval-steps"), "1000");
+  }
+
+  assert.throws(() => fixture().api.normalizeRecipe({
+    experimentId: "bridge",
+    profile: "full",
+    maxEpisodeS: 19,
+    evalSteps: 1000,
+  }), /requires 20 episode seconds/);
+  assert.throws(() => fixture().api.normalizeRecipe({
+    experimentId: "bridge",
+    profile: "full",
+    maxEpisodeS: 20,
+    evalSteps: 1500,
+  }), /whole number of complete episode horizons/);
+  assert.equal(fixture().api.normalizeRecipe({
+    experimentId: "bridge",
+    profile: "full",
+    maxEpisodeS: 20,
+    evalSteps: 2000,
+  }).evalSteps, 2000);
+  assert.throws(() => fixture().api.normalizeRecipe({
+    experimentId: "bridge",
+    profile: "full",
+    maxEpisodeS: 20,
+    evalSteps: 999,
+  }), /at least 1,000 evaluation steps/);
 });
 
 for (const profile of ["smoke", "full"]) {
@@ -319,14 +902,286 @@ test("policy exploration and reward normalization defaults remain recipe-specifi
   const dance = f.api.normalizeRecipe({ experimentId: "dance" });
   const swing = f.api.normalizeRecipe({ experimentId: "swing" });
   const running = f.api.normalizeRecipe({ experimentId: "running" });
+  const backflip = f.api.normalizeRecipe({ experimentId: "backflip", profile: "full" });
   assert.equal(dance.initialStd, Math.exp(-0.5));
   assert.equal(dance.normalizeRewards, false);
   assert.equal(swing.initialStd, 0.1);
   assert.equal(swing.normalizeRewards, true);
   assert.equal(running.initialStd, Math.exp(-0.5));
   assert.equal(running.normalizeRewards, false);
+  assert.equal(backflip.initialStd, 0.03);
+  assert.equal(backflip.normalizeRewards, true);
+  assert.equal(backflip.freezeObservationNormalization, true);
+  assert.equal(backflip.seed, 7);
+  assert.equal(backflip.totalTimesteps, 401_408);
+  assert.equal(backflip.numEnvs, 16);
+  assert.equal(backflip.numSteps, 128);
+  assert.equal(backflip.numMinibatches, 4);
+  assert.equal(backflip.updateEpochs, 2);
+  assert.equal(backflip.learningRate, 0.000003);
+  assert.equal(backflip.entropyCoefficient, 0);
+  assert.equal(backflip.maxEpisodeS, 12);
+  assert.equal(backflip.evalSteps, 600);
+  assert.equal(backflip.renderSeconds, 12);
+  assert.equal(backflip.domainRand, false);
+  assert.equal(backflip.obsNoise, false);
+  assert.equal(backflip.actionDelay, false);
+  assert.equal(backflip.randomYaw, false);
+  assert.deepEqual(plain(backflip.rewardWeights), {
+    landing_upright: 3,
+    landing_pose: 2,
+    landing_settle: 1,
+    landing_joint_speed_penalty: 0.05,
+    landing_action_rate_penalty: 0.02,
+    landing_action_size_penalty: 0.01,
+  });
   assert.equal(dance.checkpointInterval, 100_000);
   assert.equal(dance.dancePoseSigma, null);
+});
+
+test("Backflip smoke stays four steps while Full emits the fixed PPO preset", () => {
+  const smoke = fixture();
+  const smokeRecipe = smoke.api.startJob("train", {
+    experimentId: "backflip",
+    runName: "backflip-smoke",
+  });
+  assert.equal(smokeRecipe.totalTimesteps, 4);
+  assert.equal(smokeRecipe.freezeObservationNormalization, false);
+  assert.equal(arg(smoke.children[0], "--total-timesteps"), "4");
+  assert.equal(arg(smoke.children[0], "--backend"), "dummy");
+  assert.equal(arg(smoke.children[0], "--update-epochs"), "1");
+  assert.equal(smoke.children[0].args.includes("--init-from"), false);
+
+  const full = fixture();
+  const fullRecipe = full.api.startJob("train", {
+    experimentId: "backflip",
+    runName: "backflip-full",
+    profile: "full",
+  });
+  const child = full.children[0];
+  assert.equal(fullRecipe.totalTimesteps, 401_408);
+  assert.equal(arg(child, "--recipe"), "backflip");
+  assert.equal(arg(child, "--backend"), "dummy");
+  assert.equal(arg(child, "--total-timesteps"), "401408");
+  assert.equal(arg(child, "--num-envs"), "16");
+  assert.equal(arg(child, "--num-steps"), "128");
+  assert.equal(arg(child, "--num-minibatches"), "4");
+  assert.equal(arg(child, "--update-epochs"), "2");
+  assert.equal(arg(child, "--learning-rate"), "0.000003");
+  assert.equal(arg(child, "--initial-std"), "0.03");
+  assert.equal(child.args.includes("--freeze-observation-normalization"), true);
+  assert.equal(arg(child, "--entropy-coefficient"), "0");
+  assert.equal(arg(child, "--seed"), "7");
+  assert.equal(child.args.includes("--normalize-rewards"), true);
+  assert.equal(child.args.includes("--no-domain-rand"), true);
+  assert.equal(child.args.includes("--no-obs-noise"), true);
+  assert.equal(child.args.includes("--no-action-delay"), true);
+  assert.equal(child.args.includes("--no-random-yaw"), true);
+  assert.deepEqual(JSON.parse(arg(child, "--weight-overrides")), {
+    landing_upright: 3,
+    landing_pose: 2,
+    landing_settle: 1,
+    landing_joint_speed_penalty: 0.05,
+    landing_action_rate_penalty: 0.02,
+    landing_action_size_penalty: 0.01,
+  });
+
+  const dance = fixture();
+  dance.api.startJob("train", {
+    experimentId: "dance",
+    runName: "dance-fork-default",
+  });
+  assert.equal(dance.children[0].args.includes("--backend"), false);
+});
+
+test("Backflip evaluation requires current stand-policy provenance and explicit skill scope", async () => {
+  const f = fixture();
+  f.add("backflip-eval", "checkpoint", "backflip");
+  f.add("backflip-eval", "metadata", "backflip");
+  f.addStandPolicy();
+  const recipe = {
+    experimentId: "backflip",
+    runName: "backflip-eval",
+    profile: "full",
+  };
+  f.api.startJob("eval", recipe);
+  const standHash = createHash("sha256").update(f.files.get(f.standPolicy)).digest("hex");
+  finish(f.children[0], {
+    ...sourceReport(f, "backflip-eval", "checkpoint", "backflip"),
+    recipe: "backflip",
+    evaluation: {
+      environment: {
+        recipe_options: {
+          backflip_protocol_version: "spotter-launch-landing-stand-v2",
+          stand_policy_sha256: standHash,
+        },
+      },
+    },
+    backflip_assessment: {
+      passed: true,
+      episodes: [{ passed: true, rotation_rad: 6.4, stand_hold_seconds: 2.1 }],
+    },
+  });
+  const accepted = await f.api.snapshot();
+  assert.equal(evaluationVerdict(accepted.evaluation, "backflip").taskPassed, true);
+  assert.equal(accepted.savedRecipe.experimentId, "backflip");
+
+  f.api.startJob("eval", recipe);
+  finish(f.children[1], {
+    ...sourceReport(f, "backflip-eval", "checkpoint", "backflip"),
+    recipe: "backflip",
+    evaluation: {
+      environment: {
+        recipe_options: {
+          backflip_protocol_version: "spotter-launch-landing-stand-v1",
+          stand_policy_sha256: standHash,
+        },
+      },
+    },
+    backflip_assessment: {
+      passed: true,
+      episodes: [{ passed: true, rotation_rad: 6.4, stand_hold_seconds: 2.1 }],
+    },
+  });
+  const obsolete = await f.api.snapshot();
+  assert.equal(obsolete.evaluation.skill_status, "not_assessed");
+  assert.equal(obsolete.evaluation.evaluation_settings_match, false);
+
+  f.addStandPolicy("new stand policy bytes");
+  const invalidated = await f.api.snapshot();
+  assert.equal(invalidated.evaluation.skill_status, "not_assessed");
+  assert.equal(invalidated.evaluation.evaluation_settings_match, false);
+  assert.equal(evaluationVerdict(invalidated.evaluation, "backflip").taskPassed, false);
+});
+
+test("Backflip render receipts require and record the exact Python protocol provenance", () => {
+  const accepted = fixture();
+  accepted.add("backflip-render", "onnx", "backflip");
+  accepted.addStandPolicy();
+  accepted.api.startJob("render", {
+    experimentId: "backflip",
+    runName: "backflip-render",
+    profile: "full",
+  });
+  finish(accepted.children[0], {
+    rendered: true,
+    evaluation: {
+      environment: {
+        recipe_options: {
+          backflip_protocol_version: "spotter-launch-landing-stand-v2",
+          stand_policy_sha256: "current-stand-hash",
+        },
+      },
+    },
+  });
+  assert.equal(accepted.renderFinalizations.length, 1);
+  assert.deepEqual(plain(accepted.renderFinalizations[0].recipeOptions), {
+    backflip_protocol_version: "spotter-launch-landing-stand-v2",
+    stand_policy_sha256: "current-stand-hash",
+  });
+
+  const obsolete = fixture();
+  obsolete.add("backflip-render-v0", "onnx", "backflip");
+  obsolete.addStandPolicy();
+  obsolete.api.startJob("render", {
+    experimentId: "backflip",
+    runName: "backflip-render-v0",
+    profile: "full",
+  });
+  finish(obsolete.children[0], {
+    rendered: true,
+    evaluation: {
+      environment: {
+        recipe_options: {
+          backflip_protocol_version: "spotter-launch-landing-stand-v1",
+          stand_policy_sha256: "current-stand-hash",
+        },
+      },
+    },
+  });
+  assert.equal(obsolete.renderFinalizations.length, 0);
+});
+
+test("Backflip render completion reads protocol provenance from renderer output", () => {
+  const f = fixture();
+  f.add("backflip-render-output", "onnx", "backflip");
+  f.api.startJob("render", {
+    experimentId: "backflip",
+    runName: "backflip-render-output",
+    profile: "full",
+  });
+  finish(f.children[0], {
+    rendered: true,
+    environment: {
+      recipe_options: {
+        backflip_protocol_version: "spotter-launch-landing-stand-v2",
+        stand_policy_sha256: "stand-hash",
+      },
+    },
+  });
+  assert.equal(f.renderFinalizations.length, 1);
+  assert.deepEqual(plain(f.renderFinalizations[0].recipeOptions), {
+    backflip_protocol_version: "spotter-launch-landing-stand-v2",
+    stand_policy_sha256: "stand-hash",
+  });
+});
+
+test("Backflip render verification matches the evaluated protocol and stand-policy hash", async () => {
+  const f = fixture();
+  f.add("backflip-bound-render", "onnx", "backflip");
+  f.addStandPolicy();
+  const standHash = createHash("sha256")
+    .update(f.files.get(f.standPolicy))
+    .digest("hex");
+  const recipe = {
+    experimentId: "backflip",
+    runName: "backflip-bound-render",
+    profile: "full",
+  };
+
+  f.api.startJob("eval", recipe);
+  finish(f.children[0], {
+    ...sourceReport(f, recipe.runName, "policy", "backflip"),
+    recipe: "backflip",
+    evaluation: {
+      environment: {
+        recipe_options: {
+          backflip_protocol_version: "spotter-launch-landing-stand-v2",
+          stand_policy_sha256: standHash,
+        },
+      },
+    },
+    backflip_assessment: {
+      passed: true,
+      episodes: [{ passed: true, rotation_rad: 6.4, stand_hold_seconds: 2.1 }],
+    },
+  });
+
+  f.api.startJob("render", recipe);
+  finish(f.children[1], {
+    rendered: true,
+    evaluation: {
+      environment: {
+        recipe_options: {
+          backflip_protocol_version: "spotter-launch-landing-stand-v2",
+          stand_policy_sha256: standHash,
+        },
+      },
+    },
+  });
+  f.setReadRenderEvidence((_receiptPath, expected) => ({
+    ...expected,
+    clipSha256: null,
+    externalFilesSha256: { [f.standPolicy]: standHash },
+    video: { sha256: "bound-video" },
+  }));
+
+  const snapshot = await f.api.snapshot();
+  assert.equal(snapshot.renderVerified, true);
+  assert.deepEqual(plain(f.renderEvidenceReads.at(-1).expected.recipeOptions), {
+    backflip_protocol_version: "spotter-launch-landing-stand-v2",
+    stand_policy_sha256: standHash,
+  });
 });
 
 test("Dance clip paths are explicit, existing, and confined to owned roots", () => {
@@ -810,5 +1665,6 @@ test("UI requires authoritative scoped skill verdict, not finite output or large
   assert.equal(evaluationVerdict({ ...skill, recipe: "running", skill_status: "passed" }, "running").taskPassed, true);
   assert.equal(evaluationVerdict({ ...skill, skill_status: "not_assessed" }, "stilts").taskPassed, false);
   assert.equal(evaluationVerdict({ ...skill, recipe: "stilts", skill_status: "passed" }, "stilts").taskPassed, true);
+  assert.equal(evaluationVerdict({ ...skill, recipe: "backflip", skill_status: "passed" }, "backflip").taskPassed, true);
   assert.equal(evaluationVerdict({ ...skill, evaluation: { swing_criteria: { min_bidirectional_span_deg: 150 } } }, "swing").swingMinSpanDeg, 150);
 });

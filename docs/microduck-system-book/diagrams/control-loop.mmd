@@ -1,0 +1,12 @@
+flowchart LR
+  Tick[20 ms tick] --> Read[sync_read\nIMU + 15 servos]
+  Read --> Observe[构建 61 维观测\n嘴部关节跳过]
+  Observe --> Infer[ONNX 推理\n14 维动作]
+  Command[速度 / 视线 / 技能意图] --> Observe
+  Infer --> Target[home + scale x action\n嘴部由独立命令控制]
+  Target --> Safety[有限值检查\n关节限位\n速度限制\n安全姿态]
+  Safety --> Write[sync_write\n15 个目标位置]
+  Write --> Publish[发布 health / state\n订阅者慢则丢帧]
+  Publish --> Tick
+  Read -. 连续总线失败 .-> Hold[最多沿用旧观测 3 tick\n随后保持静止]
+  Hold --> Safety

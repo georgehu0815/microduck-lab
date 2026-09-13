@@ -13,18 +13,24 @@ const output = path.resolve(
     "../rlx/artifacts/trained-previews-20260908/browser"
 );
 const scenarios = [
-  { id: "dance", title: "Dance imitation", shortTitle: "Dance" },
-  { id: "swing", title: "Self-pumped swing", shortTitle: "Swing" },
-  { id: "running", title: "Fast running", shortTitle: "Running" },
-  { id: "stilts", title: "Stilt walking", shortTitle: "Stilts" },
+  { id: "dance", title: "Dance imitation", shortTitle: "Dance", preview: "task" },
+  { id: "swing", title: "Self-pumped swing", shortTitle: "Swing", preview: "task" },
+  { id: "running", title: "Fast running", shortTitle: "Running", preview: "task" },
+  { id: "stilts", title: "Stilt walking", shortTitle: "Stilts", preview: "task" },
+  { id: "backflip", title: "Backflip showcase", shortTitle: "Backflip", preview: "task" },
+  { id: "basketball", title: "Basketball balancing", shortTitle: "Basketball", preview: "balance" },
+  { id: "bridge", title: "Suspended bridge", shortTitle: "Bridge", preview: "diagnostic" },
 ];
 
 await mkdir(output, { recursive: true });
 
-function isEligible(run) {
-  return run?.taskPassed === true &&
+function isEligible(run, scenario) {
+  const accepted = run?.taskPassed === true ||
+    (scenario?.preview === "balance" && run?.balanceOnly === true) ||
+    (scenario?.preview === "diagnostic" && run?.taskPassed === false && run?.skillAssessed === true);
+  return accepted &&
     run.video === true &&
-    run.checkpoint === true &&
+    (run.checkpoint === true || (scenario.id === "basketball" && run.onnx === true)) &&
     run.renderVerified === true &&
     typeof run.renderEvidenceId === "string" &&
     run.renderEvidenceId.length > 0;
@@ -35,8 +41,9 @@ function trainedTime(run) {
 }
 
 function newestEligible(runs, experimentId) {
+  const scenario = scenarios.find((candidate) => candidate.id === experimentId);
   return runs
-    .filter((run) => run.experimentId === experimentId && isEligible(run))
+    .filter((run) => run.experimentId === experimentId && isEligible(run, scenario))
     .sort((left, right) => trainedTime(right) - trainedTime(left))[0] ?? null;
 }
 
@@ -159,8 +166,28 @@ async function inspectExperimentRows(page, expectedByScenario, { playVideos }) {
   const results = [];
   for (const scenario of scenarios) {
     const expected = expectedByScenario.get(scenario.id);
+    if (scenario.preview === "none") {
+      assert.equal(expected, null, `${scenario.id} must not claim a verified preview`);
+      const row = await experimentRow(page, scenario.title);
+      await row.getByText("No verified rollout yet", { exact: true }).waitFor();
+      assert.equal(await row.locator("video, img").count(), 0);
+      results.push({
+        experimentId: scenario.id,
+        runName: null,
+        placeholder: "No verified rollout yet",
+      });
+      continue;
+    }
     assert.ok(expected, `Missing expected eligible ${scenario.id} run`);
     const row = await experimentRow(page, scenario.title);
+    if (scenario.preview === "diagnostic") {
+      assert.equal(expected.taskPassed, false);
+      await row.getByText("TRAINING PILOT · CROSSING FAILED", { exact: true }).waitFor();
+    }
+    if (scenario.preview === "balance") {
+      assert.equal(expected.taskPassed, false);
+      await row.getByText("BALANCE ONLY · STEERING NOT PASSED", { exact: true }).waitFor();
+    }
     await row.getByText(expected.runName, { exact: true }).waitFor();
     assert.equal(
       await row.getByText(expected.runName, { exact: true }).count(),
@@ -239,6 +266,7 @@ async function layoutEvidence(page) {
 function newerIneligibleRuns(expectedByScenario) {
   const additions = [];
   for (const scenario of scenarios) {
+    if (scenario.preview === "none") continue;
     const selected = expectedByScenario.get(scenario.id);
     const baseTime = Math.max(
       trainedTime(selected),
@@ -253,6 +281,8 @@ function newerIneligibleRuns(expectedByScenario) {
         trainedAt: failedAt,
         modifiedAt: failedAt,
         taskPassed: false,
+        balanceOnly: false,
+        skillAssessed: false,
       },
       {
         ...selected,
@@ -293,6 +323,16 @@ async function verifyReducedMotion(browser, expectedByScenario) {
     for (const scenario of scenarios) {
       const expected = expectedByScenario.get(scenario.id);
       const row = await experimentRow(page, scenario.title);
+      if (scenario.preview === "none") {
+        await row.getByText("No verified rollout yet", { exact: true }).waitFor();
+        assert.equal(await row.locator("video, img").count(), 0);
+        results.push({
+          experimentId: scenario.id,
+          runName: null,
+          placeholder: "No verified rollout yet",
+        });
+        continue;
+      }
       const video = row.locator("video");
       const sheet = row.getByRole("img", {
         name: new RegExp("trained rollout contact sheet$", "i"),
@@ -332,6 +372,10 @@ const expectedByScenario = new Map(
 );
 for (const scenario of scenarios) {
   const selected = expectedByScenario.get(scenario.id);
+  if (scenario.preview === "none") {
+    assert.equal(selected, null, `${scenario.id} must remain unverified`);
+    continue;
+  }
   assert.ok(selected, `Live catalog has no eligible ${scenario.id} run`);
   assert.ok(
     Number.isFinite(Date.parse(selected.trainedAt)),
@@ -408,11 +452,11 @@ try {
   };
 
   {
-    const missingScenario = scenarios.at(-1);
+    const missingScenario = scenarios.find((scenario) => scenario.preview === "task");
     const mockedRuns = [
       ...newerIneligibleRuns(expectedByScenario),
       ...liveRuns.filter((run) =>
-        run.experimentId !== missingScenario.id || !isEligible(run)
+        run.experimentId !== missingScenario.id || !isEligible(run, missingScenario)
       ),
     ];
     const { context, page } = await newPage(browser, mockedRuns);

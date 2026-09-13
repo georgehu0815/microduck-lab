@@ -1,5 +1,66 @@
 # duck-viewer
 
+## Interface language
+
+Use the **English / 中文** toggle in Studio or Arm Lab. English is the default,
+independent of the browser language. The selection is saved locally as
+`microduck.ui.language`, shared across pages and tabs, and restored on reload.
+If browser storage is blocked, switching still works for the current page.
+The toggle changes interface text, not training settings, case IDs, raw logs,
+evidence receipts, file paths, or text embedded in existing videos and documents.
+Video filters, selected recording, and playback position are retained when switching.
+
+Language verification (browser checks require the viewer and arm simulator):
+
+```bash
+node --test lib/language.test.mjs
+STUDIO_URL=http://127.0.0.1:63317 node scripts/verify-ui-language.mjs
+```
+
+Browser receipts and English/Chinese screenshots are saved under
+`rlx/artifacts/viewer-language/` (override with `LANGUAGE_EVIDENCE_DIR`).
+The browser check also verifies that switching live controls preserves the case,
+seed, and manual actions without reconnecting or sending simulator commands.
+
+## Arm classroom workspace
+
+Open **Arm Lab** or **Arm videos** in Studio navigation, or go directly to
+`/arm#videos`. The existing arm page now separates **Video library** (default)
+from **Live simulator**; the original eight duck experiments are unchanged.
+
+- The library discovers all MP4 files under `rlx/runs/arm`, including current
+  evaluations, repaired regression replays, historical failures, and compilations.
+- Byte-identical copies are grouped, with their source aliases retained. The
+  inventory at integration contains 41 files / 35 unique videos; the UI reads
+  actual files rather than hardcoding those counts.
+- Filter by case, source provenance, outcome, recording type, or seed/batch text.
+  Play, seek, download, step through the playlist, and inspect the source receipt.
+- Recorded videos use `/api/arm/videos` and `/api/arm/media` directly from Next.js;
+  the live Python service on port 8812 is not needed for playback. Media delivery
+  supports byte ranges and HEAD; private files, traversal and symlink artifacts
+  are denied.
+- Live simulator preserves case reset, bounded manual actions, teacher stepping,
+  live metrics and run records. It is simulation-only; hardware remains locked.
+- Current-source, historical, unverified, failed and mixed evidence are labeled
+  separately. A passed compilation or video is not a full experiment matrix,
+  and authored IK/FSM + PPO residual is not end-to-end learned planning.
+
+Verification (with the viewer and arm simulator running):
+
+```bash
+npm test
+npm run lint
+npm run build
+STUDIO_URL=http://127.0.0.1:63317 node scripts/verify-arm-viewer.mjs
+```
+
+The browser check independently inventories MP4 bytes, plays and seeks every
+unique video with the live API deliberately offline, tests filters and mobile
+overflow, then resets and teacher-steps all six cases against the real simulator.
+Evidence is written under `rlx/artifacts/arm-viewer-20260912/`. Override the output
+with `ARM_VIEWER_EVIDENCE_DIR` or the existing Playwright location with
+`PLAYWRIGHT_PACKAGE` when running on another workstation.
+
 Next.js + Three.js (react-three-fiber) web viewer for Microduck policies — watch
 many training runs walk side by side in the browser instead of the native MuJoCo
 viewer. The pattern is lifted from jenga-stacker's web viewer (mesh geometry
@@ -73,8 +134,21 @@ the UI deliberately doesn't expose them.)
   then click a duck) to hot-swap its brain mid-stride; drag it to empty floor
   — or just **double-click the chip** — to spawn a fresh duck running that
   policy; drop it (or armed-click) **on the 🎓 teach panel** to load that
-  run's recipe there for refinement instead. Auto-refreshes when a training
-  run finishes. Hovering one of **our runs** reveals a ✕ that deletes that
+  run's recipe there for refinement instead. **Refresh** rescans the Lab's
+  training runs and checkpoints without browser caching; the newest saved
+  `policy.onnx` or `live.onnx` appears for each run. Reassigning a policy loads
+  updated bytes instead of a stale inference cache. Refreshing does not switch
+  ducks automatically. The panel also refreshes when opened and when a Lab
+  training run finishes, and retains its previous list if a scan fails.
+  In Studio, the same button refreshes **Studio runs**, newest training/export
+  first, across all scenarios. Exported Studio policy chips retain the same
+  drag-to-duck, click-to-arm, and double-click-to-spawn interactions. Each runs
+  in its saved scenario's nominal simulation, with per-duck geometry for swing
+  and stilts; Backflip retains its explicit spotter launch and stand handoff.
+  **Review / render** still opens evaluation and export controls. Checkpoint-only
+  runs must export ONNX before dragging; invalid or stale metadata cannot silently
+  fall back to a walking environment. No hardware deployment is performed.
+  Hovering one of **our runs** reveals a ✕ that deletes that
   run's training data from disk — the exported policy, its checkpoints and
   its progress log; a curriculum chain deletes as one family, all stages at
   once. It always confirms first (naming the run dirs and the space it
@@ -140,16 +214,89 @@ lab restarts.
 
 ## Studio RLX API checks
 
-The four previews under **Choose what the duck should learn** play real saved
-training rollouts, not the bundled reference GIFs. Each scenario selects the
-newest trained checkpoint with a passing skill evaluation and matching video
-provenance. Re-evaluating an older checkpoint does not make it the newest trained
-run. The displayed run name, Full video and Evaluation links identify the same
-run; reduced-motion users see its contact sheet. Without verified evidence the
-card says **No verified rollout yet**, rather than substituting an untrained
-animation. The catalog refreshes on page load and local job phase changes.
-`node scripts/verify-trained-previews.mjs` checks all four real videos in the
-browser and covers missing evidence and newer rejected-run selection.
+The eight cases under **Choose what the duck should learn** use run-owned saved
+evidence, not bundled reference GIFs. Dance, Swing, Running, Stilts, and
+Backflip select the newest trained checkpoint with a passing task evaluation and
+matching video provenance. Basketball may additionally expose a clearly labeled
+**BALANCE ONLY · STEERING NOT PASSED** preview after its recurrent ONNX survives
+the full 60-second unassisted balance gate; that preview never passes the full
+task. Bridge has a bounded 32,768-step transferred-walker training pilot and a
+source-bound failed-crossing diagnostic video. Its video provenance is verified,
+but the crossing remains non-passing until strict unassisted evaluation, render,
+and visual review all complete. Failed or unassessed saved runs remain available
+under **Review trained policies** for diagnostic review.
+The displayed run name, Full video and Evaluation links identify the same run;
+reduced-motion users see its contact sheet. Missing evidence never falls back to
+an untrained animation. The catalog refreshes on page load and local job phase
+changes. From the workspace root, `node scripts/verify-eight-cases.mjs` checks
+the current eight-case catalog and live scenes. Historical seven-case receipts
+remain in `docs/seven-cases-verification/`.
+
+### Eight saved-render previews
+
+The original seven tracked GIFs are four-second excerpts from run-owned render
+videos. The drawing GIFs show recorded rollouts at 4× playback speed.
+They are simulation evidence, not hardware certification.
+
+| Dance | Swing | Running |
+|---|---|---|
+| ![Dance saved rollout](../docs/seven-cases-verification/media/dance.gif) | ![Swing saved rollout](../docs/seven-cases-verification/media/swing.gif) | ![Running saved rollout](../docs/seven-cases-verification/media/running.gif) |
+
+| Stilts | Backflip: assisted launch → PPO landing → stand handoff |
+|---|---|
+| ![Stilts saved rollout](../docs/seven-cases-verification/media/stilts.gif) | ![Backflip assisted launch, PPO landing, and pretrained stand handoff](../docs/seven-cases-verification/media/backflip.gif) |
+
+| Basketball: balance only, rolling unmastered | Bridge: failed crossing diagnostic |
+|---|---|
+| ![Basketball balance-only rollout; steering and rolling are not mastered](../docs/seven-cases-verification/media/basketball.gif) | ![Bridge failed crossing diagnostic; this is not a successful crossing](../docs/seven-cases-verification/media/bridge.gif) |
+
+| Drawing: learned-policy diagnostic | Contact-only teacher feasibility, NOT PPO |
+|---|---|
+| ![Drawing learned-policy diagnostic, not accepted](../docs/drawing-case/media/drawing.gif) | ![Successful teacher reference, not a learned policy](../docs/drawing-case/media/teacher.gif) |
+
+The eighth case includes a real free-body pencil, two contact pads, an independent
+fifteenth mouth actuator, easel, board, and canvas. Live graphite lines come only
+from streamed physical contact records and disappear on reset. Its versioned
+`microduck-drawing-v1` interface is **83 observations / 15 actions**, simulation
+only; the previous seven keep their existing contracts. Teacher success does not
+unlock learned-policy acceptance. See the [complete workflow](../docs/drawing-case/README.md)
+and [measured results](../docs/drawing-case/RESULTS.md).
+
+### Eighth-case upgrade: soft color brush
+
+The same eighth card now has **Pencil / Brush** tools, not a ninth case.
+Brush uses the separate `microduck-brush-v2` **93-observation / 15-action**
+interface, a passive compliant hair-bundle approximation, and four physical
+palette wells. Colored ink is streamed from actual brush contact, never the
+reference drawing. The original failed pencil and teacher evidence remain separate.
+
+![Learned color-brush rollout, actual contact paint, 4× playback](../docs/drawing-case/brush/media/brush.gif)
+
+See the [bilingual brush workflow](../docs/drawing-case/brush/README.md) and
+[source-bound results](../docs/drawing-case/brush/RESULTS.md). BC imitation already
+produces the skill; PPO updates are real but are not claimed to improve on BC.
+The planner follows a fixed swimming-duck template; this is not learned vision,
+arbitrary composition, autonomous pickup, or hardware validation.
+
+**Backflip is not an unassisted whole-flip policy. Basketball demonstrates
+balance only, not mastered rolling or steering. Bridge is a failed crossing
+attempt retained for diagnosis, not a successful crossing.**
+
+<details>
+<summary>Saved-run and video provenance</summary>
+
+- **Dance:** `dance/dance-e2e-20260907-low-noise/render/ep0.mp4`
+- **Swing:** `swing/swing-e2e-20260907-v3/render/ep0.mp4`
+- **Running:** `running/running-e2e-20260907-v4/render/ep0.mp4`
+- **Stilts:** `stilts/stilts-e2e-20260907-v3/render/ep0.mp4`
+- **Backflip:** `backflip/backflip-e2e-20260908-v5/render/ep0.mp4`
+- **Basketball:** `basketball/basketball-balance-01/render/rollout.mp4`
+- **Bridge:** `bridge/bridge-studio-02/render/ep0.mp4`
+
+Paths are relative to `rlx/runs/studio/`. The tracked GIFs live in
+`../docs/seven-cases-verification/media/`.
+
+</details>
 
 After Pipeline smoke completes, select **Default full**, then click **Start RLX**.
 Selecting a profile prepares settings; it does not start training. If the current
@@ -158,7 +305,7 @@ example `dance-studio-full`, then `dance-studio-full-2`) and disables continuati
 preserving the Smoke checkpoint. **New run** prepares another fresh name without
 changing your other settings. To deliberately resume, load the existing run and
 enable **Continue current checkpoint** in Advanced settings; this control is
-available for all four scenarios. Launch errors appear beside Start RLX and take
+available for all eight scenarios. Launch errors appear beside Start RLX and take
 precedence over an older completion message. The API still rejects accidental
 checkpoint overwrites.
 
@@ -168,7 +315,32 @@ Its launch requests are mocked; it never starts a million-step training run.
 
 `npm test` runs isolated Node tests for RLX commands, run-owned telemetry and evaluation state, cancelled-process callbacks, and UI verdict projection. The tests use the installed TypeScript compiler and mocked subprocess/artifact I/O; they do not train policies or modify run artifacts. `npm run build` verifies the Next.js application.
 
-Studio's Smoke profile evaluates only the pipeline (`--evaluation-mode pipeline`, four control steps). Full selects `--evaluation-mode skill`; Swing uses 1,200 control steps (24 seconds). The editable `swingMinSpanDeg` recipe field defaults to 150° symmetric total span, requiring at least 75° in each direction, complete episodes, valid geometry, and tensioned strings. Evaluation starts still; training assistance settings do not become evaluation assistance.
+Studio's Smoke profile evaluates only the pipeline (`--evaluation-mode pipeline`, four control steps). Full selects `--evaluation-mode skill`; Swing uses 1,200 control steps (24 seconds), Backflip uses 600 control steps (12 seconds), Basketball uses 3,000 control steps (60 seconds), and Bridge uses at least 1,000 control steps (20 seconds). The editable `swingMinSpanDeg` recipe field defaults to 150° symmetric total span, requiring at least 75° in each direction, complete episodes, valid geometry, and tensioned strings. Basketball routes train/eval/render through `ppo_microduck_balance.py`, carries recurrent ONNX state between ordinary steps, and resets it with the episode. Studio basketball training defaults to unassisted fine-tuning (`--hold 0`, curriculum disabled); the adapter's assistance ladder is an explicit CLI-only option. Current evaluation covers zero-command balance and 0.15 forward tracking, not lateral or yaw steering. Bridge Full uses 32,768 steps, 4 environments, 128 rollout steps, 4 minibatches, seed 7, initial std `0.03`, learning rate `1e-5`, gamma `0.99`, clip `0.1`, 2 epochs, zero entropy, max gradient norm `0.5`, no randomization, and frozen observation normalization. It adds `--bridge-curriculum` only for training; evaluation and rendering use the final narrow suspended bridge unassisted. Automatic bootstrap and continuation are actor warm-starts with a fresh critic and optimizer, not exact optimizer resume. Both recipes own fixed reward definitions, so their empty reward-control sections are intentional.
+
+Backflip is always **spotter-assisted launch → PPO landing → pretrained
+stand-policy handoff**. Fresh Full exactly transfers the `alpha_stand.onnx`
+actor and observation normalizer into the landing student before PPO; smoke
+skips teacher initialization and remains unfrozen. Full freezes observation
+normalization and uses initial std `0.03`, learning rate `3e-6`, and 2 update
+epochs over a nominal 400,000-step budget, normalized to 401,408 complete
+rollout-batch steps. Before PPO, Python collects 16 pretrained-teacher landing
+episodes of 600 steps (9,600 calibration steps), fixes the discounted-return
+RMS, and runs 10 critic-only calibration epochs. The actor remains unchanged,
+calibrated reward normalization is frozen for Backflip, and PPO starts with a
+fresh optimizer. This prevents warm-start reward-scale shock; it does not by
+itself establish positive PPO improvement. The same pretrained policy participates in the
+fixed Python-owned `spotter-launch-landing-stand-v2` protocol and receives the
+final handoff. Launch releases at the 5.3 rad threshold (measured
+5.376–5.380 rad) with angular rate 3.5–6.5 rad/s; external lift and pitch stop
+at release. Version 2 acceptance requires at least 5.8 rad of credited rotation before handoff,
+followed by 10 consecutive stable PPO landing steps with no spotter, stand
+override, or body support, and at least 2 seconds of stable standing. The stand
+policy cannot finish credited rotation. Evaluation and render provenance bind
+the current stand-policy hash and source ONNX metadata. `backflip.onnx` is the
+learned landing stage only, not the complete or hardware-ready controller.
+Backflip reward terms are observable, bounded, and active only during PPO
+landing: upright pose and settling rewards plus joint-speed, action-rate, and
+action-size penalties. They are zero during assisted launch and stand handoff.
 
 The API saves the Python report, including its source hash, actual evaluation settings, pipeline and skill verdicts, alongside `evaluation_request` containing the submitted normalized recipe, evaluation mode, horizon, and Swing target. The UI displays the saved scope and target and uses evaluator verdicts; finite output or a pipeline pass never establishes Swing skill. Export requires a checkpoint and sends the export parser's required recipe plus checkpoint/output arguments, without environment flags. Switching runs clears in-memory evidence; evaluating or rendering the same run preserves its training history. Cancelled or superseded process callbacks cannot publish results into a newer job.
 
@@ -243,10 +415,12 @@ policy bytes, not to an example animation or an average reward.
 - Fresh training cannot overwrite an existing checkpoint. Use a new run name or
   explicitly select continuation. Continuation timesteps are additional steps.
 - Swing's verified policy uses BC/DAgger acquisition followed by PPO refinement.
-  All four results are nominal XML-actuator simulation results, not hardware
-  certification or proof that arbitrary clips/settings will learn successfully.
+  Backflip uses exact pretrained stand actor/normalizer transfer followed by PPO
+  landing refinement.
+  All displayed results are simulation evidence, not hardware certification or
+  proof that arbitrary clips/settings will learn successfully.
 
-Run the real-browser regression against the existing four verified runs:
+Run the real-browser regression against the seven-case catalog:
 
 ```bash
 npm run e2e:studio

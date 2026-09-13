@@ -180,6 +180,13 @@ function createHarness({ selected = null, phase = "idle" } = {}) {
     "@/lib/select": { useSelectedDuck: () => currentSelected },
     "@/lib/ui": { useHudRight: () => 0 },
     "@/lib/record": record,
+    "./LanguageProvider": {
+      useLanguage: () => ({
+        language: "en",
+        setLanguage() {},
+        t: (english) => english,
+      }),
+    },
     "./Toasts": { pushToast: (message) => events.push(["toast", message]) },
   };
   const exports = {};

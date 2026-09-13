@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="760" viewBox="0 0 1320 760">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#527783"/></marker></defs>
+  <rect width="1320" height="760" fill="#f3f7f7"/>
+  <g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#16333c">
+    <text x="40" y="55" font-size="30" font-weight="bold">Microduck + MD-Arm-T1：控制、仿真与证据</text>
+    <text x="40" y="87" font-size="18">第一阶段 · 实线为已实现软件链路 · 虚线为尚未放行的实体集成 · 不改原身体策略 61→14</text>
+    <g fill="#fff" stroke="#8fb3bc" stroke-width="2">
+      <rect x="40" y="135" width="280" height="105" rx="14"/><rect x="390" y="135" width="270" height="105" rx="14"/>
+      <rect x="730" y="135" width="260" height="105" rx="14"/><rect x="730" y="290" width="260" height="110" rx="14"/>
+      <rect x="390" y="290" width="270" height="110" rx="14"/><rect x="40" y="290" width="280" height="110" rx="14"/>
+      <rect x="1060" y="135" width="220" height="265" rx="14"/>
+    </g>
+    <g font-size="21" font-weight="bold">
+      <text x="60" y="175">Microduck 控制中心</text><text x="410" y="175">Next.js 白名单代理</text><text x="750" y="175">arm_lab HTTP 服务</text>
+      <text x="750" y="330">MuJoCo 物理环境</text><text x="410" y="330">教师 + PPO 残差</text><text x="60" y="330">CPU 训练与对照</text>
+      <text x="1080" y="175">真实证据目录</text>
+    </g>
+    <g font-size="17">
+      <text x="60" y="208">/arm · 六任务 · 6/12维动作</text><text x="410" y="208">/api/arm · 校验与路径隔离</text><text x="750" y="208">127.0.0.1:8812 · 仅仿真</text>
+      <text x="750" y="362">接触抓持 / 50 Hz 控制</text><text x="750" y="385">每物理子步碰撞与掉落检查</text>
+      <text x="410" y="362">clip(人工名义动作 + 0.02r)</text><text x="410" y="385">不是端到端自主规划策略</text>
+      <text x="60" y="362">3训练种子 / BC / 负对照</text><text x="60" y="385">10组扰动 × 10测试种子</text>
+      <text x="1080" y="215">reward / loss / KL</text><text x="1080" y="250">逐回合门槛 / 失败记录</text><text x="1080" y="285">检查点 / 模型 / 源码哈希</text><text x="1080" y="320">真实 MP4 + 回执</text><text x="1080" y="355">仅残差 ONNX + parity</text>
+    </g>
+    <g stroke="#527783" stroke-width="3" fill="none" marker-end="url(#arrow)">
+      <path d="M320 188 H386"/><path d="M660 188 H726"/><path d="M860 240 V286"/><path d="M320 345 H386"/><path d="M660 345 H726"/>
+      <path d="M990 188 H1056"/><path d="M990 345 H1056"/>
+    </g>
+    <rect x="40" y="470" width="620" height="220" rx="14" fill="#fff4e5" stroke="#c68b36" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="60" y="508" font-size="22" font-weight="bold">实体机械臂：LOCKED / 本阶段禁止连接执行</text>
+    <g font-size="18">
+      <text x="60" y="548">Unix RPC 协调器：租约、序号、看门狗、停止与复位</text>
+      <text x="60" y="582">每臂独立 U2D2 + 受保护 5 V；左40–45 / 右50–55</text>
+      <text x="60" y="616">未验证：制造孔位、公差、夹力、温升、急停、身体互锁</text>
+      <text x="60" y="650">仿真 HTTP 与硬件协调器没有伪装成已放行的同一链路</text>
+    </g>
+    <path d="M180 240 V260 H22 V452 H180 V466" fill="none" stroke="#c68b36" stroke-width="2" stroke-dasharray="8 6"/>
+    <rect x="730" y="470" width="550" height="220" rx="14" fill="#e5f1ec" stroke="#6b9687" stroke-width="2"/>
+    <text x="752" y="508" font-size="22" font-weight="bold">原 Microduck 路径：保持不变</text>
+    <g font-size="18">
+      <text x="752" y="548">原八技能页面 → 原 robotd → 原身体总线</text>
+      <text x="752" y="582">robotd 是唯一身体总线写入者，不争抢 UART</text>
+      <text x="752" y="616">原策略 61观测 / 14动作，不拼接机械臂动作</text>
+      <text x="752" y="650">未来机身装臂需重新做机械、功率、稳定性与策略验证</text>
+    </g>
+    <text x="40" y="731" font-size="17">MD-Arm-T1 · 2026-09-12 · 仿真通过 ≠ 实物可装配 / 可承载 / 已安全认证</text>
+  </g>
+</svg>

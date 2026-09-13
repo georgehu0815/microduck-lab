@@ -1,0 +1,557 @@
+{
+  "batch": "rlx/runs/arm/validated-20260912-v2",
+  "source_hashes": {
+    "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+    "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+  },
+  "simulation_only": true,
+  "hardware_verified": false,
+  "cases": [
+    {
+      "case_id": "arm-reach-v1",
+      "all_three_seeds_passed": true,
+      "teacher": {
+        "successes": 100,
+        "episodes": 100,
+        "passed": true
+      },
+      "bc": {
+        "successes": 100,
+        "episodes": 100,
+        "passed": true
+      },
+      "negative_controls": {
+        "passed": true,
+        "controllers": {
+          "zero": 0
+        }
+      },
+      "ppo": [
+        {
+          "seed": 101,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 202,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 303,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "failure_gates": {}
+    },
+    {
+      "case_id": "arm-pick-place-v1",
+      "all_three_seeds_passed": true,
+      "teacher": {
+        "successes": 100,
+        "episodes": 100,
+        "passed": true
+      },
+      "bc": {
+        "successes": 0,
+        "episodes": 100,
+        "passed": false
+      },
+      "negative_controls": {
+        "passed": true,
+        "controllers": {
+          "zero": 0,
+          "open_gripper": 0
+        }
+      },
+      "ppo": [
+        {
+          "seed": 101,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 202,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 303,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "failure_gates": {}
+    },
+    {
+      "case_id": "arm-relocate-v1",
+      "all_three_seeds_passed": true,
+      "teacher": {
+        "successes": 100,
+        "episodes": 100,
+        "passed": true
+      },
+      "bc": {
+        "successes": 0,
+        "episodes": 100,
+        "passed": false
+      },
+      "negative_controls": {
+        "passed": true,
+        "controllers": {
+          "zero": 0,
+          "open_gripper": 0
+        }
+      },
+      "ppo": [
+        {
+          "seed": 101,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 202,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 303,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "failure_gates": {}
+    },
+    {
+      "case_id": "arm-carry-v1",
+      "all_three_seeds_passed": true,
+      "teacher": {
+        "successes": 100,
+        "episodes": 100,
+        "passed": true
+      },
+      "bc": {
+        "successes": 0,
+        "episodes": 100,
+        "passed": false
+      },
+      "negative_controls": {
+        "passed": true,
+        "controllers": {
+          "zero": 0,
+          "open_gripper": 0
+        }
+      },
+      "ppo": [
+        {
+          "seed": 101,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 202,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 303,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "failure_gates": {}
+    },
+    {
+      "case_id": "arms-handover-v1",
+      "all_three_seeds_passed": true,
+      "teacher": {
+        "successes": 100,
+        "episodes": 100,
+        "passed": true
+      },
+      "bc": {
+        "successes": 0,
+        "episodes": 100,
+        "passed": false
+      },
+      "negative_controls": {
+        "passed": true,
+        "controllers": {
+          "zero": 0,
+          "open_gripper": 0,
+          "disable_right": 0
+        }
+      },
+      "ppo": [
+        {
+          "seed": 101,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 202,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 303,
+          "successes": 100,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9630051925239981,
+            0.9999999999999999
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "failure_gates": {}
+    },
+    {
+      "case_id": "arms-co-carry-v1",
+      "all_three_seeds_passed": true,
+      "teacher": {
+        "successes": 99,
+        "episodes": 100,
+        "passed": true
+      },
+      "bc": {
+        "successes": 23,
+        "episodes": 100,
+        "passed": false
+      },
+      "negative_controls": {
+        "passed": true,
+        "controllers": {
+          "zero": 0,
+          "open_gripper": 0,
+          "disable_right": 0
+        }
+      },
+      "ppo": [
+        {
+          "seed": 101,
+          "successes": 99,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9455124752390653,
+            0.9982326134344526
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.9,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 202,
+          "successes": 98,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9299868370580063,
+            0.9944981477650318
+          ],
+          "per_config_success_rate": [
+            0.9,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.9,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "seed": 303,
+          "successes": 98,
+          "episodes": 100,
+          "passed": true,
+          "wilson_95": [
+            0.9299868370580063,
+            0.9944981477650318
+          ],
+          "per_config_success_rate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.9,
+            0.9,
+            1.0
+          ]
+        }
+      ],
+      "failure_gates": {
+        "no_drop": 5,
+        "internal_force_bounded": 1
+      }
+    }
+  ],
+  "actual_ppo_environment_steps": 589824,
+  "all_six_composite_tasks_passed": true
+}

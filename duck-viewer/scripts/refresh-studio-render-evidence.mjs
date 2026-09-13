@@ -14,9 +14,28 @@ async function json(url, init) {
   return data;
 }
 const results = [];
+const skips = [];
+const verifiedExperiments = ["dance", "swing", "running", "stilts", "backflip"];
+const unverifiedExperiments = new Map([
+  ["basketball", "Balance-only evidence is not a passed steering task."],
+  ["bridge", "Training pilot exists, but a complete crossing is not verified."],
+]);
 try {
   const { runs } = await json("/api/rlx/runs");
-  for (const experiment of ["dance", "swing", "running", "stilts"]) {
+  for (const [experiment, reason] of unverifiedExperiments) {
+    const candidates = runs.filter((candidate) => candidate.experimentId === experiment);
+    skips.push({
+      experiment,
+      reason,
+      savedRuns: candidates.map((candidate) => ({
+        runName: candidate.runName,
+        taskPassed: candidate.taskPassed === true,
+        balanceOnly: candidate.balanceOnly === true,
+      })),
+    });
+    console.log(`${experiment}: skipped - ${reason}`);
+  }
+  for (const experiment of verifiedExperiments) {
     const run = runs.find((candidate) => candidate.experimentId === experiment && candidate.taskPassed);
     assert.ok(run, `No verified ${experiment} run available`);
     const query = `experiment=${experiment}&run=${encodeURIComponent(run.runName)}`;
@@ -48,5 +67,10 @@ try {
     console.log(`${experiment}: provenance matched`);
   }
 } finally {
-  await writeFile(path.join(directory, "verification.json"), JSON.stringify({ passed: results.length === 4, results }, null, 2) + "\n");
+  await writeFile(path.join(directory, "verification.json"), JSON.stringify({
+    passed: results.length === verifiedExperiments.length &&
+      skips.length === unverifiedExperiments.size,
+    results,
+    skips,
+  }, null, 2) + "\n");
 }

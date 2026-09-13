@@ -28,6 +28,7 @@ import {
 import { loadJSON, saveJSON } from "@/lib/persist";
 import { useSelectedDuck } from "@/lib/select";
 import { modalIsOpen, setTeachHeight, usePolicyOpen } from "@/lib/ui";
+import { useLanguage } from "./LanguageProvider";
 
 const mono = "ui-monospace, SFMono-Regular, Menlo, monospace";
 
@@ -47,14 +48,15 @@ type Msg =
   // log would keep advertising a plan the run never trained under.
   | { kind: "card"; card: BehaviorCard; stageSteps?: number[]; stepBudget?: number };
 
-const GREETING: Msg = {
-  kind: "note",
-  text: "Ask me to teach the duck a trick — try one of the suggestions below.",
-};
 const MSG_CAP = 50;
 
-const SUGGESTIONS = ["stand still", "stand on one leg", "crouch down", "spin in place",
-                     "do a headstand"];
+const SUGGESTIONS = [
+  { value: "stand still", zh: "原地站立" },
+  { value: "stand on one leg", zh: "单腿站立" },
+  { value: "crouch down", zh: "蹲下" },
+  { value: "spin in place", zh: "原地旋转" },
+  { value: "do a headstand", zh: "倒立" },
+];
 
 // --- instant hover tooltip ---------------------------------------------------
 // Native `title` attrs take ~1 s to appear and are easy to miss; this shows a
@@ -111,6 +113,7 @@ export function Tip({ tip, children }: { tip: React.ReactNode; children: React.R
 }
 
 function RecipeRows({ terms }: { terms: BehaviorCard["terms"] }) {
+  const { t } = useLanguage();
   const max = Math.max(...terms.map((t) => t.weight));
   return (
     <div style={{ marginTop: 6 }}>
@@ -152,7 +155,10 @@ function RecipeRows({ terms }: { terms: BehaviorCard["terms"] }) {
         </Tip>
       ))}
       <div style={{ color: "#8b93a3", fontSize: 10, marginTop: 4 }}>
-        green = points to win · red = points lost · bar = how much it matters
+        {t(
+          "green = points to win · red = points lost · bar = how much it matters",
+          "绿色 = 得分 · 红色 = 扣分 · 条形长度 = 重要程度"
+        )}
       </div>
     </div>
   );
@@ -298,6 +304,7 @@ function RecipeEditor({
   wide: boolean;
   onSubmit: (weights: Record<string, number>, fineTune: boolean) => void;
 }) {
+  const { t: tr } = useLanguage();
   // Only touched sliders live here; everything else displays the effective
   // weight straight from the stream. Keyed by run so a new run resets dirt.
   const [edited, setEdited] = useState<Record<string, number>>({});
@@ -398,7 +405,7 @@ function RecipeEditor({
     );
     const removeBtn = isAdded ? (
       <button
-        aria-label={`remove ${term.key} from the recipe`}
+        aria-label={tr(`remove ${term.key} from the recipe`, `从配方中移除 ${term.key}`)}
         onClick={() =>
           setAdded((w) => {
             const rest = { ...w };
@@ -425,8 +432,8 @@ function RecipeEditor({
       <>
         <div>{term.friendly}</div>
         <div style={{ color: "#8b93a3", marginTop: 3 }}>
-          default weight {def} · currently {value.toFixed(2)}
-          {isAdded && " · added — ✕ puts it back in the picker"}
+          {tr("default weight", "默认权重")} {def} · {tr("currently", "当前")} {value.toFixed(2)}
+          {isAdded && tr(" · added — ✕ puts it back in the picker", " · 已添加 — 点击 ✕ 可放回选择器")}
         </div>
       </>
     );
@@ -494,16 +501,19 @@ function RecipeEditor({
   return (
     <div style={{ marginTop: 8 }}>
       <div style={{ color: "#8b93a3", fontSize: 10 }}>
-        the recipe{live ? " (read-only while training)" : " — edit it:"}
+        {tr("the recipe", "训练配方")}
+        {live ? tr(" (read-only while training)", "（训练期间只读）") : tr(" — edit it:", " — 可编辑：")}
       </div>
       <div style={{ color: "#8b93a3", fontSize: 10, margin: "2px 0 4px" }}>
-        green terms pay points, red ones charge — drag to change how much each
-        matters, then retrain.
+        {tr(
+          "green terms pay points, red ones charge — drag to change how much each matters, then retrain.",
+          "绿色项目加分，红色项目扣分。拖动滑块调整各项权重，然后重新训练。"
+        )}
       </div>
       {(
         [
-          { label: "what pays points", penalty: false },
-          { label: "what costs points", penalty: true },
+          { label: tr("what pays points", "加分项"), penalty: false },
+          { label: tr("what costs points", "扣分项"), penalty: true },
         ] as const
       ).map(({ label, penalty }) => {
         // Added terms join the group they belong to instead of trailing the
@@ -537,7 +547,7 @@ function RecipeEditor({
               cursor: "pointer",
             }}
           >
-            ＋ add a term
+            {tr("＋ add a term", "＋ 添加项目")}
           </button>
           {pickerOpen && (
             <div
@@ -551,7 +561,7 @@ function RecipeEditor({
             >
               {pickable.length === 0 ? (
                 <div style={{ color: "#8b93a3", fontSize: 10, padding: "2px 5px" }}>
-                  every catalog term is already in the recipe
+                  {tr("every catalog term is already in the recipe", "目录中的所有项目都已加入配方")}
                 </div>
               ) : (
                 byPolarity(pickable).map((a) => (
@@ -596,19 +606,28 @@ function RecipeEditor({
         <div style={{ marginTop: 6 }}>
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
             <button style={btn} onClick={() => onSubmit(moved, false)}>
-              ↻ retrain with edited recipe
+              {tr("↻ retrain with edited recipe", "↻ 使用修改后的配方重新训练")}
             </button>
             <button
               style={{ ...btn, color: "#d8c97d", borderColor: "#5a5233" }}
               onClick={() => onSubmit(moved, true)}
             >
-              ✨ fine-tune the result
+              {tr("✨ fine-tune the result", "✨ 微调当前结果")}
             </button>
           </div>
           <div style={{ color: "#8b93a3", fontSize: 10, marginTop: 3 }}>
-            fine-tune keeps what it learned and adjusts; retrain starts fresh
-            {movedN > 0 && ` · ${movedN} weight${movedN > 1 ? "s" : ""} changed`}
-            {addedN > 0 && ` · ${addedN} term${addedN > 1 ? "s" : ""} added`}
+            {tr(
+              "fine-tune keeps what it learned and adjusts; retrain starts fresh",
+              "微调会保留已有能力并继续调整；重新训练会从头开始"
+            )}
+            {movedN > 0 && tr(
+              ` · ${movedN} weight${movedN > 1 ? "s" : ""} changed`,
+              ` · 已修改 ${movedN} 个权重`
+            )}
+            {addedN > 0 && tr(
+              ` · ${addedN} term${addedN > 1 ? "s" : ""} added`,
+              ` · 已添加 ${addedN} 个项目`
+            )}
           </div>
         </div>
       )}
@@ -654,6 +673,7 @@ function LiveTraining({
   onStageWeights: (stageWeights: StageWeightsMap) => void;
   onStartStage: (idx: number, stageWeights: StageWeightsMap | null) => void;
 }) {
+  const { t: tr } = useLanguage();
   const p = t.progress;
   const stage = t.stage ?? null;
   // Curriculum jobs count the WHOLE chain in the headline numbers and main
@@ -725,10 +745,13 @@ function LiveTraining({
   };
   const maxAbs = Math.max(0.01, ...terms.map(([, v]) => Math.abs(v)));
   const statusLine = {
-    training: `training… ${overallSteps.toLocaleString()} / ${overallTotal.toLocaleString()} practice steps`,
-    done: "✔ finished — the trainee duck runs the final result",
-    stopped: "■ stopped — trainee keeps the last snapshot",
-    failed: "✗ training crashed (see runs/…/train.log)",
+    training: tr(
+      `training… ${overallSteps.toLocaleString()} / ${overallTotal.toLocaleString()} practice steps`,
+      `训练中… ${overallSteps.toLocaleString()} / ${overallTotal.toLocaleString()} 个练习步`
+    ),
+    done: tr("✔ finished — the trainee duck runs the final result", "✔ 已完成 — 学员鸭正在运行最终结果"),
+    stopped: tr("■ stopped — trainee keeps the last snapshot", "■ 已停止 — 学员鸭保留最后一个快照"),
+    failed: tr("✗ training crashed (see runs/…/train.log)", "✗ 训练崩溃（请查看 runs/…/train.log）"),
   }[t.status];
 
   return (
@@ -744,24 +767,32 @@ function LiveTraining({
               fontFamily: mono, fontSize: 11, cursor: "pointer",
             }}
           >
-            stop
+            {tr("stop", "停止")}
           </button>
         )}
       </div>
       <div style={{ color: "#8b93a3", margin: "4px 0" }}>{statusLine}</div>
       {t.status === "training" && (
         <div style={{ color: "#8b93a3", fontSize: 10, marginBottom: 4 }}>
-          practicing on {t.envs} parallel ducks ({t.helpers} helper{t.helpers === 1 ? "" : "s"})
+          {tr(
+            `practicing on ${t.envs} parallel ducks (${t.helpers} helper${t.helpers === 1 ? "" : "s"})`,
+            `正在用 ${t.envs} 只并行鸭练习（${t.helpers} 个辅助实例）`
+          )}
           {traineeSpeed != null && (
-            <span title="how fast the trainee duck is actually walking right now, forward, in metres per second">
-              {" · now going "}
+            <span title={tr(
+              "how fast the trainee duck is actually walking right now, forward, in metres per second",
+              "学员鸭当前实际向前行走速度，单位为米/秒"
+            )}>
+              {tr(" · now going ", " · 当前速度 ")}
               <span style={{ color: "#7db8d8" }}>
                 {traineeSpeed.toFixed(2)} m/s
               </span>
             </span>
           )}
           {t.restarting && (
-            <span style={{ color: "#d8c97d" }}> · restarting the trainer…</span>
+            <span style={{ color: "#d8c97d" }}>
+              {tr(" · restarting the trainer…", " · 正在重启训练器…")}
+            </span>
           )}
         </div>
       )}
@@ -801,9 +832,11 @@ function LiveTraining({
             ))}
           </div>
           <div style={{ color: "#9fb4d8", fontSize: 10, marginTop: 2 }}>
-            stage {stage.idx} of {stage.count} · {stage.label}
+            {tr(`stage ${stage.idx} of ${stage.count}`, `第 ${stage.idx}/${stage.count} 阶段`)} · {stage.label}
             {stageStart > 1 && (
-              <span style={{ color: "#8b93a3" }}> · started at stage {stageStart}</span>
+              <span style={{ color: "#8b93a3" }}>
+                {tr(` · started at stage ${stageStart}`, ` · 从第 ${stageStart} 阶段开始`)}
+              </span>
             )}
           </div>
           {/* Stage inspector: what the selected stage rehearses + its merged
@@ -819,13 +852,16 @@ function LiveTraining({
             }}
           >
             <div style={{ color: "#9fb4d8", fontSize: 10, fontWeight: 700 }}>
-              stage {selStage}
-              {selStage === stage.idx && " (active)"} ·{" "}
+              {tr(`stage ${selStage}`, `第 ${selStage} 阶段`)}
+              {selStage === stage.idx && tr(" (active)", "（当前）")} ·{" "}
               {curriculum[selStage - 1]?.label ?? ""}
             </div>
             {selStage < stageStart && (
               <div style={{ color: "#d8c97d", fontSize: 10, marginTop: 2 }}>
-                skipped this run — its result came from an earlier training
+                {tr(
+                  "skipped this run — its result came from an earlier training",
+                  "本次运行已跳过 — 结果来自更早的训练"
+                )}
               </div>
             )}
             {curriculum[selStage - 1]?.detail && (
@@ -849,17 +885,28 @@ function LiveTraining({
               <Tip
                 tip={
                   <>
-                    <div>How long this stage practices for.</div>
+                    <div>{tr("How long this stage practices for.", "此阶段的练习时长。")}</div>
                     <div style={{ color: "#8b93a3", marginTop: 3 }}>
                       {pinned[String(selStage)] != null
-                        ? "you set this one by hand — ✕ hands it back its share of the total"
-                        : "its share of the total below, kept in the recipe's proportions"}
-                      {live && " · takes effect when you retrain or start from a stage"}
+                        ? tr(
+                            "you set this one by hand — ✕ hands it back its share of the total",
+                            "此数值由你手动设置 — 点击 ✕ 可恢复为总预算中的比例份额"
+                          )
+                        : tr(
+                            "its share of the total below, kept in the recipe's proportions",
+                            "按配方比例分配下方总预算"
+                          )}
+                      {live && tr(
+                        " · takes effect when you retrain or start from a stage",
+                        " · 重新训练或从某阶段开始时生效"
+                      )}
                     </div>
                   </>
                 }
               >
-                <span style={{ color: "#8b93a3", fontSize: 10 }}>practices for</span>
+                <span style={{ color: "#8b93a3", fontSize: 10 }}>
+                  {tr("practices for", "练习时长")}
+                </span>
               </Tip>
               <MStepsInput
                 value={plan[selStage - 1] ?? null}
@@ -867,10 +914,15 @@ function LiveTraining({
                 width={50}
                 onCommit={(steps) => onPinStage(selStage, steps)}
               />
-              <span style={{ color: "#8b93a3", fontSize: 10 }}>M steps</span>
+              <span style={{ color: "#8b93a3", fontSize: 10 }}>
+                {tr("M steps", "百万步")}
+              </span>
               {!live && pinned[String(selStage)] != null && (
                 <button
-                  aria-label={`give stage ${selStage} its share of the total back`}
+                  aria-label={tr(
+                    `give stage ${selStage} its share of the total back`,
+                    `将第 ${selStage} 阶段恢复为总预算中的比例份额`
+                  )}
                   onClick={() => onPinStage(selStage, null)}
                   style={{
                     background: "none",
@@ -887,11 +939,16 @@ function LiveTraining({
                 </button>
               )}
               <span style={{ color: "#8b93a3", fontSize: 10 }}>
-                {pinned[String(selStage)] != null ? "· set by you" : "· its share"}
+                {pinned[String(selStage)] != null
+                  ? tr("· set by you", "· 由你设置")
+                  : tr("· its share", "· 按比例分配")}
               </span>
             </div>
             <div style={{ color: "#8b93a3", fontSize: 10, marginTop: 4 }}>
-              this stage&apos;s weights (stage overrides win over the chain sliders):
+              {tr(
+                "this stage's weights (stage overrides win over the chain sliders):",
+                "此阶段的权重（阶段覆盖值优先于整条训练链的滑块）："
+              )}
             </div>
             {byPolarity(t.behavior.terms).map((term) => {
               const def = term.weight;
@@ -972,16 +1029,25 @@ function LiveTraining({
                     cursor: "pointer",
                   }}
                 >
-                  ✓ apply stage weights
+                  {tr("✓ apply stage weights", "✓ 应用阶段权重")}
                 </button>
               )}
               <Tip
                 tip={
                   live
-                    ? "stop the current run first — starting a stage launches a new training chain"
+                    ? tr(
+                        "stop the current run first — starting a stage launches a new training chain",
+                        "请先停止当前运行 — 从某阶段开始会启动新的训练链"
+                      )
                     : selStage === 1
-                      ? "trains the whole chain from the beginning (same as retrain)"
-                      : `skips stages 1–${selStage - 1}: the chain warm-starts from your newest trained stage ${selStage - 1} run — if none exists, the server explains that in the chat`
+                      ? tr(
+                          "trains the whole chain from the beginning (same as retrain)",
+                          "从头训练整条训练链（与重新训练相同）"
+                        )
+                      : tr(
+                          `skips stages 1–${selStage - 1}: the chain warm-starts from your newest trained stage ${selStage - 1} run — if none exists, the server explains that in the chat`,
+                          `跳过第 1–${selStage - 1} 阶段：训练链会从最近完成的第 ${selStage - 1} 阶段运行热启动；如果不存在，服务器会在对话中说明`
+                        )
                 }
               >
                 <button
@@ -1001,19 +1067,24 @@ function LiveTraining({
                     cursor: live ? "default" : "pointer",
                   }}
                 >
-                  ▶ start from this stage
+                  {tr("▶ start from this stage", "▶ 从此阶段开始")}
                 </button>
               </Tip>
             </div>
             {live && stageDirty && (
               <div style={{ color: "#8b93a3", fontSize: 10, marginTop: 3 }}>
-                applying to the active stage restarts it warm; future-stage
-                edits wait for their launch
+                {tr(
+                  "applying to the active stage restarts it warm; future-stage edits wait for their launch",
+                  "应用到当前阶段会进行热重启；未来阶段的修改将在启动时生效"
+                )}
               </div>
             )}
             {!live && stageDirty && (
               <div style={{ color: "#8b93a3", fontSize: 10, marginTop: 3 }}>
-                stage weights ride along when you retrain or start from a stage
+                {tr(
+                  "stage weights ride along when you retrain or start from a stage",
+                  "重新训练或从某阶段开始时会一并使用这些阶段权重"
+                )}
               </div>
             )}
           </div>
@@ -1037,7 +1108,10 @@ function LiveTraining({
       {rewHistory.length > 1 && (
         <div style={{ marginTop: 6 }}>
           <div style={{ color: "#8b93a3", fontSize: 10 }}>
-            score per practice run (higher = doing the trick better)
+            {tr(
+              "score per practice run (higher = doing the trick better)",
+              "每次练习的得分（越高表示动作完成得越好）"
+            )}
           </div>
           <Sparkline points={rewHistory} />
         </div>
@@ -1045,7 +1119,7 @@ function LiveTraining({
       {terms.length > 0 && (
         <div style={{ marginTop: 4 }}>
           <div style={{ color: "#8b93a3", fontSize: 10, marginBottom: 2 }}>
-            where the points come from right now
+            {tr("where the points come from right now", "当前得分来源")}
           </div>
           {terms.map(([k, v]) => (
             <div key={k} style={{ display: "flex", alignItems: "center", gap: 6, margin: "2px 0" }}>
@@ -1073,8 +1147,10 @@ function LiveTraining({
       )}
       {(p.snapshots ?? 0) > 0 && (
         <div style={{ color: "#d8c97d", fontSize: 10, marginTop: 4 }}>
-          📸 {p.snapshots} snapshot{(p.snapshots ?? 0) > 1 ? "s" : ""} sent to the 🎓 duck —
-          watch it improve in the scene
+          {tr(
+            `📸 ${p.snapshots} snapshot${(p.snapshots ?? 0) > 1 ? "s" : ""} sent to the 🎓 duck — watch it improve in the scene`,
+            `📸 已向 🎓 学员鸭发送 ${p.snapshots} 个快照 — 可在场景中观察它进步`
+          )}
         </div>
       )}
       <RecipeEditor
@@ -1095,6 +1171,7 @@ export function TeachPanel({
   clientRef: React.MutableRefObject<LabClient | null>;
   variant?: "overlay" | "embedded";
 }) {
+  const { t } = useLanguage();
   const embedded = variant === "embedded";
   // Collapsed by default, like the PolicyPanel above it — persisted after
   // the first open.
@@ -1103,7 +1180,15 @@ export function TeachPanel({
   const policyOpen = usePolicyOpen();
   const [msgs, setMsgs] = useState<Msg[]>(() => {
     const stored = loadJSON<Msg[] | null>("teachMsgs", null);
-    return Array.isArray(stored) && stored.length ? stored.slice(-MSG_CAP) : [GREETING];
+    return Array.isArray(stored) && stored.length
+      ? stored.slice(-MSG_CAP)
+      : [{
+          kind: "note",
+          text: t(
+            "Ask me to teach the duck a trick — try one of the suggestions below.",
+            "告诉我想让鸭子学什么动作，也可以试试下面的建议。"
+          ),
+        }];
   });
   const [input, setInput] = useState("");
   const [training, setTraining] = useState<TrainingPayload | null>(null);
@@ -1254,7 +1339,13 @@ export function TeachPanel({
         setStagePins({});
         setMsgs((m) => [
           ...m,
-          { kind: "note", text: "On it! Here's the deal I'm offering the duck:" },
+          {
+            kind: "note",
+            text: t(
+              "On it! Here's the deal I'm offering the duck:",
+              "开始！这是我给鸭子安排的训练方案："
+            ),
+          },
           {
             kind: "card",
             card: data.job.behavior,
@@ -1273,7 +1364,16 @@ export function TeachPanel({
         ]);
       }
     } catch {
-      setMsgs((m) => [...m, { kind: "note", text: "⚠ can't reach the lab server on :8788" }]);
+      setMsgs((m) => [
+        ...m,
+        {
+          kind: "note",
+          text: t(
+            "⚠ can't reach the lab server on :8788",
+            "⚠ 无法连接 :8788 上的实验室服务器"
+          ),
+        },
+      ]);
     }
   }
 
@@ -1296,14 +1396,25 @@ export function TeachPanel({
   ) {
     if (!training) return;
     const n = Object.keys(weights).length;
-    const tweak = n ? ` with ${n} adjusted weight${n > 1 ? "s" : ""}` : "";
+    const tweak = n
+      ? t(
+          ` with ${n} adjusted weight${n > 1 ? "s" : ""}`,
+          `（已调整 ${n} 个权重）`
+        )
+      : "";
     setMsgs((m) => [
       ...m,
       {
         kind: "note",
         text: fineTune
-          ? `✨ fine-tuning ${training.runName}${tweak} — keeping what it learned`
-          : `↻ retraining “${training.behavior.title}” from scratch${tweak}`,
+          ? t(
+              `✨ fine-tuning ${training.runName}${tweak} — keeping what it learned`,
+              `✨ 正在微调 ${training.runName}${tweak} — 保留已有能力`
+            )
+          : t(
+              `↻ retraining “${training.behavior.title}” from scratch${tweak}`,
+              `↻ 正在从头重新训练“${training.behavior.title}”${tweak}`
+            ),
       },
     ]);
     await postTeach({
@@ -1334,13 +1445,28 @@ export function TeachPanel({
           kind: "note",
           text: data.ok
             ? data.restarted
-              ? "⚖ stage weights applied — restarting the current stage warm"
-              : "⚖ stage weights recorded — future stages launch with them"
+              ? t(
+                  "⚖ stage weights applied — restarting the current stage warm",
+                  "⚖ 已应用阶段权重 — 正在热重启当前阶段"
+                )
+              : t(
+                  "⚖ stage weights recorded — future stages launch with them",
+                  "⚖ 已记录阶段权重 — 后续阶段启动时将使用它们"
+                )
             : `⚠ ${data.message}`,
         },
       ]);
     } catch {
-      setMsgs((m) => [...m, { kind: "note", text: "⚠ can't reach the lab server on :8788" }]);
+      setMsgs((m) => [
+        ...m,
+        {
+          kind: "note",
+          text: t(
+            "⚠ can't reach the lab server on :8788",
+            "⚠ 无法连接 :8788 上的实验室服务器"
+          ),
+        },
+      ]);
     }
   }
 
@@ -1355,7 +1481,13 @@ export function TeachPanel({
     if (!training) return;
     setMsgs((m) => [
       ...m,
-      { kind: "note", text: `▶ starting “${training.behavior.title}” from stage ${idx}` },
+      {
+        kind: "note",
+        text: t(
+          `▶ starting “${training.behavior.title}” from stage ${idx}`,
+          `▶ 正在从第 ${idx} 阶段开始“${training.behavior.title}”`
+        ),
+      },
     ]);
     await postTeach({
       text: training.behavior.title,
@@ -1466,7 +1598,7 @@ export function TeachPanel({
           backdropFilter: "blur(6px)",
         }}
       >
-        🎓 teach
+        {t("🎓 teach", "🎓 教学")}
       </button>
     );
 
@@ -1481,16 +1613,25 @@ export function TeachPanel({
           display: "flex", alignItems: "center", flexShrink: 0,
         }}
       >
-        <span style={{ flex: 1 }}>🎓 teach</span>
+        <span style={{ flex: 1 }}>{t("🎓 teach", "🎓 教学")}</span>
         <button
           onClick={() => {
-            setMsgs([GREETING]);
+            setMsgs([{
+              kind: "note",
+              text: t(
+                "Ask me to teach the duck a trick — try one of the suggestions below.",
+                "告诉我想让鸭子学什么动作，也可以试试下面的建议。"
+              ),
+            }]);
             // Also dismiss a FINISHED training card — the farm keeps
             // broadcasting the job payload until told to let go (a running
             // job is protected server-side; stop it first).
             fetch(`${LAB_HTTP}/teach/clear`, { method: "POST" }).catch(() => {});
           }}
-          title="clear the conversation and any finished training card"
+          title={t(
+            "clear the conversation and any finished training card",
+            "清除对话和已完成的训练卡片"
+          )}
           style={{
             background: "none", border: "none", color: "#8b93a3",
             cursor: "pointer", fontFamily: mono, fontSize: 12, padding: "0 4px",
@@ -1502,7 +1643,9 @@ export function TeachPanel({
           <>
             <button
               onClick={() => setWide((w) => !w)}
-              title={wide ? "back to the narrow panel" : "widen the panel — full recipe sentences"}
+              title={wide
+                ? t("back to the narrow panel", "恢复窄面板")
+                : t("widen the panel — full recipe sentences", "加宽面板以显示完整配方说明")}
               style={{
                 background: "none", border: "none", color: "#8b93a3",
                 cursor: "pointer", fontFamily: mono, fontSize: 12, padding: "0 4px",
@@ -1512,7 +1655,7 @@ export function TeachPanel({
             </button>
             <button
               onClick={() => setOpen(false)}
-              title="collapse"
+              title={t("collapse", "收起")}
               style={{
                 background: "none", border: "none", color: "#8b93a3",
                 cursor: "pointer", fontFamily: mono, fontSize: 12, padding: "0 4px",
@@ -1553,8 +1696,10 @@ export function TeachPanel({
               {m.card.curriculum && m.card.curriculum.length > 0 && (
                 <div style={{ margin: "4px 0" }}>
                   <div style={{ color: "#8b93a3", fontSize: 10 }}>
-                    how it trains — {m.card.curriculum.length} stages, each building on the
-                    last:
+                    {t(
+                      `how it trains — ${m.card.curriculum.length} stages, each building on the last:`,
+                      `训练方式 — 共 ${m.card.curriculum.length} 个阶段，每个阶段都建立在上一阶段之上：`
+                    )}
                   </div>
                   {m.card.curriculum.map((s, i) => (
                     // Hovering a stage shows its detail — what the practice
@@ -1566,7 +1711,7 @@ export function TeachPanel({
                           {/* The steps this run actually got, not the
                               recipe's — the two differ the moment a budget
                               is chosen. */}
-                          {" "}· {fmtSteps(m.stageSteps?.[i] ?? s.steps)} steps
+                          {" "}· {fmtSteps(m.stageSteps?.[i] ?? s.steps)} {t("steps", "步")}
                         </span>
                       </div>
                     </Tip>
@@ -1575,17 +1720,18 @@ export function TeachPanel({
               )}
               <details style={{ margin: "4px 0" }}>
                 <summary style={{ cursor: "pointer", color: "#7db8d8" }}>
-                  how will it learn this?
+                  {t("how will it learn this?", "它会怎样学习？")}
                 </summary>
                 <div style={{ color: "#aab3c0", marginTop: 4 }}>{m.card.howItLearns}</div>
                 <div style={{ color: "#8b93a3", marginTop: 4, fontSize: 10 }}>
-                  The sim runs far faster than real life, so{" "}
-                  {fmtSteps(m.stepBudget ?? cardSteps(m.card))} practice steps run on this
-                  Mac without you waiting on a real robot.
+                  {t(
+                    `The sim runs far faster than real life, so ${fmtSteps(m.stepBudget ?? cardSteps(m.card))} practice steps run on this Mac without you waiting on a real robot.`,
+                    `仿真速度远快于现实，因此可直接在这台 Mac 上完成 ${fmtSteps(m.stepBudget ?? cardSteps(m.card))} 个练习步，无需等待真实机器人。`
+                  )}
                 </div>
               </details>
               <div style={{ color: "#8b93a3", fontSize: 10, marginTop: 2 }}>
-                the scorecard (checked 50× per second):
+                {t("the scorecard (checked 50× per second):", "评分表（每秒检查 50 次）：")}
               </div>
               <RecipeRows terms={m.card.terms} />
             </div>
@@ -1622,26 +1768,36 @@ export function TeachPanel({
             <Tip
               tip={
                 <>
-                  <div>How long the duck gets to practice, in millions of tries.</div>
+                  <div>{t(
+                    "How long the duck gets to practice, in millions of tries.",
+                    "设置鸭子的练习时长，单位为百万次尝试。"
+                  )}</div>
                   <div style={{ color: "#8b93a3", marginTop: 3 }}>
-                    More practice usually means a better trick and a longer wait. Type
-                    any number between {fmtSteps(MIN_STEP_BUDGET)} and{" "}
-                    {fmtSteps(MAX_STEP_BUDGET)}, or tap a preset. A trick with stages
-                    splits this across them, keeping the recipe&apos;s proportions.
+                    {t(
+                      `More practice usually means a better trick and a longer wait. Type any number between ${fmtSteps(MIN_STEP_BUDGET)} and ${fmtSteps(MAX_STEP_BUDGET)}, or tap a preset. A trick with stages splits this across them, keeping the recipe's proportions.`,
+                      `练习越多通常动作越好，但等待也更久。可输入 ${fmtSteps(MIN_STEP_BUDGET)} 到 ${fmtSteps(MAX_STEP_BUDGET)} 之间的任意数值，或选择预设。多阶段动作会按配方比例分配这些步数。`
+                    )}
                   </div>
                 </>
               }
             >
-              <span style={{ color: "#8b93a3", fontSize: 10 }}>practice for</span>
+              <span style={{ color: "#8b93a3", fontSize: 10 }}>
+                {t("practice for", "练习时长")}
+              </span>
             </Tip>
             <MStepsInput
               value={budgetShown}
-              placeholder="recipe"
+              placeholder={t("recipe", "配方")}
               onCommit={setBudgetSteps}
             />
-            <span style={{ color: "#8b93a3", fontSize: 10 }}>M steps</span>
+            <span style={{ color: "#8b93a3", fontSize: 10 }}>
+              {t("M steps", "百万步")}
+            </span>
             {offRecipe && (
-              <Tip tip="back to the practice plan the recipe ships with">
+              <Tip tip={t(
+                "back to the practice plan the recipe ships with",
+                "恢复配方自带的练习计划"
+              )}>
                 <button
                   onClick={resetToRecipe}
                   style={{
@@ -1655,7 +1811,7 @@ export function TeachPanel({
                     cursor: "pointer",
                   }}
                 >
-                  ↺ recipe
+                  {t("↺ recipe", "↺ 配方")}
                 </button>
               </Tip>
             )}
@@ -1687,27 +1843,34 @@ export function TeachPanel({
           </div>
           <div style={{ color: "#8b93a3", fontSize: 10, marginTop: 2 }}>
             {planTotal > 0
-              ? `${fmtSteps(planTotal)} practice steps in total`
-              : "each trick practices for as long as its own recipe says — set a number to change that"}
+              ? t(
+                  `${fmtSteps(planTotal)} practice steps in total`,
+                  `总计 ${fmtSteps(planTotal)} 个练习步`
+                )
+              : t(
+                  "each trick practices for as long as its own recipe says — set a number to change that",
+                  "每个动作默认按自身配方练习；设置数值可覆盖默认时长"
+                )}
           </div>
           {plan.length > 1 && (
             <div style={{ color: "#8b93a3", fontSize: 10 }}>
-              {plan.length} stages: {plan.map((s) => fmtSteps(s)).join(" / ")}
+              {t(`${plan.length} stages`, `${plan.length} 个阶段`)}:{" "}
+              {plan.map((s) => fmtSteps(s)).join(" / ")}
             </div>
           )}
         </div>
         <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 6 }}>
           {SUGGESTIONS.map((s) => (
             <button
-              key={s}
-              onClick={() => submit(s)}
+              key={s.value}
+              onClick={() => submit(s.value)}
               style={{
                 background: "#1c2230", color: "#9fb4d8",
                 border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12,
                 padding: "2px 8px", fontFamily: mono, fontSize: 10, cursor: "pointer",
               }}
             >
-              {s}
+              {t(s.value, s.zh)}
             </button>
           ))}
         </div>
@@ -1720,7 +1883,7 @@ export function TeachPanel({
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="teach the duck a new policy…"
+            placeholder={t("teach the duck a new policy…", "教鸭子一个新动作…")}
             style={{
               width: "100%", boxSizing: "border-box", background: "#12151b",
               border: "1px solid rgba(255,255,255,0.12)", borderRadius: 6,

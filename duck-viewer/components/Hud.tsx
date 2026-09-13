@@ -19,6 +19,7 @@ import { loadJSON, saveJSON } from "@/lib/persist";
 import { setSelectedDuck, useSelectedDuck } from "@/lib/select";
 import { setDuckLabels, setHudRight } from "@/lib/ui";
 import { GuidePanel } from "./GuidePanel";
+import { useLanguage } from "./LanguageProvider";
 
 const mono = "ui-monospace, SFMono-Regular, Menlo, monospace";
 
@@ -28,6 +29,7 @@ const mono = "ui-monospace, SFMono-Regular, Menlo, monospace";
  *  token after Save resolves. Unlocks the coming real-GPU training step
  *  (microduck_rl on HF Jobs, the user's own account and billing). */
 function HfSettingsModal({ onClose }: { onClose: () => void }) {
+  const { t } = useLanguage();
   const [settings, setSettings] = useState<HfSettings | null>(null);
   const [token, setToken] = useState("");
   const [busy, setBusy] = useState(false);
@@ -119,7 +121,9 @@ function HfSettingsModal({ onClose }: { onClose: () => void }) {
         }}
       >
         <div style={{ display: "flex", alignItems: "baseline", marginBottom: 8 }}>
-          <span style={{ color: "#dfe5ee", fontSize: 12 }}>⚙ settings</span>
+          <span style={{ color: "#dfe5ee", fontSize: 12 }}>
+            {t("⚙ settings", "⚙ 设置")}
+          </span>
           <span style={{ flex: 1 }} />
           <button
             onClick={onClose}
@@ -132,7 +136,8 @@ function HfSettingsModal({ onClose }: { onClose: () => void }) {
         {settings?.configured ? (
           <>
             <div style={{ marginBottom: 8 }}>
-              connected as <span style={{ color: "#7ab87a" }}>{settings.username}</span>{" "}
+              {t("connected as", "已连接为")}{" "}
+              <span style={{ color: "#7ab87a" }}>{settings.username}</span>{" "}
               <span style={{ color: "#566072" }}>({settings.masked})</span>
             </div>
             <button
@@ -149,14 +154,16 @@ function HfSettingsModal({ onClose }: { onClose: () => void }) {
                 padding: "3px 10px",
               }}
             >
-              disconnect
+              {t("disconnect", "断开连接")}
             </button>
           </>
         ) : (
           <>
             <div style={{ marginBottom: 8 }}>
-              Paste an access token to unlock GPU training on HF Jobs — your own
-              account, your own billing. Create one at{" "}
+              {t(
+                "Paste an access token to unlock GPU training on HF Jobs — your own account, your own billing. Create one at",
+                "粘贴访问令牌以启用 HF Jobs GPU 训练，使用你自己的账户和计费。请在此创建："
+              )}{" "}
               <a
                 href="https://huggingface.co/settings/tokens"
                 target="_blank"
@@ -165,7 +172,7 @@ function HfSettingsModal({ onClose }: { onClose: () => void }) {
               >
                 hf.co/settings/tokens
               </a>{" "}
-              (write access).
+              {t("(write access).", "（写入权限）。")}
             </div>
             <div style={{ display: "flex", gap: 6 }}>
               <input
@@ -205,12 +212,14 @@ function HfSettingsModal({ onClose }: { onClose: () => void }) {
                   padding: "3px 10px",
                 }}
               >
-                {busy ? "checking…" : "save"}
+                {busy ? t("checking…", "检查中…") : t("save", "保存")}
               </button>
             </div>
             <div style={{ color: "#566072", marginTop: 6 }}>
-              stored only on this machine (hf-token.json, gitignored) — never
-              sent anywhere but huggingface.co.
+              {t(
+                "stored only on this machine (hf-token.json, gitignored) — never sent anywhere but huggingface.co.",
+                "仅存储在本机（hf-token.json，已被 git 忽略），只会发送到 huggingface.co。"
+              )}
             </div>
           </>
         )}
@@ -260,12 +269,14 @@ function trainFpsLabel(fps: number | null): string {
   return `${Math.round(fps)} steps/s`;
 }
 
-/** Finished-run badge for the stats strip's "train …" cell. */
-const TRAIN_STATE_BADGE: Record<"done" | "stopped" | "failed", string> = {
-  done: "✔ done",
-  stopped: "■ stopped",
-  failed: "✗ failed",
-};
+function trainStateBadge(
+  state: "done" | "stopped" | "failed",
+  t: (english: string, chinese: string) => string
+): string {
+  if (state === "done") return t("✔ done", "✔ 完成");
+  if (state === "stopped") return t("■ stopped", "■ 已停止");
+  return t("✗ failed", "✗ 失败");
+}
 
 /** 471_552 → "472k", 1_500_000 → "1.5M" — compact steps for the trainee row. */
 function abbrevSteps(n: number): string {
@@ -298,15 +309,34 @@ const STALL_MS = 3000;
 /** The corner badge. "live" has to mean frames are ARRIVING, not merely that
  *  the WebSocket is open — a lab whose duck loop died kept the socket up and
  *  the badge sat green over a frozen, empty scene. */
-function linkBadge(connected: boolean, stalled: boolean) {
+function linkBadge(
+  connected: boolean,
+  stalled: boolean,
+  t: (english: string, chinese: string) => string
+) {
   if (!connected)
-    return { dot: "○", label: "offline", color: "#e07a5f",
-             title: "not connected to the lab" };
+    return {
+      dot: "○",
+      label: t("offline", "离线"),
+      color: "#e07a5f",
+      title: t("not connected to the lab", "未连接到 Duck Lab"),
+    };
   if (stalled)
-    return { dot: "●", label: "stalled", color: "#d8c97d",
-             title: "connected, but no frames for 3s — the lab is still there, "
-                    + "its duck loop may have stopped" };
-  return { dot: "●", label: "live", color: "#7dd87d", title: "frames arriving" };
+    return {
+      dot: "●",
+      label: t("stalled", "停滞"),
+      color: "#d8c97d",
+      title: t(
+        "connected, but no frames for 3s — the lab is still there, its duck loop may have stopped",
+        "连接仍在，但已 3 秒没有帧，Duck Lab 仍在线，小鸭循环可能已停止"
+      ),
+    };
+  return {
+    dot: "●",
+    label: t("live", "实时"),
+    color: "#7dd87d",
+    title: t("frames arriving", "正在接收帧"),
+  };
 }
 
 /** One duck's forward speed: "0.21 / 0.45" — achieved over asked-for, m/s.
@@ -387,6 +417,7 @@ export function Hud({
   connected: boolean;
   error: string | null;
 }) {
+  const { language, setLanguage, t } = useLanguage();
   const [frame, setFrame] = useState<Frame | null>(null);
   // Collapsed ⇄ open state of the top-left stats panel (the bottom-left cmd
   // bar is unaffected). Persisted like the PolicyPanel/TeachPanel toggles.
@@ -468,7 +499,7 @@ export function Hud({
   const training = frame?.training ?? null;
   const restarting = training?.restarting ?? false;
   const rowKeys = frame ? duckRowKeys(frame.ducks) : [];
-  const link = linkBadge(connected, stalled);
+  const link = linkBadge(connected, stalled, t);
   // Stage selection (click a duck / a row): the selected row echoes the amber
   // ring under the duck, and Delete removes it.
   const selectedDuck = useSelectedDuck();
@@ -508,7 +539,11 @@ export function Hud({
           </span>
           <button
             onClick={() => setLabels((v) => !v)}
-            title={labels ? "hide duck name labels" : "show duck name labels"}
+            title={
+              labels
+                ? t("hide duck name labels", "隐藏小鸭名称标签")
+                : t("show duck name labels", "显示小鸭名称标签")
+            }
             style={{
               background: "none",
               border: "none",
@@ -527,8 +562,8 @@ export function Hud({
           </button>
           <button
             onClick={() => setGuideOpen(true)}
-            title="Duck Viewer guide"
-            aria-label="Open Duck Viewer guide"
+            title={t("Duck Viewer guide", "Duck Viewer 指南")}
+            aria-label={t("Open Duck Viewer guide", "打开 Duck Viewer 指南")}
             style={{
               background: "none",
               border: "none",
@@ -542,8 +577,27 @@ export function Hud({
             ?
           </button>
           <button
+            onClick={() => setLanguage(language === "en" ? "zh" : "en")}
+            title={t("Switch to Chinese", "切换到英文")}
+            aria-label={t("Switch to Chinese", "切换到英文")}
+            style={{
+              background: "none",
+              border: "none",
+              color: "#8b93a3",
+              cursor: "pointer",
+              fontFamily: mono,
+              fontSize: 10,
+              padding: "0 4px",
+            }}
+          >
+            {language === "en" ? "中" : "EN"}
+          </button>
+          <button
             onClick={() => setSettingsOpen(true)}
-            title="settings — connect Hugging Face for real GPU training"
+            title={t(
+              "settings — connect Hugging Face for real GPU training",
+              "设置 - 连接 Hugging Face 进行真实 GPU 训练"
+            )}
             style={{
               background: "none",
               border: "none",
@@ -558,7 +612,7 @@ export function Hud({
           </button>
           <button
             onClick={() => setOpen(false)}
-            title="collapse"
+            title={t("collapse", "收起")}
             style={{
               background: "none",
               border: "none",
@@ -578,15 +632,17 @@ export function Hud({
           <table style={{ borderSpacing: "10px 1px", marginLeft: -10 }}>
             <thead>
               <tr style={{ color: "#8b93a3", textAlign: "left" }}>
-                <th>policy</th>
+                <th>{t("policy", "策略")}</th>
                 <th
-                  title="forward speed in metres per second, averaged over the
- last half second — what it manages / what it was asked for"
+                  title={t(
+                    "forward speed in metres per second, averaged over the last half second — what it manages / what it was asked for",
+                    "前进速度（米/秒），取最近半秒平均值：实际速度 / 请求速度"
+                  )}
                 >
                   m/s
                 </th>
                 <th>t</th>
-                <th>falls</th>
+                <th>{t("falls", "跌倒")}</th>
                 <th>r̄</th>
                 <th />
               </tr>
@@ -632,10 +688,13 @@ export function Hud({
                       label="＋"
                       title={
                         atHelperCap
-                          ? `helper cap (${helperCap})`
+                          ? t(`helper cap (${helperCap})`, `辅助小鸭已达上限（${helperCap}）`)
                           : restarting
-                            ? "loading…"
-                            : "add a helper — another viewer of the same live policy (does not change training speed)"
+                            ? t("loading…", "加载中…")
+                            : t(
+                                "add a helper — another viewer of the same live policy (does not change training speed)",
+                                "添加辅助小鸭，展示同一实时策略（不会改变训练速度）"
+                              )
                       }
                       color="#7db8d8"
                       disabled={restarting || atHelperCap}
@@ -646,10 +705,10 @@ export function Hud({
                       label="✕"
                       title={
                         isHelper && restarting
-                          ? "restarting…"
+                          ? t("restarting…", "重启中…")
                           : isHelper
-                            ? "remove this helper"
-                            : "remove this duck from the lab"
+                            ? t("remove this helper", "移除此辅助小鸭")
+                            : t("remove this duck from the lab", "从 Duck Lab 移除此小鸭")
                       }
                       color="#e0a08f"
                       disabled={isHelper && restarting}
@@ -669,7 +728,11 @@ export function Hud({
                       if ((e.target as HTMLElement).closest("button")) return;
                       setSelectedDuck(isSelected ? null : d.id);
                     }}
-                    title={isSelected ? "selected — ⌫ removes it" : "click to select"}
+                    title={
+                      isSelected
+                        ? t("selected — ⌫ removes it", "已选择，按 ⌫ 可移除")
+                        : t("click to select", "点击选择")
+                    }
                     style={{ cursor: "pointer" }}
                   >
                     <td
@@ -696,7 +759,10 @@ export function Hud({
                       style={trick ? { color: "#566072" } : undefined}
                       title={
                         trick
-                          ? "r̄ scores the WALKING recipe — trick policies score low here by design"
+                          ? t(
+                              "r̄ scores the WALKING recipe — trick policies score low here by design",
+                              "r̄ 评估的是行走配方，技巧策略在此处按设计会得到低分"
+                            )
                           : undefined
                       }
                     >
@@ -744,7 +810,7 @@ export function Hud({
                 </span>
               ) : (
                 <span style={{ color: "#566072" }}>
-                  · train {TRAIN_STATE_BADGE[training.status]}
+                  · train {trainStateBadge(training.status, t)}
                   {training.progress.overallElapsed != null &&
                     ` · ${abbrevElapsed(training.progress.overallElapsed)}`}
                 </span>
@@ -783,7 +849,10 @@ export function Hud({
 
       {!pageFocused && (
         <div style={{ ...panel, bottom: 14, left: 14, color: "#8b93a3" }}>
-          Click the scene to enable keyboard controls
+          {t(
+            "Click the scene to enable keyboard controls",
+            "点击场景以启用键盘控制"
+          )}
         </div>
       )}
     </>

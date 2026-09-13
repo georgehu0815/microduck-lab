@@ -1,0 +1,17 @@
+flowchart LR
+  Sensors[陀螺仪 / 重力 / 关节 / 命令] --> Obs[61 维 observation]
+  Obs --> Policy[standing / walking / skill ONNX]
+  Policy --> Action[14 维 action]
+  Action --> Map[映射到 15 关节\n跳过 mouth 索引 9]
+  Mouth[chorale / theremin / quack] --> Map
+  Map --> Clamp[home pose + action scale\n低通 + 安全限制]
+  Clamp --> Servo[15 个舵机目标]
+  subgraph Observation[观测切片]
+    O1[0:3 gyro]
+    O2[3:6 projected gravity]
+    O3[6:20 joint positions]
+    O4[20:34 joint velocities]
+    O5[34:48 previous actions]
+    O6[48:61 command / body / head]
+  end
+  Observation -.组成.-> Obs

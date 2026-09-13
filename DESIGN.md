@@ -2,8 +2,8 @@
 
 ## Source of truth
 - Status: Active
-- Last refreshed: 2026-09-06
-- Primary product surface: one Microduck Studio application containing a four-experiment catalog, the live simulation workspace, policy tools, teaching controls, PPO recipe configuration, training telemetry, deterministic evaluation, render review, ONNX export, and deployment readiness.
+- Last refreshed: 2026-09-12
+- Primary product surface: one Microduck Studio application containing an eight-experiment catalog, the live simulation workspace, policy tools, teaching controls, PPO recipe configuration, training telemetry, deterministic evaluation, render review, ONNX export, and deployment readiness.
 - Evidence reviewed: `rlx/mylab.md`, `rlx/docs/ppo_microduck_dance_notebook.ipynb`, `rlx/docs/ppo-microduck-dance-guide.md`, `rlx/examples/ppo_microduck_dance.py`, `rlx/rlx/models/microduck.py`, `duck-viewer/README.md`, `duck-viewer/AGENTS.md`, and `/tmp/microduck-studio-design/index.html`.
 
 ## Brand
@@ -12,7 +12,7 @@
 - Avoid: marketing-first layouts, decorative gradients, fake hardware status, opaque scores, unqualified claims that a policy is ready, and playful copy that obscures risk.
 
 ## Product goals
-- Goals: provide one coherent local workflow for choosing Dance imitation, Self-pumped swing, Fast running, or Stilt walking; configuring a known-good macOS RLX recipe; running training; inspecting telemetry; evaluating deterministically; reviewing rendered motion; exporting ONNX; and preparing a guarded deployment handoff.
+- Goals: provide one coherent local workflow for Dance, Swing, Running, Stilts, Backflip, Basketball, Suspended bridge, and Swimming-duck drawing; configuring a macOS recipe; running training; inspecting telemetry; evaluating deterministically; reviewing rendered motion; and exporting the appropriate ONNX interface without implying hardware readiness.
 - Non-goals: maintaining a separate viewer product, silently deploying to physical hardware, claiming sim-to-real readiness from local training, or hiding command and artifact provenance.
 - Success signals: a user can identify the current stage and next action, recover the exact command and artifacts, distinguish live and offline data, and understand why deployment is enabled or blocked.
 
@@ -81,8 +81,9 @@
 - Design-token constraints: extend CSS custom properties within the Studio module; do not replace the existing viewer styling system.
 - Performance constraints: keep the existing lightweight Three.js rendering path, no shadow maps or GPU text, and mount exactly one viewer canvas and one Studio-visible lab connection path.
 - Compatibility constraints: preserve `?lab=host:port`, current WebSocket behavior, localStorage behavior, camera/selection keyboard controls, policy assignment, teaching, animation, recording, and HUD behavior inside Studio.
-- Training compatibility: all four Studio recipes run through RLX PPO on macOS. The UI must not require or imply CUDA. MuJoCo simulation remains CPU-side while PPO updates use MLX on Apple Silicon.
-- Experiment contracts: every recipe preserves the 61-observation / 14-action / 50 Hz policy contract. Stilt artifacts are morphology-specific and include height, blend, and mass metadata. Swing keeps its 0.7 action scale and mechanism-specific evaluation.
+- Training compatibility: the original Studio recipes retain their existing macOS trainers; drawing uses CPU Stable Baselines 3 PPO with a BC/DAgger warm-start. The UI must not require or imply CUDA. Fixed drawing controls must reflect the standalone trainer rather than expose ignored options.
+- Experiment contracts: the original seven retain their 61-observation / 14-action / 50 Hz interfaces, including Basketball's additional recurrent state. The eighth case has two explicitly selected tools: `microduck-drawing-v1` pencil (83/15) and `microduck-brush-v2` color brush (93/15). Both require exact versioned ONNX metadata and are incompatible with stock hardware. Stilt artifacts remain morphology-specific; Swing keeps its mechanism-specific contract.
+- Drawing evidence: only measured tool-tip contacts produce visible paint or graphite, never target artwork. Tools are preloaded and free, with an added simulated mouth actuator. Brush color changes require physical palette contact; its hair bundle uses passive normal compliance. The stroke/color planner is authored, not learned visual planning. Teacher feasibility, BC baseline and PPO evaluation are separate evidence categories. Unsupported or failed learned rollouts remain diagnostic even when another controller succeeds. No deployment handoff is enabled for drawing.
 - Reward customization contract: editable reward coefficients are finite and non-negative because penalty measurements already carry their negative sign. The selected weights must be used consistently for Train, Evaluate, and Render, recorded in checkpoint metadata, and treated as a new experiment that requires retraining.
 - Swing optimizer contract: Studio defaults mirror the repository's stable Swing profile (`1e-4` learning rate, `0.1` PPO clip, three update epochs, `0.002` entropy coefficient, `0.995` gamma, and `1.0` gradient norm) instead of inheriting generic recipe settings.
 - Swing acceptance contract: finite rollout checks are necessary but not sufficient. Discovery may continue at 10° mean or 20° best span; consolidation may continue toward 1M at 30° mean or 60° best span; deployment remains blocked until approximately 163° median span plus valid geometry and human video review.
@@ -92,3 +93,19 @@
 - [ ] Define the production robot transport and authentication contract before enabling direct hardware upload.
 - [ ] Decide whether long-running RLX jobs should move from in-memory Next.js process state to a durable local daemon.
 - [ ] Define quantitative dance-quality thresholds; current numeric evaluation proves rollout validity, while motion quality still requires visual review.
+
+## Robot arm extension — tabletop simulation implemented, 2026-09-12
+- Canonical first-stage specification: `docs/robot-arm-design/README.md`; classroom experiments, policy contracts, metrics and verification: `docs/robot-arm-design/EXPERIMENTS.md`; source ledger: `docs/robot-arm-design/SOURCES.md`.
+- `docs/robot-arm-design/index.html` is an offline Chinese design prototype, not an implemented Studio route, MuJoCo rollout, training service, or hardware controller. Existing eight experiments remain unchanged.
+- The implemented `/arm` route uses the real loopback `arm_lab` backend on port 8812, separate from existing duck-lab services. Actual scope, commands and results are in `docs/robot-arm-design/IMPLEMENTATION.md` and `RESULTS.md`; the original design goals are not automatically fulfilled by the reduced simulation curriculum.
+- Proposed progression: fixed tabletop single arm → fixed dual arms → Microduck-coordinated docked manipulation → separately reviewed mobile integration. The initial design does not attach a load to the biped or assume the original walking policy remains valid with new mass.
+- Reuse control conventions, Dynamixel-compatible actuator family, 50 Hz timing, evidence-bound lifecycle and Studio components; preserve the stock 61-observation / 14-action policy. Actual onboard alpha has 15 physical joints, with the mouth deliberately excluded from the policy (`microduck/duck-control/src/model.rs`, `obs.rs`).
+- Proposed arm services and protocols are independent, versioned extensions: one owner per motor bus, independent arm power, Microduck-hosted manipulation coordination, fail-closed hardware gates. Neither raw browser joint commands nor direct attachment of unidentified kit servos to the stock bus is allowed.
+- Navigation adds an Arm Lab family alongside the existing catalog, with six cases, BOM, live scene, evaluation, video and integration readiness. Training is CLI-driven, not a pretend browser training action. Design/teacher/BC/PPO/simulation/hardware evidence remain distinct. Missing metrics display “未测”, not zeros or invented learning curves.
+- The learned controller is a bounded PPO residual over authored IK/FSM, not end-to-end planning. Single/dual contracts are 66/6 and 116/12; handover uses 5 g and co-carry uses 17 g total. The hardware coordinator and serial factory unconditionally deny hardware in this phase; simulated HTTP and Unix coordination are explicitly separate paths.
+- Initial mechanism is five pose joints plus one coupled gripper actuator, not arbitrary six-DOF end-effector pose control. Reach and payload are design targets requiring mechanical, electrical and thermal validation.
+- Accessibility and visual language inherit Studio: keyboard operation, descriptive SVGs, labeled state badges, responsive layout and no color-only verdicts. Hardware execution stays locked in this phase.
+- Arm classroom navigation reuses `/arm` with a recorded-video workspace as the default and a separate live-simulator workspace. `/arm#videos` is the Studio shortcut. The video library is served locally by Next.js independently of the live simulator, so offline hardware/backend status never hides saved evidence.
+- Include every arm MP4, including current episodes, regression replays, historical failures, and compilations. Deduplicate identical bytes without discarding source aliases. Filter by case, provenance, outcome, and recording type; label those dimensions independently. A successful historical episode is not current validation, an unverified file is not a pass, and a compilation is not a new experiment.
+- Use one native video player with keyboard-accessible playlist buttons, seek/download controls, source receipts, and explicit load/error/empty states. No simultaneous auto-playing thumbnails or additional WebGL canvases in the video workspace. Preserve six simulation cases and the existing eight duck skills.
+- Studio and Arm Lab share an explicit English / 中文 interface toggle. Default to English, persist the preference locally across navigation/reloads, update the document language for accessibility, and keep switching functional when storage is unavailable. Translate rendered interface copy rather than mutating the DOM or protocol data. Switching must not reset experiments, alter video selection/filters/playback, issue simulator commands, or relabel raw logs and evidence artifacts as translated evidence.

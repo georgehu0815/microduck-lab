@@ -9,7 +9,7 @@ const DEFAULT_TIMEOUT_SECONDS = 7_200;
 const POLL_INTERVAL_MS = 2_000;
 const ARTIFACT_GRACE_MS = 30_000;
 const HTTP_REQUEST_TIMEOUT_MS = 30_000;
-const EXPERIMENT_IDS = ["dance", "swing", "running", "stilts"];
+const EXPERIMENT_IDS = ["dance", "swing", "running", "stilts", "backflip", "basketball", "bridge"];
 const DEFAULT_EXPERIMENT_ID = "dance";
 
 function usage() {
@@ -18,7 +18,7 @@ function usage() {
 
 Options:
   --base-url URL     Studio URL (default: ${DEFAULT_BASE_URL})
-  --experiment ID    dance, swing, running, or stilts (default: dance)
+  --experiment ID    dance, swing, running, stilts, backflip, basketball, or bridge (default: dance)
   --run NAME         Run name (default: <experiment>-api-e2e)
   --profile PROFILE  smoke or full (default: full)
   --recipe-json PATH Merge a JSON recipe object before CLI overrides

@@ -1,0 +1,202 @@
+{
+  "case_id": "arm-reach-v1",
+  "checkpoint": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arm-reach-v1/seed-101/ppo-residual.zip",
+  "checkpoint_metadata": {
+    "case_id": "arm-reach-v1",
+    "checkpoint_sha256": "f76620b25f8810f1ca99d48e3aa43fece8c37b5dcb1a9fbff08aa273d6949490",
+    "model_sha256": "afe3946781f080e6d86085754a5aeb586dfd9778c11825166b054355e550c352",
+    "path": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/validated-20260912-v2/arm-reach-v1/seed-101/training.json",
+    "sha256": "3fd689af4c34f50887e0e6c13988a484399c1e9d334baafafd2c67016ae5c04f",
+    "source_hashes": {
+      "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+      "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+    }
+  },
+  "checkpoint_sha256": "f76620b25f8810f1ca99d48e3aa43fece8c37b5dcb1a9fbff08aa273d6949490",
+  "contract": "md-arm-table-v1",
+  "controller": "ppo_residual",
+  "controller_description": "composite authored IK/FSM + PPO residual",
+  "created_at": "2026-09-12T23:16:56.621464+00:00",
+  "episode": {
+    "action_dim": 6,
+    "case_id": "arm-reach-v1",
+    "contract": "md-arm-table-v1",
+    "elapsed_seconds": 2.02,
+    "fps": 25.0,
+    "frames": 51,
+    "metrics": {
+      "arm_collisions": 0,
+      "assembly_mass_kg": 0.02,
+      "authored_action_calls": 101,
+      "contact_flags": [
+        [
+          false,
+          false
+        ]
+      ],
+      "drop_count": 0,
+      "dual_grasp_fraction": 0.0,
+      "evaluator_events": [],
+      "evaluator_stage": "initial",
+      "gates": {
+        "no_arm_collision": true,
+        "no_drop": true,
+        "no_illegal_contact": true,
+        "no_self_collision": true,
+        "reach_position_and_axis_hold": true
+      },
+      "goal": [
+        0.08704331475496396,
+        0.01802099462677785,
+        0.03
+      ],
+      "grasp_hold_s": 0.0,
+      "invalid_contacts": 0,
+      "load_share": [
+        0.0
+      ],
+      "load_share_samples": 0,
+      "net_support_mean": 0.0,
+      "object_mass_kg": 0.02,
+      "object_path_m": 0.00014407288205583665,
+      "object_position": [
+        0.0850433147549791,
+        -0.0219790053735627,
+        0.00899520612120433
+      ],
+      "passed": true,
+      "payload_slip_m": 0.0,
+      "peak_contact_force_n": 0.0,
+      "peak_internal_force_n": 0.0,
+      "peak_lift_m": 0.0,
+      "physical_hardware_verified": false,
+      "physics_assistance_count": 0,
+      "position_error_m": 0.045223902594953874,
+      "receiver_hold_s": 0.0,
+      "reset_options": {
+        "friction_scale": 1.0,
+        "mass_scale": 1.0,
+        "position_noise": 0.001
+      },
+      "reward_components": {
+        "action_change": -7.454945984826989e-24,
+        "collision": -0.0,
+        "drop": -0.0,
+        "effort": -5.6160307554389525e-18,
+        "grasp": 0.0,
+        "lift": 0.0,
+        "progress": 3.879041970446251e-09,
+        "success": 5.0
+      },
+      "self_collisions": 0,
+      "settled_s": 0.0,
+      "simulation_only": true,
+      "support_valid_fraction": 0.0,
+      "tip_error_m": 0.001182547618109908,
+      "transport_tilt_deg": 0.0,
+      "waypoints_reached": 0
+    },
+    "observation_dim": 66,
+    "reset_options": {
+      "friction_scale": 1.0,
+      "mass_scale": 1.0,
+      "position_noise": 0.001
+    },
+    "return": 4.96245824619464,
+    "seed": 80000,
+    "steps": 101,
+    "video_timing": {
+      "appended_hold_frames": 0,
+      "encoded_duration_seconds": 2.04,
+      "final_sample_duration_seconds": 0.020000000000000018,
+      "frame_count": 51,
+      "frame_stride_steps": 2,
+      "frame_times_seconds": [
+        0.04,
+        0.08,
+        0.12,
+        0.16,
+        0.2,
+        0.24,
+        0.28,
+        0.32,
+        0.36,
+        0.4,
+        0.44,
+        0.48,
+        0.52,
+        0.56,
+        0.6,
+        0.64,
+        0.68,
+        0.72,
+        0.76,
+        0.8,
+        0.84,
+        0.88,
+        0.92,
+        0.96,
+        1.0,
+        1.04,
+        1.08,
+        1.12,
+        1.16,
+        1.2,
+        1.24,
+        1.28,
+        1.32,
+        1.36,
+        1.4000000000000001,
+        1.44,
+        1.48,
+        1.52,
+        1.56,
+        1.6,
+        1.6400000000000001,
+        1.68,
+        1.72,
+        1.76,
+        1.8,
+        1.84,
+        1.8800000000000001,
+        1.92,
+        1.96,
+        2.0,
+        2.02
+      ],
+      "nominal_frame_period_seconds": 0.04,
+      "note": "Frames are real simulation samples. An off-cadence terminal frame may have a shorter final sample interval than the MP4 constant frame period; no hold/title frames are appended.",
+      "requested_fps": 25.0,
+      "terminal_frame_off_cadence": true,
+      "terminal_frame_time_seconds": 2.02
+    }
+  },
+  "episode_sha256": "6357810aafaa0f2120c07c8e34882a77d0933acd3c8d0145a285c83e95491439",
+  "export": null,
+  "hardware_verified": false,
+  "media_hashes": {
+    "contact-sheet.png": "30dc7f45b95b9c4113de23d836516f8705133bc27f4891120368d0607305b320",
+    "rollout.mp4": "fbc37cde306fdd9d43a5ece7470432cc21c5b1973cffcbb2b0b08fba00ee2611",
+    "telemetry.jsonl": "7e2a65138bd1dce03072d24a538f8d55f4847ad6822a9cdc5d331e1abee45385"
+  },
+  "model_sha256": "afe3946781f080e6d86085754a5aeb586dfd9778c11825166b054355e550c352",
+  "outputs": {
+    "contact_sheet": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/recheck-20260912-v2/videos/arm-reach-v1-train101-eval80000/contact-sheet.png",
+    "telemetry": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/recheck-20260912-v2/videos/arm-reach-v1-train101-eval80000/telemetry.jsonl",
+    "video": "/Volumes/ExternalSSD/geoagent/microduck-lab/rlx/runs/arm/recheck-20260912-v2/videos/arm-reach-v1-train101-eval80000/rollout.mp4"
+  },
+  "renderer_source_sha256": "1678c437b5bf22da185304e1db69560c74adc2e75fe9076912f7cd930d315aa5",
+  "reset_options": {
+    "friction_scale": 1.0,
+    "mass_scale": 1.0,
+    "position_noise": 0.001
+  },
+  "seed": 80000,
+  "simulation_only": true,
+  "source_hashes": {
+    "environment": "617aa9270529e5226d353cd6df38eefbb5e352bee2a02ea6cf2252f89dbe28f1",
+    "pipeline": "22e4759f93223d32ba948169f7895c3eff0e07949246ca54cc262ddd2b87ff01"
+  },
+  "telemetry_sha256": "7e2a65138bd1dce03072d24a538f8d55f4847ad6822a9cdc5d331e1abee45385",
+  "video_sha256": "fbc37cde306fdd9d43a5ece7470432cc21c5b1973cffcbb2b0b08fba00ee2611"
+}

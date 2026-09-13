@@ -219,27 +219,54 @@ test("changing the requested evaluation recipe is not hidden by renderer normali
 
 test("forward command preserves absent/null defaults for every recipe", () => {
   const { api } = fixture();
-  for (const experimentId of ["dance", "swing", "running", "stilts"]) {
+  for (const experimentId of ["dance", "swing", "running", "stilts", "backflip", "basketball", "bridge"]) {
     for (const locomotionForwardCommand of [undefined, null]) {
       assert.equal(api.normalizeRecipe({ experimentId, locomotionForwardCommand }).locomotionForwardCommand, null);
     }
   }
 });
 
-test("observation normalization freezing defaults off and requires explicit checkpoint resumption", () => {
+test("observation normalization freezing defaults for Full Backflip and Bridge plus all recurrent Basketball runs", () => {
   const { api, children } = fixture();
-  for (const experimentId of ["dance", "swing", "running", "stilts"]) {
-    assert.equal(api.normalizeRecipe({ experimentId }).freezeObservationNormalization, false);
+  for (const experimentId of ["dance", "swing", "running", "stilts", "backflip", "basketball", "bridge"]) {
+    const basketball = experimentId === "basketball";
+    assert.equal(api.normalizeRecipe({ experimentId }).freezeObservationNormalization, basketball);
     for (const freezeObservationNormalization of [undefined, null, false]) {
-      assert.equal(api.normalizeRecipe({ experimentId, freezeObservationNormalization }).freezeObservationNormalization, false);
+      assert.equal(
+        api.normalizeRecipe({ experimentId, freezeObservationNormalization }).freezeObservationNormalization,
+        basketball
+      );
     }
     assert.equal(api.normalizeRecipe({
-      experimentId, freezeObservationNormalization: true, resumeFromCheckpoint: true,
+      experimentId, profile: "full", freezeObservationNormalization: true, resumeFromCheckpoint: true,
     }).freezeObservationNormalization, true);
   }
+  assert.equal(api.normalizeRecipe({
+    experimentId: "backflip", profile: "full",
+  }).freezeObservationNormalization, true);
+  assert.equal(api.normalizeRecipe({
+    experimentId: "backflip", profile: "full", freezeObservationNormalization: false,
+  }).freezeObservationNormalization, false);
+  assert.equal(api.normalizeRecipe({
+    experimentId: "backflip", profile: "smoke", freezeObservationNormalization: true,
+  }).freezeObservationNormalization, false);
+  assert.equal(api.normalizeRecipe({
+    experimentId: "bridge", profile: "full",
+  }).freezeObservationNormalization, true);
+  assert.equal(api.normalizeRecipe({
+    experimentId: "bridge", profile: "full", freezeObservationNormalization: false,
+  }).freezeObservationNormalization, false);
+  assert.equal(api.normalizeRecipe({
+    experimentId: "bridge", profile: "smoke", freezeObservationNormalization: true,
+  }).freezeObservationNormalization, false);
   for (const resumeFromCheckpoint of [undefined, null, false, "true", 1]) {
     assert.throws(
-      () => api.startJob("train", { experimentId: "swing", freezeObservationNormalization: true, resumeFromCheckpoint }),
+      () => api.normalizeRecipe({
+        experimentId: "swing",
+        profile: "full",
+        freezeObservationNormalization: true,
+        resumeFromCheckpoint,
+      }),
       /requires resumeFromCheckpoint to be true/
     );
   }
@@ -257,7 +284,7 @@ test("only resumed training receives the observation normalization freeze flag",
   for (const freezeObservationNormalization of [undefined, false, true]) {
     for (const operation of ["train", "eval", "render", "export"]) {
       const recipe = api.startJob(operation, {
-        experimentId: "swing", resumeFromCheckpoint: true, freezeObservationNormalization,
+        experimentId: "swing", profile: "full", resumeFromCheckpoint: true, freezeObservationNormalization,
       });
       const child = children.at(-1);
       const expected = freezeObservationNormalization === true;
@@ -311,7 +338,7 @@ test("forward command accepts only finite positive numbers up to 1.5 for locomot
       );
     }
   }
-  for (const experimentId of ["dance", "swing"]) {
+  for (const experimentId of ["dance", "swing", "backflip"]) {
     assert.throws(
       () => api.normalizeRecipe({ experimentId, locomotionForwardCommand: 0.6 }),
       /only be used with running or stilts/
@@ -351,7 +378,7 @@ for (const [experimentId, command] of [["running", 0.6], ["stilts", 0.15]]) {
 
 test("unset forward commands emit no CLI override or evaluation setting", () => {
   const { api, children, writes } = fixture();
-  for (const experimentId of ["dance", "swing", "running", "stilts"]) {
+  for (const experimentId of ["dance", "swing", "running", "stilts", "backflip", "basketball", "bridge"]) {
     for (const locomotionForwardCommand of [undefined, null]) {
       for (const operation of ["train", "eval", "render"]) {
         api.startJob(operation, {

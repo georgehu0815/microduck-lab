@@ -1,0 +1,12 @@
+flowchart LR
+  Artifact[发布产物\ntar.zst + manifest + signature] --> Download[下载到暂存目录]
+  Download --> Verify[SHA-256 + minisign\n版本与布局检查]
+  Verify -->|失败| Refuse[拒绝安装\n保留 current]
+  Verify --> Unpack[解包完整 release 目录]
+  Unpack --> Hooks[preinstall / postinstall]
+  Hooks --> Swap[原子切换 current symlink]
+  Swap --> Restart[按顺序重启服务]
+  Restart --> Health[查询 robot.health]
+  Health -->|健康| Keep[确认新版本\n清理 journal]
+  Health -->|不健康| Rollback[切回旧 symlink\n重启旧服务]
+  Rollback --> Recover[boot counter\n下次启动继续恢复]

@@ -1,0 +1,35 @@
+.toggle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  align-self: flex-start;
+  gap: 3px;
+  max-width: 100%;
+  padding: 3px;
+  border: 1px solid #bdcfc2;
+  border-radius: 9px;
+  background: #f4f7f5;
+  color-scheme: light;
+}
+
+.toggle button {
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #35483b;
+  font: 600 12px/1.4 Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.toggle button[aria-pressed="true"] {
+  background: #235b3e;
+  color: #fff;
+}
+
+.toggle button:focus-visible {
+  outline: 2px solid #176941;
+  outline-offset: 2px;
+}

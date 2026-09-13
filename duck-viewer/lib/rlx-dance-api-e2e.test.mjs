@@ -68,7 +68,7 @@ test("HTTP driver accepts all scenarios and defaults to Dance", () => {
   const options = parseArgs(["--execute"]);
   assert.equal(mergeRecipe({}, options).experimentId, "dance");
   assert.equal(mergeRecipe({}, options).runName, "dance-api-e2e");
-  for (const experimentId of ["dance", "swing", "running", "stilts"]) {
+  for (const experimentId of ["dance", "swing", "running", "stilts", "backflip", "basketball", "bridge"]) {
     assert.deepEqual(
       mergeRecipe({ experimentId }, options),
       {
@@ -106,11 +106,11 @@ test("HTTP driver rejects unknown scenarios and non-object recipe JSON", () => {
   const options = parseArgs(["--execute"]);
   assert.throws(
     () => parseArgs(["--execute", "--experiment", "jumping"]),
-    /must be one of: dance, swing, running, stilts/
+    /must be one of: dance, swing, running, stilts, backflip, basketball, bridge/
   );
   assert.throws(
     () => mergeRecipe({ experimentId: "jumping" }, options),
-    /must be one of: dance, swing, running, stilts/
+    /must be one of: dance, swing, running, stilts, backflip/
   );
   assert.throws(
     () => mergeRecipe([], options),
@@ -231,7 +231,7 @@ test("Full Dance eval accepts explicit pass or failure evidence only", () => {
   );
 });
 
-for (const experimentId of ["running", "stilts"]) {
+for (const experimentId of ["running", "stilts", "backflip"]) {
 test(`${experimentId} full eval rejects a non-assessed skill status`, () => {
   assert.match(
     operationEvidenceError(

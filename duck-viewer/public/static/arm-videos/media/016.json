@@ -1,0 +1,51 @@
+{
+  "path": "six-cases-overview.mp4",
+  "sha256": "a952252f18b827af11a7e9f35381f99dbc497e47db1f1ecc4108ec2b0eb89e2a",
+  "duration_s": 103.36,
+  "full_decode_passed": true,
+  "chapters": [
+    {
+      "start_s": 0.0,
+      "end_s": 2.0,
+      "id": "arm-reach-v1-train101-eval110000",
+      "passed": true,
+      "source_sha256": "c1c81b7a7d001f36ffd5eb9bb727a2e2a7f6d16d7e44df0b34a952bbfadad9f2"
+    },
+    {
+      "start_s": 2.0,
+      "end_s": 19.04,
+      "id": "arm-pick-place-v1-train101-eval110000",
+      "passed": true,
+      "source_sha256": "526e43638e3bccda0880ed83f4cb9f859097baa341363bd7a852a210bc1b9b8a"
+    },
+    {
+      "start_s": 19.04,
+      "end_s": 36.08,
+      "id": "arm-relocate-v1-train101-eval110000",
+      "passed": true,
+      "source_sha256": "eca8e9cccf5684d726b42ff4c1b1dae67d3299b9ce8d33dec5c2285b6f0caa35"
+    },
+    {
+      "start_s": 36.08,
+      "end_s": 57.64,
+      "id": "arm-carry-v1-train101-eval110000",
+      "passed": true,
+      "source_sha256": "6bf7e90bd76b3ab0e66cfdb5f4265908ced60d0faf064b44314066ebe6ecdf85"
+    },
+    {
+      "start_s": 57.64,
+      "end_s": 82.52,
+      "id": "arms-handover-v1-train101-eval110000",
+      "passed": true,
+      "source_sha256": "191554605e1bb86f824024bf939b5cd7669c467384a9aab9b2beecd0f5b42e80"
+    },
+    {
+      "start_s": 82.52,
+      "end_s": 103.36,
+      "id": "arms-co-carry-v1-train101-eval110000",
+      "passed": true,
+      "source_sha256": "afa4fd0012e0c5865c68e1b69962a3d26be7fa2c7519b93a98d5468cdeb0dc36"
+    }
+  ],
+  "description": "Concatenated evidence videos; no interpolation, speed changes, or success-only selection"
+}

@@ -13,7 +13,7 @@ import {
   verifyLabReady,
 } from "../scripts/verify-lab-ready.mjs";
 
-const scenarios = ["dance", "swing", "running", "stilts"];
+const scenarios = ["dance", "swing", "running", "stilts", "backflip", "basketball", "bridge"];
 
 function mp4Bytes() {
   return Buffer.from([
@@ -178,11 +178,11 @@ test("readiness-only verifies all routes without requiring saved runs", async ()
   assert.deepEqual(Object.keys(report.scenarios), scenarios);
 });
 
-test("missing scenario evidence fails and main writes the failure report", async () => {
+test("missing Backflip evidence keeps strict restart readiness failed until trained", async () => {
   const directory = await mkdtemp(path.join(os.tmpdir(), "lab-ready-"));
   const reportPath = path.join(directory, "nested", "report.json");
   const runs = scenarios
-    .filter((scenario) => scenario !== "stilts")
+    .filter((scenario) => scenario !== "backflip")
     .map((scenario) => ({
       experimentId: scenario,
       runName: `${scenario}-accepted`,
@@ -199,7 +199,7 @@ test("missing scenario evidence fails and main writes the failure report", async
     );
     const report = JSON.parse(await readFile(reportPath, "utf8"));
     assert.equal(report.passed, false);
-    assert.match(report.scenarios.stilts.error, /No saved accepted stilts run/);
+    assert.match(report.scenarios.backflip.error, /No saved accepted backflip run/);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

@@ -5,7 +5,7 @@ import { dirname } from "node:path";
 import { pathToFileURL } from "node:url";
 
 export const DEFAULT_BASE_URL = "http://127.0.0.1:63317";
-export const SCENARIOS = ["dance", "swing", "running", "stilts"];
+export const SCENARIOS = ["dance", "swing", "running", "stilts", "backflip", "basketball", "bridge"];
 
 function usage() {
   console.log(`Usage:

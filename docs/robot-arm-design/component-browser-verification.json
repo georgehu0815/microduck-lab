@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "projections": [
+    {
+      "projection": 0,
+      "identical_png_bytes": false,
+      "mean_absolute_rgba": 0.0760945945945946,
+      "max_channel_difference": 19
+    },
+    {
+      "projection": 1,
+      "identical_png_bytes": false,
+      "mean_absolute_rgba": 0.00554054054054054,
+      "max_channel_difference": 4
+    },
+    {
+      "projection": 2,
+      "identical_png_bytes": false,
+      "mean_absolute_rgba": 0.0049121621621621625,
+      "max_channel_difference": 4
+    }
+  ],
+  "page_errors": [],
+  "raster_tolerance": {
+    "mean_absolute_rgba": 0.5,
+    "max_channel_difference": 32,
+    "reason": "Subpixel antialiasing differs across vertical translations; source geometry equality is tested separately."
+  },
+  "html_source_images_decoded": true,
+  "hardware_certified": false,
+  "source_equality_tests": {
+    "passed": true,
+    "tests": 10,
+    "log": "component-hardware-tests.log",
+    "log_sha256": "b3f26ad4babc15c9af510f0382193dacf52bd2555e46b024dba6eb57f8ea5ee4"
+  },
+  "source_hashes": {
+    "rlx/rlx/mjlab_microduck/robot/microduck/robot_allcollisions_backlash.xml": "248c712e13258104ccab3f96c5cc47c7faa8f718f56f2c7de03efda653c8fb6b",
+    "rlx/rlx/mjlab_microduck/robot/microduck/assets/xl330.stl": "c9f6bf7dd9d8b307a4174b40ff12517b3ea470e5535319a5b7dcce4ba52cdfe1",
+    "hardware/md-arm-t1/spec/md-arm-t1.json": "512eb795632a9a892c592dd15e7136d14d0c353e98f6ec8e2dabd7eedf3792d7",
+    "hardware/md-arm-t1/scripts/shared_components.py": "a327af76f991cf86c6f007a133f3638f5877facecdb03ef666212544a29fc6ce",
+    "hardware/md-arm-t1/tests/test_shared_components.py": "ce054547eaebd8acb69106ebcc0c850f6dc243e96707e250aeda3c1cf184ee69",
+    "hardware/md-arm-t1/cad/md_arm_t1.scad": "3c7a7ef40e1d3b916bec25cff1c3efe9ea752d43357a41698d1aeeb35afa8aa1",
+    "hardware/md-arm-t1/generated/component-consistency.json": "6a2c2b8d124b8c3cd0921cd221d48e6ef787b5a58b9a9d826ca0dee31e0eb2e8",
+    "hardware/md-arm-t1/generated/shared-xl330.scad": "bc4690af839e6fc67043f29aca81557fb4f69193f86e82a172a8e3555a4706e4",
+    "hardware/md-arm-t1/generated/shared-xl330-comparison.svg": "a8af304201d529a34e0dfee484cf6894d55bf39eaa6cdbe341efe997972258a1",
+    "docs/robot-arm-design/COMPONENT-CONSISTENCY.zh-CN.md": "22711442460275eb91ba96ccd5e7bc2521c092caef05c58c57da8b4f64a4233d",
+    "docs/robot-arm-design/COMPONENT-CONSISTENCY.zh-CN.html": "9b2eb84438b4653de467765375ca04bd797b2076dc614c862e5019d72e9607ef",
+    "docs/robot-arm-design/COMPONENT-CONSISTENCY.zh-CN.pdf": "fd48959d7e9ed5db85b98ee8844d290b96acf9d7b7e7ffe23f9e50bab9ed1067",
+    "scripts/verify_shared_arm_components.cjs": "ccbd7bc7fef380ebf924073e9b583d6135fd7b50348af44db8e365fa87b5d053"
+  }
+}
